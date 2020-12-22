@@ -6,7 +6,7 @@ INCLUDE = ../include
 CXXFLAGS = -Wall -g -I$(INCLUDE)
 
 # Αρχεία .o
-INCL = $(INCLUDE)/People.h
+INCL = $(INCLUDE)/
 OBJS = 
 
 # Το εκτελέσιμο πρόγραμμα
