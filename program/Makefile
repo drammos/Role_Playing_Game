@@ -6,11 +6,11 @@ INCLUDE = ../include
 CXXFLAGS = -Wall -g -I$(INCLUDE)
 
 # Αρχεία .o
-INCL = $(INCLUDE)/
-OBJS = 
+INCL = $(INCLUDE)/Living_Being.h
+OBJS = Role_Playing_Game.o $(MODULES)\Living_Being.o
 
 # Το εκτελέσιμο πρόγραμμα
-EXEC = 
+EXEC = Role_Playing_Game
 # Παράμετροι για δοκιμαστική εκτέλεση
 ARGS =
 
