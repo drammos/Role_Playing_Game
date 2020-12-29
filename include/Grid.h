@@ -12,28 +12,43 @@ using namespace std;
 class Grid{
 
     //Διαστασεις πλεγματος
-    double x;
-    double y;
+    int x;
+    int y;
+    Square*** squares;
 
 
     public:
     
-    Grid( double, double);
+    Grid(int, int);
 
 };
 
 class Square{
-    double x;
+    vector < Hero* > heroes;
+    vector < Monster* > monsters;
 public:
-    Square(double);
+    Square(){};
+    void add_hero(Hero*);
+    void add_monster(Monster*);
 };
 
 class nonAccessible:public Square{
+
+public:
+    nonAccessible(){};
     
 };
 
 class Market:public Square{
     
+public:
+    Market(){};
+};
+
+class Common:public Square{
+
+public:
+    Common(){};
 };
 
 #endif
