@@ -46,7 +46,7 @@ void Living_Being::level_up()
 
 //HERO
 
-Hero::Hero( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, double experience, string hero) 
+Hero::Hero( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, string hero) 
             : Living_Being( name, healthPower, "Hero")
 {
     this->magicPower = magicPower;
@@ -55,8 +55,61 @@ Hero::Hero( string name, double healthPower, double magicPower, double strenght,
     this->agility = agility;
     this->hero = hero;
 
-    this->money = 0;
+    this->money = money;
+
+    //η εμπειρια αρχικοποειται 0 και μεγαλωνει αναλογα με τις ενεργειες
+    //του ηρωα
     this->experience = 0;
+}
+
+
+
+double Hero::get_magicPower()const
+{
+    return magicPower;
+}
+
+double Hero::get_strength()const
+{
+    return strength;
+}
+
+double Hero::get_dexterity()const
+{
+    return dexterity;
+}
+
+double Hero::get_agility()const
+{
+    return agility;
+}
+
+double Hero::get_money()const
+{
+    return money;
+}
+
+double Hero::get_experiend()const
+{
+    return experience;
+}
+
+
+//for level up
+
+void Hero::set_strength( double strength)
+{
+    this->strength = strength;
+}
+
+void Hero::set_dexterity( double dexterity)
+{
+    this->dexterity = dexterity; 
+}
+
+void Hero::set_agility( double agility)
+{
+    this->agility = agility;
 }
 
 
@@ -64,26 +117,9 @@ Hero::Hero( string name, double healthPower, double magicPower, double strenght,
 void Hero::level_up()
 {
 
-    strength = strength + point;
-    dexterity = dexterity + point;
-    agility = agility + point;
-
-    //ο καθες ηρωας αναλογως ευνοειται σε καποιες τιμες
-    if( hero == "Warrior")
-    {
-        strength = Warrior::point_strength + strength;
-        agility = Warrior::point_agility + agility;
-    }
-    else if( hero == "Sorcerer")
-    {
-        agility = Sorcerer::point_agility + agility;
-        dexterity = Sorcerer::point_dexterity + dexterity;
-    }
-    else
-    {
-        strength = Paladin::point_strength + strength;
-        dexterity = Paladin::point_dexterity + dexterity;
-    }
+    strength = strength + strength*point;
+    dexterity = dexterity + dexterity*point;
+    agility = agility + agility*point;
     
 
     Living_Being::level_up();
@@ -97,34 +133,113 @@ void Hero::level_up()
 
 
 //WARRIOR
-Warrior::Warrior( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, double experience)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, experience, "Warrior")
-{
+Warrior::Warrior( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
+        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Warrior"){}
 
+void Warrior::level_up()
+{
+    double strength = get_strength();
+    strength = strength + strength*point_strength;
+    set_strength( strength);
+
+    double agility = get_agility();
+    agility = agility + agility*point_agility;
+    set_agility( agility);
+    
+    Hero::level_up();
 }
 /////////////////////////////////
 
 
-
-
-
-
 //SORCERER
-Sorcerer::Sorcerer( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, double experience)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, experience, "Sorcerer")
-{
+Sorcerer::Sorcerer( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
+        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Sorcerer"){}
 
+void Sorcerer::level_up()
+{
+    double dexterity = get_dexterity();
+    dexterity = dexterity + dexterity*point_dexterity;
+    set_dexterity( dexterity);
+
+    double agility = get_agility();
+    agility = agility + agility*point_agility;
+    set_agility( agility);
+    
+    Hero::level_up();
 }
+
 //////////////////////////
 
 
-
-
-
-
 //PALADIN
-Paladin::Paladin( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, double experience)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, experience, "Paladin")
+Paladin::Paladin( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
+        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Paladin"){}
+
+void Paladin::level_up()
 {
+    double strength = get_strength();
+    strength = strength + strength*point_strength;
+    set_strength( strength);
+
+    double dexterity = get_dexterity();
+    dexterity = dexterity + dexterity*point_dexterity;
+    set_dexterity( dexterity);
+
+    Hero::level_up();
+}
+
+////////////////////////////
+
+
+
+
+//MONSTER
+
+Monster::Monster( string name, double healthPower, double attack, double defence, double probability_of_escape, string monster)
+        : Living_Being( name, healthPower, "Monster")
+{
+    this->attack = attack;
+    this->defence = defence;
+    this->probability_οf_escape = probability_of_escape;
+
+    this->monster = monster;
 
 }
+
+
+double Monster::get_attack()const
+{
+    return attack;
+}
+
+double Monster::get_defence()const
+{
+    return defence;
+}
+
+double Monster::get_probability_of_escape()const
+{
+    return probability_οf_escape;
+}
+
+///////////////////////////////////////
+
+
+
+
+//DRAGON
+Dragon::Dragon( string name, double healthPower, double attack, double defence, double probability_of_escape)
+        : Monster( name, healthPower, attack + point_attack*attack, defence, probability_of_escape, "Dragon"){}
+///////////////////////////////////////
+
+//EXOSKELETION
+Exoskeleton::Exoskeleton( string name, double healthPower, double attack, double defence, double probability_of_escape)
+        : Monster( name, healthPower, attack, defence + defence*point_defence, probability_of_escape, "Exoskeletion"){}
+
+//////////////////////////////////////
+
+//SPIRIT
+Spirit::Spirit( string name, double healthPower, double attack, double defence, double probability_of_escape)
+        : Monster( name, healthPower, attack , defence, probability_of_escape + point_probability_οf_escape*probability_of_escape, "Spirit"){}
+
+//////////////////////////////////////

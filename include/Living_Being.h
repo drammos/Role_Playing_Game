@@ -41,40 +41,112 @@ class Hero : public Living_Being{
     static const double point = 1;
 
     public:
+    
+    Hero( string, double, double, double, double, double, double, string);
+    
+    double get_magicPower()const;
+    double get_strength()const;
+    double get_dexterity()const;
+    double get_agility()const;
+    double get_money()const;
+    double get_experiend()const;
 
-    Hero( string, double, double, double, double, double, double, double, string);
-    void level_up();
+    //for level up
+
+    void set_strength( double);
+    void set_dexterity( double);
+    void set_agility( double);
+
+    virtual void level_up();
+
+    //for buy spell and item
+    
 };
 
 
 class Warrior : public Hero{
-    public:
-
     static const double point_strength = 0.8;
     static const double point_agility = 0.5;
 
-    Warrior( string, double, double, double, double, double, double, double);;
+    public:
+
+    Warrior( string, double, double, double, double, double, double);;
+
+    void level_up();
 };
 
 class Sorcerer : public Hero{
-    public:
-
     static const double point_dexterity = 0.7;
     static const double point_agility = 0.6;
 
-    Sorcerer(  string, double, double, double, double, double, double, double);
+    public:
+
+    Sorcerer(  string, double, double, double, double, double, double);
+
+    void level_up();
+
 };
 
 class Paladin : public Hero{
-    public:
-
     static const double point_strength = 0.9;
     static const double point_dexterity = 0.7;
 
-    Paladin(  string, double, double, double, double, double, double, double);
+    public:
+
+    Paladin(  string, double, double, double, double, double, double);
+
+    void level_up();
+
 };
 
 
+
+
+//Monster
+
+class Monster : public Living_Being{
+    double attack;
+    double defence;
+    double probability_οf_escape;
+
+    string monster;
+
+    public:
+
+    Monster( string, double, double, double, double, string);
+
+    double get_attack()const;
+    double get_defence()const;
+    double get_probability_of_escape()const;
+
+};
+
+
+
+class Dragon : public Monster{
+    static const double point_attack = 0.6;
+
+    public:
+
+    Dragon(string, double, double, double, double);
+
+};
+
+class Exoskeleton : public Monster{
+    static const double point_defence= 0.7;
+
+    public:
+
+    Exoskeleton(string, double, double, double, double);
+};
+
+class Spirit : public Monster{
+    static const double point_probability_οf_escape = 0.8;
+
+    public:
+
+    Spirit(string, double, double, double, double);
+};
 
 
 
