@@ -3,7 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "items.h"
+#include "Item.h"
+#include "Spell.h"
 using namespace std;
 
 class Living_Being{
