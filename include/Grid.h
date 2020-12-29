@@ -10,9 +10,14 @@
 using namespace std;
 
 class Grid{
+
+    //Διαστασεις πλεγματος
     double x;
     double y;
 
+
+    public:
+    
     Grid( double, double);
 
 };
