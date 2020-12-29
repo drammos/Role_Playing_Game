@@ -28,6 +28,7 @@ public:
     void add_hero(Hero*);
     void add_monster(Monster*);
     void remove_heroes();
+    string get_kind_of_square() const;
 };
 
 class nonAccessible:public Square{

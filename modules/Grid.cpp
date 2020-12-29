@@ -50,3 +50,7 @@ void Square::add_monster(Monster* m){
 void Square::remove_heroes(){
     this->heroes.clear();
 }
+
+string Square::get_kind_of_square() const{
+    return this->kind_of_square;
+}
