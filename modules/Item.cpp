@@ -26,6 +26,10 @@ int Item::get_level() const{
     return this->level;
 }
 
+void Item::print(){
+    cout<<"Name is: "<<this->name<<", price is: "<<this->price<<", the required leve is: "<<this->level<<endl;
+}
+
 //Συναρτήσεις για Weapon.
 Weapon::Weapon(string n, double p, int l, int h, double d):Item(n, p, l){
     this->hands = h;

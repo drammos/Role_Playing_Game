@@ -24,6 +24,8 @@ class Grid{
 
 class Square{
     double x;
+public:
+    Square(double);
 };
 
 class nonAccessible:public Square{

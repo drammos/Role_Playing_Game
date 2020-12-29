@@ -22,6 +22,7 @@ public:
     double get_high_damage() const;
     double get_energy() const;
     void set_low_damage(double);
+    void print();
 };
 
 class IceSpell:public Spell{

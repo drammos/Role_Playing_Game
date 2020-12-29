@@ -45,6 +45,10 @@ void Spell::set_low_damage(double d){
     this->damage_low = d;
 }
 
+void Spell::print(){
+    cout<<"Name is: "<<this->name<<", price is: "<<this->price<<", the required leve is: "<<this->level<<", range of damage is from "<<this->damage_low<<" to "<<this->damage_high<<", the required magic energy is: "<<this->energy<<endl;
+}
+
 //Συναρτήσεις για IceSpell.
 IceSpell::IceSpell(string n, double p, int l, double dl, double dh, double e, double nl, int r):Spell(n, p, l, dl, dh, e){
     this->damage_low_new = nl;

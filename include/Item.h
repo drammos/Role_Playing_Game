@@ -15,6 +15,7 @@ public:
     string get_name() const;
     double get_price() const;
     int get_level() const;
+    void print();
 };
 
 class Weapon:public Item{
