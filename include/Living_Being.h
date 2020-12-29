@@ -53,7 +53,7 @@ class Warrior : public Hero{
     static const double point_strength = 0.8;
     static const double point_agility = 0.5;
 
-    Warrior( string, double, double, double, double, double, double, double);
+    Warrior( string, double, double, double, double, double, double, double);;
 };
 
 class Sorcerer : public Hero{
@@ -68,7 +68,7 @@ class Sorcerer : public Hero{
 class Paladin : public Hero{
     public:
 
-    static const double point_strenght = 0.9;
+    static const double point_strength = 0.9;
     static const double point_dexterity = 0.7;
 
     Paladin(  string, double, double, double, double, double, double, double);

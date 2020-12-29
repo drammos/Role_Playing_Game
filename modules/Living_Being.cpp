@@ -4,7 +4,7 @@
 Living_Being::Living_Being( string name, double healthPower, string life_being)
 {
     this->name = name;
-    this->level = 0;
+    this->level = 1;
     this->healthPower = healthPower;
 
     this->life_being = life_being;
@@ -59,23 +59,30 @@ Hero::Hero( string name, double healthPower, double magicPower, double strenght,
     this->experience = 0;
 }
 
+
+//ανεβαινει επιπεδο
 void Hero::level_up()
 {
+
     strength = strength + point;
     dexterity = dexterity + point;
     agility = agility + point;
+
+    //ο καθες ηρωας αναλογως ευνοειται σε καποιες τιμες
     if( hero == "Warrior")
     {
-        strength = Warrior::point_strength*strength + strength;
-        agility = agility + point;
+        strength = Warrior::point_strength + strength;
+        agility = Warrior::point_agility + agility;
     }
     else if( hero == "Sorcerer")
     {
-
+        agility = Sorcerer::point_agility + agility;
+        dexterity = Sorcerer::point_dexterity + dexterity;
     }
     else
     {
-        strength = Warrior::point_strength*strength + strength;
+        strength = Paladin::point_strength + strength;
+        dexterity = Paladin::point_dexterity + dexterity;
     }
     
 
