@@ -3,8 +3,7 @@
 #include <ctime>
 #include "Grid.h"
 
-Grid::Grid(int x, int y)
-{
+Grid::Grid(int x, int y){
     this->x = x;
     this->y = y;
     srand(time(NULL));

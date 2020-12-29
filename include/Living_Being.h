@@ -69,12 +69,16 @@ class Hero : public Living_Being{
     virtual void level_up();
 
     //for buy spell and item
-    void buy_Item( Item item);
-    void buy_Spell( Spell spell);
+    void buy_Item( Item);
+    void buy_Spell( Spell);
 
     //for sell spell and item
-    bool sell_Item( Item item);
-    bool sell_Spell( Spell spell);
+    bool sell_Item( int);
+    bool sell_Spell( int);
+
+    //print list for spell and item
+    void print_spell()const;
+    void print_item()const;
 
 
 };
