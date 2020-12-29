@@ -1,3 +1,6 @@
+#ifndef SPELL_H
+#define SPELL_H
+
 #include <iostream>
 
 using namespace std;
@@ -50,3 +53,5 @@ public:
     double get_defense_prob_reduce() const;
     int get_rounds() const;
 }; 
+
+#endif

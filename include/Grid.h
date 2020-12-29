@@ -1,6 +1,10 @@
+#ifndef GRID_H
+#define GRID_H
+
 #include <iostream>
 #include <vector>
-#include "items.h"
+#include "Item.h"
+#include "Spell.h"
 #include "Living_Being.h"
 
 using namespace std;
@@ -8,6 +12,8 @@ using namespace std;
 class Grid{
     double x;
     double y;
+
+    Grid( double, double);
 
 };
 
@@ -22,3 +28,5 @@ class nonAccessible:public Square{
 class Market:public Square{
     
 };
+
+#endif

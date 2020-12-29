@@ -1,3 +1,6 @@
+#ifndef ITEM_H
+#define ITEM_H
+
 #include <iostream>
 
 using namespace std;
@@ -41,3 +44,5 @@ public:
     string get_characteristic() const;
     double get_increase() const;
 };
+
+#endif
