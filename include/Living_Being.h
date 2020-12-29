@@ -2,6 +2,8 @@
 #define LIVING_BEING_H
 
 #include <string>
+#include <vector>
+#include "items.h"
 using namespace std;
 
 class Living_Being{
@@ -40,6 +42,10 @@ class Hero : public Living_Being{
 
     static const double point = 1;
 
+    //vector for spell and items
+    vector <Item>item_vector;
+    vector <Spell>spell_vector;
+
     public:
     
     Hero( string, double, double, double, double, double, double, string);
@@ -49,18 +55,27 @@ class Hero : public Living_Being{
     double get_dexterity()const;
     double get_agility()const;
     double get_money()const;
-    double get_experiend()const;
-
-    //for level up
+    double get_experience()const;
 
     void set_strength( double);
     void set_dexterity( double);
     void set_agility( double);
+    void set_money( double);
+    void set_experience( double);
+    
 
+    //for level up
     virtual void level_up();
 
     //for buy spell and item
-    
+    void buy_Item( Item item);
+    void buy_Spell( Spell spell);
+
+    //for sell spell and item
+    bool sell_Item( Item item);
+    bool sell_Spell( Spell spell);
+
+
 };
 
 

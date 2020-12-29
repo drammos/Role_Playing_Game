@@ -6,8 +6,8 @@ INCLUDE = ../include
 CXXFLAGS = -Wall -g -I$(INCLUDE)
 
 # Αρχεία .o
-INCL = $(INCLUDE)/Living_Being.h
-OBJS = Role_Playing_Game.o $(MODULES)\Living_Being.o
+INCL = $(INCLUDE)/Living_Being.h $(INCLUDE)/Grid.h $(INCLUDE)/Spell.h $(INCLUDE)/Item.h
+OBJS = Role_Playing_Game.o $(MODULES)/Living_Being.o $(MODULES)/Grid.o $(MODULES)/Spell.o  $(MODULES)/Item.o
 
 # Το εκτελέσιμο πρόγραμμα
 EXEC = Role_Playing_Game

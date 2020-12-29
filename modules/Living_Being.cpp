@@ -89,13 +89,12 @@ double Hero::get_money()const
     return money;
 }
 
-double Hero::get_experiend()const
+double Hero::get_experience()const
 {
     return experience;
 }
 
-
-//for level up
+//SET
 
 void Hero::set_strength( double strength)
 {
@@ -112,6 +111,16 @@ void Hero::set_agility( double agility)
     this->agility = agility;
 }
 
+void Hero::set_money( double money)
+{
+    this->money = money;
+}
+
+void Hero::set_experience( double experience)
+{
+    this->experience = experience;
+}
+
 
 //ανεβαινει επιπεδο
 void Hero::level_up()
@@ -124,6 +133,76 @@ void Hero::level_up()
 
     Living_Being::level_up();
 }
+
+
+
+//for buy spell and item
+void Hero::buy_Item( Item item)
+{
+    item_vector.push_back( item);
+}
+
+void Hero::buy_Spell( Spell spell)
+{
+    spell_vector.push_back( spell);
+}
+
+
+//for sell spell and item
+
+//επιστρεφω  true αν υπαρχει το στοιχειο και τοτε αφαιρειται
+//αλλιως false
+bool Hero::sell_Item( Item item)
+{   
+    int size = item_vector.size(); 
+    for( int i = 0; i < size; i++)
+    {
+        Item item_in = item_vector.at(i);
+        if( compare_item( item_in, item) == 0)
+        {
+            //fre item an xreiazetaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            Item it = item_vector.at( size - 1);
+            item_vector.assign( i, item_in);
+            item_vector.assign( size -1, it);
+
+            item_vector.pop_back();
+            return true;
+        }
+    }
+
+    return false;
+}
+
+//επιστρεφω  true αν υπαρχει το στοιχειο και τοτε αφαιρειται
+//αλλιως false
+bool Hero::sell_Spell( Spell spell)
+{
+    int size = spell_vector.size(); 
+    for( int i = 0; i < size; i++)
+    {
+        Spell spell_in = spell_vector.at(i);
+        if( compare_spell( spell_in, spell) == 0)
+        {
+            //fre item an xreiazetaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+            Spell sp = spell_vector.at( size - 1);
+            spell_vector.assign( i, spell_in);
+            spell_vector.assign( size -1, sp);
+
+            spell_vector.pop_back();
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+
+
+
+
+
+
 ////////////////////////////////////
 
 
