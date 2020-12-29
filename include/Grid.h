@@ -10,45 +10,42 @@
 using namespace std;
 
 class Grid{
-
     //Διαστασεις πλεγματος
     int x;
     int y;
     Square*** squares;
-
-
-    public:
-    
+public:    
     Grid(int, int);
-
+    ~Grid();
 };
 
 class Square{
     vector < Hero* > heroes;
     vector < Monster* > monsters;
+    string kind_of_square;
 public:
-    Square(){};
+    Square(string);
     void add_hero(Hero*);
     void add_monster(Monster*);
+    void remove_heroes();
 };
 
 class nonAccessible:public Square{
 
 public:
-    nonAccessible(){};
-    
+    nonAccessible():Square("nonAccessible"){};
 };
 
 class Market:public Square{
     
 public:
-    Market(){};
+    Market():Square("Market"){};
 };
 
 class Common:public Square{
 
 public:
-    Common(){};
+    Common():Square("Common"){};
 };
 
 #endif
