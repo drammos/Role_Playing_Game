@@ -152,22 +152,20 @@ void Hero::buy_Spell( Spell spell)
 
 //επιστρεφω  true αν υπαρχει το στοιχειο και τοτε αφαιρειται
 //αλλιως false
-bool Hero::sell_Item( Item item)
+bool Hero::sell_Item( int position)
 {   
     int size = item_vector.size(); 
-    for( int i = 0; i < size; i++)
-    {
-        Item item_in = item_vector.at(i);
-        if( compare_item( item_in, item) == 0)
-        {
-            //fre item an xreiazetaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-            Item it = item_vector.at( size - 1);
-            item_vector.assign( i, item_in);
-            item_vector.assign( size -1, it);
 
-            item_vector.pop_back();
-            return true;
-        }
+    if( position >= size || position < 0)
+    {
+        Item item_in = item_vector.at(position);
+        Item it = item_vector.at( size - 1);
+    
+        item_vector.assign( position, it);
+        item_vector.assign( size -1, item_in);
+
+        item_vector.pop_back();
+        return true;
     }
 
     return false;
@@ -175,30 +173,45 @@ bool Hero::sell_Item( Item item)
 
 //επιστρεφω  true αν υπαρχει το στοιχειο και τοτε αφαιρειται
 //αλλιως false
-bool Hero::sell_Spell( Spell spell)
+bool Hero::sell_Spell( int position)
 {
     int size = spell_vector.size(); 
-    for( int i = 0; i < size; i++)
+    if( position >= size || position < 0)
     {
-        Spell spell_in = spell_vector.at(i);
-        if( compare_spell( spell_in, spell) == 0)
-        {
-            //fre item an xreiazetaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
-            Spell sp = spell_vector.at( size - 1);
-            spell_vector.assign( i, spell_in);
-            spell_vector.assign( size -1, sp);
+        Spell spell_in = spell_vector.at(position);
+        Spell sp = spell_vector.at( size - 1);
+        
+        spell_vector.assign( position, sp);
+        spell_vector.assign( size -1, spell_in);
 
-            spell_vector.pop_back();
-            return true;
-        }
+        spell_vector.pop_back();
+        return true;
     }
 
     return false;
 }
 
 
+//print list for spell and item
+void Hero::print_spell()const
+{   
+    int size = spell_vector.size();
+    for( int i =0; i < size; i++ )
+    {
+        Spell spell = spell_vector.at(i);
+        spell.print();
+    }
+}
 
-
+void Hero::print_item()const
+{
+    int size = item_vector.size();
+    for( int i =0; i < size; i++ )
+    {
+        Item item = item_vector.at(i);
+        item.print();
+    }
+}
 
 
 

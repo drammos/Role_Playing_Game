@@ -12,13 +12,13 @@ using namespace std;
 class Grid{
 
     //Διαστασεις πλεγματος
-    double x;
-    double y;
+    int x;
+    int y;
 
 
     public:
     
-    Grid( double, double);
+    Grid( int, int);
 
 };
 

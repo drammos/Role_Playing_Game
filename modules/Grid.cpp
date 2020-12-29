@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Grid.h"
 
-Grid::Grid( double x, double y)
+Grid::Grid( int x, int y)
 {
     this->x = x;
     this->y = y;
