@@ -52,12 +52,41 @@ void Grid::equip( Hero* hero)
     
     if( in == 1)
     {
+        cout << "What you want to take?" << endl;
+        int number_Weapon = hero->print_Weapon();
+        int w;
+        if(number_Weapon != 0)
+        {
+            
+            cin >> w;
+            while( w <= 0 || w > number_Weapon)
+            {
+                cout << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << endl;
+                cin >> w;
+            }
 
+            hero->set_Weapon( w - 1);
+        }
     }
     else
     {
-        
+        cout << "What you want to take?" << endl;
+        int number_Armor = hero->print_Armor();
+        int a;
+        if(number_Armor != 0)
+        {
+            cin >> a;
+            while( a <= 0 || a > number_Armor)
+            {
+                cout << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << endl;
+                cin >> a;
+            }
+
+            hero->set_Armor( a - 1);
+        }
     }
+
+    
     
 
 }
