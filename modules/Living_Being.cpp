@@ -60,6 +60,12 @@ Hero::Hero( string name, double healthPower, double magicPower, double strenght,
     //η εμπειρια αρχικοποειται 0 και μεγαλωνει αναλογα με τις ενεργειες
     //του ηρωα
     this->experience = 0;
+
+    //αρχικα δεν εχει αντικειμενα αρα null
+    weapon = nullptr;
+    armor = nullptr;
+    potion = armor;
+
 }
 
 
@@ -94,6 +100,21 @@ double Hero::get_experience()const
     return experience;
 }
 
+Item* Hero::get_Weapon()const
+{
+    return weapon;
+}
+
+Item* Hero::get_Armor()const
+{
+    return armor;
+}
+
+Item* Hero::get_Potion()const
+{
+    return potion;
+}
+
 //SET
 
 void Hero::set_strength( double strength)
@@ -121,6 +142,21 @@ void Hero::set_experience( double experience)
     this->experience = experience;
 }
 
+void Hero::set_Weapon( Item* weapon)
+{
+    this->weapon = weapon;
+}
+
+void Hero::set_Armor( Item* armor)
+{
+    this->armor = armor;
+}
+
+void Hero::set_Potion( Item* potion)
+{
+    this->potion = potion;
+}
+
 
 //ανεβαινει επιπεδο
 void Hero::level_up()
@@ -137,12 +173,12 @@ void Hero::level_up()
 
 
 //for buy spell and item
-void Hero::buy_Item( Item item)
+void Hero::buy_Item( Item* item)
 {
     item_vector.push_back( item);
 }
 
-void Hero::buy_Spell( Spell spell)
+void Hero::buy_Spell( Spell* spell)
 {
     spell_vector.push_back( spell);
 }
@@ -158,8 +194,8 @@ bool Hero::sell_Item( int position)
 
     if( position >= 0 && position < size)
     {
-        Item item_in = item_vector.at(position);
-        Item it = item_vector.at( size - 1);
+        Item* item_in = item_vector.at(position);
+        Item* it = item_vector.at( size - 1);
     
         item_vector.assign( position, it);
         item_vector.assign( size -1, item_in);
@@ -178,8 +214,8 @@ bool Hero::sell_Spell( int position)
     int size = spell_vector.size(); 
     if( position >= 0 && position < size )
     {
-        Spell spell_in = spell_vector.at(position);
-        Spell sp = spell_vector.at( size - 1);
+        Spell* spell_in = spell_vector.at(position);
+        Spell* sp = spell_vector.at( size - 1);
         
         spell_vector.assign( position, sp);
         spell_vector.assign( size -1, spell_in);
@@ -196,20 +232,38 @@ bool Hero::sell_Spell( int position)
 void Hero::print_spell()const
 {   
     int size = spell_vector.size();
+    if(size == 0)
+    {
+        cout << "Δεν υπαρχουν ξορκια στην διαθεση σας!" << endl;
+    }
+    else
+    {
+        cout << "Τα ξορκια σας:" << endl;
+    }
     for( int i =0; i < size; i++ )
     {
-        Spell spell = spell_vector.at(i);
-        spell.print();
+        Spell* spell = spell_vector.at(i);
+        cout << (i+1) << ") ";
+        spell->print();
     }
 }
 
 void Hero::print_item()const
 {
     int size = item_vector.size();
+    if(size == 0)
+    {
+        cout << "Δεν υπαρχουν αντικειμενα στην διαθεση σας!" << endl;
+    }
+    else
+    {
+        cout << "Τα αντικειμενα σας:" << endl;
+    }
     for( int i =0; i < size; i++ )
     {
-        Item item = item_vector.at(i);
-        item.print();
+        Item* item = item_vector.at(i);
+        cout << (i+1) << ") ";
+        item->print();
     }
 }
 
