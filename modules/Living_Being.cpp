@@ -142,14 +142,14 @@ void Hero::set_experience( double experience)
     this->experience = experience;
 }
 
-void Hero::set_Weapon( Item* weapon)
+void Hero::set_Weapon( int position)
 {
-    this->weapon = weapon;
+    this->weapon = Weapon_vector.at( position);
 }
 
-void Hero::set_Armor( Item* armor)
+void Hero::set_Armor( int position)
 {
-    this->armor = armor;
+    this->armor = Armor_vector.at( position);
 }
 
 void Hero::set_Potion( Item* potion)
@@ -175,7 +175,20 @@ void Hero::level_up()
 //for buy spell and item
 void Hero::buy_Item( Item* item)
 {
-    item_vector.push_back( item);
+    string kind_of_item = item->get_kind_of_item();
+    if( kind_of_item == "Weapon")
+    {
+        Weapon_vector.push_back( item);
+    }   
+    else if( kind_of_item == "Armor")
+    {
+        Armor_vector.push_back( item);
+    }
+    else
+    {
+        Potion_vector.push_back( item);
+    }
+    
 }
 
 void Hero::buy_Spell( Spell* spell)
@@ -190,17 +203,48 @@ void Hero::buy_Spell( Spell* spell)
 //αλλιως false
 bool Hero::sell_Item( int position)
 {   
-    int size = item_vector.size(); 
+    int size = Weapon_vector.size() + Armor_vector.size() + Potion_vector.size();
+
 
     if( position >= 0 && position < size)
-    {
-        Item* item_in = item_vector.at(position);
-        Item* it = item_vector.at( size - 1);
-    
-        item_vector.assign( position, it);
-        item_vector.assign( size -1, item_in);
+    {      
+        Item* item_in;
+        Item* it;
 
-        item_vector.pop_back();
+
+        if( position < Weapon_vector.size())
+        {
+            item_in = Weapon_vector.at(position);
+            it = Weapon_vector.at( Weapon_vector.size() - 1);
+    
+            Weapon_vector.assign( position, it);
+            Weapon_vector.assign( Weapon_vector.size() -1, item_in);
+
+            Weapon_vector.pop_back();
+        }
+        else if( position < Weapon_vector.size() + Armor_vector.size())
+        {   
+            position = position - Weapon_vector.size();
+            item_in = Armor_vector.at(position);
+            it = Armor_vector.at( Armor_vector.size() - 1);
+    
+            Armor_vector.assign( position, it);
+            Armor_vector.assign( Armor_vector.size() -1, item_in);
+
+            Armor_vector.pop_back();
+        }
+        else
+        {
+            position = position - Weapon_vector.size() - Armor_vector.size();
+            item_in = Potion_vector.at(position);
+            it = Potion_vector.at( Potion_vector.size() - 1);
+    
+            Potion_vector.assign( position, it);
+            Potion_vector.assign( Potion_vector.size() -1, item_in);
+
+            Potion_vector.pop_back();
+        }
+        
         return true;
     }
 
@@ -229,7 +273,7 @@ bool Hero::sell_Spell( int position)
 
 
 //print list for spell and item
-void Hero::print_spell()const
+int Hero::print_spell()const
 {   
     int size = spell_vector.size();
     if(size == 0)
@@ -246,12 +290,13 @@ void Hero::print_spell()const
         cout << (i+1) << ") ";
         spell->print();
     }
+    return size;
 }
 
-void Hero::print_item()const
+int Hero::print_item()const
 {
-    int size = item_vector.size();
-    if(size == 0)
+    int size_all = Weapon_vector.size() + Armor_vector.size() + Potion_vector.size();
+    if(size_all == 0)
     {
         cout << "Δεν υπαρχουν αντικειμενα στην διαθεση σας!" << endl;
     }
@@ -259,17 +304,144 @@ void Hero::print_item()const
     {
         cout << "Τα αντικειμενα σας:" << endl;
     }
+    
+    int size = Weapon_vector.size();
     for( int i =0; i < size; i++ )
     {
-        Item* item = item_vector.at(i);
+        Item* item = Weapon_vector.at(i);
         cout << (i+1) << ") ";
         item->print();
     }
+    int size_previous = size;
+
+    size = Armor_vector.size();
+    for( int i =0; i < size; i++ )
+    {
+        Item* item = Armor_vector.at(i);
+        cout << (i+1 + size_previous) << ") ";
+        item->print();
+    }
+    size_previous = size + size;
+
+    size = Potion_vector.size();
+    for( int i =0; i < size; i++ )
+    {
+        Item* item = Potion_vector.at(i);
+        cout << (i+1+size_previous) << ") ";
+        item->print();
+    }
+
+    return size_all;
+}
+
+
+int Hero::print_Weapon()const
+{   
+    int size = Weapon_vector.size();
+    if( size == 0)
+    {   
+        cout << "You havn't Weapon." << endl;
+        return 0;
+    }
+    else
+    {
+        cout << "Your Weapon:" << endl;
+    }
+    
+    for( int i = 0; i < Weapon_vector.size(); i++)
+    {
+        Item* item = Weapon_vector.at(i);
+        cout << (i+1) << ") ";
+        item->print();
+    }
+
+    return size;
+}
+
+
+int Hero::print_Armor()const
+{
+    int size = Armor_vector.size();
+    if( size == 0)
+    {   
+        cout << "You havn't Armor." << endl;
+        return 0;
+    }
+    else
+    {
+        cout << "Your Armor:" << endl;
+    }
+    
+    for( int i = 0; i < Armor_vector.size(); i++)
+    {
+        Item* item = Armor_vector.at(i);
+        cout << (i+1) << ") ";
+        item->print();
+    }
+
+    return size;
 }
 
 
 
+int Hero::print_Potion()const
+{
+    int size = Potion_vector.size();
+    if( size == 0)
+    {   
+        cout << "You havn't Potion." << endl;
+        return 0;
+    }
+    else
+    {
+        cout << "Your Potion:" << endl;
+    }
+    
+    for( int i = 0; i < Potion_vector.size(); i++)
+    {
+        Item* item = Potion_vector.at(i);
+        cout << (i+1) << ") ";
+        item->print();
+    }
 
+    return size;
+}
+
+
+void Hero::Take_Potion( int position)
+{
+    Item* potion_item = Potion_vector.at( position);
+    srand( time(NULL));
+
+    int i = rand()%4;
+    if( i == 0)
+    {
+
+    }
+    else if( i == 1)
+    {
+
+    }
+    else if( i == 2)
+    {
+
+    }
+    else
+    {
+        
+    }
+
+    Item* P = Potion_vector.at( Potion_vector.size() - 1);
+    
+    Potion_vector.assign( position, P);
+    Potion_vector.assign( Armor_vector.size() -1, potion_item);
+
+    Potion_vector.pop_back();
+
+    delete potion_item;
+
+    
+}
 ////////////////////////////////////
 
 
