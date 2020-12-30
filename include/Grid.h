@@ -25,6 +25,7 @@ class Square{
     string kind_of_square;
 public:
     Square(string);
+    ~Square();
     void add_hero(Hero*);
     void add_monster(Monster*);
     void remove_heroes();
@@ -38,9 +39,12 @@ public:
 };
 
 class Market:public Square{
-    
+    vector <Item*> items;
+    vector <Spell*> spells;
 public:
     Market():Square("Market"){};
+    ~Market();
+    void buy();
 };
 
 class Common:public Square{

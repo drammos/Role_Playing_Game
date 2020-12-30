@@ -54,3 +54,14 @@ void Square::remove_heroes(){
 string Square::get_kind_of_square() const{
     return this->kind_of_square;
 }
+
+
+//Συναρτήσεις για Market.
+Market::~Market(){
+    this->items.clear();
+    this->spells.clear();
+}
+
+void Market::buy(){
+    cout<<"press 1 if you want to buy an item and 2 if you want to buy a spell"<<endl;
+}
