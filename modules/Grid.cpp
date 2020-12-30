@@ -29,6 +29,65 @@ Grid::~Grid(){
     }
 }
 
+
+void Grid::checkInventory( Hero* hero)
+{
+    hero->print_item();
+}
+
+void Grid::equip( Hero* hero)
+{
+    cout << "Τι θελετε να αλλαξετε;" << endl;
+    cout << "1) Weapon" << endl;
+    cout << "2) Armor" << endl;
+
+    //δεχομαστε 1 ή 2 απο χρηστη
+    int in;
+    cin >> in; 
+    while( in != 1 && in != 2)
+    {
+        cout << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << endl;
+        cin >> in;
+    }
+    
+    if( in == 1)
+    {
+
+    }
+    else
+    {
+        
+    }
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////
+
 //Συναρτήσεις για Square.
 Square::Square(string s){
     this->kind_of_square.assign(s);
