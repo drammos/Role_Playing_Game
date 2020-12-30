@@ -12,12 +12,14 @@ class Item{
     string kind_of_item;
 public:
     Item(string, double, int, string);
-    ~Item();
+    virtual ~Item();
     string get_name() const;
     double get_price() const;
     int get_level() const;
     void print();
     string get_kind_of_item() const;
+    virtual string get_characteristic() const;
+    virtual double get_increase() const;
 };
 
 class Weapon:public Item{

@@ -37,6 +37,15 @@ string Item::get_kind_of_item() const{
     return this->kind_of_item;
 }
 
+//Βοηθητική virtual συνάρτηση.
+string Item::get_characteristic() const{
+    return "";
+}
+
+double Item::get_increase() const{
+    return 0.0;
+}
+
 //Συναρτήσεις για Weapon.
 Weapon::Weapon(string n, double p, int l, int h, double d):Item(n, p, l, "Weapon"){
     this->hands = h;
