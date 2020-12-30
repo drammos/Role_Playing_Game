@@ -10,6 +10,7 @@
 using namespace std;
 
 class Grid{
+
     //Διαστασεις πλεγματος
     int x;
     int y;
@@ -17,6 +18,10 @@ class Grid{
 public:    
     Grid(int, int);
     ~Grid();
+
+    //
+    void checkInventory( Hero*);
+    void equip( Hero*);
 };
 
 class Square{
@@ -52,5 +57,9 @@ class Common:public Square{
 public:
     Common():Square("Common"){};
 };
+
+
+
+
 
 #endif

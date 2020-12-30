@@ -44,9 +44,15 @@ class Hero : public Living_Being{
     static const double point = 1;
 
     //vector for spell and items
-    vector <Item>item_vector;
-    vector <Spell>spell_vector;
+    vector <Item*>item_vector;
+    vector <Spell*>spell_vector;
 
+
+    //Τα αντικειμενα που χρησιμοποιει ο Hero
+    Item* weapon;
+    Item* armor;
+    Item* potion;
+    
     public:
     
     Hero( string, double, double, double, double, double, double, string);
@@ -57,20 +63,26 @@ class Hero : public Living_Being{
     double get_agility()const;
     double get_money()const;
     double get_experience()const;
+    Item* get_Weapon()const;
+    Item* get_Armor()const;
+    Item* get_Potion()const;
 
     void set_strength( double);
     void set_dexterity( double);
     void set_agility( double);
     void set_money( double);
     void set_experience( double);
+    void set_Weapon( Item*);
+    void set_Armor( Item*);
+    void set_Potion( Item*);
     
 
     //for level up
     virtual void level_up();
 
     //for buy spell and item
-    void buy_Item( Item);
-    void buy_Spell( Spell);
+    void buy_Item( Item*);
+    void buy_Spell( Spell*);
 
     //for sell spell and item
     bool sell_Item( int);
