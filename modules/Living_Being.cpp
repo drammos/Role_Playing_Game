@@ -354,7 +354,7 @@ int Hero::print_Weapon()const
         cout << (i+1) << ") ";
         item->print();
     }
-    
+
     return size;
 }
 
@@ -380,6 +380,67 @@ int Hero::print_Armor()const
     }
 
     return size;
+}
+
+
+
+int Hero::print_Potion()const
+{
+    int size = Potion_vector.size();
+    if( size == 0)
+    {   
+        cout << "You havn't Potion." << endl;
+        return 0;
+    }
+    else
+    {
+        cout << "Your Potion:" << endl;
+    }
+    
+    for( int i = 0; i < Potion_vector.size(); i++)
+    {
+        Item* item = Potion_vector.at(i);
+        cout << (i+1) << ") ";
+        item->print();
+    }
+
+    return size;
+}
+
+
+void Hero::Take_Potion( int position)
+{
+    Item* potion_item = Potion_vector.at( position);
+    srand( time(NULL));
+
+    int i = rand()%4;
+    if( i == 0)
+    {
+
+    }
+    else if( i == 1)
+    {
+
+    }
+    else if( i == 2)
+    {
+
+    }
+    else
+    {
+        
+    }
+
+    Item* P = Potion_vector.at( Potion_vector.size() - 1);
+    
+    Potion_vector.assign( position, P);
+    Potion_vector.assign( Armor_vector.size() -1, potion_item);
+
+    Potion_vector.pop_back();
+
+    delete potion_item;
+
+    
 }
 ////////////////////////////////////
 

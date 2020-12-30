@@ -96,6 +96,9 @@ class Hero : public Living_Being{
 
     int print_Weapon()const;
     int print_Armor()const;
+    int print_Potion()const;
+
+    void Take_Potion( int);
 
 
 };

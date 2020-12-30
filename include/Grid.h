@@ -22,6 +22,7 @@ public:
     //
     void checkInventory( Hero*);
     void equip( Hero*);
+    void use( Hero*);
 };
 
 class Square{

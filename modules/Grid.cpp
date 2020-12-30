@@ -86,9 +86,24 @@ void Grid::equip( Hero* hero)
         }
     }
 
-    
-    
+}
 
+void Grid::use( Hero* hero)
+{
+    cout << "What potion you want to use?" << endl;
+    int number_Potion = hero->print_Potion();
+    int p;
+    if(number_Potion != 0)
+    {
+        cin >> p;
+        while( p <= 0 || p > number_Potion)
+        {
+            cout << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << endl;
+            cin >> p;
+        }
+
+        hero->Take_Potion( p - 1);
+    }
 }
 
 
