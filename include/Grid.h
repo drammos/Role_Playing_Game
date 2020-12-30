@@ -49,7 +49,7 @@ class Market:public Square{
 public:
     Market():Square("Market"){};
     ~Market();
-    void buy();
+    void buy(Hero*);
 };
 
 class Common:public Square{

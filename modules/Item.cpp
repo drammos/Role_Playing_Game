@@ -29,6 +29,7 @@ int Item::get_level() const{
 }
 
 void Item::print(){
+    cout<<"This is a "<<this->kind_of_item<<endl;
     cout<<"Name is: "<<this->name<<", price is: "<<this->price<<", the required leve is: "<<this->level<<endl;
 }
 

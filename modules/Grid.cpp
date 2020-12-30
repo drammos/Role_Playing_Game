@@ -65,27 +65,6 @@ void Grid::equip( Hero* hero)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////////////////////////////
 
 //Συναρτήσεις για Square.
@@ -121,6 +100,29 @@ Market::~Market(){
     this->spells.clear();
 }
 
-void Market::buy(){
-    cout<<"press 1 if you want to buy an item and 2 if you want to buy a spell"<<endl;
+void Market::buy(Hero* hero){
+    cout<<"What would you like to buy?"<<endl;
+    cout<<"Press 1 for Items"<<endl;
+    cout<<"Press 2 for Spells"<<endl;
+    int a;
+    cin>>a;
+    if(a == 1){
+        cout<<"The items available in the market are:"<<endl;
+        for(int i = 0; i < this->items.size(); i++){
+            cout<<i+1<<") ";
+            this->items.at(i)->print();
+        }
+        cout<<"Press the number of the item you would like to purchase"<<endl;
+        int a1;
+        cin>>a1;
+        while(a1 > this->items.size() || a1 <= 0){
+            cout<<"Ivalid number, try again!"<<endl;
+            cin>>a1;
+        }
+        Item* item = this->items.at(a1-1);
+        hero->buy_Item(item);
+    }
+    else{
+        cout<<"The spells available in the market are:"<<endl;
+    }
 }
