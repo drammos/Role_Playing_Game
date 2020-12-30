@@ -50,7 +50,15 @@ void Grid::equip( Hero* hero)
         cin >> in;
     }
     
-    if
+    if( in == 1)
+    {
+
+    }
+    else
+    {
+        
+    }
+    
 
 }
 
