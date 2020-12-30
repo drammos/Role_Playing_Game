@@ -12,8 +12,9 @@ class Spell{
     double damage_low;
     double damage_high;
     double energy;
+    string kind_of_spell;
 public:
-    Spell(string, double, int, double, double, double);
+    Spell(string, double, int, double, double, double, string);
     ~Spell();
     string get_name() const;
     double get_price() const;
@@ -23,6 +24,7 @@ public:
     double get_energy() const;
     void set_low_damage(double);
     void print();
+    string get_kind_of_spell() const;
 };
 
 class IceSpell:public Spell{

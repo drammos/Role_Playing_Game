@@ -9,13 +9,15 @@ class Item{
     string name;
     double price;
     int level;
+    string kind_of_item;
 public:
-    Item(string, double, int);
+    Item(string, double, int, string);
     ~Item();
     string get_name() const;
     double get_price() const;
     int get_level() const;
     void print();
+    string get_kind_of_item() const;
 };
 
 class Weapon:public Item{
