@@ -156,7 +156,7 @@ bool Hero::sell_Item( int position)
 {   
     int size = item_vector.size(); 
 
-    if( position >= size || position < 0)
+    if( position >= 0 && position < size)
     {
         Item item_in = item_vector.at(position);
         Item it = item_vector.at( size - 1);
@@ -176,7 +176,7 @@ bool Hero::sell_Item( int position)
 bool Hero::sell_Spell( int position)
 {
     int size = spell_vector.size(); 
-    if( position >= size || position < 0)
+    if( position >= 0 && position < size )
     {
         Spell spell_in = spell_vector.at(position);
         Spell sp = spell_vector.at( size - 1);
