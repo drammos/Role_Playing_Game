@@ -50,7 +50,10 @@ class Market:public Square{
 public:
     Market():Square("Market"){};
     ~Market();
+    void insert_item(Item*);
+    void insert_spell(Spell*);
     void buy(Hero*);
+    void sell(Hero*);
 };
 
 class Common:public Square{
