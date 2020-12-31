@@ -1,5 +1,5 @@
 #include "Living_Being.h";
-
+#include <ctime>
 
 Living_Being::Living_Being( string name, double healthPower, string life_being)
 {
@@ -413,6 +413,7 @@ void Hero::Take_Potion( int position)
     Item* potion_item = Potion_vector.at( position);
     srand( time(NULL));
 
+    double damge = potion_item->get_
     int i = rand()%4;
     if( i == 0)
     {
