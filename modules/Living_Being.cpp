@@ -413,23 +413,23 @@ void Hero::Take_Potion( int position)
     Item* potion_item = Potion_vector.at( position);
     srand( time(NULL));
 
-    double damge = potion_item->get_
-    int i = rand()%4;
-    if( i == 0)
+    string characteristic = potion_item->get_characteristic();
+    double increase = potion_item->get_increase();
+    if( characteristic == "magicPower")
     {
-
+        magicPower = magicPower + increase*magicPower;
     }
-    else if( i == 1)
+    else if( characteristic == "strength")
     {
-
+        strength = strength + increase*strength;
     }
-    else if( i == 2)
+    else if( characteristic == "dexterity")
     {
-
+        dexterity = dexterity + increase*dexterity;
     }
     else
     {
-        
+        agility = agility + increase*agility;
     }
 
     Item* P = Potion_vector.at( Potion_vector.size() - 1);
@@ -505,6 +505,18 @@ void Paladin::level_up()
     set_dexterity( dexterity);
 
     Hero::level_up();
+}
+
+
+
+
+void Hero::print_hero()const
+{
+    cout << "The Hero is: " << hero << " name is: " << get_name() << " HealthPower is: " << get_healthPower();
+    cout << " and level is: " << get_level() << endl; 
+    cout << "The magic Power is: " << magicPower << " the Strength is: " << strength << " the dexterity is: " << dexterity;
+    cout << " the agility is: " << agility << endl;
+    cout << "The money is: " << money << " and the experience is: " << experience << endl;
 }
 
 ////////////////////////////

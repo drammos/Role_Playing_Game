@@ -100,6 +100,8 @@ class Hero : public Living_Being{
 
     void Take_Potion( int);
 
+    void print_hero()const;
+
 
 };
 
