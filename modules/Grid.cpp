@@ -106,6 +106,15 @@ void Grid::use( Hero* hero)
     }
 }
 
+void Grid::print_Hero( Hero* hero)const
+{
+    hero->print_hero();
+}
+
+void Grid::displayMap()const
+{
+    
+}
 
 
 

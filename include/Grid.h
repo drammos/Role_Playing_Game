@@ -23,6 +23,8 @@ public:
     void checkInventory( Hero*);
     void equip( Hero*);
     void use( Hero*);
+    void print_Hero( Hero*)const;
+    void displayMap()const;
 };
 
 class Square{
