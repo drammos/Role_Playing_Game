@@ -29,11 +29,21 @@ int Item::get_level() const{
 }
 
 void Item::print(){
+    cout<<"This is a "<<this->kind_of_item<<endl;
     cout<<"Name is: "<<this->name<<", price is: "<<this->price<<", the required leve is: "<<this->level<<endl;
 }
 
 string Item::get_kind_of_item() const{
     return this->kind_of_item;
+}
+
+//Βοηθητική virtual συνάρτηση.
+string Item::get_characteristic() const{
+    return "";
+}
+
+double Item::get_increase() const{
+    return 0.0;
 }
 
 //Συναρτήσεις για Weapon.

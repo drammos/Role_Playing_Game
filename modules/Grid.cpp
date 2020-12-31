@@ -109,27 +109,6 @@ void Grid::use( Hero* hero)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////////////////////////////
 
 //Συναρτήσεις για Square.
@@ -165,6 +144,80 @@ Market::~Market(){
     this->spells.clear();
 }
 
-void Market::buy(){
-    cout<<"press 1 if you want to buy an item and 2 if you want to buy a spell"<<endl;
+void Market::insert_item(Item* item){
+    this->items.push_back(item);
+}
+
+void Market::insert_spell(Spell* spell){
+    this->spells.push_back(spell);
+}
+
+void Market::buy(Hero* hero){
+    cout<<"What would you like to buy?"<<endl;
+    cout<<"Press 1 for Items"<<endl;
+    cout<<"Press 2 for Spells"<<endl;
+    int a;
+    cin>>a;
+    if(a == 1){
+        cout<<"The items available in the market are:"<<endl;
+        for(int i = 0; i < this->items.size(); i++){
+            cout<<i+1<<") ";
+            this->items.at(i)->print();
+        }
+        cout<<"Press the number of the item you would like to purchase"<<endl;
+        int a1;
+        cin>>a1;
+        while(a1 > this->items.size() || a1 <= 0){
+            cout<<"Invalid number, try again!"<<endl;
+            cin>>a1;
+        }
+        Item* item = this->items.at(a1-1);
+        hero->buy_Item(item);
+    }
+    else{
+        cout<<"The spells available in the market are:"<<endl;
+        for(int i = 0; i < this->spells.size(); i++){
+            cout<<i+1<<") ";
+            this->spells.at(i)->print();
+        }
+        cout<<"Press the number of the spell you would like to purchase"<<endl;
+        int a1;
+        cin>>a1;
+        while(a1 > this->spells.size() || a1 <= 0){
+            cout<<"Invalid number, try again!"<<endl;
+            cin>>a1;
+        }
+        Spell* spell = this->spells.at(a1-1);
+        hero->buy_Spell(spell);
+    }
+}
+
+void Market::sell(Hero* hero){
+    cout<<"What would you like to sell?"<<endl;
+    cout<<"Press 1 for Items"<<endl;
+    cout<<"Press 2 for Spells"<<endl;
+    int a;
+    cin>>a;
+    if(a == 1){
+        int number = hero->print_item();
+        cout<<"Press the number of the item you would like to sell"<<endl;
+        int a1;
+        cin>>a1;
+        while(a1 <= 0 || a1> number){
+            cout<<"Invalid number, try again!"<<endl;
+            cin>>a1;
+        }
+        hero->sell_Item(a1-1);
+    }
+    else{
+        int number = hero->print_spell();
+        cout<<"Press the number of the spell you would like to sell"<<endl;
+        int a1;
+        cin>>a1;
+        while(a1 <= 0 || a1> number){
+            cout<<"Invalid number, try again!"<<endl;
+            cin>>a1;
+        }
+        hero->sell_Spell(a1-1);
+    }
 }
