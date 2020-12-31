@@ -9,14 +9,17 @@
 
 using namespace std;
 
+class Square;
+
 class Grid{
 
     //Διαστασεις πλεγματος
     int x;
     int y;
     Square*** squares;
+
 public:    
-    Grid(int, int);
+    Grid( int, int);
     ~Grid();
 
     //

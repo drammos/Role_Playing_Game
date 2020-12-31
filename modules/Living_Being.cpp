@@ -45,6 +45,7 @@ void Living_Being::level_up()
 
 
 //HERO
+const double Hero::point = 1;
 
 Hero::Hero( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, string hero) 
             : Living_Being( name, healthPower, "Hero")
@@ -452,6 +453,9 @@ void Hero::Take_Potion( int position)
 
 
 //WARRIOR
+const double Warrior::point_strength = 0.8;
+const double Warrior::point_agility = 0.5;
+
 Warrior::Warrior( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
         : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Warrior"){}
 
@@ -471,6 +475,9 @@ void Warrior::level_up()
 
 
 //SORCERER
+const double Sorcerer::point_dexterity = 0.7;
+const double Sorcerer::point_agility = 0.6;
+
 Sorcerer::Sorcerer( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
         : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Sorcerer"){}
 
@@ -491,6 +498,9 @@ void Sorcerer::level_up()
 
 
 //PALADIN
+const double Paladin::point_strength = 0.9;
+const double Paladin::point_dexterity = 0.7;
+
 Paladin::Paladin( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
         : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Paladin"){}
 
@@ -531,7 +541,7 @@ Monster::Monster( string name, double healthPower, double attack, double defence
 {
     this->attack = attack;
     this->defence = defence;
-    this->probability_οf_escape = probability_of_escape;
+    this->probability_of_escape = probability_of_escape;
 
     this->monster = monster;
 
@@ -550,7 +560,7 @@ double Monster::get_defence()const
 
 double Monster::get_probability_of_escape()const
 {
-    return probability_οf_escape;
+    return probability_of_escape;
 }
 
 ///////////////////////////////////////
@@ -559,18 +569,23 @@ double Monster::get_probability_of_escape()const
 
 
 //DRAGON
+const double Dragon::point_attack = 0.6;
 Dragon::Dragon( string name, double healthPower, double attack, double defence, double probability_of_escape)
         : Monster( name, healthPower, attack + point_attack*attack, defence, probability_of_escape, "Dragon"){}
 ///////////////////////////////////////
 
-//EXOSKELETION
+//EXOSKELETON
+const double Exoskeleton::point_defence = 0.7;
+
 Exoskeleton::Exoskeleton( string name, double healthPower, double attack, double defence, double probability_of_escape)
         : Monster( name, healthPower, attack, defence + defence*point_defence, probability_of_escape, "Exoskeletion"){}
 
 //////////////////////////////////////
 
 //SPIRIT
+const double Spirit::point_probability_of_escape = 0.8;
+
 Spirit::Spirit( string name, double healthPower, double attack, double defence, double probability_of_escape)
-        : Monster( name, healthPower, attack , defence, probability_of_escape + point_probability_οf_escape*probability_of_escape, "Spirit"){}
+        : Monster( name, healthPower, attack , defence, probability_of_escape + point_probability_of_escape*probability_of_escape, "Spirit"){}
 
 //////////////////////////////////////

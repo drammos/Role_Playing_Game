@@ -41,7 +41,7 @@ class Hero : public Living_Being{
     //who hero
     string hero;
 
-    static const double point = 1;
+    static const double point;
 
     //vector for spell and items
     vector <Spell*>spell_vector;
@@ -107,8 +107,8 @@ class Hero : public Living_Being{
 
 
 class Warrior : public Hero{
-    static const double point_strength = 0.8;
-    static const double point_agility = 0.5;
+    static const double point_strength;
+    static const double point_agility;
 
     public:
 
@@ -118,8 +118,8 @@ class Warrior : public Hero{
 };
 
 class Sorcerer : public Hero{
-    static const double point_dexterity = 0.7;
-    static const double point_agility = 0.6;
+    static const double point_dexterity;
+    static const double point_agility;
 
     public:
 
@@ -130,8 +130,8 @@ class Sorcerer : public Hero{
 };
 
 class Paladin : public Hero{
-    static const double point_strength = 0.9;
-    static const double point_dexterity = 0.7;
+    static const double point_strength;
+    static const double point_dexterity;
 
     public:
 
@@ -149,7 +149,7 @@ class Paladin : public Hero{
 class Monster : public Living_Being{
     double attack;
     double defence;
-    double probability_οf_escape;
+    double probability_of_escape;
 
     string monster;
 
@@ -166,7 +166,7 @@ class Monster : public Living_Being{
 
 
 class Dragon : public Monster{
-    static const double point_attack = 0.6;
+    static const double point_attack;
 
     public:
 
@@ -175,7 +175,7 @@ class Dragon : public Monster{
 };
 
 class Exoskeleton : public Monster{
-    static const double point_defence= 0.7;
+    static const double point_defence;
 
     public:
 
@@ -183,7 +183,7 @@ class Exoskeleton : public Monster{
 };
 
 class Spirit : public Monster{
-    static const double point_probability_οf_escape = 0.8;
+    static const double point_probability_of_escape;
 
     public:
 

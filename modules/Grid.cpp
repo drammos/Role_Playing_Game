@@ -8,6 +8,12 @@ Grid::Grid(int x, int y){
     this->x = x;
     this->y = y;
     srand(time(NULL));
+    squares = new Square**[x];
+    for(int i = 0; i < x; i++)
+    {
+        squares[i] = new Square*[y];
+    }
+    
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
             int r = rand() % 3;
@@ -113,7 +119,7 @@ void Grid::print_Hero( Hero* hero)const
 
 void Grid::displayMap()const
 {
-    
+
 }
 
 
