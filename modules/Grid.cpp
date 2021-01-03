@@ -161,8 +161,24 @@ void Grid::displayMap()const
                 cout << RED << " X " << RESET;
             }
             else
-            {
-                cout << "   ";
+            {   
+                int k = squares[i][j]->contains();
+                if( k == 0)
+                {
+                    cout << BLUE << " H " << RESET;
+                }
+                else if( k == 1)
+                {
+                    cout << MAGENTA << " M " << RESET;
+                }
+                else if( k == 2)
+                {
+                    cout << GREEN << " B " << RESET;
+                }
+                else
+                {
+                    cout << "   " << RESET;
+                }
             }
             
             cout << "\u2502";      
