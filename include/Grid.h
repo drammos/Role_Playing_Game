@@ -29,6 +29,7 @@ public:
     void print_Hero( Hero*)const;
     void displayMap()const;
     void move();
+    void quitGame();
 };
 
 class Square{

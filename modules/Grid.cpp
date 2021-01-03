@@ -71,7 +71,7 @@ void Grid::equip( Hero* hero)
     cin >> in; 
     while( in != 1 && in != 2)
     {
-        cout << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << endl;
+        cout << RED << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << RESET << endl;
         cin >> in;
     }
     
@@ -86,7 +86,7 @@ void Grid::equip( Hero* hero)
             cin >> w;
             while( w <= 0 || w > number_Weapon)
             {
-                cout << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << endl;
+                cout << RED << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << RESET << endl;
                 cin >> w;
             }
 
@@ -103,7 +103,7 @@ void Grid::equip( Hero* hero)
             cin >> a;
             while( a <= 0 || a > number_Armor)
             {
-                cout << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << endl;
+                cout << RED << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << RESET << endl;
                 cin >> a;
             }
 
@@ -123,7 +123,7 @@ void Grid::use( Hero* hero)
         cin >> p;
         while( p <= 0 || p > number_Potion)
         {
-            cout << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << endl;
+            cout << RED << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << RESET << endl;
             cin >> p;
         }
 
@@ -138,6 +138,8 @@ void Grid::print_Hero( Hero* hero)const
 
 void Grid::displayMap()const
 {   
+
+    cout << BOLDMAGENTA << "The Map" << RESET << endl;
     
     for(int i = 0; i<8;i++)
     {   
@@ -193,9 +195,12 @@ void Grid::displayMap()const
         }
         cout << endl;
     }
-
-    cout << RED << "ELAAAAAAAAA";
     cout << endl;
+}
+
+void Grid::quitGame()
+{
+    cout << BOLDRED << "YOU LOSE!" << endl;
 }
 
 void Grid::move(){
@@ -207,8 +212,8 @@ void Grid::move(){
     int answer;
     cin>>answer;
     while(answer < 1 || answer > 4){
-        cout<<"Invalid number, try again!"<<endl;
-        cin>>answer;
+        cout << RED << "Invalid number, try again!" << RESET << endl;
+        cin >> answer;
     }
 }
 
@@ -297,7 +302,7 @@ void Market::buy(Hero* hero){
         int a1;
         cin>>a1;
         while(a1 > this->items.size() || a1 <= 0){
-            cout<<"Invalid number, try again!"<<endl;
+            cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
         }
         Item* item = this->items.at(a1-1);
@@ -313,7 +318,7 @@ void Market::buy(Hero* hero){
         int a1;
         cin>>a1;
         while(a1 > this->spells.size() || a1 <= 0){
-            cout<<"Invalid number, try again!"<<endl;
+            cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
         }
         Spell* spell = this->spells.at(a1-1);
@@ -333,7 +338,7 @@ void Market::sell(Hero* hero){
         int a1;
         cin>>a1;
         while(a1 <= 0 || a1> number){
-            cout<<"Invalid number, try again!"<<endl;
+            cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
         }
         hero->sell_Item(a1-1);
@@ -344,7 +349,7 @@ void Market::sell(Hero* hero){
         int a1;
         cin>>a1;
         while(a1 <= 0 || a1> number){
-            cout<<"Invalid number, try again!"<<endl;
+            cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
         }
         hero->sell_Spell(a1-1);
