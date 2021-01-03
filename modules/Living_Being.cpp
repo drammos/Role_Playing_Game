@@ -47,7 +47,7 @@ void Living_Being::level_up()
 //HERO
 const double Hero::point = 1;
 
-Hero::Hero( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, string hero) 
+Hero::Hero( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, string hero, int x, int y) 
             : Living_Being( name, healthPower, "Hero")
 {
     this->magicPower = magicPower;
@@ -66,6 +66,9 @@ Hero::Hero( string name, double healthPower, double magicPower, double strenght,
     weapon = nullptr;
     armor = nullptr;
     potion = armor;
+
+    this->x = x;
+    this->y = y;
 
 }
 
@@ -116,6 +119,15 @@ Item* Hero::get_Potion()const
     return potion;
 }
 
+int Hero::get_x() const
+{
+    return x;
+}
+
+int Hero::get_y() const
+{
+    return y;
+}
 //SET
 
 void Hero::set_strength( double strength)
@@ -156,6 +168,16 @@ void Hero::set_Armor( int position)
 void Hero::set_Potion( Item* potion)
 {
     this->potion = potion;
+}
+
+void Hero::set_x( int x)
+{
+    this->x = x;
+}
+
+void Hero::set_y( int y)
+{
+    this->y = y;
 }
 
 
@@ -456,8 +478,8 @@ void Hero::Take_Potion( int position)
 const double Warrior::point_strength = 0.8;
 const double Warrior::point_agility = 0.5;
 
-Warrior::Warrior( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Warrior"){}
+Warrior::Warrior( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, int x, int y)
+        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Warrior", x, y){}
 
 void Warrior::level_up()
 {
@@ -478,8 +500,8 @@ void Warrior::level_up()
 const double Sorcerer::point_dexterity = 0.7;
 const double Sorcerer::point_agility = 0.6;
 
-Sorcerer::Sorcerer( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Sorcerer"){}
+Sorcerer::Sorcerer( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, int x, int y)
+        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Sorcerer", x, y){}
 
 void Sorcerer::level_up()
 {
@@ -501,8 +523,8 @@ void Sorcerer::level_up()
 const double Paladin::point_strength = 0.9;
 const double Paladin::point_dexterity = 0.7;
 
-Paladin::Paladin( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Paladin"){}
+Paladin::Paladin( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, int x, int y)
+        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Paladin", x, y){}
 
 void Paladin::level_up()
 {

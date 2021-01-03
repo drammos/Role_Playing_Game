@@ -198,13 +198,14 @@ void Grid::displayMap()const
     cout << endl;
 }
 
+
 void Grid::quitGame()
 {
     cout << BOLDRED << "YOU LOSE!" << endl;
     exit(0);
 }
 
-void Grid::move(){
+void Grid::move(Hero* hero){
     cout<<"Where do you want to go?"<<endl;
     cout<<"Press 1 for up."<<endl;
     cout<<"Press 2 for down."<<endl;
@@ -216,18 +217,51 @@ void Grid::move(){
         cout << RED << "Invalid number, try again!" << RESET << endl;
         cin >> answer;
     }
+    if(answer == 1){
+        if(squares[hero->get_x() - 1][hero->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
+            cout<<"This is a nonAccessible square!"<<endl;
+        }
+        else{
+            vector vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
+            for(int i = 0; i < vec.size(); i++){
+                squares[hero->get_x() - 1][hero->get_y()]->add_hero(vec.at(i));
+            }
+        }
+    }
+    else if(answer == 2){
+        if(squares[hero->get_x() + 1][hero->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
+            cout<<"This is a nonAccessible square!"<<endl;
+        }
+        else{
+            vector vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
+            for(int i = 0; i < vec.size(); i++){
+                squares[hero->get_x() + 1][hero->get_y()]->add_hero(vec.at(i));
+            }
+        }
+    }
+    else if(answer == 3){
+        if(squares[hero->get_x()][hero->get_y() - 1]->get_kind_of_square().compare("nonAccessible") == 0){
+            cout<<"This is a nonAccessible square!"<<endl;
+        }
+        else{
+            vector vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
+            for(int i = 0; i < vec.size(); i++){
+                squares[hero->get_x()][hero->get_y() - 1]->add_hero(vec.at(i));
+            }
+        }
+    }
+    else{
+        if(squares[hero->get_x()][hero->get_y() + 1]->get_kind_of_square().compare("nonAccessible") == 0){
+            cout<<"This is a nonAccessible square!"<<endl;
+        }
+        else{
+            vector vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
+            for(int i = 0; i < vec.size(); i++){
+                squares[hero->get_x()][hero->get_y() + 1]->add_hero(vec.at(i));
+            }
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -253,8 +287,13 @@ void Square::add_monster(Monster* m){
     this->monsters.push_back(m);
 }
 
-void Square::remove_heroes(){
+vector <Hero*> Square::remove_heroes(){
+    vector <Hero*> vec;
+    for(int i = 0; i < this->heroes.size(); i++){
+        vec.push_back(this->heroes.at(i));
+    }
     this->heroes.clear();
+    return vec;
 }
 
 string Square::get_kind_of_square() const{
