@@ -76,8 +76,8 @@ class Hero : public Living_Being{
     void set_strength( double);
     void set_dexterity( double);
     void set_agility( double);
-    void set_money( double);
-    void set_experience( double);
+    void add_money( double);
+    void add_experience( double);
     void set_Weapon( int);
     void set_Armor( int);
     void set_Potion( Item*);
@@ -160,6 +160,8 @@ class Monster : public Living_Being{
     double defence;
     double probability_of_escape;
 
+    static const double point;
+
     string monster;
 
     public:
@@ -170,6 +172,11 @@ class Monster : public Living_Being{
     double get_defence()const;
     double get_probability_of_escape()const;
 
+    void set_attack( double);
+    void set_defence( double);
+    void set_probability_of_escape( double);
+
+    virtual void level_up();
 };
 
 
@@ -181,6 +188,7 @@ class Dragon : public Monster{
 
     Dragon(string, double, double, double, double);
 
+    void level_up();
 };
 
 class Exoskeleton : public Monster{
@@ -189,6 +197,8 @@ class Exoskeleton : public Monster{
     public:
 
     Exoskeleton(string, double, double, double, double);
+
+    void level_up();
 };
 
 class Spirit : public Monster{
@@ -197,6 +207,8 @@ class Spirit : public Monster{
     public:
 
     Spirit(string, double, double, double, double);
+
+    void level_up();
 };
 
 
