@@ -223,7 +223,7 @@ void Grid::move(Hero* hero){
             cout<<"This is a nonAccessible square!"<<endl;
         }
         else{
-            vector vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
+            vector <Hero*> vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
             for(int i = 0; i < vec.size(); i++){
                 squares[hero->get_x() - 1][hero->get_y()]->add_hero(vec.at(i));
             }
@@ -234,7 +234,7 @@ void Grid::move(Hero* hero){
             cout<<"This is a nonAccessible square!"<<endl;
         }
         else{
-            vector vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
+            vector <Hero*> vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
             for(int i = 0; i < vec.size(); i++){
                 squares[hero->get_x() + 1][hero->get_y()]->add_hero(vec.at(i));
             }
@@ -245,7 +245,7 @@ void Grid::move(Hero* hero){
             cout<<"This is a nonAccessible square!"<<endl;
         }
         else{
-            vector vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
+            vector <Hero*> vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
             for(int i = 0; i < vec.size(); i++){
                 squares[hero->get_x()][hero->get_y() - 1]->add_hero(vec.at(i));
             }
