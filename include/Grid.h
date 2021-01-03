@@ -29,7 +29,7 @@ public:
     void print_Hero( Hero*)const;
     void displayMap()const;
     void move(Hero*);
-    int quitGame();
+    void quitGame();
 };
 
 class Square{
