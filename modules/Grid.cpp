@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 #include "Grid.h"
 
 //the following are UBUNTU/LINUX, and MacOS ONLY terminal color codes.
@@ -202,7 +203,7 @@ void Grid::displayMap()const
 void Grid::quitGame()
 {
     cout << BOLDRED << "YOU LOSE!" << endl;
-    exit(0);
+    exit(EXIT_FAILURE);
 }
 
 void Grid::move(Hero* hero){
