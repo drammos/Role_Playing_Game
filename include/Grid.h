@@ -28,12 +28,15 @@ public:
     void use( Hero*);
     void print_Hero( Hero*)const;
     void displayMap()const;
+    void move();
 };
 
 class Square{
+    
+    string kind_of_square;
+protected:
     vector < Hero* > heroes;
     vector < Monster* > monsters;
-    string kind_of_square;
 public:
     Square(string);
     ~Square();
@@ -65,6 +68,7 @@ class Common:public Square{
 
 public:
     Common():Square("Common"){};
+    int contains();
 };
 
 

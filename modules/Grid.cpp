@@ -122,6 +122,20 @@ void Grid::displayMap()const
 
 }
 
+void Grid::move(){
+    cout<<"Where do you want to go?"<<endl;
+    cout<<"Press 1 for up."<<endl;
+    cout<<"Press 2 for down."<<endl;
+    cout<<"Press 3 for left."<<endl;
+    cout<<"Press 4 for right."<<endl;
+    int answer;
+    cin>>answer;
+    while(answer < 1 || answer > 4){
+        cout<<"Invalid number, try again!"<<endl;
+        cin>>answer;
+    }
+}
+
 
 
 //////////////////////////////////////////
@@ -235,4 +249,16 @@ void Market::sell(Hero* hero){
         }
         hero->sell_Spell(a1-1);
     }
+}
+
+//Συναρτήσεις για Common.
+int Common::contains(){
+    if(Square::heroes.size() > 0 && Square::monsters.size() > 0)
+        return 2;
+    else if(Square::monsters.size() > 0)
+        return 1;
+    else if(Square::heroes.size() > 0)
+        return 0;
+    else
+        return 3;
 }
