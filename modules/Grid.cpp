@@ -179,10 +179,6 @@ void Grid::displayMap()const
                 {
                     cout << "   " << RESET;
                 }
-                
-                
-
-                cout << "   ";
             }
             
             cout << "\u2502";      
