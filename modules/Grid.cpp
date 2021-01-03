@@ -201,6 +201,7 @@ void Grid::displayMap()const
 void Grid::quitGame()
 {
     cout << BOLDRED << "YOU LOSE!" << endl;
+    exit(0);
 }
 
 void Grid::move(){
