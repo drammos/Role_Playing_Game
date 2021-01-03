@@ -54,10 +54,14 @@ class Hero : public Living_Being{
     Item* weapon;
     Item* armor;
     Item* potion;
+
+    //Οι συντεταγμένες του τετραγώνου που βρίσκεται ο ήρωας.
+    int x;
+    int y;
     
     public:
     
-    Hero( string, double, double, double, double, double, double, string);
+    Hero( string, double, double, double, double, double, double, string, int, int);
     
     double get_magicPower()const;
     double get_strength()const;
@@ -102,6 +106,11 @@ class Hero : public Living_Being{
 
     void print_hero()const;
 
+    int get_x() const;
+    int get_y() const;
+
+    void set_x(int);
+    void set_y(int);
 
 };
 
@@ -112,7 +121,7 @@ class Warrior : public Hero{
 
     public:
 
-    Warrior( string, double, double, double, double, double, double);;
+    Warrior( string, double, double, double, double, double, double, int, int);;
 
     void level_up();
 };
@@ -123,7 +132,7 @@ class Sorcerer : public Hero{
 
     public:
 
-    Sorcerer(  string, double, double, double, double, double, double);
+    Sorcerer(  string, double, double, double, double, double, double, int, int);
 
     void level_up();
 
@@ -135,7 +144,7 @@ class Paladin : public Hero{
 
     public:
 
-    Paladin(  string, double, double, double, double, double, double);
+    Paladin(  string, double, double, double, double, double, double, int, int);
 
     void level_up();
 

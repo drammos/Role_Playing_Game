@@ -28,7 +28,8 @@ public:
     void use( Hero*);
     void print_Hero( Hero*)const;
     void displayMap()const;
-    void move();
+    void move(Hero*);
+    int quitGame();
 };
 
 class Square{
@@ -40,7 +41,7 @@ public:
     virtual ~Square();
     void add_hero(Hero*);
     void add_monster(Monster*);
-    void remove_heroes();
+    vector <Hero*> remove_heroes();
     string get_kind_of_square() const;
     virtual int contains();
 };
