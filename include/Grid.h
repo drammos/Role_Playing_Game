@@ -9,6 +9,8 @@
 
 using namespace std;
 
+const int MAX_LEVEL = 5;
+
 class Square;
 
 class Grid{
