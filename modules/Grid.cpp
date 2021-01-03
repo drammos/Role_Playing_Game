@@ -239,6 +239,17 @@ string Square::get_kind_of_square() const{
     return this->kind_of_square;
 }
 
+int Square::contains(){
+  if(this->heroes.size() > 0 && this->monsters.size() > 0)
+        return 2;
+    else if(this->monsters.size() > 0)
+        return 1;
+    else if(this->heroes.size() > 0)
+        return 0;
+    else
+        return 3;  
+}
+
 
 //Συναρτήσεις για Market.
 Market::~Market(){
@@ -324,14 +335,16 @@ void Market::sell(Hero* hero){
     }
 }
 
+int Market::contains(){
+    return Square::contains();
+}
+
 //Συναρτήσεις για Common.
 int Common::contains(){
-    if(Square::heroes.size() > 0 && Square::monsters.size() > 0)
-        return 2;
-    else if(Square::monsters.size() > 0)
-        return 1;
-    else if(Square::heroes.size() > 0)
-        return 0;
-    else
-        return 3;
+    return Square::contains();
+}
+
+//Συναρτήσεις για nonAccessible.
+int nonAccessible::contains(){
+    return Square::contains();
 }

@@ -32,24 +32,24 @@ public:
 };
 
 class Square{
-    
     string kind_of_square;
-protected:
     vector < Hero* > heroes;
     vector < Monster* > monsters;
 public:
     Square(string);
-    ~Square();
+    virtual ~Square();
     void add_hero(Hero*);
     void add_monster(Monster*);
     void remove_heroes();
     string get_kind_of_square() const;
+    virtual int contains();
 };
 
 class nonAccessible:public Square{
 
 public:
     nonAccessible():Square("nonAccessible"){};
+    int contains();
 };
 
 class Market:public Square{
@@ -62,6 +62,7 @@ public:
     void insert_spell(Spell*);
     void buy(Hero*);
     void sell(Hero*);
+    int contains();
 };
 
 class Common:public Square{
