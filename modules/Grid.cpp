@@ -13,7 +13,7 @@ Grid::Grid(int x, int y){
     {
         squares[i] = new Square*[y];
     }
-    
+
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
             int r = rand() % 3;
@@ -119,8 +119,30 @@ void Grid::print_Hero( Hero* hero)const
 
 void Grid::displayMap()const
 {
-
+    for(int i = 0; i<8;i++)
+    {   
+        cout << "\u2500" << endl;
+        cout << "\u2502\u2500";
+        
+        
+        // cout << "\u2518";
+        // cout << "\u2551 ";
+    }
+    cout << endl;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
