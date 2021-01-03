@@ -3,6 +3,25 @@
 #include <ctime>
 #include "Grid.h"
 
+//the following are UBUNTU/LINUX, and MacOS ONLY terminal color codes.
+#define RESET   "\033[0m"
+#define BLACK   "\033[30m"      /* Black */
+#define RED     "\033[31m"      /* Red */
+#define GREEN   "\033[32m"      /* Green */
+#define YELLOW  "\033[33m"      /* Yellow */
+#define BLUE    "\033[34m"      /* Blue */
+#define MAGENTA "\033[35m"      /* Magenta */
+#define CYAN    "\033[36m"      /* Cyan */
+#define WHITE   "\033[37m"      /* White */
+#define BOLDBLACK   "\033[1m\033[30m"      /* Bold Black */
+#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
+#define BOLDGREEN   "\033[1m\033[32m"      /* Bold Green */
+#define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
+#define BOLDBLUE    "\033[1m\033[34m"      /* Bold Blue */
+#define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
+#define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
+#define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
+
 //Συναρτήσεις για Grid.
 Grid::Grid(int x, int y){
     this->x = x;
@@ -13,13 +32,13 @@ Grid::Grid(int x, int y){
     {
         squares[i] = new Square*[y];
     }
-    
+
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
-            int r = rand() % 3;
-            if(r == 0)
+            int r = rand() % 10;
+            if(r == 1)
                 this->squares[i][j] = new nonAccessible();
-            else if(r == 1)
+            else if(r == 3 || r == 7)
                 this->squares[i][j] = new Market();
             else
                 this->squares[i][j] = new Common();
@@ -118,8 +137,49 @@ void Grid::print_Hero( Hero* hero)const
 }
 
 void Grid::displayMap()const
-{
+{   
+    
+    for(int i = 0; i<8;i++)
+    {   
+        for(int j = 0; j < 8; j++)
+        {
+            
+            cout << "\u250C";
+            cout << "\u2500\u2500\u2500";
+            cout << "\u2510";       
+        }
+        cout << endl;
+        for(int j = 0; j < 8; j++)
+        {
+            cout << "\u2502";
+            if(squares[i][j]->get_kind_of_square() == "Market" )
+            {
+                cout << YELLOW << " S " << RESET;
+            }
+            else if( squares[i][j]->get_kind_of_square() == "nonAccessible")
+            {
+                cout << RED << " X " << RESET;
+            }
+            else
+            {
+                cout << "   ";
+            }
+            
+            cout << "\u2502";      
+        }
+        cout << endl;
 
+        for(int j = 0; j < 8; j++)
+        {
+            cout << "\u2514";
+            cout << "\u2500\u2500\u2500";
+            cout << "\u2518";    
+        }
+        cout << endl;
+    }
+
+    cout << RED << "ELAAAAAAAAA";
+    cout << endl;
 }
 
 void Grid::move(){
@@ -135,6 +195,19 @@ void Grid::move(){
         cin>>answer;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
