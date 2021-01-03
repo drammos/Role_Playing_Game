@@ -145,14 +145,14 @@ void Hero::set_agility( double agility)
     this->agility = agility;
 }
 
-void Hero::set_money( double money)
+void Hero::add_money( double money)
 {
-    this->money = money;
+    this->money = this->money + money;
 }
 
-void Hero::set_experience( double experience)
+void Hero::add_experience( double experience)
 {
-    this->experience = experience;
+    this->experience = this->experience + experience;
 }
 
 void Hero::set_Weapon( int position)
@@ -466,6 +466,15 @@ void Hero::Take_Potion( int position)
 
     
 }
+
+void Hero::print_hero()const
+{
+    cout << "The Hero is: " << hero << " name is: " << get_name() << " HealthPower is: " << get_healthPower();
+    cout << " and level is: " << get_level() << endl; 
+    cout << "The magic Power is: " << magicPower << " the Strength is: " << strength << " the dexterity is: " << dexterity;
+    cout << " the agility is: " << agility << endl;
+    cout << "The money is: " << money << " and the experience is: " << experience << endl;
+}
 ////////////////////////////////////
 
 
@@ -479,7 +488,7 @@ const double Warrior::point_strength = 0.8;
 const double Warrior::point_agility = 0.5;
 
 Warrior::Warrior( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, int x, int y)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Warrior", x, y){}
+        : Hero( name, healthPower, magicPower, strenght + strenght*point_strength, dexterity, agility + agility*point_agility, money, "Warrior", x, y){}
 
 void Warrior::level_up()
 {
@@ -501,7 +510,7 @@ const double Sorcerer::point_dexterity = 0.7;
 const double Sorcerer::point_agility = 0.6;
 
 Sorcerer::Sorcerer( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, int x, int y)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Sorcerer", x, y){}
+        : Hero( name, healthPower, magicPower, strenght, dexterity + dexterity*point_dexterity, agility + agility*point_agility, money, "Sorcerer", x, y){}
 
 void Sorcerer::level_up()
 {
@@ -524,7 +533,7 @@ const double Paladin::point_strength = 0.9;
 const double Paladin::point_dexterity = 0.7;
 
 Paladin::Paladin( string name, double healthPower, double magicPower, double strenght, double dexterity, double agility, double money, int x, int y)
-        : Hero( name, healthPower, magicPower, strenght, dexterity, agility, money, "Paladin", x, y){}
+        : Hero( name, healthPower, magicPower, strenght + strenght*point_strength, dexterity + dexterity*point_dexterity, agility, money, "Paladin", x, y){}
 
 void Paladin::level_up()
 {
@@ -541,23 +550,13 @@ void Paladin::level_up()
 
 
 
-
-void Hero::print_hero()const
-{
-    cout << "The Hero is: " << hero << " name is: " << get_name() << " HealthPower is: " << get_healthPower();
-    cout << " and level is: " << get_level() << endl; 
-    cout << "The magic Power is: " << magicPower << " the Strength is: " << strength << " the dexterity is: " << dexterity;
-    cout << " the agility is: " << agility << endl;
-    cout << "The money is: " << money << " and the experience is: " << experience << endl;
-}
-
 ////////////////////////////
 
 
 
 
 //MONSTER
-
+const double Monster::point = 0.4;
 Monster::Monster( string name, double healthPower, double attack, double defence, double probability_of_escape, string monster)
         : Living_Being( name, healthPower, "Monster")
 {
@@ -585,6 +584,33 @@ double Monster::get_probability_of_escape()const
     return probability_of_escape;
 }
 
+void Monster::set_attack( double attack)
+{
+    this->attack = attack;
+}
+void Monster::set_defence( double defence)
+{
+    this->defence = defence;
+}
+
+void Monster::set_probability_of_escape( double probability_of_escape)
+{
+    this->probability_of_escape = probability_of_escape;
+}
+
+
+//ανεβαινει επιπεδο
+void Monster::level_up()
+{
+
+    attack = attack + attack*point;
+    defence = defence + defence*point;
+    probability_of_escape = probability_of_escape + probability_of_escape*point;
+    
+
+    Living_Being::level_up();
+}
+
 ///////////////////////////////////////
 
 
@@ -594,6 +620,15 @@ double Monster::get_probability_of_escape()const
 const double Dragon::point_attack = 0.6;
 Dragon::Dragon( string name, double healthPower, double attack, double defence, double probability_of_escape)
         : Monster( name, healthPower, attack + point_attack*attack, defence, probability_of_escape, "Dragon"){}
+
+void Dragon::level_up()
+{
+    double attack = get_attack();
+    attack =  attack + attack*point_attack;
+    set_attack( attack);
+    
+    Monster::level_up();
+}
 ///////////////////////////////////////
 
 //EXOSKELETON
@@ -602,6 +637,14 @@ const double Exoskeleton::point_defence = 0.7;
 Exoskeleton::Exoskeleton( string name, double healthPower, double attack, double defence, double probability_of_escape)
         : Monster( name, healthPower, attack, defence + defence*point_defence, probability_of_escape, "Exoskeletion"){}
 
+void Exoskeleton::level_up()
+{
+    double defence = get_defence();
+    defence = defence + defence*point_defence;
+    set_defence( defence);
+    
+    Monster::level_up();
+}
 //////////////////////////////////////
 
 //SPIRIT
@@ -610,4 +653,12 @@ const double Spirit::point_probability_of_escape = 0.8;
 Spirit::Spirit( string name, double healthPower, double attack, double defence, double probability_of_escape)
         : Monster( name, healthPower, attack , defence, probability_of_escape + point_probability_of_escape*probability_of_escape, "Spirit"){}
 
+void Spirit::level_up()
+{
+    double probability_of_escape = get_probability_of_escape();
+    probability_of_escape = probability_of_escape + probability_of_escape*point_probability_of_escape;
+    set_probability_of_escape( probability_of_escape);
+    
+    Monster::level_up();
+}
 //////////////////////////////////////

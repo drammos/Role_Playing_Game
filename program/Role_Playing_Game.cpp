@@ -8,7 +8,7 @@ int main( void)
     cout << "Hello" << endl;
     Grid* grid = new Grid( 8, 8);
     grid->displayMap();
-    
-    grid->quitGame();
+
+    // grid->quitGame();
     
 }
