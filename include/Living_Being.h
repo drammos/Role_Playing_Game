@@ -26,6 +26,7 @@ class Living_Being{
     double get_healthPower()const;
     int get_level()const;
 
+    virtual void displayStats();
 };
 
 
@@ -112,6 +113,7 @@ class Hero : public Living_Being{
     void set_x(int);
     void set_y(int);
 
+    virtual void displayStats();
 };
 
 
@@ -124,6 +126,8 @@ class Warrior : public Hero{
     Warrior( string, double, double, double, double, double, double, int, int);;
 
     void level_up();
+
+    void diplayStats();
 };
 
 class Sorcerer : public Hero{
@@ -136,6 +140,7 @@ class Sorcerer : public Hero{
 
     void level_up();
 
+    void displayStats();
 };
 
 class Paladin : public Hero{
@@ -148,6 +153,7 @@ class Paladin : public Hero{
 
     void level_up();
 
+    void displayStats();
 };
 
 
@@ -177,6 +183,8 @@ class Monster : public Living_Being{
     void set_probability_of_escape( double);
 
     virtual void level_up();
+
+    virtual void displayStats();
 };
 
 
@@ -189,6 +197,8 @@ class Dragon : public Monster{
     Dragon(string, double, double, double, double);
 
     void level_up();
+
+    void displayStats();
 };
 
 class Exoskeleton : public Monster{
@@ -199,6 +209,8 @@ class Exoskeleton : public Monster{
     Exoskeleton(string, double, double, double, double);
 
     void level_up();
+
+    void displayStats();
 };
 
 class Spirit : public Monster{
@@ -209,6 +221,8 @@ class Spirit : public Monster{
     Spirit(string, double, double, double, double);
 
     void level_up();
+
+    void displayStats();
 };
 
 

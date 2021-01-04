@@ -10,6 +10,9 @@
 using namespace std;
 
 const int MAX_LEVEL = 5;
+double MONEY = 5.0;
+double EXPERIENCE = 3.0;
+double NEEDED_EXPERIENCE = 10.0;
 
 class Square;
 
