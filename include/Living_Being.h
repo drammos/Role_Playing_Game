@@ -162,7 +162,9 @@ class Paladin : public Hero{
 //Monster
 
 class Monster : public Living_Being{
-    double attack;
+    //Εύρος ζημιάς.
+    double damage_low;
+    double damage_high;
     double defence;
     double probability_of_escape;
 
@@ -172,15 +174,18 @@ class Monster : public Living_Being{
 
     public:
 
-    Monster( string, double, double, double, double, string);
+    Monster( string, double, double, double, double, double, string);
 
-    double get_attack()const;
+    double get_damage_low()const;
+    double get_damage_high()const;
     double get_defence()const;
     double get_probability_of_escape()const;
 
-    void set_attack( double);
+    void set_damage( double, double);
     void set_defence( double);
     void set_probability_of_escape( double);
+
+    void print_monster();
 
     virtual void level_up();
 
@@ -194,7 +199,7 @@ class Dragon : public Monster{
 
     public:
 
-    Dragon(string, double, double, double, double);
+    Dragon(string, double, double, double, double, double);
 
     void level_up();
 
@@ -206,7 +211,7 @@ class Exoskeleton : public Monster{
 
     public:
 
-    Exoskeleton(string, double, double, double, double);
+    Exoskeleton(string, double, double, double, double, double);
 
     void level_up();
 
@@ -218,7 +223,7 @@ class Spirit : public Monster{
 
     public:
 
-    Spirit(string, double, double, double, double);
+    Spirit(string, double, double, double, double, double);
 
     void level_up();
 

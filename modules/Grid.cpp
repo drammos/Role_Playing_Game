@@ -264,39 +264,7 @@ void Grid::move(Hero* hero){
     }
 }
 
-void Grid::War( Square* square)
-{   
-    int r = rand()%3;
-    if(r)return;
 
-    cout << "Με ποιον τροπο θες να επιτεθεις;" << endl; 
-    cout << "Press 1 Attack" << endl;
-    cout << "Press 2 CastSpell" << endl;
-    cout << "Press 3 Potion" << endl;
-
-    int w;
-    cin >> w;
-    while( w <=0 || w > 3)
-    {
-        cout << RED << "Invalid number, try again!" << RESET << endl;
-        cin >> w;
-    }
-    if( w == 3)
-    {
-
-    }
-    else
-    {   
-        Monster* monster;
-        int size;
-        cout << "Which monster do you want to fight?" << endl;
-        for(int i = 0; i < size; i++)
-        {
-
-        }
-    }
-    
-}
 
 
 
@@ -344,6 +312,56 @@ int Square::contains(){
         return 0;
     else
         return 3;  
+}
+
+void Square::War(){   
+    int r = rand()%3;
+    if(r)return;
+    if(this->monsters.size() == 0)return;
+
+    cout<<"You are on a war with "<<this->monsters.size()<<" monsters"<<endl;
+
+    for(int i = 0; i < this->heroes.size(); i++){
+        cout << "How do you want to attack your oponents?" << endl; 
+        cout << "Press 1 for Attack" << endl;
+        cout << "Press 2 for CastSpell" << endl;
+        cout << "Press 3 for Potion" << endl;
+
+        int w;
+        cin >> w;
+        while( w <=0 || w > 3){
+            cout << RED << "Invalid number, try again!" << RESET << endl;
+            cin >> w;
+        }
+        if( w == 3){
+            int p = this->heroes.at(i)->print_Potion();
+            cout<<"Please press the number of the Potion you want to take"<<endl;
+            int a;
+            cin>>a;
+            while(a <= 0 || a > p){
+                cout<< RED << "Invalid number, try again!" << RESET << endl;
+                cin>>a;
+            }
+            this->heroes.at(i)->Take_Potion(a-1);
+        }
+        else{   
+            Monster* monster;
+            cout << "Which monster do you want to fight against?" << endl;
+            for(int i = 0; i < this->monsters.size(); i++){
+                cout<<i+1<<")";
+                this->monsters.at(i)->print_monster();
+                cout<<endl;
+            }
+            cout<<"Press the number of the monster you want to fight against"<<endl;
+            int a1;
+            cin>>a1;
+            while(a1 <= 0 || a1 > this->monsters.size()){
+                cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
+                cin>>a1;
+            }
+        }
+    }
+    
 }
 
 

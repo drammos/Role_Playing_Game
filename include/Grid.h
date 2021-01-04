@@ -36,7 +36,7 @@ public:
     void move(Hero*);
     void quitGame();
 
-    void War( Square*);
+    
 };
 
 class Square{
@@ -51,7 +51,7 @@ public:
     vector <Hero*> remove_heroes();
     string get_kind_of_square() const;
     virtual int contains();
-
+    void War();
 };
 
 class nonAccessible:public Square{
