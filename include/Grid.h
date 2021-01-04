@@ -35,6 +35,8 @@ public:
     void displayMap()const;
     void move(Hero*);
     void quitGame();
+
+    void War( Square*);
 };
 
 class Square{
@@ -49,6 +51,7 @@ public:
     vector <Hero*> remove_heroes();
     string get_kind_of_square() const;
     virtual int contains();
+
 };
 
 class nonAccessible:public Square{
@@ -72,6 +75,7 @@ public:
 };
 
 class Common:public Square{
+
 
 public:
     Common():Square("Common"){};

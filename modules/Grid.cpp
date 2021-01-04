@@ -264,6 +264,40 @@ void Grid::move(Hero* hero){
     }
 }
 
+void Grid::War( Square* square)
+{   
+    int r = rand()%3;
+    if(r)return;
+
+    cout << "Με ποιον τροπο θες να επιτεθεις;" << endl; 
+    cout << "Press 1 Attack" << endl;
+    cout << "Press 2 CastSpell" << endl;
+    cout << "Press 3 Potion" << endl;
+
+    int w;
+    cin >> w;
+    while( w <=0 || w > 3)
+    {
+        cout << RED << "Invalid number, try again!" << RESET << endl;
+        cin >> w;
+    }
+    if( w == 3)
+    {
+
+    }
+    else
+    {   
+        Monster* monster;
+        int size;
+        cout << "Which monster do you want to fight?" << endl;
+        for(int i = 0; i < size; i++)
+        {
+
+        }
+    }
+    
+}
+
 
 
 
