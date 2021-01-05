@@ -595,7 +595,7 @@ bool Hero::castSpell( Monster* monster)
     }
     else
     {
-        damage_for_monster = low_damage + level*(dif/MAX_LEVEL); 
+        damage_for_monster = low_damage + (int)dexterity%((int)dif); 
     }
 
     double monster_defence = monster->get_defence();
