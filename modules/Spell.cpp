@@ -54,6 +54,17 @@ string Spell::get_kind_of_spell() const{
     return this->kind_of_spell;
 }
 
+//βοηθητικες συναρτησεις
+double Spell::get_damage()const
+{
+    return 0.0;
+}
+int Spell::get_rounds()const
+{
+    return 0;
+}
+
+
 //Συναρτήσεις για IceSpell.
 IceSpell::IceSpell(string n, double p, int l, double dl, double dh, double e, double nl, int r):Spell(n, p, l, dl, dh, e, "IceSpell"){
     this->damage_low_new = nl;
@@ -65,7 +76,7 @@ IceSpell::~IceSpell(){
     cout<<"Icespell to be destroyed"<<endl;
 }
 
-double IceSpell::get_new_low() const{
+double IceSpell::get_damage() const{
     this->damage_low_new;
 }
 
@@ -84,7 +95,7 @@ FireSpell::~FireSpell(){
     cout<<"Firespell to be destroyed"<<endl;
 }
 
-double FireSpell::get_defense_reduce() const{
+double FireSpell::get_damage() const{
     return this->defense_reduce;
 }
 
@@ -103,7 +114,7 @@ LightingSpell::~LightingSpell(){
     cout<<"Lightingspell to be destroyed"<<endl;
 }
 
-double LightingSpell::get_defense_prob_reduce() const{
+double LightingSpell::get_damage() const{
     return this->defense_prob_reduce;
 }
 
