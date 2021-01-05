@@ -361,6 +361,7 @@ void Square::War(){
                 cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
                 cin>>a1;
             }
+            this->heroes.at(i)->attack(this->monsters.at(a1-1));
         }
     }
     
