@@ -29,6 +29,12 @@ int Living_Being::get_level()const
     return level;
 }
 
+void Living_Being::set_healthPower( double damage)
+{
+    healthPower = healthPower - damage;
+    if( healthPower <= 0)healthPower = 0;
+}
+
 
 
 void Living_Being::level_up()
@@ -436,8 +442,12 @@ void Hero::Take_Potion( int position)
     Item* potion_item = Potion_vector.at( position);
     srand( time(NULL));
 
-    string characteristic = potion_item->get_characteristic();
-    double increase = potion_item->get_increase();
+    part p = potion_item->get_prices();
+
+    
+
+    string characteristic = p.characteristic;
+    double increase = p.power;
     if( characteristic == "magicPower")
     {
         magicPower = magicPower + increase*magicPower;
@@ -475,6 +485,32 @@ void Hero::print_hero()const
     cout << " the agility is: " << agility << endl;
     cout << "The money is: " << money << " and the experience is: " << experience << endl;
 }
+
+void Hero::attack( Monster* monster)
+{
+    part p_w = weapon->get_prices();
+    double damage = p_w.power;
+
+    double power = damage + strength;
+    if(power <= 0)return;
+
+    double monster_defence = monster->get_defence();
+    double monster_probablity_of_escape = monster->get_probability_of_escape();
+
+    double r = rand()%100;
+    if( r <= monster_probablity_of_escape)
+    {
+        return;
+    }
+    else
+    {
+        power = power - monster_defence;
+        if( power <= 0)return;
+        monster->set_healthPower( power);
+    }
+    
+}
+
 ////////////////////////////////////
 
 

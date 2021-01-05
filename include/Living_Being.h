@@ -7,6 +7,10 @@
 #include "Spell.h"
 using namespace std;
 
+#define RESET   "\033[0m"
+#define BLACK   "\033[30m"      /* Black */
+#define RED     "\033[31m"      /* Red */
+
 class Living_Being{
     string name;
     int level;
@@ -25,6 +29,8 @@ class Living_Being{
     string get_name()const;
     double get_healthPower()const;
     int get_level()const;
+
+    void set_healthPower( double);
 
     virtual void displayStats();
 };
@@ -114,6 +120,8 @@ class Hero : public Living_Being{
     void set_y(int);
 
     virtual void displayStats();
+
+    void attack( Monster*);
 };
 
 
@@ -166,7 +174,7 @@ class Monster : public Living_Being{
     double damage_low;
     double damage_high;
     double defence;
-    double probability_of_escape;
+    double probability_of_escape; //[0,100]
 
     static const double point;
 
@@ -179,7 +187,7 @@ class Monster : public Living_Being{
     double get_damage_low()const;
     double get_damage_high()const;
     double get_defence()const;
-    double get_probability_of_escape()const;
+    double get_probability_of_escape()const; //[0,100]
 
     void set_damage( double, double);
     void set_defence( double);

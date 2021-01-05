@@ -91,6 +91,7 @@ void Grid::equip( Hero* hero)
                 cin >> w;
             }
 
+            
             hero->set_Weapon( w - 1);
         }
     }
@@ -315,9 +316,10 @@ int Square::contains(){
 }
 
 void Square::War(){   
+
+    if(this->monsters.size() == 0)return;
     int r = rand()%3;
     if(r)return;
-    if(this->monsters.size() == 0)return;
 
     cout<<"You are on a war with "<<this->monsters.size()<<" monsters"<<endl;
 

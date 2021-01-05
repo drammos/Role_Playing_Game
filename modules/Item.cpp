@@ -38,13 +38,17 @@ string Item::get_kind_of_item() const{
 }
 
 //Βοηθητική virtual συνάρτηση.
-string Item::get_characteristic() const{
-    return "";
+
+part Item::get_prices()const
+{
+    part p;
+    p.hands = 0;
+    p.characteristic = "NOTHING";
+    p.power = 0.0;
+
+    return p;
 }
 
-double Item::get_increase() const{
-    return 0.0;
-}
 
 //Συναρτήσεις για Weapon.
 Weapon::Weapon(string n, double p, int l, int h, double d):Item(n, p, l, "Weapon"){
@@ -65,6 +69,16 @@ double Weapon::get_damage() const{
     return this->damage;
 }
 
+part Weapon::get_prices()const
+{
+    part p;
+    p.hands = hands;
+    p.characteristic = "NOTHING";
+    p.power = damage;
+    return p;
+}
+
+
 //Συναρτήσεις για Armor.
 Armor::Armor(string n, double p, int l, double d):Item(n, p, l, "Armor"){
     this->reduce_of_damage = d;
@@ -78,6 +92,16 @@ Armor::~Armor(){
 double Armor::get_reduce_of_damage() const{
     return this->reduce_of_damage;
 }
+
+part Armor::get_prices()const
+{
+    part p;
+    p.hands = -1;
+    p.characteristic = "NOTHING";
+    p.power = reduce_of_damage;
+    return p;
+}
+
 
 //Συναρτήσεις για Potion.
 Potion::Potion(string n, double p, int l, string c, double i):Item(n, p, l, "Potion"){
@@ -97,4 +121,13 @@ string Potion::get_characteristic() const{
 
 double Potion::get_increase() const{
     return this->increase;
+}
+
+part Potion::get_prices()const
+{
+    part p;
+    p.hands = -1;
+    p.characteristic = characteristic;
+    p.power = increase;
+    return p;
 }

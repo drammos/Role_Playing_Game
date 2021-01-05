@@ -5,6 +5,12 @@
 
 using namespace std;
 
+struct part{
+    int hands;
+    string characteristic;
+    double power;
+};
+
 class Item{
     string name;
     double price;
@@ -18,8 +24,8 @@ public:
     int get_level() const;
     void print();
     string get_kind_of_item() const;
-    virtual string get_characteristic() const;
-    virtual double get_increase() const;
+    
+    virtual part get_prices()const;
 };
 
 class Weapon:public Item{
@@ -30,6 +36,8 @@ public:
     ~Weapon();
     int get_hands() const;
     double get_damage() const;
+
+    part get_prices()const;
 };
 
 class Armor:public Item{
@@ -38,6 +46,8 @@ public:
     Armor(string, double, int, double);
     ~Armor();
     double get_reduce_of_damage() const;
+
+    part get_prices()const;
 };
 
 class Potion:public Item{
@@ -48,6 +58,8 @@ public:
     ~Potion();
     string get_characteristic() const;
     double get_increase() const;
+
+    part get_prices()const;
 };
 
 #endif
