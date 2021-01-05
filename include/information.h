@@ -24,3 +24,4 @@
 #define MONEY 5.0
 #define EXPERIENCE 3.0
 #define NEEDED_EXPERIENCE 10.0
+#define HEALTH_POWER 100.0

@@ -514,9 +514,12 @@ void Hero::attack( Monster* monster)
 bool Hero::castSpell( Monster* monster)
 {
     int size = print_spell();
-    if( size == 0)return false;
+    if( size == 0){
+        cout<<"You don't have any spells"<<endl;
+        return false;
+    }
 
-    cout << "What spell do you want?" << endl;
+    cout << "Which spell do you want to cast?" << endl;
     cout << "Press correct number" << endl;
 
     int answer;
@@ -542,10 +545,10 @@ bool Hero::castSpell( Monster* monster)
     {   
         if( spell_change_count == size)return false;
 
-        cout << "You havn't the correct magicPower. You want use other Spell? Yes or No." << endl;
+        cout << "You don't have the needed magicPower. Do you want cast another Spell? Yes or No." << endl;
         string an;
         cin >> an;
-        while( an != "Yes" && an != "No")
+        while( an.compare("Yes") && an.compare("No"))
         {
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> an;
@@ -553,7 +556,7 @@ bool Hero::castSpell( Monster* monster)
         if( an == "No")return false;
 
         print_spell();
-        cout << "What spell do you want?" << endl;
+        cout << "Which spell do you want to cast?" << endl;
         cout << "Press correct number" << endl;
         
         cin >> answer;
@@ -566,7 +569,7 @@ bool Hero::castSpell( Monster* monster)
 
         while( spell_change[answer - 1] == true)
         {
-            cout << RED << "You havn't this spell, try again!" << RESET << endl;
+            cout << RED << "You don't have this spell, try again!" << RESET << endl;
             cin >> answer; 
         }
 
@@ -813,6 +816,14 @@ void Monster::reset_fields()
         defence = original_defence;
         probability_of_escape = original_probability_of_escape;
     }
+}
+
+void Monster::attack(Hero* hero){
+    srand(time(NULL));
+    double damage = this->damage_low + rand()%(int)(damage_high - damage_low);
+    int r = rand() % 100; 
+    if(r > hero->get_agility())return;
+    hero->set_healthPower(damage);
 }
 
 

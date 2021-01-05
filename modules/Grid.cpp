@@ -297,6 +297,25 @@ int Square::contains(){
         return 3;  
 }
 
+int Square::alive(){
+    int h = 0;
+    for(int i = 0; i < this->heroes.size(); i++){
+        if(this->heroes.at(i)->get_healthPower() != 0.0)
+            h++;
+    }
+    int m = 0;
+    for(int i = 0; i < this->monsters.size(); i++){
+        if(this->monsters.at(i)->get_healthPower() != 0.0)
+            m++;
+    }
+    if(m && h)
+        return 0;
+    else if(m > 0)
+        return 1;
+    else
+        return 2;
+}
+
 void Square::War(){   
 
     if(this->monsters.size() == 0)return;
@@ -305,48 +324,154 @@ void Square::War(){
 
     cout<<"You are on a war with "<<this->monsters.size()<<" monsters"<<endl;
 
-    for(int i = 0; i < this->heroes.size(); i++){
-        cout << "How do you want to attack your oponents?" << endl; 
-        cout << "Press 1 for Attack" << endl;
-        cout << "Press 2 for CastSpell" << endl;
-        cout << "Press 3 for Potion" << endl;
+    while(this->alive() == 0){
+        for(int i = 0; i < this->heroes.size(); i++){
+            if(this->heroes.at(i)->get_healthPower() == 0.0)
+                continue;
+            cout << "How do you want to attack your oponents?" << endl; 
+            cout << "Press 1 for Attack" << endl;
+            cout << "Press 2 for CastSpell" << endl;
+            cout << "Press 3 for Potion" << endl;
 
-        int w;
-        cin >> w;
-        while( w <=0 || w > 3){
-            cout << RED << "Invalid number, try again!" << RESET << endl;
+            int w;
             cin >> w;
-        }
-        if( w == 3){
-            int p = this->heroes.at(i)->print_Potion();
-            cout<<"Please press the number of the Potion you want to take"<<endl;
-            int a;
-            cin>>a;
-            while(a <= 0 || a > p){
-                cout<< RED << "Invalid number, try again!" << RESET << endl;
-                cin>>a;
+            while( w <=0 || w > 3){
+                cout << RED << "Invalid number, try again!" << RESET << endl;
+                cin >> w;
             }
-            this->heroes.at(i)->Take_Potion(a-1);
-        }
-        else{   
-            Monster* monster;
-            cout << "Which monster do you want to fight against?" << endl;
-            for(int i = 0; i < this->monsters.size(); i++){
-                cout<<i+1<<")";
-                this->monsters.at(i)->print_monster();
-                cout<<endl;
+            if( w == 3){
+                int p = this->heroes.at(i)->print_Potion();
+                if(p == 0){
+                    cout<<"Select another way of attack"<<endl;
+                    cin>>w;
+                    while(w != 1 && w != 2){
+                        cout<<"Invalid number, try again!"<<endl;
+                        cin>>w;
+                    }
+                    Monster* monster;
+                    cout << "Which monster do you want to fight against?" << endl;
+                    for(int i = 0; i < this->monsters.size(); i++){
+                        if(this->monsters.at(i)->get_healthPower() > 0){
+                            cout<<i+1<<")";
+                            this->monsters.at(i)->print_monster();
+                            cout<<endl;
+                        }
+                    }
+                    cout<<"Press the number of the monster you want to fight against"<<endl;
+                    int a1;
+                    cin>>a1;
+                    while(a1 <= 0 || a1 > this->monsters.size()){
+                        cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
+                        cin>>a1;
+                    }
+                    while(this->monsters.at(a1-1)->get_healthPower() <= 0){
+                        cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
+                        cin>>a1;
+                    }
+                    if(w == 1){
+                        this->heroes.at(i)->attack(this->monsters.at(a1-1));
+                    }
+                    else{
+                        bool f = this->heroes.at(i)->castSpell(this->monsters.at(a1-1));
+                        if(f == false){
+                            cout<<"The only way to attack is by a simple attack"<<endl;
+                            this->heroes.at(i)->attack(this->monsters.at(a1-1));
+                        }
+                    }
+                }
+                else{
+                    cout<<"Please press the number of the Potion you want to take"<<endl;
+                    int a;
+                    cin>>a;
+                    while(a <= 0 || a > p){
+                        cout<< RED << "Invalid number, try again!" << RESET << endl;
+                        cin>>a;
+                    }
+                    this->heroes.at(i)->Take_Potion(a-1);
+                }
             }
-            cout<<"Press the number of the monster you want to fight against"<<endl;
-            int a1;
-            cin>>a1;
-            while(a1 <= 0 || a1 > this->monsters.size()){
-                cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
+            else{   
+                Monster* monster;
+                cout << "Which monster do you want to fight against?" << endl;
+                for(int i = 0; i < this->monsters.size(); i++){
+                    if(this->monsters.at(i)->get_healthPower() > 0){
+                        cout<<i+1<<")";
+                        this->monsters.at(i)->print_monster();
+                        cout<<endl;
+                    }
+                }
+                cout<<"Press the number of the monster you want to fight against"<<endl;
+                int a1;
                 cin>>a1;
+                while(a1 <= 0 || a1 > this->monsters.size()){
+                    cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
+                    cin>>a1;
+                }
+                while(this->monsters.at(a1-1)->get_healthPower() <= 0){
+                    cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
+                    cin>>a1;
+                }
+                if(w == 1){
+                    this->heroes.at(i)->attack(this->monsters.at(a1-1));
+                }
+                else{
+                    bool f = this->heroes.at(i)->castSpell(this->monsters.at(a1-1));
+                    if(f == false){
+                        cout<<"Select another way of attack"<<endl;
+                        cin>>w;
+                        while(w != 1 && w != 3){
+                            cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
+                            cin>>w;
+                        }
+                        if(w == 1){
+                            this->heroes.at(i)->attack(this->monsters.at(a1-1));
+                        }
+                        else{
+                            int p = this->heroes.at(i)->print_Potion();
+                            if(p == 0){
+                                cout<<"The only way to attack is by a simple attack"<<endl;
+                                this->heroes.at(i)->attack(this->monsters.at(a1-1));
+                            }
+                            else{
+                                cout<<"Please press the number of the Potion you want to take"<<endl;
+                                int a;
+                                cin>>a;
+                                while(a <= 0 || a > p){
+                                    cout<< RED << "Invalid number, try again!" << RESET << endl;
+                                    cin>>a;
+                                }
+                                this->heroes.at(i)->Take_Potion(a-1);
+                            }
+                        }
+                    }
+                }
             }
-            this->heroes.at(i)->attack(this->monsters.at(a1-1));
+        }
+        for(int i = 0;  i < this->monsters.size(); i++){
+            if(this->monsters.at(i)->get_healthPower() == 0.0)
+                continue;
+            int j = 0;
+            while(this->heroes.at(j)->get_healthPower() == 0.0){
+                j++;
+            }
+            this->monsters.at(i)->attack(this->heroes.at(j));
+            this->monsters.at(i)->reset_fields();
         }
     }
-    
+    if(this->alive() == 1){
+        cout<<"You lost the war"<<endl;
+    }
+    else{
+        cout<<"You won the war. Congratulations!"<<endl;
+    }
+    for(int i = 0; i < this->monsters.size(); i++){
+        this->monsters.at(i)->set_rounds(1);
+        this->monsters.at(i)->reset_fields();
+    }
+    for(int i = 0; i < this->heroes.size(); i++){
+        if(this->heroes.at(i)->get_healthPower() == 0.0)
+            this->heroes.at(i)->set_healthPower(HEALTH_POWER/2.0);
+    }
 }
 
 

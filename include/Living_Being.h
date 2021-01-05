@@ -212,6 +212,8 @@ class Monster : public Living_Being{
     virtual void level_up();
 
     virtual void displayStats();
+
+    void attack(Hero*);
 };
 
 

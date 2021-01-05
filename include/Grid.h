@@ -48,6 +48,7 @@ public:
     vector <Hero*> remove_heroes();
     string get_kind_of_square() const;
     virtual int contains();
+    int alive();
     void War();
 };
 
