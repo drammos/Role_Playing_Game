@@ -5,11 +5,9 @@
 #include <vector>
 #include "Item.h"
 #include "Spell.h"
+#include "information.h"
 using namespace std;
 
-#define RESET   "\033[0m"
-#define BLACK   "\033[30m"      /* Black */
-#define RED     "\033[31m"      /* Red */
 
 class Living_Being{
     string name;
@@ -122,6 +120,7 @@ class Hero : public Living_Being{
     virtual void displayStats();
 
     void attack( Monster*);
+    bool castSpell( Monster*);
 };
 
 
@@ -170,11 +169,19 @@ class Paladin : public Hero{
 //Monster
 
 class Monster : public Living_Being{
+    
     //Εύρος ζημιάς.
     double damage_low;
     double damage_high;
     double defence;
     double probability_of_escape; //[0,100]
+
+    //Original Εύρος ζημιάς.
+    double original_damage_low;
+    double original_damage_high;
+    double original_defence;
+    double original_probability_of_escape; //[0,100]
+    double rounds;
 
     static const double point;
 
@@ -188,11 +195,18 @@ class Monster : public Living_Being{
     double get_damage_high()const;
     double get_defence()const;
     double get_probability_of_escape()const; //[0,100]
+    int get_rounds()const;
 
     void set_damage( double, double);
     void set_defence( double);
     void set_probability_of_escape( double);
+    void set_rounds( int);
 
+    //SOSSS
+    ///AN TELIOSEIIIIIIIIIIII I MAXI PREPEI NA AFERAISEIS 0DENISEIS TA ROUNDS KAI
+    //NA TA EPANAFEREIS OLAAAAAAAAAAAAAA
+    //SOSSS
+    void reset_fields();
     void print_monster();
 
     virtual void level_up();

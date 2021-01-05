@@ -2,8 +2,10 @@
 #define SPELL_H
 
 #include <iostream>
+#include "information.h"
 
 using namespace std;
+
 
 class Spell{
     string name;
@@ -11,6 +13,7 @@ class Spell{
     int level;
     double damage_low;
     double damage_high;
+
     double energy;
     string kind_of_spell;
 public:
@@ -24,6 +27,9 @@ public:
     double get_energy() const;
     void set_low_damage(double);
     void print();
+
+    virtual double get_damage()const;
+    virtual int get_rounds()const;
     string get_kind_of_spell() const;
 };
 
@@ -33,7 +39,7 @@ class IceSpell:public Spell{
 public:
     IceSpell(string, double, int, double, double, double, double, int);
     ~IceSpell();
-    double get_new_low() const;
+    double get_damage() const;
     int get_rounds() const;
 };
 
@@ -43,7 +49,7 @@ class FireSpell:public Spell{
 public:
     FireSpell(string, double, int, double, double, double, double, int);
     ~FireSpell();
-    double get_defense_reduce() const;
+    double get_damage() const;
     int get_rounds() const;
 };
 
@@ -53,8 +59,11 @@ class LightingSpell:public Spell{
 public:
     LightingSpell(string, double, int, double, double, double, double, int);
     ~LightingSpell();
-    double get_defense_prob_reduce() const;
+
+    double get_damage() const;
     int get_rounds() const;
+
+
 }; 
 
 #endif

@@ -2,6 +2,7 @@
 #define ITEM_H
 
 #include <iostream>
+#include "information.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ public:
     int get_level() const;
     void print();
     string get_kind_of_item() const;
-    
+
     virtual part get_prices()const;
 };
 

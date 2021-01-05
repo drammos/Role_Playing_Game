@@ -511,6 +511,147 @@ void Hero::attack( Monster* monster)
     
 }
 
+bool Hero::castSpell( Monster* monster)
+{
+    int size = print_spell();
+    if( size == 0)return false;
+
+    cout << "What spell do you want?" << endl;
+    cout << "Press correct number" << endl;
+
+    int answer;
+    cin >> answer;
+
+    while(answer < 1 || answer > size){
+        cout << RED << "Invalid number, try again!" << RESET << endl;
+        cin >> answer;
+    }
+
+    Spell* spell = spell_vector.at( answer - 1);
+
+    double power_magic = spell->get_energy();
+    
+    bool spell_change[size];
+    for( int i = 0; i < size; i++)
+    {
+        spell_change[i] = false;
+    }
+    int spell_change_count = 1;
+
+    while( power_magic > magicPower)
+    {   
+        if( spell_change_count == size)return false;
+
+        cout << "You havn't the correct magicPower. You want use other Spell? Yes or No." << endl;
+        string an;
+        cin >> an;
+        while( an != "Yes" && an != "No")
+        {
+            cout << RED << "Invalid answer, try again!" << RESET << endl;
+            cin >> an;
+        }
+        if( an == "No")return false;
+
+        print_spell();
+        cout << "What spell do you want?" << endl;
+        cout << "Press correct number" << endl;
+        
+        cin >> answer;
+
+        while(answer < 1 || answer > size)
+        {
+            cout << RED << "Invalid number, try again!" << RESET << endl;
+            cin >> answer;
+        }
+
+        while( spell_change[answer - 1] == true)
+        {
+            cout << RED << "You havn't this spell, try again!" << RESET << endl;
+            cin >> answer; 
+        }
+
+        spell = spell_vector.at( answer - 1);
+        power_magic = spell->get_energy();
+
+        //check this spell
+        spell_change[answer - 1] == true;
+        spell_change_count++;
+
+
+    }
+
+    string kind_of_spell = spell->get_kind_of_spell();
+    magicPower = magicPower - power_magic;
+
+    double low_damage = spell->get_low_damage();
+    double high_damage = spell->get_high_damage();
+
+    double damage_for_monster;
+    int level = get_level();
+    double dif = high_damage - low_damage;
+    if( dif == 0)
+    {
+        damage_for_monster = low_damage;
+    }
+    else
+    {
+        damage_for_monster = low_damage + level*(dif/MAX_LEVEL); 
+    }
+
+    double monster_defence = monster->get_defence();
+    double monster_probablity_of_escape = monster->get_probability_of_escape();
+
+    double r = rand()%100;
+    if( r <= monster_probablity_of_escape)
+    {
+        return  true;
+    }
+    else
+    {
+        damage_for_monster = damage_for_monster - monster_defence;
+        if( damage_for_monster > 0)
+            monster->set_healthPower( damage_for_monster);
+    }
+
+
+    double damage = spell->get_damage();
+    int rounds = spell->get_rounds();
+
+    if(kind_of_spell == "IceSpell")
+    {
+        double damage_low_monster = monster->get_damage_low() - damage;
+        if( damage_low_monster < 0)damage_low_monster = 0;
+
+        double damage_high_monster = monster->get_damage_high() - damage;
+        if( damage_high_monster < 0)damage_high_monster = 0;
+        
+        monster->set_damage( damage_low_monster, damage_high_monster);
+        monster->set_rounds( rounds);
+    }
+    else if( kind_of_spell == "FireSpell")
+    {
+        damage = monster->get_defence() - damage;
+        if( damage < 0)damage = 0;
+
+        monster->set_defence( damage);
+        monster->set_rounds( rounds);
+    }
+    else
+    {
+        damage = monster->get_probability_of_escape() - damage;
+        if( damage < 0)damage = 0;
+
+        monster->set_probability_of_escape( damage);
+        monster->set_rounds( rounds);
+    }
+
+    return true;
+    
+
+}
+
+
+
 ////////////////////////////////////
 
 
@@ -603,6 +744,13 @@ Monster::Monster( string name, double healthPower, double damage_low, double dam
 
     this->monster = monster;
 
+    //Original Εύρος ζημιάς.
+    original_damage_low = damage_low;
+    original_damage_high = damage_high;
+    original_defence = defence;
+    original_probability_of_escape = probability_of_escape; //[0,100]
+    rounds = 0;
+
 }
 
 
@@ -626,11 +774,17 @@ double Monster::get_probability_of_escape()const
     return probability_of_escape;
 }
 
+int Monster::get_rounds()const
+{
+    return rounds;
+}
+
 void Monster::set_damage( double low, double high)
 {
     this->damage_high = high;
     this->damage_low = low;
 }
+
 
 void Monster::set_defence( double defence)
 {
@@ -640,6 +794,25 @@ void Monster::set_defence( double defence)
 void Monster::set_probability_of_escape( double probability_of_escape)
 {
     this->probability_of_escape = probability_of_escape;
+}
+
+void Monster::set_rounds( int rounds)
+{
+    this->rounds = rounds;
+}
+
+void Monster::reset_fields()
+{
+    if( rounds <= 0)return;
+
+    rounds--;
+    if( rounds == 0)
+    {
+        damage_low = original_damage_low;
+        damage_high = original_damage_high;
+        defence = original_defence;
+        probability_of_escape = original_probability_of_escape;
+    }
 }
 
 
@@ -662,6 +835,7 @@ void Monster::print_monster()
     cout << " and level is: " << get_level() << endl; 
     cout << "The damage range is from " << this->damage_low << " to " << this->damage_high << " and the probability of ascaping an attack is:" << this->probability_of_escape<<endl;
 }
+
 ///////////////////////////////////////
 
 
