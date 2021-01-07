@@ -19,7 +19,7 @@ class Living_Being{
     
     public:
 
-    Living_Being( string, double, string);
+    Living_Being( string, string);
 
     virtual void level_up();
 
@@ -36,6 +36,7 @@ class Living_Being{
 
 class Hero : public Living_Being{
     double magicPower; //ποσο μαγικης ενεργειας
+    //Τα χαρακτηριστικά δύναμης, επιφεξιότητας και ευκινησίας έχουν άνω όριο το 100.
     double strength;  //τιμη δυναμης
     double dexterity; //τιμη επιδεξιοτητας
     double agility;   //τιμης ευκυνισιας
@@ -66,7 +67,7 @@ class Hero : public Living_Being{
     
     public:
     
-    Hero( string, double, double, double, double, double, double, string, int, int);
+    Hero( string, double, double, double, string, int, int);
     
     double get_magicPower()const;
     double get_strength()const;
@@ -130,7 +131,7 @@ class Warrior : public Hero{
 
     public:
 
-    Warrior( string, double, double, double, double, double, double, int, int);;
+    Warrior( string, double, double, double, int, int);;
 
     void level_up();
 
@@ -143,7 +144,7 @@ class Sorcerer : public Hero{
 
     public:
 
-    Sorcerer(  string, double, double, double, double, double, double, int, int);
+    Sorcerer(  string, double, double, double, int, int);
 
     void level_up();
 
@@ -156,7 +157,7 @@ class Paladin : public Hero{
 
     public:
 
-    Paladin(  string, double, double, double, double, double, double, int, int);
+    Paladin(  string, double, double, double, int, int);
 
     void level_up();
 
@@ -189,7 +190,7 @@ class Monster : public Living_Being{
 
     public:
 
-    Monster( string, double, double, double, double, double, string);
+    Monster( string, double, double, double, double, string);
 
     double get_damage_low()const;
     double get_damage_high()const;
@@ -223,7 +224,7 @@ class Dragon : public Monster{
 
     public:
 
-    Dragon(string, double, double, double, double, double);
+    Dragon(string, double, double, double, double);
 
     void level_up();
 
@@ -235,7 +236,7 @@ class Exoskeleton : public Monster{
 
     public:
 
-    Exoskeleton(string, double, double, double, double, double);
+    Exoskeleton(string, double, double, double, double);
 
     void level_up();
 
@@ -247,7 +248,7 @@ class Spirit : public Monster{
 
     public:
 
-    Spirit(string, double, double, double, double, double);
+    Spirit(string, double, double, double, double);
 
     void level_up();
 
