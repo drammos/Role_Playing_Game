@@ -48,6 +48,61 @@ int main( void)
     else{ x = 20; y = 20;}
 
     Grid* grid = new Grid( x, y);
+
+    string in;
+
+    string name;
+    double strenght;
+    double agility;
+    double dexterity;
+
+    
+
+    //FOR HEROES
+    cout << BOLDBLUE << "Who Heroes you want?" << RESET << endl;
+    
+    //FOR WARRIOR
+    cout << "You want Warrior? Yes/No." << endl;
+    
+    cin >> in;
+    while( in != "Yes" && in != "No"){
+        cout << RED << "Invalid answer, try again!" << RESET << endl;
+        cin >> in;
+    }
+
+    if( in == "Yes")
+    {
+        Warrior* warrior = new warrior( name, strenght, dexterity, agility, x, y);
+    }
+
+    //FOR SORCERER
+    cout << "You want Sorcerer? Yes/No." << endl;
+
+    cin >> in;
+    while( in != "Yes" && in != "No"){
+        cout << RED << "Invalid answer, try again!" << RESET << endl;
+        cin >> in;
+    }
+
+    if( in == "Yes")
+    {
+        Sorcerer* sorcerer = new Sorcerer( name, strenght, dexterity, agility, x, y);
+    }
+
+    //FOR PALADIN
+    cout << "You want Paladin? Yes/No." << endl;
+
+    cin >> in;
+    while( in != "Yes" && in != "No"){
+        cout << RED << "Invalid answer, try again!" << RESET << endl;
+        cin >> in;
+    }
+
+    if( in == "Yes")
+    {
+        Paladin* paladin = new Paladin( name, strenght, dexterity, agility, x, y);
+    }
+
     grid->displayMap();
 
     // grid->quitGame();
