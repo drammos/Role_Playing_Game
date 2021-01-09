@@ -1,98 +1,98 @@
-Abbathor
-Aerdrie Faenya
-Arvoreen
-Baervan Wildwanderer
-Baravar Cloakshadow
-Berronar Truesilver
-Brandobaris
-Callarduran Smoothhands
-Charmalaine
-Clangeddin Silverbeard
-Corellon Larethian
-Cyrrollalee
-Deep Sashelas
-Dugmaren Brightmantle
-Dumathoin
-Ehlonna
-Erevan Ilesere
-Fenmarel Mestarine
-Fharlanghn
-Flandal Steelskin
-Gadhelyn
-Gaerdal Ironhand
-Garl Glittergold
-Gendwar Argrim
-Halani Celanil
-Heironeous
-Labelas Enoreth
-Moradin
-Muamman Duathal
-Olidammara
-Pelor
-Rillifane Rallathil
-Roykyn
-Segojan Earthcaller
-Sehanine Moonbow
-Sheela Peryroyl
-Solonor Thelandira
-St. Cuthbert
-Urdlen
-Urogalan
-Vergadain
-Ye'Cind
-Yondalla
-Annam
-Bahamut
-Blibdoolpoolp
-Diirinka
-Eadro
-Gruumsh
-Hruggek
-Ilsensine
-Jubilex
-Kurtulmak
-Laduguer
-Loagzed
-Lolth
-Maglubiyet
-Merrshaulk
-Orcus
-Sekolah
-Semuanya
-Shekinester
-Skerrit
-Stronmaus
-Tiamat
-Vaprak
-Yeenoghu
-Aasterinian
-Bagrivyek
-Bahgtru
-Chronepsis
-Doresain
-Falazure
-Gaknulak
-Grankhul
-Great Mother
-Grolantor
-Hiatea
-Iallanis
-Ilneval
-Io
-Karontor
-Kiaransalee
-Khurgorbaeyag
-Luthic
-Memnor
-Nomog-Geaya
-Panzuriel
-Raxivort
-Shargaas
-Sixin
-Skoraeus Stonebones
-Squerrik
-Surtr
-Thrym
-Vhaeraun
-Yurtrus
-Zinzerena
+Abbathor 30.0 30.0 30.0
+Aerdrie Faenya 30.0 30.0 30.0
+Arvoreen 30.0 30.0 30.0
+Baervan Wildwanderer 30.0 30.0 30.0
+Baravar Cloakshadow 30.0 30.0 30.0
+Berronar Truesilver 30.0 30.0 30.0
+Brandobaris 30.0 30.0 30.0
+Callarduran Smoothhands 30.0 30.0 30.0
+Charmalaine 30.0 30.0 30.0
+Clangeddin Silverbeard 30.0 30.0 30.0
+Corellon Larethian 30.0 30.0 30.0
+Cyrrollalee 30.0 30.0 30.0
+Deep Sashelas 30.0 30.0 30.0
+Dugmaren Brightmantle 30.0 30.0 30.0
+Dumathoin 30.0 30.0 30.0
+Ehlonna 30.0 30.0 30.0
+Erevan Ilesere 30.0 30.0 30.0
+Fenmarel Mestarine 30.0 30.0 30.0
+Fharlanghn 30.0 30.0 30.0
+Flandal Steelskin 30.0 30.0 30.0
+Gadhelyn 30.0 30.0 30.0
+Gaerdal Ironhand 30.0 30.0 30.0
+Garl Glittergold 30.0 30.0 30.0
+Gendwar Argrim 30.0 30.0 30.0
+Halani Celanil 30.0 30.0 30.0
+Heironeous 30.0 30.0 30.0
+Labelas Enoreth 30.0 30.0 30.0
+Moradin 30.0 30.0 30.0
+Muamman Duathal 30.0 30.0 30.0
+Olidammara 30.0 30.0 30.0
+Pelor 30.0 30.0 30.0
+Rillifane Rallathil 30.0 30.0 30.0
+Roykyn 30.0 30.0 30.0
+Segojan Earthcaller 30.0 30.0 30.0
+Sehanine Moonbow 30.0 30.0 30.0
+Sheela Peryroyl 30.0 30.0 30.0
+Solonor Thelandira 30.0 30.0 30.0
+St. Cuthbert 30.0 30.0 30.0
+Urdlen 30.0 30.0 30.0
+Urogalan 30.0 30.0 30.0
+Vergadain 30.0 30.0 30.0
+Ye'Cind 30.0 30.0 30.0
+Yondalla 30.0 30.0 30.0
+Annam 30.0 30.0 30.0
+Bahamut 30.0 30.0 30.0
+Blibdoolpoolp 30.0 30.0 30.0
+Diirinka 30.0 30.0 30.0
+Eadro 30.0 30.0 30.0
+Gruumsh 30.0 30.0 30.0
+Hruggek 30.0 30.0 30.0
+Ilsensine 30.0 30.0 30.0
+Jubilex 30.0 30.0 30.0
+Kurtulmak 30.0 30.0 30.0
+Laduguer 30.0 30.0 30.0
+Loagzed 30.0 30.0 30.0
+Lolth 30.0 30.0 30.0
+Maglubiyet 30.0 30.0 30.0
+Merrshaulk 30.0 30.0 30.0
+Orcus 30.0 30.0 30.0
+Sekolah 30.0 30.0 30.0
+Semuanya 30.0 30.0 30.0
+Shekinester 30.0 30.0 30.0
+Skerrit 30.0 30.0 30.0
+Stronmaus 30.0 30.0 30.0
+Tiamat 30.0 30.0 30.0
+Vaprak 30.0 30.0 30.0
+Yeenoghu 30.0 30.0 30.0
+Aasterinian 30.0 30.0 30.0
+Bagrivyek 30.0 30.0 30.0
+Bahgtru 30.0 30.0 30.0
+Chronepsis 30.0 30.0 30.0
+Doresain 30.0 30.0 30.0
+Falazure 30.0 30.0 30.0
+Gaknulak 30.0 30.0 30.0
+Grankhul 30.0 30.0 30.0
+Great Mother 30.0 30.0 30.0
+Grolantor 30.0 30.0 30.0
+Hiatea 30.0 30.0 30.0
+Iallanis 30.0 30.0 30.0
+Ilneval 30.0 30.0 30.0
+Io 30.0 30.0 30.0
+Karontor 30.0 30.0 30.0
+Kiaransalee 30.0 30.0 30.0
+Khurgorbaeyag 30.0 30.0 30.0
+Luthic 30.0 30.0 30.0
+Memnor 30.0 30.0 30.0
+Nomog-Geaya 30.0 30.0 30.0
+Panzuriel 30.0 30.0 30.0
+Raxivort 30.0 30.0 30.0
+Shargaas 30.0 30.0 30.0
+Sixin 30.0 30.0 30.0
+Skoraeus Stonebones 30.0 30.0 30.0
+Squerrik 30.0 30.0 30.0
+Surtr 30.0 30.0 30.0
+Thrym 30.0 30.0 30.0
+Vhaeraun 30.0 30.0 30.0
+Yurtrus 30.0 30.0 30.0
+Zinzerena 30.0 30.0 30.0
