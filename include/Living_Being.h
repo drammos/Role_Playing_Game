@@ -32,7 +32,7 @@ class Living_Being{
 
     virtual void displayStats();
 };
-
+class Monster;
 
 class Hero : public Living_Being{
     double magicPower; //ποσο μαγικης ενεργειας

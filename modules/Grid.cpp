@@ -125,9 +125,9 @@ void Grid::displayMap()const
 
     cout << BOLDMAGENTA << "The Map" << RESET << endl;
     
-    for(int i = 0; i<8;i++)
+    for(int i = 0; i< x;i++)
     {   
-        for(int j = 0; j < 8; j++)
+        for(int j = 0; j < y; j++)
         {
             
             cout << "\u250C";
@@ -135,7 +135,7 @@ void Grid::displayMap()const
             cout << "\u2510";       
         }
         cout << endl;
-        for(int j = 0; j < 8; j++)
+        for(int j = 0; j < y; j++)
         {
             cout << "\u2502";
             if(squares[i][j]->get_kind_of_square() == "Market" )
@@ -171,7 +171,7 @@ void Grid::displayMap()const
         }
         cout << endl;
 
-        for(int j = 0; j < 8; j++)
+        for(int j = 0; j < y; j++)
         {
             cout << "\u2514";
             cout << "\u2500\u2500\u2500";

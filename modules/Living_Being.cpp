@@ -1,4 +1,4 @@
-#include "Living_Being.h";
+#include "Living_Being.h"
 #include <ctime>
 
 Living_Being::Living_Being( string name, string life_being)

@@ -1,5 +1,3 @@
-
-
 //the following are UBUNTU/LINUX, and MacOS ONLY terminal color codes.
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -21,8 +19,7 @@
 
 
 #define MAX_LEVEL 5
-#define MONEY 100.0
-#define EXPERIENCE 0.0
+#define MONEY  100.0
 #define NEEDED_EXPERIENCE 10.0
 #define HEALTH_POWER 100.0
 #define MAGIC_POWER 100.0
