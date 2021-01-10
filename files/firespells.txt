@@ -1,30 +1,30 @@
-Flame
-Torch
-Eruption
-Flare
-Blaze
-Inferno
-Fireball
-Explosion
-Meteor
-Salamander’s_Blade
-Dragon_Fire
-Sinkhole
-Pit
-Chasm
-Vine
-Thorn
-Nettle
-Rockfall
-Landslide
-Avalanche
-Chill
-Freeze
-Frostbite
-Douse
-Deluge
-Flood
-Wave
-Surge
-Tsunami
-Nyad’s_Lore
+Flame 4.5 1 5.0 10.0 6.0 0.2 2
+Torch 5.5 1 5.0 17.0 5.0 0.3 3
+Eruption 6.0 1 10.0 16.0 7.0 0.3 3
+Flare 6.5 1 15.0 20.0 8.0 0.4 2
+Blaze 3.5 1 2.5 7.5 1.5 0.1 3
+Inferno 8.0 1 15.0 30.0 10.0 0.4 4
+Fireball 4.5 2 5.0 10.0 6.0 0.2 2
+Explosion 5.5 2 5.0 17.0 5.0 0.3 3
+Meteor 6.0 2 10.0 16.0 7.0 0.3 3
+Salamander’s_Blade 6.5 2 15.0 20.0 8.0 0.4 2
+Dragon_Fire 3.5 2 2.5 7.5 1.5 0.1 3
+Sinkhole 8.0 2 15.0 30.0 10.0 0.4 4
+Pit 4.5 3 5.0 10.0 6.0 0.2 2
+Chasm 5.5 3 5.0 17.0 5.0 0.3 3
+Vine 6.0 3 10.0 16.0 7.0 0.3 3
+Thorn 6.5 3 15.0 20.0 8.0 0.4 2
+Nettle 3.5 3 2.5 7.5 1.5 0.1 3
+Rockfall 8.0 3 15.0 30.0 10.0 0.4 4
+Landslide 4.5 4 5.0 10.0 6.0 0.2 2
+Avalanche 5.5 4 5.0 17.0 5.0 0.3 3
+Chill 6.0 4 10.0 16.0 7.0 0.3 3
+Freeze 6.5 4 15.0 20.0 8.0 0.4 2
+Frostbite 3.5 4 2.5 7.5 1.5 0.1 3
+Douse 8.0 4 15.0 30.0 10.0 0.4 4
+Deluge 4.5 5 5.0 10.0 6.0 0.2 2
+Flood 5.5 5 5.0 17.0 5.0 0.3 3
+Wave 6.0 5 10.0 16.0 7.0 0.3 3
+Surge 6.5 5 15.0 20.0 8.0 0.4 2
+Tsunami 3.5 5 2.5 7.5 1.5 0.1 3
+Nyad’s_Lore 8.0 5 15.0 30.0 10.0 0.4 4

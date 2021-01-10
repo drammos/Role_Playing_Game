@@ -55,6 +55,7 @@ public:
 };
 
 class LightingSpell:public Spell{
+    //PROBABILITY!!!
     double defense_prob_reduce;
     int rounds;
 public:
