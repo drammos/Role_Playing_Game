@@ -1,0 +1,49 @@
+Abbathor 30.0 30.0 30.0
+Aerdrie Faenya 30.0 30.0 30.0
+Arvoreen 30.0 30.0 30.0
+Baervan Wildwanderer 30.0 30.0 30.0
+Baravar Cloakshadow 30.0 30.0 30.0
+Berronar Truesilver 30.0 30.0 30.0
+Brandobaris 30.0 30.0 30.0
+Callarduran Smoothhands 30.0 30.0 30.0
+Charmalaine 30.0 30.0 30.0
+Clangeddin Silverbeard 30.0 30.0 30.0
+Corellon Larethian 30.0 30.0 30.0
+Cyrrollalee 30.0 30.0 30.0
+Deep Sashelas 30.0 30.0 30.0
+Dugmaren Brightmantle 30.0 30.0 30.0
+Dumathoin 30.0 30.0 30.0
+Ehlonna 30.0 30.0 30.0
+Erevan Ilesere 30.0 30.0 30.0
+Fenmarel Mestarine 30.0 30.0 30.0
+Fharlanghn 30.0 30.0 30.0
+Flandal Steelskin 30.0 30.0 30.0
+Gadhelyn 30.0 30.0 30.0
+Gaerdal Ironhand 30.0 30.0 30.0
+Garl Glittergold 30.0 30.0 30.0
+Gendwar Argrim 30.0 30.0 30.0
+Halani Celanil 30.0 30.0 30.0
+Heironeous 30.0 30.0 30.0
+Labelas Enoreth 30.0 30.0 30.0
+Moradin 30.0 30.0 30.0
+Muamman Duathal 30.0 30.0 30.0
+Olidammara 30.0 30.0 30.0
+Pelor 30.0 30.0 30.0
+Rillifane Rallathil 30.0 30.0 30.0
+Roykyn 30.0 30.0 30.0
+Segojan Earthcaller 30.0 30.0 30.0
+Sehanine Moonbow 30.0 30.0 30.0
+Sheela Peryroyl 30.0 30.0 30.0
+Solonor Thelandira 30.0 30.0 30.0
+St. Cuthbert 30.0 30.0 30.0
+Urdlen 30.0 30.0 30.0
+Urogalan 30.0 30.0 30.0
+Vergadain 30.0 30.0 30.0
+Ye'Cind 30.0 30.0 30.0
+Yondalla 30.0 30.0 30.0
+Annam 30.0 30.0 30.0
+Bahamut 30.0 30.0 30.0
+Blibdoolpoolp 30.0 30.0 30.0
+Diirinka 30.0 30.0 30.0
+Eadro 30.0 30.0 30.0
+Gruumsh 30.0 30.0 30.0

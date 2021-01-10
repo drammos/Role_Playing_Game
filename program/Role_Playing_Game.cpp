@@ -1,10 +1,13 @@
-#include "Grid.h"
+// #include "Grid.h"//
 #include "Living_Being.h"
 #include "Item.h"
 #include "Spell.h"
 #include "information.h"
 #include <iostream>
+#include "Grid.h"
 
+#include <fstream>
+#include <iostream> // Χρειάζεται για την έξοδο κειμένου στη γραμμή εντολών
 using namespace std;
 
 int main( void)
@@ -56,7 +59,54 @@ int main( void)
     double agility;
     double dexterity;
 
+    string filename = "heroes.txt";
+    ifstream file_heroes(filename );
+
+    while( file_heroes >> name >> strenght >> dexterity >> agility)
+    {
+        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+    }
+
+    filename = "monsters.txt";
+    ifstream file_monsters(filename );
+
+    while( file_monsters >> name >> strenght >> dexterity >> agility)
+    {
+        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+    }
     
+    filename = "armors.txt";
+    ifstream file_armors(filename );
+
+    while( file_armors >> name >> strenght >> dexterity >> agility)
+    {
+        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+    }
+
+    filename = "potions.txt";
+    ifstream file_potions(filename );
+
+    while( file_potions >> name >> strenght >> dexterity >> agility)
+    {
+        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+    }
+
+    filename = "spells.txt";
+    ifstream file_spells(filename );
+
+    while( file_spells >> name >> strenght >> dexterity >> agility)
+    {
+        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+    }
+
+    filename = "weapons.txt";
+    ifstream file_weapons(filename );
+
+    while( file_weapons >> name >> strenght >> dexterity >> agility)
+    {
+        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+    }
+
 
     //FOR HEROES
     cout << BOLDBLUE << "Who Heroes you want?" << RESET << endl;
@@ -72,7 +122,7 @@ int main( void)
 
     if( in == "Yes")
     {
-        Warrior* warrior = new warrior( name, strenght, dexterity, agility, x, y);
+        Warrior* warrior = new Warrior( name, strenght, dexterity, agility, x, y);
     }
 
     //FOR SORCERER

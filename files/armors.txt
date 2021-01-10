@@ -1,80 +1,80 @@
-Endless Road
-Genji Shield
-Emblem
-Crystal Shield
-Aegis Shield
-Golem Shield
-Revive Shield
-Rescue Shield
-Paladin Shield
-Diamond Shield
-Ruby Shield
-Dynasty Shield
-Magister Shield
-Collector's Shield
-Treasure Shield
-Shield of Hope
-Assault Shield
-Phantom Shield
-Recovery Shield
-Spiritual Shield
-Phoenix Shield
-Curative Shield
-Rainbow Shield
-Shining Shield
-Faerie Shield
-Peaceful Shield
-Shaman Shield
-Barrier Shield
-Star Shield
-Marching Shield
-Moon Shield
-Regen Shield
-Haste Shield
-Reflect Shield
-Protect Shield
-Shell Shield
-Platinum Shield
-Sapphire Shield
-Knight's Shield
-Wizard Shield
-Elemental Shield
-Defending Shield
-Crimson Shield
-Snow Shield
-Ochre Shield
-Cerulean Shield
-Medical Shield
-Lucid Shield
-Serene Shield
-Light Shield
-Soul Shield
-Blessed Shield
-Soft Shield
-Serum Shield
-Alert Shield
-Echo Shield
-Bright Shield
-Red Shield
-White Shield
-Yellow Shield
-Blue Shield
-NulTide Shield
-NulBlaze Shield
-NulFrost Shield
-Adept's Shield
-Tetra Shield
-Mythril Shield
-Gold Shield
-Emerald Shield
-Soldier's Shield
-Mage's Shield
-Silver Shield
-Onyx Shield
-Sorcery Shield
-Warrior's Shield
-Glorious Shield
-Metal Shield
-Pearl Shield
-Magic Shield
-Seeker's Shield
+Endless Road 10.0 1 5.0
+Genji Shield 10.5 1 5.0
+Emblem 11.0 1 6.0
+Crystal Shield 9.5 1 4.0
+Aegis Shield 9.9 1 4.5
+Golem Shield 10.2 1 5.5
+Revive Shield 11.5 1 5.5
+Rescue Shield 8.0 1 4.0
+Paladin Shield 8.5 1 4.2
+Diamond Shield 7.9 1 3.9
+Ruby Shield 8.3 1 5.3
+Dynasty Shield 9.2 1 5.6
+Magister Shield 10.3 1 5.8
+Collector's Shield 9.8 1 5.7
+Treasure Shield 11.2 1 6.7
+Shield of Hope 10.6 1 6.1
+Assault Shield 10.0 2 5.0
+Phantom Shield 10.5 2 5.0
+Recovery Shield 11.0 2 6.0
+Spiritual Shield 9.5 2 4.0
+Phoenix Shield 9.9 2 4.5
+Curative Shield 10.2 2 5.5
+Rainbow Shield 11.5 2 5.5
+Shining Shield 8.0 2 4.0
+Faerie Shield 8.5 2 4.2
+Peaceful Shield 7.9 2 3.9
+Shaman Shield 8.3 2 5.3
+Barrier Shield 9.2 2 5.6
+Star Shield 10.3 2 5.8
+Marching Shield 9.8 2 5.7
+Moon Shield 11.2 2 6.7
+Regen Shield 10.6 2 6.1
+Haste Shield 10.0 3 5.0
+Reflect Shield 10.5 3 5.0
+Protect Shield 11.0 3 6.0
+Shell Shield 9.5 3 4.0
+Platinum Shield 9.9 3 4.5
+Sapphire Shield 10.2 3 5.5
+Knight's Shield 11.5 3 5.5
+Wizard Shield 8.0 3 4.0
+Elemental Shield 8.5 3 4.2
+Defending Shield 7.9 3 3.9
+Crimson Shield 8.3 3 5.3
+Snow Shield 9.2 3 5.6
+Ochre Shield 10.3 3 5.8
+Cerulean Shield 9.8 3 5.7
+Medical Shield 11.2 3 6.7
+Lucid Shield 10.6 3 6.1
+Serene Shield 10.0 4 5.0
+Light Shield 10.5 4 5.0
+Soul Shield 11.0 4 6.0
+Blessed Shield 9.5 4 4.0
+Soft Shield 9.9 4 4.5
+Serum Shield 10.2 4 5.5
+Alert Shield 11.5 4 5.5
+Echo Shield 8.0 4 4.0
+Bright Shield 8.5 4 4.2
+Red Shield 7.9 4 3.9
+White Shield 8.3 4 5.3
+Yellow Shield 9.2 4 5.6
+Blue Shield 10.3 4 5.8
+NulTide Shield 9.8 4 5.7
+NulBlaze Shield 11.2 4 6.7
+NulFrost Shield 10.6 4 6.1
+Adept's Shield 10.0 5 5.0
+Tetra Shield 10.5 5 5.0
+Mythril Shield 11.0 5 6.0
+Gold Shield 9.5 5 4.0
+Emerald Shield 9.9 5 4.5
+Soldier's Shield 10.2 5 5.5
+Mage's Shield 11.5 5 5.5
+Silver Shield 8.0 5 4.0
+Onyx Shield 8.5 5 4.2
+Sorcery Shield 7.9 5 3.9
+Warrior's Shield 8.3 5 5.3
+Glorious Shield 9.2 5 5.6
+Metal Shield 10.3 5 5.8
+Pearl Shield 9.8 5 5.7
+Magic Shield 11.2 5 6.7
+Seeker's Shield 10.6 5 6.1
