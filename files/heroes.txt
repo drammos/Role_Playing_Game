@@ -1,41 +1,41 @@
 Abbathor 30.0 30.0 30.0
-Aerdrie Faenya 30.0 30.0 30.0
+Aerdrie_Faenya 30.0 30.0 30.0
 Arvoreen 30.0 30.0 30.0
-Baervan Wildwanderer 30.0 30.0 30.0
-Baravar Cloakshadow 30.0 30.0 30.0
-Berronar Truesilver 30.0 30.0 30.0
+Baervan_Wildwanderer 30.0 30.0 30.0
+Baravar_Cloakshadow 30.0 30.0 30.0
+Berronar_Truesilver 30.0 30.0 30.0
 Brandobaris 30.0 30.0 30.0
-Callarduran Smoothhands 30.0 30.0 30.0
+Callarduran_Smoothhands 30.0 30.0 30.0
 Charmalaine 30.0 30.0 30.0
-Clangeddin Silverbeard 30.0 30.0 30.0
-Corellon Larethian 30.0 30.0 30.0
+Clangeddin_Silverbeard 30.0 30.0 30.0
+Corellon_Larethian 30.0 30.0 30.0
 Cyrrollalee 30.0 30.0 30.0
-Deep Sashelas 30.0 30.0 30.0
-Dugmaren Brightmantle 30.0 30.0 30.0
+Deep_Sashelas 30.0 30.0 30.0
+Dugmaren_Brightmantle 30.0 30.0 30.0
 Dumathoin 30.0 30.0 30.0
 Ehlonna 30.0 30.0 30.0
-Erevan Ilesere 30.0 30.0 30.0
-Fenmarel Mestarine 30.0 30.0 30.0
+Erevan_Ilesere 30.0 30.0 30.0
+Fenmarel_Mestarine 30.0 30.0 30.0
 Fharlanghn 30.0 30.0 30.0
-Flandal Steelskin 30.0 30.0 30.0
+Flandal_Steelskin 30.0 30.0 30.0
 Gadhelyn 30.0 30.0 30.0
-Gaerdal Ironhand 30.0 30.0 30.0
-Garl Glittergold 30.0 30.0 30.0
-Gendwar Argrim 30.0 30.0 30.0
-Halani Celanil 30.0 30.0 30.0
+Gaerdal_Ironhand 30.0 30.0 30.0
+Garl_Glittergold 30.0 30.0 30.0
+Gendwar_Argrim 30.0 30.0 30.0
+Halani_Celanil 30.0 30.0 30.0
 Heironeous 30.0 30.0 30.0
-Labelas Enoreth 30.0 30.0 30.0
+Labelas_Enoreth 30.0 30.0 30.0
 Moradin 30.0 30.0 30.0
-Muamman Duathal 30.0 30.0 30.0
+Muamman_Duathal 30.0 30.0 30.0
 Olidammara 30.0 30.0 30.0
 Pelor 30.0 30.0 30.0
-Rillifane Rallathil 30.0 30.0 30.0
+Rillifane_Rallathil 30.0 30.0 30.0
 Roykyn 30.0 30.0 30.0
-Segojan Earthcaller 30.0 30.0 30.0
-Sehanine Moonbow 30.0 30.0 30.0
-Sheela Peryroyl 30.0 30.0 30.0
-Solonor Thelandira 30.0 30.0 30.0
-St. Cuthbert 30.0 30.0 30.0
+Segojan_Earthcaller 30.0 30.0 30.0
+Sehanine_Moonbow 30.0 30.0 30.0
+Sheela_Peryroyl 30.0 30.0 30.0
+Solonor_Thelandira 30.0 30.0 30.0
+St._Cuthbert 30.0 30.0 30.0
 Urdlen 30.0 30.0 30.0
 Urogalan 30.0 30.0 30.0
 Vergadain 30.0 30.0 30.0

@@ -3,64 +3,64 @@ Hi-Potion 5.0 1 agility 5.0
 X-Potion 5.0 1 dexterity 5.0
 Mega-Potion 6.0 1 strength 6.0
 Ether 6.0 1 agility 6.0
-Turbo Ether 6.0 1 dexterity 6.0
+Turbo_Ether 6.0 1 dexterity 6.0
 Elixir 4.0 1 strength 4.0
 Megalixir 4.0 1 agility 4.0
-Phoenix Down 4.0 1 dexterity 4.0 
-Mega Phoenix 5.5 1 strength 5.5
+Phoenix_Down 4.0 1 dexterity 4.0 
+Mega_Phoenix 5.5 1 strength 5.5
 Antidote 5.5 1 agility 5.5
-Echo Screen 5.5 1 dexterity 5.5
-Eye Drops 4.5 1 strength 4.5
-Holy Water 5.0 2 strength 5.0
+Echo_Screen 5.5 1 dexterity 5.5
+Eye_Drops 4.5 1 strength 4.5
+Holy_Water 5.0 2 strength 5.0
 Remedy 5.0 2 agility 5.0
 Soft 5.0 2 dexterity 5.0
-Al Bhed Potion 6.0 2 strength 6.0
-Healing Water 6.0 2 agility 6.0
-Tetra Elemental 6.0 2 dexterity 6.0
-Candle of Life 4.0 2 strength 4.0
-Dream Powder 4.0 2 agility 4.0
-Farplane Shadow 4.0 2 dexterity 4.0
-Farplane Wind 5.5 2 strength 5.5
-Frag Grenade 5.5 2 agility 5.5
-Silence Grenade 5.5 2 dexterity 5.5
-Sleeping Powder 4.5 2 strength 4.5
-Smoke Bomb 5.0 3 strength 5.0
-Petrify Grenade 5.0 3 agility 5.0
-Poison Fang 5.0 3 dexterity 5.0
-Blessed Gem 6.0 3 strength 6.0
-Dark Matter 6.0 3 agility 6.0
-Shadow Gem 6.0 3 dexterity 6.0
-Shining Gem 4.0 3 strength 4.0
-Supreme Gem 4.0 3 agility 4.0
-Gold Hourglass 4.0 3 dexterity 4.0
-Healing Spring 5.5 3 strength 5.5
-Light Curtain 5.5 3 agility 5.5
+Al_Bhed_Potion 6.0 2 strength 6.0
+Healing_Water 6.0 2 agility 6.0
+Tetra_Elemental 6.0 2 dexterity 6.0
+Candle_of_Life 4.0 2 strength 4.0
+Dream_Powder 4.0 2 agility 4.0
+Farplane_Shadow 4.0 2 dexterity 4.0
+Farplane_Wind 5.5 2 strength 5.5
+Frag_Grenade 5.5 2 agility 5.5
+Silence_Grenade 5.5 2 dexterity 5.5
+Sleeping_Powder 4.5 2 strength 4.5
+Smoke_Bomb 5.0 3 strength 5.0
+Petrify_Grenade 5.0 3 agility 5.0
+Poison_Fang 5.0 3 dexterity 5.0
+Blessed_Gem 6.0 3 strength 6.0
+Dark_Matter 6.0 3 agility 6.0
+Shadow_Gem 6.0 3 dexterity 6.0
+Shining_Gem 4.0 3 strength 4.0
+Supreme_Gem 4.0 3 agility 4.0
+Gold_Hourglass 4.0 3 dexterity 4.0
+Healing_Spring 5.5 3 strength 5.5
+Light_Curtain 5.5 3 agility 5.5
 Lunar 5.5 3 dexterity 5.5
-Mana Spring 4.5 3 strength 4.5
-Mana Tablet 5.0 4 strength 5.0
-Mana Tonic 5.0 4 agility 5.0
-Purifying Salt 5.0 4 dexterity 5.0
-Silver Hourglass 6.0 4 strength 6.0
-Soul Spring 6.0 4 agility 6.0
-Stamina Spring 6.0 4 dexterity 6.0
-Stamina Tablet 4.0 4 strength 4.0
-Stamina Tonic 4.0 4 agility 4.0
-Star Curtain 4.0 4 dexterity 4.0
-Three Stars 5.5 4 strength 5.5
-Twin Stars 5.5 4 agility 5.5
-Ability Distiller 5.5 4 dexterity 5.5
+Mana_Spring 4.5 3 strength 4.5
+Mana_Tablet 5.0 4 strength 5.0
+Mana_Tonic 5.0 4 agility 5.0
+Purifying_Salt 5.0 4 dexterity 5.0
+Silver_Hourglass 6.0 4 strength 6.0
+Soul_Spring 6.0 4 agility 6.0
+Stamina_Spring 6.0 4 dexterity 6.0
+Stamina_Tablet 4.0 4 strength 4.0
+Stamina_Tonic 4.0 4 agility 4.0
+Star_Curtain 4.0 4 dexterity 4.0
+Three_Stars 5.5 4 strength 5.5
+Twin_Stars 5.5 4 agility 5.5
+Ability_Distiller 5.5 4 dexterity 5.5
 Amulet 4.5 4 strength 4.5
-Designer Wallet 4.5 4 agility 4.5
-Door to Tomorrow 5.0 5 strength 5.0
-Gambler's Spirit 5.0 5 agility 5.0
-Hypello Potion 5.0 5 dexterity 5.0
-Mana Distiller 6.0 5 strength 6.0
+Designer_Wallet 4.5 4 agility 4.5
+Door_to_Tomorrow 5.0 5 strength 5.0
+Gambler's_Spirit 5.0 5 agility 5.0
+Hypello_Potion 5.0 5 dexterity 5.0
+Mana_Distiller 6.0 5 strength 6.0
 Map 6.0 5 agility 6.0
 Musk 6.0 5 dexterity 6.0
 Pendulum 4.0 5 strength 4.0
-Power Distiller 4.0 5 agility 4.0
-Shining Thorn 4.0 5 dexterity 4.0
-Speed Distiller 5.5 5 strength 5.5
-Underdog's Secret 5.5 5 agility 5.5
-Wings to Discovery 5.5 5 dexterity 5.5
-Winning Formula 4.5 5 strength 4.5
+Power_Distiller 4.0 5 agility 4.0
+Shining_Thorn 4.0 5 dexterity 4.0
+Speed_Distiller 5.5 5 strength 5.5
+Underdog's_Secret 5.5 5 agility 5.5
+Wings_to_Discovery 5.5 5 dexterity 5.5
+Winning_Formula 4.5 5 strength 4.5

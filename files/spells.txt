@@ -7,8 +7,8 @@ Inferno
 Fireball
 Explosion
 Meteor
-Salamander’s Blade
-Dragon Fire
+Salamander’s_Blade
+Dragon_Fire
 Sinkhole
 Pit
 Chasm
@@ -27,7 +27,7 @@ Flood
 Wave
 Surge
 Tsunami
-Nyad’s Lore
+Nyad’s_Lore
 Sleep
 Slumber
 Shock
@@ -39,7 +39,7 @@ Tempest
 Whirlwhind
 Cyclone
 Vortex
-Wyvern’s Wings
+Wyvern’s_Wings
 Daze
 Stun
 Confuse
@@ -52,7 +52,7 @@ Purge
 Wrath
 Retribution
 Judgment
-Angel’s Mercy
+Angel’s_Mercy
 Darkness
 Shade
 Gloom
@@ -62,30 +62,30 @@ Corrupt
 Spite
 Rancor
 Malice
-Demon’s Rage
+Demon’s_Rage
 Drain
 Siphon
 Void
-Bolt Strike
-Freeze Wave
-Inferno Blaze
-Channel Energy
-Shadow Blade
-Heaven's Sword
-Blazing Katana
-Staff of Ice
-Arrow of Purity
-Blazing Arrows
-Burn the Soul
-Fire Wings
-Fury of Osano-Wo
-Gaijin Flames
-Hungry Blade
-Yakamo’s Wrath
-Yakamo’s Eye
-Breath of Suitengu
-The Inner Ocean
-Surging Soul
-Endless Depth
-Kharmic Intent
-Whispered Blade
+Bolt_Strike
+Freeze_Wave
+Inferno_Blaze
+Channel_Energy
+Shadow_Blade
+Heaven's_Sword
+Blazing_Katana
+Staff_of_Ice
+Arrow_of_Purity
+Blazing_Arrows
+Burn_the_Soul
+Fire_Wings
+Fury_of_Osano-Wo
+Gaijin_Flames
+Hungry+Blade
+Yakamo’s_Wrath
+Yakamo’s_Eye
+Breath_of_Suitengu
+The_Inner_Ocean
+Surging_Soul
+Endless_Depth
+Kharmic_Intent
+Whispered_Blade

@@ -1,119 +1,119 @@
-Caladbolg
-Taming Sword
-Crystal Sword
-Excalibur
-Ragnarok
-Balmung
-Save the Queen
-Heartbreaker
-Lionheart
-Durandal
-Ascalon
-Ambitious
-Hrunting
-Astral Sword
-Apocalypse
-Slowstrike
-Master Sword
-Rune-Master
-Warlock
-Arc Sword
-Gilventure
-Tri-Steel
-Helter-Skelter
-Vendetta
-Avenger
-Prism Steel
-Mirage Sword
-Lifesaver
-Sonic Steel
-Vigilante
-Dance Macabre
-Largamente
-Gravestone
-Sidewinder
-Nightmare
-Mage Masher
-Nightbringer
-Knight Sword
-Wizard Sword
-Double-Edge
-Razzmatazz
-Deathbringer
-Stunning Steel
-Basilisk Steel
-Poison Steel
-Lullaby Steel
-Muted Steel
-Twilight Steel
-Hunter's Sword
-Flametongue
-Ice Brand
-Lightning Steel
-Force Saber
-Baroque Sword
-Sorcery Sword
-Soldier's Saber
-Rune Steel
-Enchanted Sword
-Fencing Saber
-Slasher
-Nirvana
-Herding Staff
-Arc Arcana
-Abraxas
-Heavenly Axis
-Judgment
-Seraphim Rod
-Rod of Roses
-Nimbus Rod
-Wing Wand
-Wonder Wand
-Laevatein
-Astral Rod
-Chaos Rod
-Power Staff
-Shining Staff
-Faerie Staff
-Magistral Rod
-El Dorado
-Tri-Rod
-Wicked Wand
-Nemesis Rod
-Defender
-Prism Rod
-Mirage Rod
-Healing Rod
-Wind Rod
-Conductor
-Punisher
-Calcite Staff
-Bizarre Staff
-Staff of Thorns
-Reticent Staff
-Darkness Staff
-Monk Staff
-Mage's Staff
-Dual Rod
-Ominous Rod
-Death Wand
-Entangling Rod
-Break Rod
-Belladonna Wand
-Lullaby Rod
-Rod of Silence
-Rod of Darkness
-Rod of Wisdom
-Rod of Fire
-Rod of Ice
-Rod of Lightning
-Rod of Water
-Malleable Staff
-Force Rod
-Ductile Rod
-Sorcery Rod
-Full Metal Rod
-Rune Rod
-Enchanted Rod
-Rod of Striking
-Spiked Rod
+Caladbolg 6.5 1 1 10.0
+Taming_Sword 6.5 1 2 10.5
+Crystal_Sword 6.0 1 1 9.5
+Excalibur 6.0 1 2 10.0
+Ragnarok 5.5 1 1 9.0
+Balmung 5.5 1 2 9.5
+Save_the_Queen 5.0 1 1 8.5
+Heartbreaker 5.0 1 2 9.0
+Lionheart 7.0 1 1 10.5
+Durandal 7.0 1 2 11.0
+Ascalon 6.5 1 1 10.0
+Ambitious 6.5 1 2 10.5
+Hrunting 6.0 1 1 9.5
+Astral_Sword 6.0 1 2 10.0
+Apocalypse 4.5 1 1 8.0
+Slowstrike 4.5 1 2 8.5
+Master_Sword 4.0 1 1 7.5
+Rune-Master 4.0 1 2 8.0
+Warlock 8.0 1 1 11.5
+Arc_Sword 8.0 1 2 12.0
+Gilventure 7.5 1 1 11.0
+Tri-Steel 7.5 1 2 11.5
+Helter-Skelter 5.5 1 1 9.0
+Vendetta 5.5 1 2 9.5
+Avenger 6.5 2 1 10.0
+Prism_Steel 6.5 2 2 10.5
+Mirage_Sword 6.0 2 1 9.5
+Lifesaver 6.0 2 2 10.0
+Sonic_Steel 5.5 2 1 9.0
+Vigilante 5.5 2 2 9.5
+Dance_Macabre 5.0 2 1 8.5
+Largamente 5.0 2 2 9.0
+Gravestone 7.0 2 1 10.5
+Sidewinder 7.0 2 2 11.0
+Nightmare 6.5 2 1 10.0
+Mage_Masher 6.5 2 2 10.5
+Nightbringer 6.0 2 1 9.5
+Knight_Sword 6.0 2 2 10.0
+Wizard_Sword 4.5 2 1 8.0
+Double-Edge 4.5 2 2 8.5
+Razzmatazz 4.0 2 1 7.5
+Deathbringer 4.0 2 2 8.0
+Stunning_Steel 8.0 2 1 11.5
+Basilisk_Steel 8.0 2 2 12.0
+Poison_Steel 7.5 2 1 11.0
+Lullaby_Steel 7.5 2 2 11.5
+Muted_Steel 5.5 2 1 9.0
+Twilight_Steel 5.5 2 2 9.5
+Hunter's_Sword 6.5 3 1 10.0
+Flametongue 6.5 3 2 10.5
+Ice_Brand 6.0 3 1 9.5
+Lightning_Steel 6.0 3 2 10.0
+Force_Saber 5.5 3 1 9.0
+Baroque_Sword 5.5 3 2 9.5
+Sorcery_Sword 5.0 3 1 8.5
+Soldier's_Saber 5.0 3 2 9.0
+Rune_Steel 7.0 3 1 10.5
+Enchanted_Sword 7.0 3 2 11.0
+Fencing_Saber 6.5 3 1 10.0
+Slasher 6.5 3 2 10.5
+Nirvana 6.0 3 1 9.5
+Herding_Staff 6.0 3 2 10.0
+Arc_Arcana 4.5 3 1 8.0
+Abraxas 4.5 3 2 8.5
+Heavenly_Axis 4.0 3 1 7.5
+Judgment 4.0 3 2 8.0
+Seraphim_Rod 8.0 3 1 11.5
+Rod_of_Roses 8.0 3 2 12.0
+Nimbus_Rod 7.5 3 1 11.0
+Wing_Wand 7.5 3 2 11.5
+Wonder_Wand 5.5 3 1 9.0
+Laevatein 5.5 2 2 9.5
+Astral_Rod 6.5 4 1 10.0
+Chaos_Rod 6.5 4 2 10.5
+Power_Staff 6.0 4 1 9.5
+Shining_Staff 6.0 4 2 10.0
+Faerie_Staff 5.5 4 1 9.0
+Magistral_Rod 5.5 4 2 9.5
+El_Dorado 5.0 4 1 8.5
+Tri-Rod 5.0 4 2 9.0
+Wicked_Wand 7.0 4 1 10.5
+Nemesis_Rod 7.0 4 2 11.0
+Defender 6.5 4 1 10.0
+Prism_Rod 6.5 4 2 10.5
+Mirage_Rod 6.0 4 1 9.5
+Healing_Rod 6.0 4 2 10.0
+Wind_Rod 4.5 4 1 8.0
+Conductor 4.5 4 2 8.5
+Punisher 4.0 4 1 7.5
+Calcite_Staff 4.0 4 2 8.0
+Bizarre_Staff 8.0 4 1 11.5
+Staff_of_Thorns 8.0 4 2 12.0
+Reticent_Staff 7.5 4 1 11.0
+Darkness_Staff 7.5 4 2 11.5
+Monk_Staff 5.5 4 1 9.0
+Mage's_Staff 6.5 5 1 10.0
+Dual_Rod 6.5 5 2 10.5
+Ominous_Rod 6.0 5 1 9.5
+Death_Wand 6.0 5 2 10.0
+Entangling_Rod 5.5 5 1 9.0
+Break_Rod 5.5 5 2 9.5
+Belladonna_Wand 5.0 5 1 8.5
+Lullaby_Rod 5.0 5 2 9.0
+Rod_of_Silence 7.0 5 1 10.5
+Rod_of_Darkness 7.0 5 2 11.0
+Rod_of_Wisdom 6.5 5 1 10.0
+Rod_of_Fire 6.5 5 2 10.5
+Rod_of_Ice 6.0 5 1 9.5
+Rod_of_Lightning 6.0 5 2 10.0
+Rod_of_Water 4.5 5 1 8.0
+Malleable_Staff 4.5 5 2 8.5
+Force_Rod 4.0 5 1 7.5
+Ductile_Rod 4.0 5 2 8.0
+Sorcery_Rod 8.0 5 1 11.5
+Full_Metal_Rod 8.0 5 2 12.0
+Rune_Rod 7.5 5 1 11.0
+Enchanted_Rod 7.5 5 2 11.5
+Rod_of_Striking 5.5 5 1 9.0
+Spiked_Rod 5.5 5 2 9.5
