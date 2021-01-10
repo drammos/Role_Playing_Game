@@ -10,6 +10,25 @@
 #include <iostream> // Χρειάζεται για την έξοδο κειμένου στη γραμμή εντολών
 using namespace std;
 
+
+//struct for heroes and monster
+struct input_1{
+    string name;
+    double x1;
+    double x2;
+    double x3;   
+    double x4; //null for heroes
+};
+
+//struct for armors and potion
+struct input_2{
+    string name;
+    string characteristic; //null for armors
+    double x1;
+    int level;
+    double x2;
+};
+
 int main( void)
 {
     cout << BOLDBLACK << "ROLE PLAYING GAME" << RESET << endl;
@@ -55,103 +74,192 @@ int main( void)
     string in;
 
     string name;
-    double strenght;
-    double agility;
-    double dexterity;
+    double x1;
+    double x2;
+    double x3;
+    double x4;
+
+    vector< input_1> vector_heroes;
 
     string filename = "heroes.txt";
     ifstream file_heroes(filename );
 
-    while( file_heroes >> name >> strenght >> dexterity >> agility)
-    {
-        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+    while( file_heroes >> name >> x1 >> x2 >> x3)
+    {   cout << "ela" << endl;
+        input_1 in;
+        in.name = name;
+        in.x1 = x1;
+        in.x2 = x2;
+        in.x3 = x3;
+        in.x4 = NULL;
+
+        vector_heroes.push_back( in);
     }
 
+    //ο παικτης επιλεγει 1 - 3 ηρωες αρα κραταω 3 ηρωες τυχαια
+    //και διαγραφω τους υπολοιπους
+
+    input_1 in_1;
+    input_1 in_2;
+    input_1 in_3;
+
+    int i = rand()%( vector_heroes.size());
+    int k = rand()%( vector_heroes.size());
+    int f = rand()%( vector_heroes.size());
+    while( i == f || i == k || k == f)
+    {
+        i = rand()%( vector_heroes.size());
+        k = rand()%( vector_heroes.size());
+        f = rand()%( vector_heroes.size());
+    }
+    in_1 = vector_heroes.at( i);
+    in_2 = vector_heroes.at( k);
+    in_3 = vector_heroes.at( f);
+
+    vector_heroes.clear();
+
+
+    //διαβαζω τα τερατα
     filename = "monsters.txt";
     ifstream file_monsters(filename );
+    vector< input_1> vector_monsters;
 
-    while( file_monsters >> name >> strenght >> dexterity >> agility)
+    while( file_monsters >> name >> x1 >> x2 >> x3 >> x4)
     {
-        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+        input_1 in;
+        in.name = name;
+        in.x1 = x1;
+        in.x2 = x2;
+        in.x3 = x3;
+        in.x4 = x4;
+
+        vector_heroes.push_back( in);
     }
     
+
+    int level;
+    string characteristic;
+    
+    //διαβαζω τισ πανοπλιες
     filename = "armors.txt";
     ifstream file_armors(filename );
 
-    while( file_armors >> name >> strenght >> dexterity >> agility)
+    vector< input_2> vector_armors;
+
+    while( file_armors >> name >> x1 >> level >> x2)
     {
-        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+        input_2 in_;
+        in_.name = name;
+        in_.x1 = x1;
+        in_.x2 = x2;
+        in_.level = level;
+        in_.characteristic = nullptr;
+
+        vector_armors.push_back( in_);
     }
 
+
+    //διαβαζω τα φιλτρα
     filename = "potions.txt";
     ifstream file_potions(filename );
 
-    while( file_potions >> name >> strenght >> dexterity >> agility)
+    vector< input_2> vector_potions;
+
+
+    while( file_potions >> name >> name >> x1 >> level >> characteristic >> x2)
     {
-        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+        input_2 in_;
+        in_.name = name;
+        in_.x1 = x1;
+        in_.x2 = x2;
+        in_.level = level;
+        in_.characteristic = characteristic;
+
+        vector_potions.push_back( in_);    
     }
 
+    //διαβαζω τα ξορκια
     filename = "spells.txt";
-    ifstream file_spells(filename );
+    ifstream file_spells( filename);
 
-    while( file_spells >> name >> strenght >> dexterity >> agility)
+    vector< string> vector_spells;
+
+    while( file_spells >> name)
     {
-        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+        vector_spells.push_back( name);
     }
 
-    filename = "weapons.txt";
-    ifstream file_weapons(filename );
 
-    while( file_weapons >> name >> strenght >> dexterity >> agility)
+    //διαβαζω τα Weapons
+    filename = "weapons.txt";
+    ifstream file_weapons( filename);
+
+    vector< string> vector_weapons;
+
+    while( file_weapons >> name)
     {
-        cout << name << " " << strenght << " " << dexterity << " " << agility << endl;
+        vector_weapons.push_back( name);
     }
 
 
     //FOR HEROES
     cout << BOLDBLUE << "Who Heroes you want?" << RESET << endl;
     
-    //FOR WARRIOR
-    cout << "You want Warrior? Yes/No." << endl;
+    bool heroes_change = false;
+
+    do{
+        //FOR WARRIOR
+        cout << "You want Warrior? Yes/No." << endl;
     
-    cin >> in;
-    while( in != "Yes" && in != "No"){
-        cout << RED << "Invalid answer, try again!" << RESET << endl;
         cin >> in;
-    }
+        while( in != "Yes" && in != "No"){
+            cout << RED << "Invalid answer, try again!" << RESET << endl;
+            cin >> in;
+        }
 
-    if( in == "Yes")
-    {
-        Warrior* warrior = new Warrior( name, strenght, dexterity, agility, x, y);
-    }
+        if( in == "Yes")
+        {   
+        
+            Warrior* warrior = new Warrior( in_1.name, in_1.x1, in_1.x2, in_1.x3, x, y);
+            heroes_change = true;
+        }
 
-    //FOR SORCERER
-    cout << "You want Sorcerer? Yes/No." << endl;
+        //FOR SORCERER
+        cout << "You want Sorcerer? Yes/No." << endl;
 
-    cin >> in;
-    while( in != "Yes" && in != "No"){
-        cout << RED << "Invalid answer, try again!" << RESET << endl;
         cin >> in;
-    }
+        while( in != "Yes" && in != "No"){
+            cout << RED << "Invalid answer, try again!" << RESET << endl;
+            cin >> in;
+        }
 
-    if( in == "Yes")
-    {
-        Sorcerer* sorcerer = new Sorcerer( name, strenght, dexterity, agility, x, y);
-    }
+        if( in == "Yes")
+        {
+            Sorcerer* sorcerer = new Sorcerer( in_2.name, in_2.x1, in_2.x2, in_2.x3, x, y);
+            heroes_change = true;
+        }
 
-    //FOR PALADIN
-    cout << "You want Paladin? Yes/No." << endl;
+        //FOR PALADIN
+        cout << "You want Paladin? Yes/No." << endl;
 
-    cin >> in;
-    while( in != "Yes" && in != "No"){
-        cout << RED << "Invalid answer, try again!" << RESET << endl;
         cin >> in;
-    }
+        while( in != "Yes" && in != "No"){
+            cout << RED << "Invalid answer, try again!" << RESET << endl;
+            cin >> in;
+        }
 
-    if( in == "Yes")
-    {
-        Paladin* paladin = new Paladin( name, strenght, dexterity, agility, x, y);
-    }
+        if( in == "Yes")
+        {
+            Paladin* paladin = new Paladin( in_3.name, in_3.x1, in_3.x2, in_3.x3, x, y);
+            heroes_change = true;
+        }
+
+        if( heroes_change == false)
+        {
+            cout << RED << "YOU MUST CHANGE FROM 1 UNTIL 3 HEROES!" << RESET << endl;
+        }
+
+    }while( heroes_change == false);
 
     grid->displayMap();
 

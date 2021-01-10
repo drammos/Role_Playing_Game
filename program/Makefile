@@ -1,6 +1,7 @@
 # paths
 MODULES = ../modules
 INCLUDE = ../include
+FILES = ../files
 
 # Compile options. Το -I<dir> λέει στον compiler να αναζητήσει εκεί include files
 CXXFLAGS = -Wall -g -I$(INCLUDE)
