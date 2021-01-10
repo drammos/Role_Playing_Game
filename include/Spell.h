@@ -34,6 +34,7 @@ public:
 };
 
 class IceSpell:public Spell{
+    //PROBABILITY!!!
     double damage_low_new;
     int rounds; 
 public:

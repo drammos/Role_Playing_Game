@@ -1,0 +1,31 @@
+Corrupt 5.0 1 5.0 15.0 4.5 0.3 2
+Spite 5.5 1 5.0 17.0 5.0 0.3 3
+Rancor 6.0 1 10.0 16.0 7.0 0.3 3
+Malice 
+Demon’s_Rage
+Drain
+Siphon
+Void
+Bolt_Strike
+Freeze_Wave
+Inferno_Blaze
+Channel_Energy
+Shadow_Blade
+Heaven's_Sword
+Blazing_Katana
+Staff_of_Ice
+Arrow_of_Purity
+Blazing_Arrows
+Burn_the_Soul
+Fire_Wings
+Fury_of_Osano-Wo
+Gaijin_Flames
+Hungry_Blade
+Yakamo’s_Wrath
+Yakamo’s_Eye
+Breath_of_Suitengu
+The_Inner_Ocean
+Surging_Soul
+Endless_Depth
+Kharmic_Intent
+Whispered_Blade
