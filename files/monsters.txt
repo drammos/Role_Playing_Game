@@ -1,49 +1,49 @@
-Hruggek 30.0 30.0 30.0
-Ilsensine 30.0 30.0 30.0
-Jubilex 30.0 30.0 30.0
-Kurtulmak 30.0 30.0 30.0
-Laduguer 30.0 30.0 30.0
-Loagzed 30.0 30.0 30.0
-Lolth 30.0 30.0 30.0
-Maglubiyet 30.0 30.0 30.0
-Merrshaulk 30.0 30.0 30.0
-Orcus 30.0 30.0 30.0
-Sekolah 30.0 30.0 30.0
-Semuanya 30.0 30.0 30.0
-Shekinester 30.0 30.0 30.0
-Skerrit 30.0 30.0 30.0
-Stronmaus 30.0 30.0 30.0
-Tiamat 30.0 30.0 30.0
-Vaprak 30.0 30.0 30.0
-Yeenoghu 30.0 30.0 30.0
-Aasterinian 30.0 30.0 30.0
-Bagrivyek 30.0 30.0 30.0
-Bahgtru 30.0 30.0 30.0
-Chronepsis 30.0 30.0 30.0
-Doresain 30.0 30.0 30.0
-Falazure 30.0 30.0 30.0
-Gaknulak 30.0 30.0 30.0
-Grankhul 30.0 30.0 30.0
-Great Mother 30.0 30.0 30.0
-Grolantor 30.0 30.0 30.0
-Hiatea 30.0 30.0 30.0
-Iallanis 30.0 30.0 30.0
-Ilneval 30.0 30.0 30.0
-Io 30.0 30.0 30.0
-Karontor 30.0 30.0 30.0
-Kiaransalee 30.0 30.0 30.0
-Khurgorbaeyag 30.0 30.0 30.0
-Luthic 30.0 30.0 30.0
-Memnor 30.0 30.0 30.0
-Nomog-Geaya 30.0 30.0 30.0
-Panzuriel 30.0 30.0 30.0
-Raxivort 30.0 30.0 30.0
-Shargaas 30.0 30.0 30.0
-Sixin 30.0 30.0 30.0
-Skoraeus Stonebones 30.0 30.0 30.0
-Squerrik 30.0 30.0 30.0
-Surtr 30.0 30.0 30.0
-Thrym 30.0 30.0 30.0
-Vhaeraun 30.0 30.0 30.0
-Yurtrus 30.0 30.0 30.0
-Zinzerena 30.0 30.0 30.0
+Hruggek 5.0 20.0 5.0 15.5
+Ilsensine 5.0 20.0 5.0 15.5
+Jubilex 5.0 20.0 5.0 15.5
+Kurtulmak 5.0 20.0 5.0 15.5
+Laduguer 5.0 20.0 5.0 15.5
+Loagzed 5.0 20.0 5.0 15.5
+Lolth 5.0 20.0 5.0 15.5
+Maglubiyet 5.0 20.0 5.0 15.5
+Merrshaulk 5.0 20.0 5.0 15.5
+Orcus 5.0 20.0 5.0 15.5
+Sekolah 5.0 20.0 5.0 15.5
+Semuanya 5.0 20.0 5.0 15.5
+Shekinester 5.0 20.0 5.0 15.5
+Skerrit 5.0 20.0 5.0 15.5
+Stronmaus 5.0 20.0 5.0 15.5
+Tiamat 5.0 20.0 5.0 15.5
+Vaprak 5.0 20.0 5.0 15.5
+Yeenoghu 5.0 20.0 5.0 15.5
+Aasterinian 5.0 20.0 5.0 15.5
+Bagrivyek 5.0 20.0 5.0 15.5
+Bahgtru 5.0 20.0 5.0 15.5
+Chronepsis 5.0 20.0 5.0 15.5
+Doresain 5.0 20.0 5.0 15.5
+Falazure 5.0 20.0 5.0 15.5
+Gaknulak 5.0 20.0 5.0 15.5
+Grankhul 5.0 20.0 5.0 15.5
+Great Mother 5.0 20.0 5.0 15.5
+Grolantor 5.0 20.0 5.0 15.5
+Hiatea 5.0 20.0 5.0 15.5
+Iallanis 5.0 20.0 5.0 15.5
+Ilneval 5.0 20.0 5.0 15.5
+Io 5.0 20.0 5.0 15.5
+Karontor 5.0 20.0 5.0 15.5
+Kiaransalee 5.0 20.0 5.0 15.5
+Khurgorbaeyag 5.0 20.0 5.0 15.5
+Luthic 5.0 20.0 5.0 15.5
+Memnor 5.0 20.0 5.0 15.5
+Nomog-Geaya 5.0 20.0 5.0 15.5
+Panzuriel 5.0 20.0 5.0 15.5
+Raxivort 5.0 20.0 5.0 15.5
+Shargaas 5.0 20.0 5.0 15.5
+Sixin 5.0 20.0 5.0 15.5
+Skoraeus Stonebones 5.0 20.0 5.0 15.5
+Squerrik 5.0 20.0 5.0 15.5
+Surtr 5.0 20.0 5.0 15.5
+Thrym 5.0 20.0 5.0 15.5
+Vhaeraun 5.0 20.0 5.0 15.5
+Yurtrus 5.0 20.0 5.0 15.5
+Zinzerena 5.0 20.0 5.0 15.5
