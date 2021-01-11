@@ -33,8 +33,8 @@ int main( void)
 {
     cout << BOLDBLACK << "ROLE PLAYING GAME" << RESET << endl;
 
-    cout << "Press 1 for Start Game" << endl;
-    cout << "Press 2 for Quit" << endl;
+    cout << "Press 1 to Start Game" << endl;
+    cout << "Press 2 to Quit" << endl;
 
     int answer;
     cin >> answer;
@@ -203,13 +203,13 @@ int main( void)
 
 
     //FOR HEROES
-    cout << BOLDBLUE << "Who Heroes you want?" << RESET << endl;
+    cout << BOLDBLUE << "Which Heroes do you want to choose?" << RESET << endl;
     
     bool heroes_change = false;
 
     do{
         //FOR WARRIOR
-        cout << "You want Warrior? Yes/No." << endl;
+        cout << "Do you want a Warrior? Yes/No." << endl;
     
         cin >> in;
         while( in != "Yes" && in != "No"){
@@ -225,7 +225,7 @@ int main( void)
         }
 
         //FOR SORCERER
-        cout << "You want Sorcerer? Yes/No." << endl;
+        cout << "Do you want a Sorcerer? Yes/No." << endl;
 
         cin >> in;
         while( in != "Yes" && in != "No"){
@@ -240,7 +240,7 @@ int main( void)
         }
 
         //FOR PALADIN
-        cout << "You want Paladin? Yes/No." << endl;
+        cout << "Do you want a Paladin? Yes/No." << endl;
 
         cin >> in;
         while( in != "Yes" && in != "No"){
