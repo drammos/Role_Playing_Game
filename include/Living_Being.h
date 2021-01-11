@@ -30,6 +30,7 @@ class Living_Being{
     int get_level()const;
 
     void set_healthPower( double);
+    void add_healthPower(double);
 
     virtual void displayStats();
 };
@@ -84,10 +85,12 @@ class Hero : public Living_Being{
     void set_dexterity( double);
     void set_agility( double);
     void add_money( double);
+    void set_money(double);
     void add_experience( double);
     void set_Weapon( int);
     void set_Armor( int);
     void set_Potion( Item*);
+    void add_magicPower(double);
     
 
     //for level up

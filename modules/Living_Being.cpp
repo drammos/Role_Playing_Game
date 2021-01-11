@@ -35,7 +35,10 @@ void Living_Being::set_healthPower( double damage)
     if( healthPower <= 0)healthPower = 0;
 }
 
-
+void Living_Being::add_healthPower( double healthpower)
+{
+    this->healthPower += healthpower;
+}
 
 void Living_Being::level_up()
 {
@@ -165,6 +168,11 @@ void Hero::add_money( double money)
     this->money = this->money + money;
 }
 
+void Hero::set_money(double money)
+{
+    this->money = money;
+}
+
 void Hero::add_experience( double experience)
 {
     this->experience = this->experience + experience;
@@ -195,6 +203,10 @@ void Hero::set_y( int y)
     this->y = y;
 }
 
+void Hero::add_magicPower(double magic)
+{
+    this->magicPower += magic;
+}
 
 //ανεβαινει επιπεδο
 void Hero::level_up()

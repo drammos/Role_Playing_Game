@@ -20,6 +20,7 @@
 
 #define MAX_LEVEL 5
 #define MONEY  100.0
-#define NEEDED_EXPERIENCE 10.0
 #define HEALTH_POWER 100.0
 #define MAGIC_POWER 100.0
+#define EXPERIENCE 3.0
+double NEEDED_EXPERIENCE = 10.0;

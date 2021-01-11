@@ -323,7 +323,11 @@ void Square::War(){
     if(r)return;
 
     cout<<"You are on a war with "<<this->monsters.size()<<" monsters"<<endl;
-
+    if(this->heroes.at(0)->get_level() > this->monsters.at(0)->get_level()){
+        for(int i = 0; i < this->monsters.size(); i++){
+            this->monsters.at(i)->level_up();
+        }
+    }
     while(this->alive() == 0){
         for(int i = 0; i < this->heroes.size(); i++){
             if(this->heroes.at(i)->get_healthPower() == 0.0)
@@ -457,20 +461,48 @@ void Square::War(){
             this->monsters.at(i)->attack(this->heroes.at(j));
             this->monsters.at(i)->reset_fields();
         }
+        for(int i = 0; i < this->heroes.size(); i++){
+            if(this->heroes.at(i)->get_healthPower() != 0.0){
+                this->heroes.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
+                this->heroes.at(i)->add_magicPower(0.1 * this->heroes.at(i)->get_magicPower());
+            }
+        }
+        for(int i = 0; i < this->monsters.size(); i++){
+            if(this->monsters.at(i)->get_healthPower() != 0.0)
+                this->monsters.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
+        }
     }
     if(this->alive() == 1){
         cout<<"You lost the war"<<endl;
+        for(int i = 0; i < this->heroes.size(); i++){
+            this->heroes.at(i)->set_money(this->heroes.at(i)->get_money() / 2.0);
+        }
     }
     else{
         cout<<"You won the war. Congratulations!"<<endl;
+        for(int i = 0; i < this->heroes.size(); i++){
+            this->heroes.at(i)->add_experience((this->heroes.at(i)->get_level() + EXPERIENCE) * this->monsters.size());
+            this->heroes.at(i)->add_money((this->heroes.at(i)->get_level() + MONEY) * this->monsters.size());
+        }
     }
     for(int i = 0; i < this->monsters.size(); i++){
         this->monsters.at(i)->set_rounds(1);
         this->monsters.at(i)->reset_fields();
+        if(this->monsters.at(i)->get_healthPower() == 0.0)
+            this->monsters.at(i)->set_healthPower(HEALTH_POWER/2.0);
     }
     for(int i = 0; i < this->heroes.size(); i++){
         if(this->heroes.at(i)->get_healthPower() == 0.0)
             this->heroes.at(i)->set_healthPower(HEALTH_POWER/2.0);
+    }
+    if(this->heroes.at(0)->get_experience() >= NEEDED_EXPERIENCE){
+        for(int i = 0; i < this->heroes.size(); i++){
+            this->heroes.at(i)->level_up();
+            NEEDED_EXPERIENCE *= 2;
+        }
+        for(int i = 0; i < this->monsters.size(); i++){
+            this->monsters.at(i)->level_up();
+        }
     }
 }
 
