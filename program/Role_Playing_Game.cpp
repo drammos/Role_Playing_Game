@@ -8,6 +8,7 @@
 
 #include <fstream>
 #include <iostream> // Χρειάζεται για την έξοδο κειμένου στη γραμμή εντολών
+#include <cstdlib>
 using namespace std;
 
 
@@ -81,8 +82,9 @@ int main( void)
 
     vector< input_1> vector_heroes;
 
-    string filename = "heroes.txt";
-    ifstream file_heroes(filename );
+    //string filename = "/files/heroes.txt";
+    ifstream file_heroes;
+    file_heroes.open("/files/heroes.txt");
 
     while( file_heroes >> name >> x1 >> x2 >> x3)
     {   cout << "ela" << endl;
@@ -95,7 +97,7 @@ int main( void)
 
         vector_heroes.push_back( in);
     }
-
+    file_heroes.close();
     //ο παικτης επιλεγει 1 - 3 ηρωες αρα κραταω 3 ηρωες τυχαια
     //και διαγραφω τους υπολοιπους
 
@@ -120,8 +122,9 @@ int main( void)
 
 
     //διαβαζω τα τερατα
-    filename = "monsters.txt";
-    ifstream file_monsters(filename );
+    ifstream file_monsters;
+    file_monsters.open("/files/monsters.txt");
+    //ifstream file_monsters(filename );
     vector< input_1> vector_monsters;
 
     while( file_monsters >> name >> x1 >> x2 >> x3 >> x4)
@@ -135,14 +138,15 @@ int main( void)
 
         vector_heroes.push_back( in);
     }
-    
+    file_monsters.close();
 
     int level;
     string characteristic;
     
     //διαβαζω τισ πανοπλιες
-    filename = "armors.txt";
-    ifstream file_armors(filename );
+    ifstream file_armors;
+    file_armors.open("/files/armors.txt");
+    //ifstream file_armors(filename );
 
     vector< input_2> vector_armors;
 
@@ -157,11 +161,12 @@ int main( void)
 
         vector_armors.push_back( in_);
     }
-
+    file_armors.close();
 
     //διαβαζω τα φιλτρα
-    filename = "potions.txt";
-    ifstream file_potions(filename );
+    //filename = "potions.txt";
+    ifstream file_potions;
+    file_potions.open("/files/potions.txt");
 
     vector< input_2> vector_potions;
 
@@ -177,8 +182,10 @@ int main( void)
 
         vector_potions.push_back( in_);    
     }
+    file_potions.close();
 
     //διαβαζω τα ξορκια
+    
     filename = "spells.txt";
     ifstream file_spells( filename);
 
@@ -191,8 +198,9 @@ int main( void)
 
 
     //διαβαζω τα Weapons
-    filename = "weapons.txt";
-    ifstream file_weapons( filename);
+    //filename = "weapons.txt";
+    ifstream file_weapons;
+    file_weapons.open("/files/weapons.txt");
 
     vector< string> vector_weapons;
 
@@ -200,7 +208,7 @@ int main( void)
     {
         vector_weapons.push_back( name);
     }
-
+    file_weapons.close();
 
     //FOR HEROES
     cout << BOLDBLUE << "Which Heroes do you want to choose?" << RESET << endl;
