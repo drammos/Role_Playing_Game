@@ -46,7 +46,7 @@ void Living_Being::level_up()
 }
 
 void Living_Being::displayStats(){
-    cout<<"Name is:"<<this->name<<endl;
+    cout<<"The name is:"<<this->name<<endl;
     cout<<"The healthpower is:"<<this->healthPower<<endl;
     cout<<"The level is:"<<this->level<<endl;
     cout<<"This is a "<<this->life_being<<endl;
@@ -328,11 +328,11 @@ int Hero::print_spell()const
     int size = spell_vector.size();
     if(size == 0)
     {
-        cout << "Δεν υπαρχουν ξορκια στην διαθεση σας!" << endl;
+        cout << "You don't have any spells to use!" << endl;
     }
     else
     {
-        cout << "Τα ξορκια σας:" << endl;
+        cout << "Your spells are:" << endl;
     }
     for( int i =0; i < size; i++ )
     {
@@ -348,11 +348,11 @@ int Hero::print_item()const
     int size_all = Weapon_vector.size() + Armor_vector.size() + Potion_vector.size();
     if(size_all == 0)
     {
-        cout << "Δεν υπαρχουν αντικειμενα στην διαθεση σας!" << endl;
+        cout << "You don't have any items!" << endl;
     }
     else
     {
-        cout << "Τα αντικειμενα σας:" << endl;
+        cout << "Your items are:" << endl;
     }
     
     int size = Weapon_vector.size();
@@ -390,12 +390,12 @@ int Hero::print_Weapon()const
     int size = Weapon_vector.size();
     if( size == 0)
     {   
-        cout << "You havn't Weapon." << endl;
+        cout << "You don't have any weapons!" << endl;
         return 0;
     }
     else
     {
-        cout << "Your Weapon:" << endl;
+        cout << "Your Weapons are:" << endl;
     }
     
     for( int i = 0; i < Weapon_vector.size(); i++)
@@ -414,12 +414,12 @@ int Hero::print_Armor()const
     int size = Armor_vector.size();
     if( size == 0)
     {   
-        cout << "You havn't Armor." << endl;
+        cout << "You don't have any armors!" << endl;
         return 0;
     }
     else
     {
-        cout << "Your Armor:" << endl;
+        cout << "Your armors are:" << endl;
     }
     
     for( int i = 0; i < Armor_vector.size(); i++)
@@ -545,7 +545,7 @@ bool Hero::castSpell( Monster* monster)
     }
 
     cout << "Which spell do you want to cast?" << endl;
-    cout << "Press correct number" << endl;
+    cout << "Press the correct number" << endl;
 
     int answer;
     cin >> answer;
@@ -582,7 +582,7 @@ bool Hero::castSpell( Monster* monster)
 
         print_spell();
         cout << "Which spell do you want to cast?" << endl;
-        cout << "Press correct number" << endl;
+        cout << "Press the correct number" << endl;
         
         cin >> answer;
 
