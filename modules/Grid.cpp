@@ -8,6 +8,10 @@
 Grid::Grid(int x, int y){
     this->x = x;
     this->y = y;
+
+    x_heroes = -1;
+    y_heroes = -1;
+
     srand(time(NULL));
     squares = new Square**[x];
     for(int i = 0; i < x; i++)
@@ -35,6 +39,55 @@ Grid::~Grid(){
         }
     }
 }
+
+//βαζω τους ηρωες σε ενα τυχαιο market τετραγωνο
+void Grid::set_heroes( Hero* hero)
+{   
+    
+    if( x_heroes == -1)
+    {
+        srand( time(NULL));
+        bool in = false;
+        while( in != true)
+        {
+            x_heroes = rand()%(x+1);
+            y_heroes = rand()&(y+1);
+            if( (squares[x_heroes][y_heroes]->get_kind_of_square()).compare( "Market") == 0)
+            {
+                in = true;
+            }
+        }
+    }
+
+    hero->set_x( x_heroes);
+    hero->set_y( y_heroes);
+    squares[x_heroes][y_heroes]->add_hero( hero);
+}
+
+void Grid::set_monsters( Monster* monster)
+{
+    srand(time(NULL));
+    bool in = false;
+    int x1;
+    int y1;
+    while( in != true)
+    {
+        x1 = rand()%(x+1);
+        y1 = rand()&(y+1);
+        if( (squares[x1][y1]->get_kind_of_square()).compare( "Common") == 0)
+        {
+            in = true;
+            squares[x1][y1]->add_monster( monster);
+        }   
+    }
+}
+
+
+void Grid::StartGame()
+{
+    
+}
+
 
 
 void Grid::checkInventory( Hero* hero)

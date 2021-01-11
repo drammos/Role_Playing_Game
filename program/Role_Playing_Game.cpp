@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream> // Χρειάζεται για την έξοδο κειμένου στη γραμμή εντολών
 #include <cstdlib>
+
 using namespace std;
 
 
@@ -28,6 +29,27 @@ struct input_2{
     double x1;
     int level;
     double x2;
+};
+
+//struct for lightspells, firespells and icespells
+struct input_3{
+    string name;
+    double x1;
+    double x2;
+    double x3;
+    double x4;
+    double x5;
+    int I1;
+    int I2;
+};
+
+//struct for weapons
+struct input_4{
+    string name;
+    double x1;
+    double x2;
+    int I1;
+    int I2;
 };
 
 int main( void)
@@ -82,7 +104,7 @@ int main( void)
 
     vector< input_1> vector_heroes;
 
-    //string filename = "/files/heroes.txt";
+
     ifstream file_heroes;
     file_heroes.open("/files/heroes.txt");
 
@@ -124,7 +146,7 @@ int main( void)
     //διαβαζω τα τερατα
     ifstream file_monsters;
     file_monsters.open("/files/monsters.txt");
-    //ifstream file_monsters(filename );
+
     vector< input_1> vector_monsters;
 
     while( file_monsters >> name >> x1 >> x2 >> x3 >> x4)
@@ -146,7 +168,6 @@ int main( void)
     //διαβαζω τισ πανοπλιες
     ifstream file_armors;
     file_armors.open("/files/armors.txt");
-    //ifstream file_armors(filename );
 
     vector< input_2> vector_armors;
 
@@ -164,7 +185,6 @@ int main( void)
     file_armors.close();
 
     //διαβαζω τα φιλτρα
-    //filename = "potions.txt";
     ifstream file_potions;
     file_potions.open("/files/potions.txt");
 
@@ -182,33 +202,102 @@ int main( void)
 
         vector_potions.push_back( in_);    
     }
-    file_potions.close();
 
+
+    int I1;
+    int I2;
+    double x5;
     //διαβαζω τα ξορκια
     
-    filename = "spells.txt";
-    ifstream file_spells( filename);
+    //διαβαζω τα Lightspells
+    ifstream file_lightingspells;
+    file_potions.open("/files/lightingspells.txt");
 
-    vector< string> vector_spells;
+    vector< input_3> vector_lightingspells;
 
-    while( file_spells >> name)
-    {
-        vector_spells.push_back( name);
+    while( file_lightingspells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
+    {   
+
+        input_3 in_3;
+        in_3.name = name;
+
+        in_3.x1 = x1; 
+        in_3.x2 = x2;
+        in_3.x3 = x3;
+        in_3.x4 = x4;
+        in_3.x5 = x5;
+        in_3.I1 = I1;
+        in_3.I2 = I2;
+
+        vector_lightingspells.push_back( in_3);
+    }
+
+    //διαβαζω τα Icespells
+    ifstream file_icespells;
+    file_potions.open("/files/icespells.txt");
+
+    vector< input_3> vector_icespells;
+
+    while( file_icespells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
+    {   
+
+        input_3 in_3;
+        in_3.name = name;
+
+        in_3.x1 = x1; 
+        in_3.x2 = x2;
+        in_3.x3 = x3;
+        in_3.x4 = x4;
+        in_3.x5 = x5;
+        in_3.I1 = I1;
+        in_3.I2 = I2;
+
+        vector_icespells.push_back( in_3);
+    }
+
+    //διαβαζω τα Firespells
+    ifstream file_firespells;
+    file_potions.open("/files/firespells.txt");
+
+    vector< input_3> vector_firespells;
+
+    while( file_firespells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
+    {   
+
+        input_3 in_3;
+        in_3.name = name;
+
+        in_3.x1 = x1; 
+        in_3.x2 = x2;
+        in_3.x3 = x3;
+        in_3.x4 = x4;
+        in_3.x5 = x5;
+        in_3.I1 = I1;
+        in_3.I2 = I2;
+
+        vector_firespells.push_back( in_3);
     }
 
 
     //διαβαζω τα Weapons
-    //filename = "weapons.txt";
     ifstream file_weapons;
-    file_weapons.open("/files/weapons.txt");
+    file_potions.open("/files/weapons.txt");
 
-    vector< string> vector_weapons;
+    vector< input_4> vector_weapons;
 
-    while( file_weapons >> name)
-    {
-        vector_weapons.push_back( name);
+    while( file_weapons >> name >> x1 >> I1 >> I2 >> x2)
+    {   
+
+        input_4 in_4;
+        in_4.name = name;
+
+        in_4.x1 = x1; 
+        in_4.x2 = x2;
+        in_4.I1 = I1;
+        in_4.I2 = I2;
+
+        vector_weapons.push_back( in_4);
     }
-    file_weapons.close();
 
     //FOR HEROES
     cout << BOLDBLUE << "Which Heroes do you want to choose?" << RESET << endl;
@@ -230,6 +319,9 @@ int main( void)
         
             Warrior* warrior = new Warrior( in_1.name, in_1.x1, in_1.x2, in_1.x3, x, y);
             heroes_change = true;
+            Hero* hero = warrior;
+            grid->set_heroes( hero);
+        
         }
 
         //FOR SORCERER
@@ -245,6 +337,8 @@ int main( void)
         {
             Sorcerer* sorcerer = new Sorcerer( in_2.name, in_2.x1, in_2.x2, in_2.x3, x, y);
             heroes_change = true;
+            Hero* hero = sorcerer;
+            grid->set_heroes( hero);
         }
 
         //FOR PALADIN
@@ -260,6 +354,8 @@ int main( void)
         {
             Paladin* paladin = new Paladin( in_3.name, in_3.x1, in_3.x2, in_3.x3, x, y);
             heroes_change = true;
+            Hero* hero = paladin;
+            grid->set_heroes( hero);
         }
 
         if( heroes_change == false)
@@ -269,8 +365,44 @@ int main( void)
 
     }while( heroes_change == false);
 
-    grid->displayMap();
 
-    // grid->quitGame();
+
+    int size = vector_monsters.size();
+    for( int i = 0; i < size; i++)
+    {
+        input_1 in_1 = vector_monsters.at( i);
+        int random = rand()%3;
+        
+        Monster* monster;
+        if( random == 0)
+        {
+            Dragon* dragon = new Dragon( in_1.name, in_1.x1, in_1.x2, in_1.x3, in_1.x4);
+            monster = dragon;
+        }
+        else if( random == 1)
+        {
+            Exoskeleton* exoskeleton = new Exoskeleton( in_1.name, in_1.x1, in_1.x2, in_1.x3, in_1.x4);
+            monster = exoskeleton;
+        }
+        else
+        {
+            Spirit* spirit = new Spirit( in_1.name, in_1.x1, in_1.x2, in_1.x3, in_1.x4);
+            monster = spirit;
+        }
+
+        grid->set_monsters( monster);
+    }
+
+
+    //???????????????????????????????????
     
+    //ΒΑΛΕΕΕΕΕΕΕΕΕ ΕΔΩ
+    //SPELL
+    //ITEM
+    //GIA MARKETTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+    //???????????????????????????????????
+
+
+    grid->StartGame();
 }

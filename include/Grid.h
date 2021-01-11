@@ -20,19 +20,26 @@ class Grid{
     int y;
     Square*** squares;
 
-public:    
-    Grid( int, int);
-    ~Grid();
+    int x_heroes;
+    int y_heroes;
 
-    //
     void checkInventory( Hero*);
     void equip( Hero*);
     void use( Hero*);
     void print_Hero( Hero*)const;
-    void displayMap()const;
     void move(Hero*);
     void quitGame();
 
+    void displayMap()const;
+    
+public:    
+    Grid( int, int);
+    ~Grid();
+
+
+    void set_heroes( Hero*);
+    void set_monsters( Monster*);
+    void StartGame();
     
 };
 
