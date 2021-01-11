@@ -4,7 +4,6 @@
 #include <vector>
 #include "Grid.h"
 
-
 //Συναρτήσεις για Grid.
 Grid::Grid(int x, int y){
     this->x = x;
@@ -495,10 +494,13 @@ void Square::War(){
         if(this->heroes.at(i)->get_healthPower() == 0.0)
             this->heroes.at(i)->set_healthPower(HEALTH_POWER/2.0);
     }
-    if(this->heroes.at(0)->get_experience() >= NEEDED_EXPERIENCE){
+    double exp = NEEDED_EXPERIENCE;
+    for(int i = 0; i < this->heroes.at(0)->get_level(); i++){
+        exp *= 2.0;
+    }
+    if(this->heroes.at(0)->get_experience() >= exp){
         for(int i = 0; i < this->heroes.size(); i++){
             this->heroes.at(i)->level_up();
-            NEEDED_EXPERIENCE *= 2;
         }
         for(int i = 0; i < this->monsters.size(); i++){
             this->monsters.at(i)->level_up();
