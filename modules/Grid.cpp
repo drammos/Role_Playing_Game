@@ -523,6 +523,22 @@ void Square::War(){
             if(this->monsters.at(i)->get_healthPower() != 0.0)
                 this->monsters.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
         }
+        cout<<"Do you want to view Statistics?"<<endl;
+        cout<<"Yes or No"<<endl;
+        string answer;
+        cin>>answer;
+        while(answer.compare("Yes") && answer.compare("No")){
+            cout<<"Invalid answer, try again!"<<endl;
+            cin>>answer;
+        }
+        if(answer.compare("Yes") == 0){
+            for(int i = 0; i < this->heroes.size(); i++){
+                this->heroes.at(i)->displayStats();
+            }
+            for(int i = 0; i < this->monsters.size(); i++){
+                this->monsters.at(i)->displayStats();
+            }
+        }
     }
     if(this->alive() == 1){
         cout<<"You lost the war"<<endl;
