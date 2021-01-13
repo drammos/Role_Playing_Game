@@ -31,6 +31,8 @@ class Grid{
     void quitGame();
 
     void displayMap()const;
+
+    void buy_and_equip( Hero*);
     
 public:    
     Grid( int, int);
@@ -57,6 +59,9 @@ public:
     virtual int contains();
     int alive();
     void War();
+    virtual bool buy( Hero*);
+
+    vector<Hero*> get_heroes();
 };
 
 class nonAccessible:public Square{
@@ -74,7 +79,7 @@ public:
     ~Market();
     void insert_item(Item*);
     void insert_spell(Spell*);
-    void buy(Hero*);
+    bool buy(Hero*);
     void sell(Hero*);
     int contains();
 };
