@@ -52,7 +52,7 @@ public:
     virtual ~Square();
     void add_hero(Hero*);
     void add_monster(Monster*);
-    vector <Hero*> remove_heroes();
+    vector<Hero*> remove_heroes();
     string get_kind_of_square() const;
     virtual int contains();
     int alive();

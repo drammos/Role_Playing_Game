@@ -83,8 +83,27 @@ void Grid::set_monsters( Monster* monster)
 }
 
 
+
+
+//SOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+//MIN ΞΕΧΑΣΟΥΜΕ ΟΤΑΝ ΕΝΑΣ ΗΡΩΑΣ ΑΝΕΒΑΙΝΕΙ LEVEL prepei analoga
+//to level na αυξανονται κατα καποιο ποσο τα λεφτα του
+
+///////////////////////
+
+
+
+
+
 void Grid::StartGame()
 {
+    //οι ηρωες ειναι τοποθετιμενοι εξαρχης σε ενα τετραγωνο
+    //Market πρεπει να αγορασουν τουλαχιστον ενα Weapon για την μαχη
+    //εχουν καποια αρχικα λεφτα ωστε να αγορασουν
+
+    
+
     
 }
 
