@@ -168,6 +168,11 @@ void Hero::add_money( double money)
     this->money = this->money + money;
 }
 
+void Hero::sub_money( double money)
+{
+    this->money = this->money - money;
+}
+
 void Hero::set_money(double money)
 {
     this->money = money;
@@ -227,11 +232,19 @@ void Hero::buy_Item( Item* item)
 {
     string kind_of_item = item->get_kind_of_item();
     if( kind_of_item == "Weapon")
-    {
+    {   
+        if( weapon == nullptr)
+        {
+            weapon = item;
+        }
         Weapon_vector.push_back( item);
     }   
     else if( kind_of_item == "Armor")
-    {
+    {   
+        if( armor == nullptr)
+        {
+            armor = item;
+        }
         Armor_vector.push_back( item);
     }
     else

@@ -85,6 +85,7 @@ class Hero : public Living_Being{
     void set_dexterity( double);
     void set_agility( double);
     void add_money( double);
+    void sub_money( double);
     void set_money(double);
     void add_experience( double);
     void set_Weapon( int);

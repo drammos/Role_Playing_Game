@@ -102,8 +102,35 @@ void Grid::StartGame()
     //Market πρεπει να αγορασουν τουλαχιστον ενα Weapon για την μαχη
     //εχουν καποια αρχικα λεφτα ωστε να αγορασουν
 
+<<<<<<< HEAD
     
     
+=======
+    vector<Hero*> vector_heroes;
+    vector_heroes = squares[x_heroes][y_heroes]->get_heroes();
+    for(int i = 0; i < vector_heroes.size(); i++)
+    {   
+        bool buy_weapon;
+        Hero* hero =  vector_heroes.at(i);
+        do{
+            cout << RED << "You must buy Weapon for your hero!" << RESET << endl;
+            buy_weapon = squares[x_heroes][y_heroes]->buy( hero);
+            if( hero->get_money() == 0)
+            {
+                cout << RED << "YOU LOSE!!!, BECAUSE YOU HAVN'T MONEY AND YOU HAVN'T WEAPON FOR WAR!!!" << RESET << endl;
+                quitGame();
+            }
+        }while( buy_weapon == false);
+
+        buy_and_equip( hero);
+    }
+    
+    bool level_heroes = false;
+    while( level_heroes == false)
+    {
+        
+    }
+>>>>>>> f8505f92e33cfaee0d7a698ac4d6e16ec8498c7a
     
 }
 
@@ -318,6 +345,43 @@ void Grid::move(vector <Hero*> heroes){
     }
 }
 
+void Grid::buy_and_equip( Hero* hero)
+{
+    string answer;
+        do{
+            cout << "You want buy?" << endl;
+            cin >> answer;
+
+            while( answer != "Yes" && answer != "No"){
+                cout << RED << "Invalid answer, try again!" << RESET << endl;
+                cin >> answer;
+            }
+
+            if( answer.compare( "Yes") == 0)
+            {
+                squares[x_heroes][y_heroes]->buy( hero);
+            }
+
+        }while(  answer.compare( "Yes") == 0 && hero->get_money() > 0);
+
+        //αν θελει κατι απο αυτα που αγορασε να αλλαξει καλω την equip
+        string in;
+        do{
+            cout << "You want change Item?" << endl;
+            cin >> in;
+            while( in.compare("Yes") != 0 && in.compare("No") != 0){
+                cout << RED << "Invalid answer, try again!" << RESET << endl;
+                cin >> in;
+            }
+
+            if( in.compare("Yes") == 0)
+            {
+                equip( hero);
+            }
+
+        }while( in.compare("Yes") == 0);
+        
+}
 
 
 
@@ -596,6 +660,11 @@ void Square::War(){
     }
 }
 
+//βοηθητικη συναρτηση-μελος
+bool Square::buy( Hero* hero)
+{
+
+}
 
 //Συναρτήσεις για Market.
 Market::~Market(){
@@ -611,12 +680,16 @@ void Market::insert_spell(Spell* spell){
     this->spells.push_back(spell);
 }
 
-void Market::buy(Hero* hero){
+bool Market::buy(Hero* hero){
     cout<<"What would you like to buy?"<<endl;
     cout<<"Press 1 for Items"<<endl;
     cout<<"Press 2 for Spells"<<endl;
     int a;
     cin>>a;
+
+    //ελεγχουμε αν αγορασε οπλο
+    bool back = false;
+
     if(a == 1){
         cout<<"The items available in the market are:"<<endl;
         for(int i = 0; i < this->items.size(); i++){
@@ -631,7 +704,21 @@ void Market::buy(Hero* hero){
             cin>>a1;
         }
         Item* item = this->items.at(a1-1);
-        hero->buy_Item(item);
+        if( item->get_price() <= hero->get_money())
+        {
+            if( (item->get_kind_of_item()).compare("Weapon") == 0)
+            {
+                back = true;
+            }
+
+            hero->sub_money( item->get_price());
+            hero->buy_Item(item);
+        }
+        else
+        {
+            cout << RED << "You havn't money for this Item!" << RESET << endl;
+        }
+        
     }
     else{
         cout<<"The spells available in the market are:"<<endl;
@@ -647,8 +734,19 @@ void Market::buy(Hero* hero){
             cin>>a1;
         }
         Spell* spell = this->spells.at(a1-1);
-        hero->buy_Spell(spell);
+
+        if( spell->get_price() <= hero->get_money())
+        {
+            hero->sub_money( spell->get_price());
+            hero->buy_Spell(spell);
+        }
+        else
+        {
+            cout << RED << "You havn't money for this Spell!" << RESET << endl;
+        }
     }
+
+    return back;
 }
 
 void Market::sell(Hero* hero){
