@@ -102,10 +102,8 @@ void Grid::StartGame()
     //Market πρεπει να αγορασουν τουλαχιστον ενα Weapon για την μαχη
     //εχουν καποια αρχικα λεφτα ωστε να αγορασουν
 
-<<<<<<< HEAD
     
     
-=======
     vector<Hero*> vector_heroes;
     vector_heroes = squares[x_heroes][y_heroes]->get_heroes();
     for(int i = 0; i < vector_heroes.size(); i++)
@@ -130,7 +128,6 @@ void Grid::StartGame()
     {
         
     }
->>>>>>> f8505f92e33cfaee0d7a698ac4d6e16ec8498c7a
     
 }
 
