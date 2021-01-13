@@ -103,7 +103,7 @@ void Grid::StartGame()
     //εχουν καποια αρχικα λεφτα ωστε να αγορασουν
 
     
-
+    
     
 }
 
@@ -260,7 +260,7 @@ void Grid::quitGame()
     exit(EXIT_FAILURE);
 }
 
-void Grid::move(Hero* hero){
+void Grid::move(vector <Hero*> heroes){
     cout<<"Where do you want to go?"<<endl;
     cout<<"Press 1 for up."<<endl;
     cout<<"Press 2 for down."<<endl;
@@ -273,46 +273,46 @@ void Grid::move(Hero* hero){
         cin >> answer;
     }
     if(answer == 1){
-        if(squares[hero->get_x() - 1][hero->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
+        if(squares[heroes.at(0)->get_x() - 1][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
             cout<<"This is a nonAccessible square!"<<endl;
         }
         else{
-            vector <Hero*> vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
-            for(int i = 0; i < vec.size(); i++){
-                squares[hero->get_x() - 1][hero->get_y()]->add_hero(vec.at(i));
+            squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+            for(int i = 0; i < heroes.size(); i++){
+                squares[heroes.at(0)->get_x() - 1][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
             }
         }
     }
     else if(answer == 2){
-        if(squares[hero->get_x() + 1][hero->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
+        if(squares[heroes.at(0)->get_x() + 1][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
             cout<<"This is a nonAccessible square!"<<endl;
         }
         else{
-            vector <Hero*> vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
-            for(int i = 0; i < vec.size(); i++){
-                squares[hero->get_x() + 1][hero->get_y()]->add_hero(vec.at(i));
+            squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+            for(int i = 0; i < heroes.size(); i++){
+                squares[heroes.at(0)->get_x() + 1][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
             }
         }
     }
     else if(answer == 3){
-        if(squares[hero->get_x()][hero->get_y() - 1]->get_kind_of_square().compare("nonAccessible") == 0){
+        if(squares[heroes.at(0)->get_x()][heroes.at(0)->get_y() - 1]->get_kind_of_square().compare("nonAccessible") == 0){
             cout<<"This is a nonAccessible square!"<<endl;
         }
         else{
-            vector <Hero*> vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
-            for(int i = 0; i < vec.size(); i++){
-                squares[hero->get_x()][hero->get_y() - 1]->add_hero(vec.at(i));
+            squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+            for(int i = 0; i < heroes.size(); i++){
+                squares[heroes.at(0)->get_x()][heroes.at(0)->get_y() - 1]->add_hero(heroes.at(i));
             }
         }
     }
     else{
-        if(squares[hero->get_x()][hero->get_y() + 1]->get_kind_of_square().compare("nonAccessible") == 0){
+        if(squares[heroes.at(0)->get_x()][heroes.at(0)->get_y() + 1]->get_kind_of_square().compare("nonAccessible") == 0){
             cout<<"This is a nonAccessible square!"<<endl;
         }
         else{
-            vector <Hero*> vec = squares[hero->get_x()][hero->get_y()]->remove_heroes();
-            for(int i = 0; i < vec.size(); i++){
-                squares[hero->get_x()][hero->get_y() + 1]->add_hero(vec.at(i));
+            squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+            for(int i = 0; i < heroes.size(); i++){
+                squares[heroes.at(0)->get_x()][heroes.at(0)->get_y() + 1]->add_hero(heroes.at(i));
             }
         }
     }

@@ -27,7 +27,7 @@ class Grid{
     void equip( Hero*);
     void use( Hero*);
     void print_Hero( Hero*)const;
-    void move(Hero*);
+    void move(vector <Hero*>);
     void quitGame();
 
     void displayMap()const;
