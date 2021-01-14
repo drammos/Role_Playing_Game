@@ -169,18 +169,13 @@ int main( void)
     ifstream file_armors;
     file_armors.open("/files/armors.txt");
 
-    vector< input_2> vector_armors;
+    vector< Item* > vector_armors;
 
     while( file_armors >> name >> x1 >> level >> x2)
     {
-        input_2 in_;
-        in_.name = name;
-        in_.x1 = x1;
-        in_.x2 = x2;
-        in_.level = level;
-        in_.characteristic = nullptr;
+        Item* armor = new Armor(name, x2, level, x2);
 
-        vector_armors.push_back( in_);
+        vector_armors.push_back(armor);
     }
     file_armors.close();
 
@@ -188,19 +183,14 @@ int main( void)
     ifstream file_potions;
     file_potions.open("/files/potions.txt");
 
-    vector< input_2> vector_potions;
+    vector< Item* > vector_potions;
 
 
-    while( file_potions >> name >> name >> x1 >> level >> characteristic >> x2)
+    while( file_potions >> name >> x1 >> level >> characteristic >> x2)
     {
-        input_2 in_;
-        in_.name = name;
-        in_.x1 = x1;
-        in_.x2 = x2;
-        in_.level = level;
-        in_.characteristic = characteristic;
+        Item* potion = new Potion(name, x1, level, characteristic, x2);
 
-        vector_potions.push_back( in_);    
+        vector_potions.push_back( potion);    
     }
 
 
@@ -213,69 +203,39 @@ int main( void)
     ifstream file_lightingspells;
     file_potions.open("/files/lightingspells.txt");
 
-    vector< input_3> vector_lightingspells;
+    vector< Spell* > vector_lightingspells;
 
     while( file_lightingspells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
     {   
+        Spell* spell = new LightingSpell(name, x1, I1, x2, x3, x4, x4, I2);
 
-        input_3 in_3;
-        in_3.name = name;
-
-        in_3.x1 = x1; 
-        in_3.x2 = x2;
-        in_3.x3 = x3;
-        in_3.x4 = x4;
-        in_3.x5 = x5;
-        in_3.I1 = I1;
-        in_3.I2 = I2;
-
-        vector_lightingspells.push_back( in_3);
+        vector_lightingspells.push_back(spell);
     }
 
     //διαβαζω τα Icespells
     ifstream file_icespells;
     file_potions.open("/files/icespells.txt");
 
-    vector< input_3> vector_icespells;
+    vector< Spell* > vector_icespells;
 
     while( file_icespells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
     {   
+        Spell* spell = new IceSpell(name, x1, I1, x2, x3, x4, x5, I2);
 
-        input_3 in_3;
-        in_3.name = name;
-
-        in_3.x1 = x1; 
-        in_3.x2 = x2;
-        in_3.x3 = x3;
-        in_3.x4 = x4;
-        in_3.x5 = x5;
-        in_3.I1 = I1;
-        in_3.I2 = I2;
-
-        vector_icespells.push_back( in_3);
+        vector_icespells.push_back(spell);
     }
 
     //διαβαζω τα Firespells
     ifstream file_firespells;
     file_potions.open("/files/firespells.txt");
 
-    vector< input_3> vector_firespells;
+    vector< Spell* > vector_firespells;
 
     while( file_firespells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
     {   
+        Spell* spell = new FireSpell(name, x1, I1, x2, x3, x4, x5, I2);
 
-        input_3 in_3;
-        in_3.name = name;
-
-        in_3.x1 = x1; 
-        in_3.x2 = x2;
-        in_3.x3 = x3;
-        in_3.x4 = x4;
-        in_3.x5 = x5;
-        in_3.I1 = I1;
-        in_3.I2 = I2;
-
-        vector_firespells.push_back( in_3);
+        vector_firespells.push_back(spell);
     }
 
 
@@ -283,20 +243,13 @@ int main( void)
     ifstream file_weapons;
     file_potions.open("/files/weapons.txt");
 
-    vector< input_4> vector_weapons;
+    vector< Item* > vector_weapons;
 
     while( file_weapons >> name >> x1 >> I1 >> I2 >> x2)
     {   
+        Item* weapon = new Weapon(name, x1, I1, I2, x2);
 
-        input_4 in_4;
-        in_4.name = name;
-
-        in_4.x1 = x1; 
-        in_4.x2 = x2;
-        in_4.I1 = I1;
-        in_4.I2 = I2;
-
-        vector_weapons.push_back( in_4);
+        vector_weapons.push_back(weapon);
     }
 
     //FOR HEROES
