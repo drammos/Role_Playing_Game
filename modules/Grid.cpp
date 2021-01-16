@@ -342,6 +342,7 @@ void Grid::move(vector <Hero*> heroes){
     }
 }
 
+
 void Grid::buy_and_equip( Hero* hero)
 {
     string answer;
@@ -380,7 +381,25 @@ void Grid::buy_and_equip( Hero* hero)
         
 }
 
+void Grid::provide(Item* item){
+    for(int i = 0; i < this->x; i++){
+        for(int j = 0; j < this->y; j++){
+            if(this->squares[i][j]->get_kind_of_square().compare("Market") == 0){
+                this->squares[i][j]->insert_item(item);
+            }
+        }
+    }
+}
 
+void Grid::provide(Spell* spell){
+    for(int i = 0; i < this->x; i++){
+        for(int j = 0; j < this->y; j++){
+            if(this->squares[i][j]->get_kind_of_square().compare("Market") == 0){
+                this->squares[i][j]->insert_spell(spell);
+            }
+        }
+    }
+}
 
 
 

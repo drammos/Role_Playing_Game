@@ -346,16 +346,18 @@ int main( void)
         grid->set_monsters( monster);
     }
 
-
-    //???????????????????????????????????
-    
-    //ΒΑΛΕΕΕΕΕΕΕΕΕ ΕΔΩ
-    //SPELL
-    //ITEM
-    //GIA MARKETTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-
-    //???????????????????????????????????
-
+    for(int i = 0; i < vector_armors.size(); i++){
+        grid->provide(vector_armors.at(i));
+    }
+    for(int i = 0; i < vector_icespells.size(); i++){
+        grid->provide(vector_icespells.at(i));
+    }
+    for(int i = 0; i < vector_firespells.size(); i++){
+        grid->provide(vector_firespells.at(i));
+    }
+    for(int i = 0; i < vector_lightingspells.size(); i++){
+        grid->provide(vector_lightingspells.at(i));
+    }
 
     grid->StartGame();
 }

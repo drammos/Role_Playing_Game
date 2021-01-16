@@ -42,7 +42,8 @@ public:
     void set_heroes( Hero*);
     void set_monsters( Monster*);
     void StartGame();
-    
+    void provide(Item*);
+    void provide(Spell*);
 };
 
 class Square{
@@ -60,6 +61,9 @@ public:
     int alive();
     void War();
     virtual bool buy( Hero*);
+
+    virtual void insert_item(Item*){};
+    virtual void insert_spell(Spell*){};
 
     vector<Hero*> get_heroes();
 };
