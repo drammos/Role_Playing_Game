@@ -54,7 +54,7 @@ part Item::get_prices()const
 Weapon::Weapon(string n, double p, int l, int h, double d):Item(n, p, l, "Weapon"){
     this->hands = h;
     this->damage = d;
-    cout<<"New weapon has been created"<<endl;
+    // cout<<"New weapon has been created"<<endl;
 }
 
 Weapon::~Weapon(){
@@ -82,7 +82,7 @@ part Weapon::get_prices()const
 //Συναρτήσεις για Armor.
 Armor::Armor(string n, double p, int l, double d):Item(n, p, l, "Armor"){
     this->reduce_of_damage = d;
-    cout<<"New armor has been created"<<endl;
+    // cout<<"New armor has been created"<<endl;
 }
 
 Armor::~Armor(){
@@ -107,7 +107,7 @@ part Armor::get_prices()const
 Potion::Potion(string n, double p, int l, string c, double i):Item(n, p, l, "Potion"){
     this->characteristic.assign(c);
     this->increase = i;
-    cout<<"New potion has been created"<<endl;
+    // cout<<"New potion has been created"<<endl;
 }
 
 Potion::~Potion(){

@@ -49,9 +49,9 @@ void Grid::set_heroes( Hero* hero)
         srand( time(NULL));
         bool in = false;
         while( in != true)
-        {
-            x_heroes = rand()%(x+1);
-            y_heroes = rand()&(y+1);
+        {   
+            x_heroes = rand()%(x);
+            y_heroes = rand()%(y);
             if( (squares[x_heroes][y_heroes]->get_kind_of_square()).compare( "Market") == 0)
             {
                 in = true;

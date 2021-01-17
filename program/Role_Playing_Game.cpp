@@ -106,10 +106,10 @@ int main( void)
 //
 
     ifstream file_heroes;
-    file_heroes.open("/files/heroes.txt");
+    file_heroes.open("../files/heroes.txt");
 
     while( file_heroes >> name >> x1 >> x2 >> x3)
-    {   cout << "ela" << endl;
+    {   
         input_1 in;
         in.name = name;
         in.x1 = x1;
@@ -136,6 +136,7 @@ int main( void)
         k = rand()%( vector_heroes.size());
         f = rand()%( vector_heroes.size());
     }
+
     in_1 = vector_heroes.at( i);
     in_2 = vector_heroes.at( k);
     in_3 = vector_heroes.at( f);
@@ -145,10 +146,10 @@ int main( void)
 
     //διαβαζω τα τερατα
     ifstream file_monsters;
-    file_monsters.open("/files/monsters.txt");
+    file_monsters.open("../files/monsters.txt");
 
     vector< input_1> vector_monsters;
-
+    
     while( file_monsters >> name >> x1 >> x2 >> x3 >> x4)
     {
         input_1 in;
@@ -167,7 +168,7 @@ int main( void)
     
     //διαβαζω τισ πανοπλιες
     ifstream file_armors;
-    file_armors.open("/files/armors.txt");
+    file_armors.open("../files/armors.txt");
 
     vector< Item* > vector_armors;
 
@@ -181,7 +182,7 @@ int main( void)
 
     //διαβαζω τα φιλτρα
     ifstream file_potions;
-    file_potions.open("/files/potions.txt");
+    file_potions.open("../files/potions.txt");
 
     vector< Item* > vector_potions;
 
@@ -201,7 +202,7 @@ int main( void)
     
     //διαβαζω τα Lightspells
     ifstream file_lightingspells;
-    file_potions.open("/files/lightingspells.txt");
+    file_potions.open("../files/lightingspells.txt");
 
     vector< Spell* > vector_lightingspells;
 
@@ -214,7 +215,7 @@ int main( void)
 
     //διαβαζω τα Icespells
     ifstream file_icespells;
-    file_potions.open("/files/icespells.txt");
+    file_potions.open("../files/icespells.txt");
 
     vector< Spell* > vector_icespells;
 
@@ -227,7 +228,7 @@ int main( void)
 
     //διαβαζω τα Firespells
     ifstream file_firespells;
-    file_potions.open("/files/firespells.txt");
+    file_potions.open("../files/firespells.txt");
 
     vector< Spell* > vector_firespells;
 
@@ -241,7 +242,7 @@ int main( void)
 
     //διαβαζω τα Weapons
     ifstream file_weapons;
-    file_potions.open("/files/weapons.txt");
+    file_potions.open("../files/weapons.txt");
 
     vector< Item* > vector_weapons;
 
@@ -269,10 +270,10 @@ int main( void)
 //
         if( in == "Yes")
         {   
-        
             Warrior* warrior = new Warrior( in_1.name, in_1.x1, in_1.x2, in_1.x3, x, y);
             heroes_change = true;
             Hero* hero = warrior;
+            
             grid->set_heroes( hero);
         
         }
