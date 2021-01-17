@@ -193,56 +193,14 @@ int main( void)
 
         vector_potions.push_back( potion);    
     }
-
+    file_potions.close();
 
     int I1;
     int I2;
-    double x5;
-    //διαβαζω τα ξορκια
-    
-    //διαβαζω τα Lightspells
-    ifstream file_lightingspells;
-    file_potions.open("../files/lightingspells.txt");
-
-    vector< Spell* > vector_lightingspells;
-
-    while( file_lightingspells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
-    {   
-        Spell* spell = new LightingSpell(name, x1, I1, x2, x3, x4, x4, I2);
-
-        vector_lightingspells.push_back(spell);
-    }
-
-    //διαβαζω τα Icespells
-    ifstream file_icespells;
-    file_potions.open("../files/icespells.txt");
-
-    vector< Spell* > vector_icespells;
-
-    while( file_icespells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
-    {   
-        Spell* spell = new IceSpell(name, x1, I1, x2, x3, x4, x5, I2);
-
-        vector_icespells.push_back(spell);
-    }
-
-    //διαβαζω τα Firespells
-    ifstream file_firespells;
-    file_potions.open("../files/firespells.txt");
-
-    vector< Spell* > vector_firespells;
-
-    while( file_firespells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
-    {   
-        Spell* spell = new FireSpell(name, x1, I1, x2, x3, x4, x5, I2);
-
-        vector_firespells.push_back(spell);
-    }
-
 
     //διαβαζω τα Weapons
     ifstream file_weapons;
-    file_potions.open("../files/weapons.txt");
+    file_weapons.open("../files/weapons.txt");
 
     vector< Item* > vector_weapons;
 
@@ -252,7 +210,56 @@ int main( void)
 
         vector_weapons.push_back(weapon);
     }
+    
+    file_weapons.close();
+    cout<<vector_weapons.size()<<endl;
+    
+    double x5;
+    //διαβαζω τα ξορκια
+    
+    //διαβαζω τα Lightspells
+    ifstream file_lightingspells;
+    file_lightingspells.open("../files/lightingspells.txt");
 
+    vector< Spell* > vector_lightingspells;
+
+    while( file_lightingspells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
+    {   
+        Spell* spell = new LightingSpell(name, x1, I1, x2, x3, x4, x4, I2);
+
+        vector_lightingspells.push_back(spell);
+    }
+    file_lightingspells.close();
+
+    //διαβαζω τα Icespells
+    ifstream file_icespells;
+    file_icespells.open("../files/icespells.txt");
+
+    vector< Spell* > vector_icespells;
+
+    while( file_icespells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
+    {   
+        Spell* spell = new IceSpell(name, x1, I1, x2, x3, x4, x5, I2);
+
+        vector_icespells.push_back(spell);
+    }
+    file_icespells.close();
+
+    //διαβαζω τα Firespells
+    ifstream file_firespells;
+    file_firespells.open("../files/firespells.txt");
+
+    vector< Spell* > vector_firespells;
+
+    while( file_firespells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
+    {   
+        Spell* spell = new FireSpell(name, x1, I1, x2, x3, x4, x5, I2);
+
+        vector_firespells.push_back(spell);
+    }
+    file_firespells.close();
+
+    
     //FOR HEROES
     cout << BOLDBLUE << "Which Heroes do you want to choose?" << RESET << endl;
     
@@ -349,6 +356,12 @@ int main( void)
 
     for(int i = 0; i < vector_armors.size(); i++){
         grid->provide(vector_armors.at(i));
+    }
+    for(int i = 0; i < vector_weapons.size(); i++){
+        grid->provide(vector_weapons.at(i));
+    }
+    for(int i = 0; i < vector_potions.size(); i++){
+        grid->provide(vector_potions.at(i));
     }
     for(int i = 0; i < vector_icespells.size(); i++){
         grid->provide(vector_icespells.at(i));
