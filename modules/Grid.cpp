@@ -119,14 +119,44 @@ void Grid::StartGame()
                 quitGame();
             }
         }while( buy_weapon == false);
-
-        buy_and_equip( hero);
     }
     
     bool level_heroes = false;
     while( level_heroes == false)
-    {
+    {   
+        string kind_of_square = squares[x_heroes][y_heroes]->get_kind_of_square();
         
+        if( kind_of_square.compare( "Market") == 0)
+        {   
+            for(int i = 0; i < vector_heroes.size(); i++)
+            {   
+                Hero* hero =  vector_heroes.at(i);
+                cout << "Hero: " << hero->get_hero() << " " << endl;    
+                buy_sell_and_equip( hero);
+            }
+        }
+        else if( kind_of_square.compare( "Common") == 0)
+        {
+
+        }
+
+        move( vector_heroes);
+
+        //αν ολοι οι ηρωες εχον φτασει
+        //στο max level τοτε το παιχνιδι τελειωσε
+        int size_max_level = 0;
+        for(int i = 0; i < vector_heroes.size(); i++)
+        {
+            Hero* hero =  vector_heroes.at(i);
+            if( hero->get_level() == MAX_LEVEL)
+            {
+                size_max_level++;
+            }
+        }
+        if( size_max_level == vector_heroes.size())
+        {
+            level_heroes = true;
+        }
     }
     
 }
@@ -351,43 +381,64 @@ void Grid::move(vector <Hero*> heroes){
 }
 
 
-void Grid::buy_and_equip( Hero* hero)
+void Grid::buy_sell_and_equip( Hero* hero)
 {
     string answer;
-        do{
-            cout << "You want buy?" << endl;
+    do{
+        cout << "You want buy?" << endl;
+        cin >> answer;
+
+        while( answer != "Yes" && answer != "No"){
+            cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> answer;
+        }
 
-            while( answer != "Yes" && answer != "No"){
-                cout << RED << "Invalid answer, try again!" << RESET << endl;
-                cin >> answer;
-            }
+        if( answer.compare( "Yes") == 0)
+        {
+            squares[x_heroes][y_heroes]->buy( hero);
+        }
 
-            if( answer.compare( "Yes") == 0)
-            {
-                squares[x_heroes][y_heroes]->buy( hero);
-            }
+    }while(  answer.compare( "Yes") == 0 && hero->get_money() > 0);
 
-        }while(  answer.compare( "Yes") == 0 && hero->get_money() > 0);
+    //sell
+    int count_item_and_spell;
+    do{
+        cout << "You want sell?" << endl;
+        cin >> answer;
 
-        //αν θελει κατι απο αυτα που αγορασε να αλλαξει καλω την equip
-        string in;
-        do{
-            cout << "You want change Item?" << endl;
+        while( answer != "Yes" && answer != "No"){
+            cout << RED << "Invalid answer, try again!" << RESET << endl;
+            cin >> answer;
+        }
+
+        if( answer.compare( "Yes") == 0)
+        {
+            squares[x_heroes][y_heroes]->sell( hero);
+        }
+
+        count_item_and_spell = hero->get_count_item_and_spell();
+
+    }while(  answer.compare( "Yes") == 0 && count_item_and_spell > 0);
+
+    //αν θελει κατι απο αυτα που αγορασε να αλλαξει καλω την equip
+    string in;
+    do{
+        cout << "You want change Item?" << endl;
+        cin >> in;
+        while( in.compare("Yes") != 0 && in.compare("No") != 0){
+            cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
-            while( in.compare("Yes") != 0 && in.compare("No") != 0){
-                cout << RED << "Invalid answer, try again!" << RESET << endl;
-                cin >> in;
-            }
+        }
 
-            if( in.compare("Yes") == 0)
-            {
-                equip( hero);
-            }
+        if( in.compare("Yes") == 0)
+        {
+            equip( hero);
+        }
 
-        }while( in.compare("Yes") == 0);
+    }while( in.compare("Yes") == 0);
         
 }
+
 
 void Grid::provide(Item* item){
     for(int i = 0; i < this->x; i++){
@@ -686,6 +737,11 @@ void Square::War(){
 
 //βοηθητικη συναρτηση-μελος
 bool Square::buy( Hero* hero)
+{
+
+}
+
+void Square::sell( Hero* hero)
 {
 
 }
