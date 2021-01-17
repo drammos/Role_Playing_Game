@@ -66,6 +66,7 @@ class Hero : public Living_Being{
     //Οι συντεταγμένες του τετραγώνου που βρίσκεται ο ήρωας.
     int x;
     int y;
+    int count_item_and_spell;
     
     public:
     
@@ -80,6 +81,8 @@ class Hero : public Living_Being{
     Item* get_Weapon()const;
     Item* get_Armor()const;
     Item* get_Potion()const;
+    string get_hero()const;
+    int get_count_item_and_spell()const;
 
     void set_strength( double);
     void set_dexterity( double);

@@ -82,6 +82,8 @@ Hero::Hero( string name, double strenght, double dexterity, double agility, stri
     this->x = x;
     this->y = y;
 
+    count_item_and_spell = 0;
+
 }
 
 
@@ -139,6 +141,16 @@ int Hero::get_x() const
 int Hero::get_y() const
 {
     return y;
+}
+
+string Hero::get_hero()const
+{
+    return hero;
+}
+
+int Hero::get_count_item_and_spell()const
+{
+    return count_item_and_spell;
 }
 //SET
 
@@ -231,6 +243,8 @@ void Hero::level_up()
 void Hero::buy_Item( Item* item)
 {
     string kind_of_item = item->get_kind_of_item();
+
+    count_item_and_spell++;
     if( kind_of_item == "Weapon")
     {   
         if( weapon == nullptr)
@@ -255,7 +269,8 @@ void Hero::buy_Item( Item* item)
 }
 
 void Hero::buy_Spell( Spell* spell)
-{
+{   
+    count_item_and_spell++;
     spell_vector.push_back( spell);
 }
 
@@ -307,6 +322,7 @@ bool Hero::sell_Item( int position)
 
             Potion_vector.pop_back();
         }
+        count_item_and_spell--;
         
         return true;
     }
@@ -328,6 +344,7 @@ bool Hero::sell_Spell( int position)
         spell_vector.assign( size -1, spell_in);
 
         spell_vector.pop_back();
+        count_item_and_spell--;
         return true;
     }
 

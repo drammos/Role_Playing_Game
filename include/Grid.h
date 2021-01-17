@@ -32,7 +32,7 @@ class Grid{
 
     void displayMap()const;
 
-    void buy_and_equip( Hero*);
+    void buy_sell_and_equip( Hero*);
     
 public:    
     Grid( int, int);
@@ -60,7 +60,9 @@ public:
     virtual int contains();
     int alive();
     void War();
+    
     virtual bool buy( Hero*);
+    virtual void sell( Hero*);
 
     virtual void insert_item(Item*){};
     virtual void insert_spell(Spell*){};
