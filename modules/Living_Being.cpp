@@ -1,4 +1,5 @@
 #include "Living_Being.h"
+#include <cstdlib>
 #include <ctime>
 
 Living_Being::Living_Being( string name, string life_being)
@@ -75,8 +76,8 @@ Hero::Hero( string name, double strenght, double dexterity, double agility, stri
     this->experience = 0.0;
 
     //αρχικα δεν εχει αντικειμενα αρα null
-    weapon = nullptr;
-    armor = nullptr;
+    weapon = NULL;
+    armor = NULL;
     potion = armor;
 
     this->x = x;
@@ -247,7 +248,7 @@ void Hero::buy_Item( Item* item)
     count_item_and_spell++;
     if( kind_of_item == "Weapon")
     {   
-        if( weapon == nullptr)
+        if( weapon == NULL)
         {
             weapon = item;
         }
@@ -255,7 +256,7 @@ void Hero::buy_Item( Item* item)
     }   
     else if( kind_of_item == "Armor")
     {   
-        if( armor == nullptr)
+        if( armor == NULL)
         {
             armor = item;
         }
