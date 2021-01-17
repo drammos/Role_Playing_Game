@@ -68,7 +68,7 @@ int main( void)
 
     if( answer == 2)return -1;
 
-    cout << GREEN <<"Change Grid for Game." << RESET <<endl;
+    cout << GREEN <<"Choose Grid for Game." << RESET <<endl;
     cout << "Press 1 for 8x8" << endl;
     cout << "Press 2 for 10x10" << endl;
     cout << "Press 3 for 12x12" << endl;
