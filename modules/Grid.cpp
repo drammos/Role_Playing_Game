@@ -137,11 +137,13 @@ void Grid::StartGame()
         }
         else if( kind_of_square.compare( "Common") == 0)
         {
-
+            squares[x_heroes][y_heroes]->War();
         }
 
         move( vector_heroes);
 
+        displayMap();
+        
         //αν ολοι οι ηρωες εχον φτασει
         //στο max level τοτε το παιχνιδι τελειωσε
         int size_max_level = 0;
@@ -158,6 +160,8 @@ void Grid::StartGame()
             level_heroes = true;
         }
     }
+
+    displayMap();
     
 }
 
