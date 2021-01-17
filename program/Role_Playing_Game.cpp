@@ -103,7 +103,7 @@ int main( void)
     double x4;
 
     vector< input_1> vector_heroes;
-
+//
 
     ifstream file_heroes;
     file_heroes.open("/files/heroes.txt");

@@ -143,7 +143,7 @@ void Grid::StartGame()
         move( vector_heroes);
 
         displayMap();
-        
+
         //αν ολοι οι ηρωες εχον φτασει
         //στο max level τοτε το παιχνιδι τελειωσε
         int size_max_level = 0;
@@ -772,6 +772,11 @@ bool Square::buy( Hero* hero)
 void Square::sell( Hero* hero)
 {
 
+}
+
+vector<Hero*> Square::get_heroes()
+{
+    return heroes;
 }
 
 //Συναρτήσεις για Market.
