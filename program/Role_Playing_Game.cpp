@@ -242,12 +242,12 @@ int main( void)
 
     //διαβαζω τα Weapons
     ifstream file_weapons;
-    file_potions.open("../files/weapons.txt");
+    file_weapons.open("../files/weapons.txt");
 
     vector< Item* > vector_weapons;
 
     while( file_weapons >> name >> x1 >> I1 >> I2 >> x2)
-    {   
+    {
         Item* weapon = new Weapon(name, x1, I1, I2, x2);
 
         vector_weapons.push_back(weapon);
@@ -350,6 +350,15 @@ int main( void)
     for(int i = 0; i < vector_armors.size(); i++){
         grid->provide(vector_armors.at(i));
     }
+
+    for(int i = 0; i < vector_weapons.size(); i++){
+        grid->provide(vector_weapons.at(i));
+    }
+
+    for(int i = 0; i < vector_potions.size(); i++){
+        grid->provide(vector_potions.at(i));
+    }
+
     for(int i = 0; i < vector_icespells.size(); i++){
         grid->provide(vector_icespells.at(i));
     }

@@ -102,10 +102,12 @@ void Grid::StartGame()
     //Market πρεπει να αγορασουν τουλαχιστον ενα Weapon για την μαχη
     //εχουν καποια αρχικα λεφτα ωστε να αγορασουν
 
-    
+
     
     vector<Hero*> vector_heroes;
     vector_heroes = squares[x_heroes][y_heroes]->get_heroes();
+    
+
     for(int i = 0; i < vector_heroes.size(); i++)
     {   
         bool buy_weapon;
@@ -113,7 +115,7 @@ void Grid::StartGame()
         do{
             cout << RED << "You must buy Weapon for your hero!" << RESET << endl;
             buy_weapon = squares[x_heroes][y_heroes]->buy( hero);
-            if( hero->get_money() == 0)
+            if( hero->get_money() == 0 && buy_weapon == false)
             {
                 cout << RED << "YOU LOSE!!!, BECAUSE YOU HAVN'T MONEY AND YOU HAVN'T WEAPON FOR WAR!!!" << RESET << endl;
                 quitGame();
@@ -125,7 +127,7 @@ void Grid::StartGame()
     while( level_heroes == false)
     {   
         string kind_of_square = squares[x_heroes][y_heroes]->get_kind_of_square();
-        
+        cout << kind_of_square << endl;
         if( kind_of_square.compare( "Market") == 0)
         {   
             for(int i = 0; i < vector_heroes.size(); i++)
@@ -268,8 +270,17 @@ void Grid::displayMap()const
         {
             cout << "\u2502";
             if(squares[i][j]->get_kind_of_square() == "Market" )
-            {
-                cout << YELLOW << " S " << RESET;
+            {   
+                int k = squares[i][j]->contains();
+                if( k == 0)
+                {
+                    cout << BLUE << "H " << RESET;
+                    cout << YELLOW << "S" << RESET;
+                }
+                else
+                {
+                    cout << YELLOW << " S " << RESET;
+                }
             }
             else if( squares[i][j]->get_kind_of_square() == "nonAccessible")
             {
@@ -319,6 +330,7 @@ void Grid::quitGame()
 }
 
 void Grid::move(vector <Hero*> heroes){
+    displayMap();
     cout<<"Where do you want to go?"<<endl;
     cout<<"Press 1 for up."<<endl;
     cout<<"Press 2 for down."<<endl;
@@ -346,6 +358,7 @@ void Grid::move(vector <Hero*> heroes){
             for(int i = 0; i < heroes.size(); i++){
                 squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
                 heroes.at(i)->set_x(a);
+                x_heroes = a;
             }
         }
     }
@@ -365,6 +378,7 @@ void Grid::move(vector <Hero*> heroes){
             for(int i = 0; i < heroes.size(); i++){
                 squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
                 heroes.at(i)->set_x(a);
+                x_heroes = a;
             }
         }
     }
@@ -384,6 +398,7 @@ void Grid::move(vector <Hero*> heroes){
             for(int i = 0; i < heroes.size(); i++){
                 squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
                 heroes.at(i)->set_y(a);
+                y_heroes = a;
             }
         }
     }
