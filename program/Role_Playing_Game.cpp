@@ -68,7 +68,7 @@ int main( void)
 
     if( answer == 2)return -1;
 
-    cout << GREEN <<"Change Grid for Game." << RESET <<endl;
+    cout << GREEN <<"Choose Grid for Game." << RESET <<endl;
     cout << "Press 1 for 8x8" << endl;
     cout << "Press 2 for 10x10" << endl;
     cout << "Press 3 for 12x12" << endl;
@@ -193,16 +193,33 @@ int main( void)
 
         vector_potions.push_back( potion);    
     }
-
+    file_potions.close();
 
     int I1;
     int I2;
+
+    //διαβαζω τα Weapons
+    ifstream file_weapons;
+    file_weapons.open("../files/weapons.txt");
+
+    vector< Item* > vector_weapons;
+
+    while( file_weapons >> name >> x1 >> I1 >> I2 >> x2)
+    {   
+        Item* weapon = new Weapon(name, x1, I1, I2, x2);
+
+        vector_weapons.push_back(weapon);
+    }
+    
+    file_weapons.close();
+    cout<<vector_weapons.size()<<endl;
+    
     double x5;
     //διαβαζω τα ξορκια
     
     //διαβαζω τα Lightspells
     ifstream file_lightingspells;
-    file_potions.open("../files/lightingspells.txt");
+    file_lightingspells.open("../files/lightingspells.txt");
 
     vector< Spell* > vector_lightingspells;
 
@@ -212,10 +229,11 @@ int main( void)
 
         vector_lightingspells.push_back(spell);
     }
+    file_lightingspells.close();
 
     //διαβαζω τα Icespells
     ifstream file_icespells;
-    file_potions.open("../files/icespells.txt");
+    file_icespells.open("../files/icespells.txt");
 
     vector< Spell* > vector_icespells;
 
@@ -225,10 +243,11 @@ int main( void)
 
         vector_icespells.push_back(spell);
     }
+    file_icespells.close();
 
     //διαβαζω τα Firespells
     ifstream file_firespells;
-    file_potions.open("../files/firespells.txt");
+    file_firespells.open("../files/firespells.txt");
 
     vector< Spell* > vector_firespells;
 
@@ -238,7 +257,9 @@ int main( void)
 
         vector_firespells.push_back(spell);
     }
+    file_firespells.close();
 
+<<<<<<< HEAD
 
     //διαβαζω τα Weapons
     ifstream file_weapons;
@@ -253,6 +274,9 @@ int main( void)
         vector_weapons.push_back(weapon);
     }
 
+=======
+    
+>>>>>>> 2df08860af12a2c337410574b67dfef5d30d9b66
     //FOR HEROES
     cout << BOLDBLUE << "Which Heroes do you want to choose?" << RESET << endl;
     
@@ -350,6 +374,7 @@ int main( void)
     for(int i = 0; i < vector_armors.size(); i++){
         grid->provide(vector_armors.at(i));
     }
+<<<<<<< HEAD
 
     for(int i = 0; i < vector_weapons.size(); i++){
         grid->provide(vector_weapons.at(i));
@@ -359,6 +384,14 @@ int main( void)
         grid->provide(vector_potions.at(i));
     }
 
+=======
+    for(int i = 0; i < vector_weapons.size(); i++){
+        grid->provide(vector_weapons.at(i));
+    }
+    for(int i = 0; i < vector_potions.size(); i++){
+        grid->provide(vector_potions.at(i));
+    }
+>>>>>>> 2df08860af12a2c337410574b67dfef5d30d9b66
     for(int i = 0; i < vector_icespells.size(); i++){
         grid->provide(vector_icespells.at(i));
     }
