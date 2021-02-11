@@ -127,7 +127,6 @@ void Grid::StartGame()
     while( level_heroes == false)
     {   
         string kind_of_square = squares[x_heroes][y_heroes]->get_kind_of_square();
-        cout << kind_of_square << endl;
         if( kind_of_square.compare( "Market") == 0)
         {   
             for(int i = 0; i < vector_heroes.size(); i++)
@@ -329,6 +328,20 @@ void Grid::quitGame()
     exit(EXIT_FAILURE);
 }
 
+
+
+
+
+
+
+
+
+///LOIPON GIOXANSO SOSSSSSSSSSSSSSSS
+
+//EMFANIZE TOY POY NA PAEI MONOOOOOOOOOOOOOOO EKEI POY BOREI DILADI AN EINAI APAGOREYSIMO TETRAGONO
+//(PX EINAI X) NA ELEGXEIII KAI AN EINAI APAGOREYSIMO NA MI  TOY EMFANIZEI AYTI TI KATEYTHINSIIIIIIIIII
+//EPISIS OPOS EINAI TORA AN EINAI NONACCESIBLE DN PAEI PANO KAI DN KSANAKALEITAI I MOVE MENEI EKEI POY 
+//EINAI
 void Grid::move(vector <Hero*> heroes){
     displayMap();
     cout<<"Where do you want to go?"<<endl;
@@ -418,6 +431,7 @@ void Grid::move(vector <Hero*> heroes){
             for(int i = 0; i < heroes.size(); i++){
                 squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
                 heroes.at(i)->set_y(a);
+                y_heroes = a;
             }
         }
     }
