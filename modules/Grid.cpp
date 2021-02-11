@@ -24,7 +24,7 @@ Grid::Grid(int x, int y){
             int r = rand() % 10;
             if(r == 1)
                 this->squares[i][j] = new nonAccessible();
-            else if(r == 5)
+            else if(r == 3 || r == 7)
                 this->squares[i][j] = new Market();
             else
                 this->squares[i][j] = new Common();
