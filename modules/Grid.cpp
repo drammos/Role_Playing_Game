@@ -24,7 +24,7 @@ Grid::Grid(int x, int y){
             int r = rand() % 10;
             if(r == 1)
                 this->squares[i][j] = new nonAccessible();
-            else if(r == 3 || r == 7)
+            else if(r == 5)
                 this->squares[i][j] = new Market();
             else
                 this->squares[i][j] = new Common();
@@ -66,18 +66,28 @@ void Grid::set_heroes( Hero* hero)
 
 void Grid::set_monsters( Monster* monster)
 {
-    srand(time(NULL));
+    // srand(time(NULL));
     bool in = false;
     int x1;
     int y1;
     while( in != true)
-    {
-        x1 = rand()%(x+1);
-        y1 = rand()&(y+1);
+    {   
+        x1 = rand()%x;
+        y1 = rand()%y;
         if( (squares[x1][y1]->get_kind_of_square()).compare( "Common") == 0)
-        {
+        {   
+
+            //αν ειναι common τοτε 1/10 ειναι nonaccesible 2/10 store
+            //kai 7/10 common
+            //αρα αποφασιζουμε τυχαια με πιθανοτητα 3/7 να ναι monster sto grid
+            //αλλιως οχι
+            int num_rand = rand()%7;
+            if( num_rand <= 3)
+            {
+                squares[x1][y1]->add_monster( monster);
+            }
+
             in = true;
-            squares[x1][y1]->add_monster( monster);
         }   
     }
 }
@@ -91,10 +101,6 @@ void Grid::set_monsters( Monster* monster)
 //to level na αυξανονται κατα καποιο ποσο τα λεφτα του
 
 ///////////////////////
-
-
-
-
 
 void Grid::StartGame()
 {
@@ -165,7 +171,6 @@ void Grid::StartGame()
     displayMap();
     
 }
-
 
 
 void Grid::checkInventory( Hero* hero)
@@ -332,16 +337,13 @@ void Grid::quitGame()
 
 
 
-
-
-
-
 ///LOIPON GIOXANSO SOSSSSSSSSSSSSSSS
 
 //EMFANIZE TOY POY NA PAEI MONOOOOOOOOOOOOOOO EKEI POY BOREI DILADI AN EINAI APAGOREYSIMO TETRAGONO
 //(PX EINAI X) NA ELEGXEIII KAI AN EINAI APAGOREYSIMO NA MI  TOY EMFANIZEI AYTI TI KATEYTHINSIIIIIIIIII
 //EPISIS OPOS EINAI TORA AN EINAI NONACCESIBLE DN PAEI PANO KAI DN KSANAKALEITAI I MOVE MENEI EKEI POY 
 //EINAI
+
 void Grid::move(vector <Hero*> heroes){
     displayMap();
     cout<<"Where do you want to go?"<<endl;
@@ -791,6 +793,7 @@ void Square::War(){
         }
     }
 }
+
 
 //βοηθητικη συναρτηση-μελος
 bool Square::buy( Hero* hero)

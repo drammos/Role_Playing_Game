@@ -159,7 +159,7 @@ int main( void)
         in.x3 = x3;
         in.x4 = x4;
 
-        vector_heroes.push_back( in);
+        vector_monsters.push_back( in);
     }
     file_monsters.close();
 
@@ -198,6 +198,7 @@ int main( void)
     int I1;
     int I2;
 
+
     //διαβαζω τα Weapons
     ifstream file_weapons;
     file_weapons.open("../files/weapons.txt");
@@ -212,11 +213,12 @@ int main( void)
     }
     
     file_weapons.close();
-    cout<<vector_weapons.size()<<endl;
     
     double x5;
+
     //διαβαζω τα ξορκια
     
+
     //διαβαζω τα Lightspells
     ifstream file_lightingspells;
     file_lightingspells.open("../files/lightingspells.txt");
@@ -230,6 +232,7 @@ int main( void)
         vector_lightingspells.push_back(spell);
     }
     file_lightingspells.close();
+
 
     //διαβαζω τα Icespells
     ifstream file_icespells;
@@ -352,7 +355,7 @@ int main( void)
             Spirit* spirit = new Spirit( in_1.name, in_1.x1, in_1.x2, in_1.x3, in_1.x4);
             monster = spirit;
         }
-
+// srand(time(NULL));
         grid->set_monsters( monster);
     }
 
