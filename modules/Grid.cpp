@@ -116,17 +116,17 @@ void Grid::StartGame()
 
     for(int i = 0; i < vector_heroes.size(); i++)
     {   
-        bool buy_weapon;
+        bool buy_weapon = false;
         Hero* hero =  vector_heroes.at(i);
-        do{
-            cout << RED << "You must buy Weapon for your hero!" << RESET << endl;
+        while(buy_weapon == false){
+            cout << RED << "You must buy a Weapon for " << hero->get_name() << RESET << endl;
             buy_weapon = squares[x_heroes][y_heroes]->buy( hero);
             if( hero->get_money() == 0 && buy_weapon == false)
             {
                 cout << RED << "YOU LOSE!!!, BECAUSE YOU HAVN'T MONEY A1ND YOU HAVN'T WEAPON FOR WAR!!!" << RESET << endl;
                 quitGame();
             }
-        }while( buy_weapon == false);
+        }
     }
     
     bool level_heroes = false;
@@ -369,7 +369,7 @@ void Grid::move(vector <Hero*> heroes){
         f2 = 0;
     }
 
-    bool f3 = 3;
+    int f3 = 3;
     if(heroes.at(0)->get_y() == 0){
         a = this->y-1;
     }
@@ -380,12 +380,12 @@ void Grid::move(vector <Hero*> heroes){
         f3 = 0; 
     }
 
-    bool f4 = 4;
+    int f4 = 4;
     if(heroes.at(0)->get_y() == this->y-1){
         a = 0;
     }
     else{
-        a = heroes.at(0)->get_x() + 1;
+        a = heroes.at(0)->get_y() + 1;
     }
     if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
         f4 = 0;
@@ -413,17 +413,12 @@ void Grid::move(vector <Hero*> heroes){
         else{
             a = heroes.at(0)->get_x() - 1;
         }
-        // if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
-        //     cout<<"This is a nonAccessible square!"<<endl;
-        // }
-        //else{
-            squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
-            for(int i = 0; i < heroes.size(); i++){
-                squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
-                heroes.at(i)->set_x(a);
-                x_heroes = a;
-            }
-        //}
+        squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+        for(int i = 0; i < heroes.size(); i++){
+            squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
+            heroes.at(i)->set_x(a);
+            x_heroes = a;
+        }
     }
     else if(answer == 2){
         int a;
@@ -433,17 +428,12 @@ void Grid::move(vector <Hero*> heroes){
         else{
             a = heroes.at(0)->get_x() + 1;
         }
-        // if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
-        //     cout<<"This is a nonAccessible square!"<<endl;
-        // }
-        //else{
-            squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
-            for(int i = 0; i < heroes.size(); i++){
-                squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
-                heroes.at(i)->set_x(a);
-                x_heroes = a;
-            }
-        //}
+        squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+        for(int i = 0; i < heroes.size(); i++){
+            squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
+            heroes.at(i)->set_x(a);
+            x_heroes = a;
+        }
     }
     else if(answer == 3){
         int a;
@@ -453,17 +443,12 @@ void Grid::move(vector <Hero*> heroes){
         else{
             a = heroes.at(0)->get_y() - 1;
         }
-        // if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
-        //     cout<<"This is a nonAccessible square!"<<endl;
-        // }
-        // else{
-            squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
-            for(int i = 0; i < heroes.size(); i++){
-                squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
-                heroes.at(i)->set_y(a);
-                y_heroes = a;
-            }
-        //}
+        squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+        for(int i = 0; i < heroes.size(); i++){
+            squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
+            heroes.at(i)->set_y(a);
+            y_heroes = a;
+        }
     }
     else{
         int a;
@@ -471,19 +456,14 @@ void Grid::move(vector <Hero*> heroes){
             a = 0;
         }
         else{
-            a = heroes.at(0)->get_x() + 1;
+            a = heroes.at(0)->get_y() + 1;
         }
-        // if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
-        //     cout<<"This is a nonAccessible square!"<<endl;
-        // }
-        // else{
-            squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
-            for(int i = 0; i < heroes.size(); i++){
-                squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
-                heroes.at(i)->set_y(a);
-                y_heroes = a;
-            }
-        //}
+        squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+        for(int i = 0; i < heroes.size(); i++){
+            squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
+            heroes.at(i)->set_y(a);
+            y_heroes = a;
+        }
     }
 }
 
@@ -625,7 +605,7 @@ int Square::alive(){
         if(this->monsters.at(i)->get_healthPower() != 0.0)
             m++;
     }
-    if(m && h)
+    if(m != 0 && h != 0)
         return 0;
     else if(m > 0)
         return 1;
@@ -647,6 +627,7 @@ void Square::War(){
     }
     while(this->alive() == 0){
         for(int i = 0; i < this->heroes.size(); i++){
+            cout<<this->heroes.at(i)->get_name()<<":"<<endl;
             if(this->heroes.at(i)->get_healthPower() == 0.0)
                 continue;
             cout << "How do you want to attack your oponents?" << endl; 
@@ -678,6 +659,8 @@ void Square::War(){
                             cout<<endl;
                         }
                     }
+                    if(this->alive() == 2)
+                        break;
                     cout<<"Press the number of the monster you want to fight against"<<endl;
                     int a1;
                     cin>>a1;
@@ -721,6 +704,8 @@ void Square::War(){
                         cout<<endl;
                     }
                 }
+                if(this->alive() == 2)
+                    break;
                 cout<<"Press the number of the monster you want to fight against"<<endl;
                 int a1;
                 cin>>a1;
