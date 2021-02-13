@@ -123,7 +123,7 @@ void Grid::StartGame()
             buy_weapon = squares[x_heroes][y_heroes]->buy( hero);
             if( hero->get_money() == 0 && buy_weapon == false)
             {
-                cout << RED << "YOU LOSE!!!, BECAUSE YOU HAVN'T MONEY AND YOU HAVN'T WEAPON FOR WAR!!!" << RESET << endl;
+                cout << RED << "YOU LOSE!!!, BECAUSE YOU HAVN'T MONEY A1ND YOU HAVN'T WEAPON FOR WAR!!!" << RESET << endl;
                 quitGame();
             }
         }while( buy_weapon == false);
@@ -346,14 +346,62 @@ void Grid::quitGame()
 
 void Grid::move(vector <Hero*> heroes){
     displayMap();
+    int a;
+    int f1 = 1;
+    if(heroes.at(0)->get_x() == 0){
+        a = this->x-1;
+    }
+    else{
+        a = heroes.at(0)->get_x() - 1;
+    }
+    if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
+        f1 = 0;
+    }
+
+    int f2 = 2;
+    if(heroes.at(0)->get_x() == this->x-1){
+        a = 0;
+    }
+    else{
+        a = heroes.at(0)->get_x() + 1;
+    }
+    if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
+        f2 = 0;
+    }
+
+    bool f3 = 3;
+    if(heroes.at(0)->get_y() == 0){
+        a = this->y-1;
+    }
+    else{
+        a = heroes.at(0)->get_y() - 1;
+    }
+    if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
+        f3 = 0; 
+    }
+
+    bool f4 = 4;
+    if(heroes.at(0)->get_y() == this->y-1){
+        a = 0;
+    }
+    else{
+        a = heroes.at(0)->get_x() + 1;
+    }
+    if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
+        f4 = 0;
+    }
     cout<<"Where do you want to go?"<<endl;
-    cout<<"Press 1 for up."<<endl;
-    cout<<"Press 2 for down."<<endl;
-    cout<<"Press 3 for left."<<endl;
-    cout<<"Press 4 for right."<<endl;
+    if(f1 == 1)
+        cout<<"Press 1 for up."<<endl;
+    if(f2 == 2)
+        cout<<"Press 2 for down."<<endl;
+    if(f3 == 3)
+        cout<<"Press 3 for left."<<endl;
+    if(f4 == 4)
+        cout<<"Press 4 for right."<<endl;
     int answer;
     cin>>answer;
-    while(answer < 1 || answer > 4){
+    while(answer == 0 && answer != f1 && answer != f2 && answer != f3 && answer != f4){
         cout << RED << "Invalid number, try again!" << RESET << endl;
         cin >> answer;
     }
@@ -365,17 +413,17 @@ void Grid::move(vector <Hero*> heroes){
         else{
             a = heroes.at(0)->get_x() - 1;
         }
-        if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
-            cout<<"This is a nonAccessible square!"<<endl;
-        }
-        else{
+        // if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
+        //     cout<<"This is a nonAccessible square!"<<endl;
+        // }
+        //else{
             squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
             for(int i = 0; i < heroes.size(); i++){
                 squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
                 heroes.at(i)->set_x(a);
                 x_heroes = a;
             }
-        }
+        //}
     }
     else if(answer == 2){
         int a;
@@ -385,17 +433,17 @@ void Grid::move(vector <Hero*> heroes){
         else{
             a = heroes.at(0)->get_x() + 1;
         }
-        if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
-            cout<<"This is a nonAccessible square!"<<endl;
-        }
-        else{
+        // if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
+        //     cout<<"This is a nonAccessible square!"<<endl;
+        // }
+        //else{
             squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
             for(int i = 0; i < heroes.size(); i++){
                 squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
                 heroes.at(i)->set_x(a);
                 x_heroes = a;
             }
-        }
+        //}
     }
     else if(answer == 3){
         int a;
@@ -405,17 +453,17 @@ void Grid::move(vector <Hero*> heroes){
         else{
             a = heroes.at(0)->get_y() - 1;
         }
-        if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
-            cout<<"This is a nonAccessible square!"<<endl;
-        }
-        else{
+        // if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
+        //     cout<<"This is a nonAccessible square!"<<endl;
+        // }
+        // else{
             squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
             for(int i = 0; i < heroes.size(); i++){
                 squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
                 heroes.at(i)->set_y(a);
                 y_heroes = a;
             }
-        }
+        //}
     }
     else{
         int a;
@@ -425,17 +473,17 @@ void Grid::move(vector <Hero*> heroes){
         else{
             a = heroes.at(0)->get_x() + 1;
         }
-        if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
-            cout<<"This is a nonAccessible square!"<<endl;
-        }
-        else{
+        // if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
+        //     cout<<"This is a nonAccessible square!"<<endl;
+        // }
+        // else{
             squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
             for(int i = 0; i < heroes.size(); i++){
                 squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
                 heroes.at(i)->set_y(a);
                 y_heroes = a;
             }
-        }
+        //}
     }
 }
 
@@ -444,7 +492,7 @@ void Grid::buy_sell_and_equip( Hero* hero)
 {
     string answer;
     do{
-        cout << "You want buy?" << endl;
+        cout << "Do you want to buy anything else?" << endl;
         cin >> answer;
 
         while( answer != "Yes" && answer != "No"){
@@ -844,8 +892,11 @@ bool Market::buy(Hero* hero){
         cout<<"Press the number of the item you would like to purchase"<<endl;
         int a1;
         cin>>a1;
-        while(a1 > this->items.size() || a1 <= 0){
-            cout << RED << "Invalid number, try again!" << RESET << endl;
+        while(a1 > this->items.size() || a1 <= 0 || this->items.at(a1-1)->get_level() > hero->get_level()){
+            if(this->items.at(a1-1)->get_level() > hero->get_level())
+                cout << RED << "You must choose an item you have the needed level to buy, try again!"<<endl;
+            else
+                cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
         }
         Item* item = this->items.at(a1-1);
@@ -874,8 +925,11 @@ bool Market::buy(Hero* hero){
         cout<<"Press the number of the spell you would like to purchase"<<endl;
         int a1;
         cin>>a1;
-        while(a1 > this->spells.size() || a1 <= 0){
-            cout << RED << "Invalid number, try again!" << RESET << endl;
+        while(a1 > this->spells.size() || a1 <= 0 || this->spells.at(a1-1)->get_level() > hero->get_level()){
+            if(this->spells.at(a1-1)->get_level() > hero->get_level())
+                cout << RED << "You must choose an item you have the needed level to buy, try again!"<<endl;
+            else
+                cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
         }
         Spell* spell = this->spells.at(a1-1);
