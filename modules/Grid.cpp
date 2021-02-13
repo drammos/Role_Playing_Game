@@ -619,7 +619,7 @@ void Square::War(){
     int r = rand()%3;
     if(r)return;
 
-    cout<<"You are on a war with "<<this->monsters.size()<<" monsters"<<endl;
+    cout<< MAGENTA << "You are on a war with "<<this->monsters.size()<<" monsters"<< RESET << endl;
     if(this->heroes.at(0)->get_level() > this->monsters.at(0)->get_level()){
         for(int i = 0; i < this->monsters.size(); i++){
             this->monsters.at(i)->level_up();
@@ -627,10 +627,10 @@ void Square::War(){
     }
     while(this->alive() == 0){
         for(int i = 0; i < this->heroes.size(); i++){
-            cout<<this->heroes.at(i)->get_name()<<":"<<endl;
+            cout << endl << endl <<this->heroes.at(i)->get_name()<<":"<<endl;
             if(this->heroes.at(i)->get_healthPower() == 0.0)
                 continue;
-            cout << "How do you want to attack your oponents?" << endl; 
+            cout << BLUE <<"How do you want to attack your oponents?" << RESET << endl; 
             cout << "Press 1 for Attack" << endl;
             cout << "Press 2 for CastSpell" << endl;
             cout << "Press 3 for Potion" << endl;
@@ -641,17 +641,18 @@ void Square::War(){
                 cout << RED << "Invalid number, try again!" << RESET << endl;
                 cin >> w;
             }
+
             if( w == 3){
                 int p = this->heroes.at(i)->print_Potion();
                 if(p == 0){
-                    cout<<"Select another way of attack"<<endl;
+                    cout<< MAGENTA << "Select another way of attack" << RESET << endl;
                     cin>>w;
                     while(w != 1 && w != 2){
-                        cout<<"Invalid number, try again!"<<endl;
+                        cout<< RED <<"Invalid number, try again!"<< RESET << endl;
                         cin>>w;
                     }
                     Monster* monster;
-                    cout << "Which monster do you want to fight against?" << endl;
+                    cout << MAGENTA << "Which monster do you want to fight against?" << RESET << endl << endl;
                     for(int i = 0; i < this->monsters.size(); i++){
                         if(this->monsters.at(i)->get_healthPower() > 0){
                             cout<<i+1<<")";
@@ -684,7 +685,7 @@ void Square::War(){
                     }
                 }
                 else{
-                    cout<<"Please press the number of the Potion you want to take"<<endl;
+                    cout<< MAGENTA << "Please press the number of the Potion you want to take" << RESET <<endl;
                     int a;
                     cin>>a;
                     while(a <= 0 || a > p){
@@ -696,7 +697,7 @@ void Square::War(){
             }
             else{   
                 Monster* monster;
-                cout << "Which monster do you want to fight against?" << endl;
+                cout << MAGENTA <<"Which monster do you want to fight against?" << RESET << endl;
                 for(int i = 0; i < this->monsters.size(); i++){
                     if(this->monsters.at(i)->get_healthPower() > 0){
                         cout<<i+1<<")";
@@ -706,7 +707,7 @@ void Square::War(){
                 }
                 if(this->alive() == 2)
                     break;
-                cout<<"Press the number of the monster you want to fight against"<<endl;
+                cout << endl << MAGENTA <<"Press the number of the monster you want to fight against" << RESET <<endl;
                 int a1;
                 cin>>a1;
                 while(a1 <= 0 || a1 > this->monsters.size()){
@@ -723,7 +724,7 @@ void Square::War(){
                 else{
                     bool f = this->heroes.at(i)->castSpell(this->monsters.at(a1-1));
                     if(f == false){
-                        cout<<"Select another way of attack"<<endl;
+                        cout<< BLUE <<"Select another way of attack"<< RESET <<endl;
                         cin>>w;
                         while(w != 1 && w != 3){
                             cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
@@ -773,14 +774,16 @@ void Square::War(){
             if(this->monsters.at(i)->get_healthPower() != 0.0)
                 this->monsters.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
         }
-        cout<<"Do you want to view Statistics?"<<endl;
+        cout<< endl << endl << YELLOW << "Do you want to view Statistics?"<< RESET << endl;
         cout<<"Yes or No"<<endl;
+        
         string answer;
-        cin>>answer;
-        while(answer.compare("Yes") && answer.compare("No")){
+        cin >> answer;
+        while( answer.compare("Yes") != 0 && answer.compare("No") != 0){
             cout<<"Invalid answer, try again!"<<endl;
-            cin>>answer;
+            cin >> answer;
         }
+        
         if(answer.compare("Yes") == 0){
             for(int i = 0; i < this->heroes.size(); i++){
                 this->heroes.at(i)->displayStats();
@@ -791,13 +794,13 @@ void Square::War(){
         }
     }
     if(this->alive() == 1){
-        cout<<"You lost the war"<<endl;
+        cout << endl << endl <<BOLDRED <<"You lost the war"<< RESET << endl;
         for(int i = 0; i < this->heroes.size(); i++){
             this->heroes.at(i)->set_money(this->heroes.at(i)->get_money() / 2.0);
         }
     }
     else{
-        cout<<"You won the war. Congratulations!"<<endl;
+        cout<< endl << endl << BOLDGREEN<<"You won the war. Congratulations!"<< RESET<<endl;
         for(int i = 0; i < this->heroes.size(); i++){
             this->heroes.at(i)->add_experience((this->heroes.at(i)->get_level() + EXPERIENCE) * this->monsters.size());
             this->heroes.at(i)->add_money((this->heroes.at(i)->get_level() + MONEY) * this->monsters.size());
@@ -865,6 +868,10 @@ bool Market::buy(Hero* hero){
     int a;
     cin>>a;
 
+    while(a != 1 && a != 2){
+        cout<<"Invalid number, try again!"<<endl;
+        cin>>a;
+    }
     //ελεγχουμε αν αγορασε οπλο
     bool back = false;
 
@@ -877,9 +884,10 @@ bool Market::buy(Hero* hero){
         cout<<"Press the number of the item you would like to purchase"<<endl;
         int a1;
         cin>>a1;
+
         while(a1 > this->items.size() || a1 <= 0 || this->items.at(a1-1)->get_level() > hero->get_level()){
             if(this->items.at(a1-1)->get_level() > hero->get_level())
-                cout << RED << "You must choose an item you have the needed level to buy, try again!"<<endl;
+                cout << RED << "You must choose an item you have the needed level to buy, try again!"<< RESET << endl;
             else
                 cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
