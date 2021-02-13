@@ -491,42 +491,44 @@ int Hero::print_Potion()const
 
 void Hero::Take_Potion( int position)
 {
-    Item* potion_item = Potion_vector.at( position);
-    srand( time(NULL));
+    //Item* potion_item = Potion_vector.at( position);
+    // srand( time(NULL));
 
-    part p = potion_item->get_prices();
-
-    
-
-    string characteristic = p.characteristic;
-    double increase = p.power;
-    if( characteristic == "magicPower")
-    {
-        magicPower = magicPower + increase*magicPower;
-    }
-    else if( characteristic == "strength")
-    {
-        strength = strength + increase*strength;
-    }
-    else if( characteristic == "dexterity")
-    {
-        dexterity = dexterity + increase*dexterity;
-    }
-    else
-    {
-        agility = agility + increase*agility;
-    }
-
-    Item* P = Potion_vector.at( Potion_vector.size() - 1);
-    
-    Potion_vector.assign( position, P);
-    Potion_vector.assign( Armor_vector.size() -1, potion_item);
-
-    Potion_vector.pop_back();
-
-    delete potion_item;
+    // part p = potion_item->get_prices();
 
     
+
+    // string characteristic = p.characteristic;
+    // double increase = p.power;
+    // if( characteristic == "magicPower")
+    // {
+    //     magicPower = magicPower + increase*magicPower;
+    // }
+    // else if( characteristic == "strength")
+    // {
+    //     strength = strength + increase*strength;
+    // }
+    // else if( characteristic == "dexterity")
+    // {
+    //     dexterity = dexterity + increase*dexterity;
+    // }
+    // else
+    // {
+    //     agility = agility + increase*agility;
+    // }
+
+    //Item* P = Potion_vector.at( Potion_vector.size() - 1);
+    
+    //Potion_vector.assign( position, P);
+    //Potion_vector.assign( Armor_vector.size() -1, potion_item);
+    //Potion_vector.push_back(potion_item);
+    vector <Item*> :: iterator it;
+    it = Potion_vector.begin();
+    for(int i = 0; i < position; i++){
+        it++;
+    }
+
+    Potion_vector.erase(it);
 }
 
 void Hero::print_hero()const
