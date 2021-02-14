@@ -284,7 +284,6 @@ bool Hero::sell_Item( int position)
 {   
     int size = Weapon_vector.size() + Armor_vector.size() + Potion_vector.size();
 
-
     if( position >= 0 && position < size)
     {      
         Item* item_in;
@@ -292,42 +291,43 @@ bool Hero::sell_Item( int position)
 
 
         if( position < Weapon_vector.size())
-        {
-            item_in = Weapon_vector.at(position);
-            it = Weapon_vector.at( Weapon_vector.size() - 1);
-    
-            Weapon_vector.assign( position, it);
-            Weapon_vector.assign( Weapon_vector.size() -1, item_in);
+        {   
+            vector <Item*> :: iterator it;
+            it = Weapon_vector.begin();
+            for(int i = 0; i < position; i++){
+                it++;
+            }
 
-            Weapon_vector.pop_back();
+            Weapon_vector.erase(it);
         }
         else if( position < Weapon_vector.size() + Armor_vector.size())
         {   
             position = position - Weapon_vector.size();
-            item_in = Armor_vector.at(position);
-            it = Armor_vector.at( Armor_vector.size() - 1);
-    
-            Armor_vector.assign( position, it);
-            Armor_vector.assign( Armor_vector.size() -1, item_in);
 
-            Armor_vector.pop_back();
+            vector <Item*> :: iterator it;
+            it = Armor_vector.begin();
+            for(int i = 0; i < position; i++){
+                it++;
+            }
+
+            Armor_vector.erase(it);
         }
         else
         {
             position = position - Weapon_vector.size() - Armor_vector.size();
-            item_in = Potion_vector.at(position);
-            it = Potion_vector.at( Potion_vector.size() - 1);
-    
-            Potion_vector.assign( position, it);
-            Potion_vector.assign( Potion_vector.size() -1, item_in);
 
-            Potion_vector.pop_back();
+            vector <Item*> :: iterator it;
+            it = Potion_vector.begin();
+            for(int i = 0; i < position; i++){
+                it++;
+            }
+
+            Potion_vector.erase(it);
         }
         count_item_and_spell--;
         
         return true;
     }
-
     return false;
 }
 
@@ -402,7 +402,7 @@ int Hero::print_item()const
         cout << (i+1 + size_previous) << ") ";
         item->print();
     }
-    size_previous = size + size;
+    size_previous += size;
 
     size = Potion_vector.size();
     for( int i =0; i < size; i++ )
