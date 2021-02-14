@@ -338,13 +338,20 @@ bool Hero::sell_Spell( int position)
     int size = spell_vector.size(); 
     if( position >= 0 && position < size )
     {
-        Spell* spell_in = spell_vector.at(position);
-        Spell* sp = spell_vector.at( size - 1);
-        
-        spell_vector.assign( position, sp);
-        spell_vector.assign( size -1, spell_in);
+        vector <Spell*> :: iterator it;
+        it = spell_vector.begin();
+        for(int i = 0; i < position; i++){
+            it++;
+        }
 
-        spell_vector.pop_back();
+        spell_vector.erase(it);
+        // Spell* spell_in = spell_vector.at(position);
+        // Spell* sp = spell_vector.at( size - 1);
+        
+        // spell_vector.assign( position, sp);
+        // spell_vector.assign( size -1, spell_in);
+
+        // spell_vector.pop_back();
         count_item_and_spell--;
         return true;
     }
