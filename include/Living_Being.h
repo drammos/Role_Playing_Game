@@ -105,7 +105,7 @@ class Hero : public Living_Being{
     void buy_Spell( Spell*);
 
     //for sell spell and item
-    bool sell_Item( int);
+    bool sell_Item(unsigned int);
     bool sell_Spell( int);
 
     //print list for spell and item

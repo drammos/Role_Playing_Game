@@ -66,7 +66,10 @@ int main( void)
         cin >> answer;
     }
 
-    if( answer == 2)return -1;
+    if( answer == 2){
+        cout<<"You just quit"<<endl;
+        return -1;
+    }
 
     cout << GREEN <<"Choose Grid for Game." << RESET <<endl;
     cout << "Press 1 for 8x8" << endl;

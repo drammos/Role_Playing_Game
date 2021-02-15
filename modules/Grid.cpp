@@ -114,7 +114,7 @@ void Grid::StartGame()
     vector_heroes = squares[x_heroes][y_heroes]->get_heroes();
     
 
-    for(int i = 0; i < vector_heroes.size(); i++)
+    for(unsigned int i = 0; i < vector_heroes.size(); i++)
     {   
         bool buy_weapon = false;
         Hero* hero =  vector_heroes.at(i);
@@ -135,7 +135,7 @@ void Grid::StartGame()
         string kind_of_square = squares[x_heroes][y_heroes]->get_kind_of_square();
         if( kind_of_square.compare( "Market") == 0)
         {   
-            for(int i = 0; i < vector_heroes.size(); i++)
+            for(unsigned int i = 0; i < vector_heroes.size(); i++)
             {   
                 Hero* hero =  vector_heroes.at(i);
                 cout << "Hero: " << hero->get_hero() << " " << endl;    
@@ -153,8 +153,8 @@ void Grid::StartGame()
 
         //αν ολοι οι ηρωες εχον φτασει
         //στο max level τοτε το παιχνιδι τελειωσε
-        int size_max_level = 0;
-        for(int i = 0; i < vector_heroes.size(); i++)
+        unsigned int size_max_level = 0;
+        for(unsigned int i = 0; i < vector_heroes.size(); i++)
         {
             Hero* hero =  vector_heroes.at(i);
             if( hero->get_level() == MAX_LEVEL)
@@ -414,7 +414,7 @@ void Grid::move(vector <Hero*> heroes){
             a = heroes.at(0)->get_x() - 1;
         }
         squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
-        for(int i = 0; i < heroes.size(); i++){
+        for(unsigned int i = 0; i < heroes.size(); i++){
             squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
             heroes.at(i)->set_x(a);
             x_heroes = a;
@@ -429,7 +429,7 @@ void Grid::move(vector <Hero*> heroes){
             a = heroes.at(0)->get_x() + 1;
         }
         squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
-        for(int i = 0; i < heroes.size(); i++){
+        for(unsigned int i = 0; i < heroes.size(); i++){
             squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
             heroes.at(i)->set_x(a);
             x_heroes = a;
@@ -444,7 +444,7 @@ void Grid::move(vector <Hero*> heroes){
             a = heroes.at(0)->get_y() - 1;
         }
         squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
-        for(int i = 0; i < heroes.size(); i++){
+        for(unsigned int i = 0; i < heroes.size(); i++){
             squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
             heroes.at(i)->set_y(a);
             y_heroes = a;
@@ -459,7 +459,7 @@ void Grid::move(vector <Hero*> heroes){
             a = heroes.at(0)->get_y() + 1;
         }
         squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
-        for(int i = 0; i < heroes.size(); i++){
+        for(unsigned int i = 0; i < heroes.size(); i++){
             squares[heroes.at(0)->get_x()][a]->add_hero(heroes.at(i));
             heroes.at(i)->set_y(a);
             y_heroes = a;
@@ -572,7 +572,7 @@ void Square::add_monster(Monster* m){
 
 vector <Hero*> Square::remove_heroes(){
     vector <Hero*> vec;
-    for(int i = 0; i < this->heroes.size(); i++){
+    for(unsigned int i = 0; i < this->heroes.size(); i++){
         vec.push_back(this->heroes.at(i));
     }
     this->heroes.clear();
@@ -596,12 +596,12 @@ int Square::contains(){
 
 int Square::alive(){
     int h = 0;
-    for(int i = 0; i < this->heroes.size(); i++){
+    for(unsigned int i = 0; i < this->heroes.size(); i++){
         if(this->heroes.at(i)->get_healthPower() != 0.0)
             h++;
     }
     int m = 0;
-    for(int i = 0; i < this->monsters.size(); i++){
+    for(unsigned int i = 0; i < this->monsters.size(); i++){
         if(this->monsters.at(i)->get_healthPower() != 0.0)
             m++;
     }
@@ -621,12 +621,12 @@ void Square::War(){
 
     cout<< MAGENTA << "You are on a war with "<<this->monsters.size()<<" monsters"<< RESET << endl;
     if(this->heroes.at(0)->get_level() > this->monsters.at(0)->get_level()){
-        for(int i = 0; i < this->monsters.size(); i++){
+        for(unsigned int i = 0; i < this->monsters.size(); i++){
             this->monsters.at(i)->level_up();
         }
     }
     while(this->alive() == 0){
-        for(int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++){
             cout << endl << endl <<this->heroes.at(i)->get_name()<<":"<<endl;
             if(this->heroes.at(i)->get_healthPower() == 0.0)
                 continue;
@@ -651,19 +651,19 @@ void Square::War(){
                         cout<< RED <<"Invalid number, try again!"<< RESET << endl;
                         cin>>w;
                     }
-                    Monster* monster;
+                    //Monster* monster;
                     cout << MAGENTA << "Which monster do you want to fight against?" << RESET << endl << endl;
-                    for(int i = 0; i < this->monsters.size(); i++){
-                        if(this->monsters.at(i)->get_healthPower() > 0){
-                            cout<<i+1<<")";
-                            this->monsters.at(i)->print_monster();
+                    for(unsigned int j = 0; j < this->monsters.size(); j++){
+                        if(this->monsters.at(j)->get_healthPower() > 0){
+                            cout<<j+1<<")";
+                            this->monsters.at(j)->print_monster();
                             cout<<endl;
                         }
                     }
                     if(this->alive() == 2)
                         break;
                     cout<<"Press the number of the monster you want to fight against"<<endl;
-                    int a1;
+                    unsigned int a1;
                     cin>>a1;
                     while(a1 <= 0 || a1 > this->monsters.size()){
                         cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
@@ -696,19 +696,19 @@ void Square::War(){
                 }
             }
             else{   
-                Monster* monster;
+                //Monster* monster;
                 cout << MAGENTA <<"Which monster do you want to fight against?" << RESET << endl;
-                for(int i = 0; i < this->monsters.size(); i++){
-                    if(this->monsters.at(i)->get_healthPower() > 0){
-                        cout<<i+1<<")";
-                        this->monsters.at(i)->print_monster();
+                for(unsigned int j = 0; j < this->monsters.size(); j++){
+                    if(this->monsters.at(j)->get_healthPower() > 0){
+                        cout<<j+1<<")";
+                        this->monsters.at(j)->print_monster();
                         cout<<endl;
                     }
                 }
                 if(this->alive() == 2)
                     break;
                 cout << endl << MAGENTA <<"Press the number of the monster you want to fight against" << RESET <<endl;
-                int a1;
+                unsigned int a1;
                 cin>>a1;
                 while(a1 <= 0 || a1 > this->monsters.size()){
                     cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
@@ -754,7 +754,7 @@ void Square::War(){
                 }
             }
         }
-        for(int i = 0;  i < this->monsters.size(); i++){
+        for(unsigned int i = 0;  i < this->monsters.size(); i++){
             if(this->monsters.at(i)->get_healthPower() == 0.0)
                 continue;
             int j = 0;
@@ -764,13 +764,13 @@ void Square::War(){
             this->monsters.at(i)->attack(this->heroes.at(j));
             this->monsters.at(i)->reset_fields();
         }
-        for(int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++){
             if(this->heroes.at(i)->get_healthPower() != 0.0){
                 this->heroes.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
                 this->heroes.at(i)->add_magicPower(0.1 * this->heroes.at(i)->get_magicPower());
             }
         }
-        for(int i = 0; i < this->monsters.size(); i++){
+        for(unsigned int i = 0; i < this->monsters.size(); i++){
             if(this->monsters.at(i)->get_healthPower() != 0.0)
                 this->monsters.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
         }
@@ -785,34 +785,34 @@ void Square::War(){
         }
         
         if(answer.compare("Yes") == 0){
-            for(int i = 0; i < this->heroes.size(); i++){
+            for(unsigned int i = 0; i < this->heroes.size(); i++){
                 this->heroes.at(i)->displayStats();
             }
-            for(int i = 0; i < this->monsters.size(); i++){
+            for(unsigned int i = 0; i < this->monsters.size(); i++){
                 this->monsters.at(i)->displayStats();
             }
         }
     }
     if(this->alive() == 1){
         cout << endl << endl <<BOLDRED <<"You lost the war"<< RESET << endl;
-        for(int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++){
             this->heroes.at(i)->set_money(this->heroes.at(i)->get_money() / 2.0);
         }
     }
     else{
         cout<< endl << endl << BOLDGREEN<<"You won the war. Congratulations!"<< RESET<<endl;
-        for(int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++){
             this->heroes.at(i)->add_experience((this->heroes.at(i)->get_level() + EXPERIENCE) * this->monsters.size());
             this->heroes.at(i)->add_money((this->heroes.at(i)->get_level() + MONEY) * this->monsters.size());
         }
     }
-    for(int i = 0; i < this->monsters.size(); i++){
+    for(unsigned int i = 0; i < this->monsters.size(); i++){
         this->monsters.at(i)->set_rounds(1);
         this->monsters.at(i)->reset_fields();
         if(this->monsters.at(i)->get_healthPower() == 0.0)
             this->monsters.at(i)->set_healthPower(HEALTH_POWER/2.0);
     }
-    for(int i = 0; i < this->heroes.size(); i++){
+    for(unsigned int i = 0; i < this->heroes.size(); i++){
         if(this->heroes.at(i)->get_healthPower() == 0.0)
             this->heroes.at(i)->set_healthPower(HEALTH_POWER/2.0);
     }
@@ -821,10 +821,10 @@ void Square::War(){
         exp *= 2.0;
     }
     if(this->heroes.at(0)->get_experience() >= exp){
-        for(int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++){
             this->heroes.at(i)->level_up();
         }
-        for(int i = 0; i < this->monsters.size(); i++){
+        for(unsigned int i = 0; i < this->monsters.size(); i++){
             this->monsters.at(i)->level_up();
         }
     }
@@ -834,7 +834,7 @@ void Square::War(){
 //βοηθητικη συναρτηση-μελος
 bool Square::buy( Hero* hero)
 {
-
+    return true;
 }
 
 void Square::sell( Hero* hero)
@@ -877,12 +877,12 @@ bool Market::buy(Hero* hero){
 
     if(a == 1){
         cout<<"The items available in the market are:"<<endl;
-        for(int i = 0; i < this->items.size(); i++){
+        for(unsigned int i = 0; i < this->items.size(); i++){
             cout<<i+1<<") ";
             this->items.at(i)->print();
         }
         cout<<"Press the number of the item you would like to purchase"<<endl;
-        int a1;
+        unsigned int a1;
         cin>>a1;
 
         while(a1 > this->items.size() || a1 <= 0 || this->items.at(a1-1)->get_level() > hero->get_level()){
@@ -911,12 +911,12 @@ bool Market::buy(Hero* hero){
     }
     else{
         cout<<"The spells available in the market are:"<<endl;
-        for(int i = 0; i < this->spells.size(); i++){
+        for(unsigned int i = 0; i < this->spells.size(); i++){
             cout<<i+1<<") ";
             this->spells.at(i)->print();
         }
         cout<<"Press the number of the spell you would like to purchase"<<endl;
-        int a1;
+        unsigned int a1;
         cin>>a1;
         while(a1 > this->spells.size() || a1 <= 0 || this->spells.at(a1-1)->get_level() > hero->get_level()){
             if(this->spells.at(a1-1)->get_level() > hero->get_level())
@@ -948,9 +948,9 @@ void Market::sell(Hero* hero){
     int a;
     cin>>a;
     if(a == 1){
-        int number = hero->print_item();
+        unsigned int number = hero->print_item();
         cout<<"Press the number of the item you would like to sell"<<endl;
-        int a1;
+        unsigned int a1;
         cin>>a1;
         while(a1 <= 0 || a1> number){
             cout << RED << "Invalid number, try again!" << RESET << endl;

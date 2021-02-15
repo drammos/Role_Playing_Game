@@ -280,21 +280,18 @@ void Hero::buy_Spell( Spell* spell)
 
 //επιστρεφω  true αν υπαρχει το στοιχειο και τοτε αφαιρειται
 //αλλιως false
-bool Hero::sell_Item( int position)
+bool Hero::sell_Item(unsigned int position)
 {   
-    int size = Weapon_vector.size() + Armor_vector.size() + Potion_vector.size();
+    unsigned int size = Weapon_vector.size() + Armor_vector.size() + Potion_vector.size();
 
     if( position >= 0 && position < size)
-    {      
-        Item* item_in;
-        Item* it;
-
+    {    
 
         if( position < Weapon_vector.size())
         {   
             vector <Item*> :: iterator it;
             it = Weapon_vector.begin();
-            for(int i = 0; i < position; i++){
+            for(unsigned int i = 0; i < position; i++){
                 it++;
             }
 
@@ -306,7 +303,7 @@ bool Hero::sell_Item( int position)
 
             vector <Item*> :: iterator it;
             it = Armor_vector.begin();
-            for(int i = 0; i < position; i++){
+            for(unsigned int i = 0; i < position; i++){
                 it++;
             }
 
@@ -318,7 +315,7 @@ bool Hero::sell_Item( int position)
 
             vector <Item*> :: iterator it;
             it = Potion_vector.begin();
-            for(int i = 0; i < position; i++){
+            for(unsigned int i = 0; i < position; i++){
                 it++;
             }
 
@@ -432,7 +429,7 @@ int Hero::print_Weapon()const
         cout << "Your Weapons are:" << endl;
     }
     
-    for( int i = 0; i < Weapon_vector.size(); i++)
+    for(unsigned int i = 0; i < Weapon_vector.size(); i++)
     {
         Item* item = Weapon_vector.at(i);
         cout << (i+1) << ") ";
@@ -456,7 +453,7 @@ int Hero::print_Armor()const
         cout << "Your armors are:" << endl;
     }
     
-    for( int i = 0; i < Armor_vector.size(); i++)
+    for(unsigned int i = 0; i < Armor_vector.size(); i++)
     {
         Item* item = Armor_vector.at(i);
         cout << (i+1) << ") ";
@@ -481,7 +478,7 @@ int Hero::print_Potion()const
         cout << "Your Potions are:" << endl;
     }
     
-    for( int i = 0; i < Potion_vector.size(); i++)
+    for(unsigned int i = 0; i < Potion_vector.size(); i++)
     {
         Item* item = Potion_vector.at(i);
         cout << (i+1) << ") ";
@@ -607,7 +604,7 @@ bool Hero::castSpell( Monster* monster)
         power_magic = spell->get_energy();
 
         //check this spell
-        spell_change[answer - 1] == true;
+        spell_change[answer - 1] = true;
         spell_change_count++;
 
 
@@ -620,7 +617,7 @@ bool Hero::castSpell( Monster* monster)
     double high_damage = spell->get_high_damage();
 
     double damage_for_monster;
-    int level = get_level();
+    //int level = get_level();
     double dif = high_damage - low_damage;
     if( dif == 0)
     {
@@ -645,7 +642,6 @@ bool Hero::castSpell( Monster* monster)
         if( damage_for_monster > 0)
             monster->set_healthPower( damage_for_monster);
     }
-
 
     double damage = spell->get_damage();
     int rounds = spell->get_rounds();
