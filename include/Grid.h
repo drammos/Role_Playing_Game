@@ -13,13 +13,16 @@ using namespace std;
 
 class Square;
 
+//Πλέγμα
 class Grid{
 
     //Διαστασεις πλεγματος
     int x;
     int y;
+    //Δισδυάστατος πίνακας των τετραγώνων του πλέγματος.
     Square*** squares;
 
+    //Διαστάσεις του πλέγματος που βρίσκονται οι ήρωες.
     int x_heroes;
     int y_heroes;
 
