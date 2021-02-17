@@ -344,13 +344,7 @@ bool Hero::sell_Spell( int position)
         }
 
         spell_vector.erase(it);
-        // Spell* spell_in = spell_vector.at(position);
-        // Spell* sp = spell_vector.at( size - 1);
-        
-        // spell_vector.assign( position, sp);
-        // spell_vector.assign( size -1, spell_in);
 
-        // spell_vector.pop_back();
         count_item_and_spell--;
         return true;
     }
@@ -504,7 +498,7 @@ void Hero::Take_Potion( int position)
 
 void Hero::print_hero()const
 {
-    cout << "The Hero is: " << hero << " name is: " << get_name() << " HealthPower is: " << get_healthPower();
+    cout << "The Hero is: " << hero << ", name is: " << get_name() << " HealthPower is: " << get_healthPower();
     cout << " and level is: " << get_level() << endl; 
     cout << "The magic Power is: " << magicPower << " the Strength is: " << strength << " the dexterity is: " << dexterity;
     cout << " the agility is: " << agility << endl;
@@ -861,7 +855,7 @@ void Monster::attack(Hero* hero){
     srand(time(NULL));
     double damage = this->damage_low + rand()%(int)(damage_high - damage_low);
     int r = rand() % 100; 
-    if(r > hero->get_agility())return;
+    if(r < hero->get_agility())return;
     hero->set_healthPower(damage);
 }
 
