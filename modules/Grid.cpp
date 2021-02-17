@@ -651,7 +651,6 @@ void Square::War(){
                         cout<< RED <<"Invalid number, try again!"<< RESET << endl;
                         cin>>w;
                     }
-                    //Monster* monster;
                     cout << MAGENTA << "Which monster do you want to fight against?" << RESET << endl << endl;
                     for(unsigned int j = 0; j < this->monsters.size(); j++){
                         if(this->monsters.at(j)->get_healthPower() > 0){
@@ -696,7 +695,6 @@ void Square::War(){
                 }
             }
             else{   
-                //Monster* monster;
                 cout << MAGENTA <<"Which monster do you want to fight against?" << RESET << endl;
                 for(unsigned int j = 0; j < this->monsters.size(); j++){
                     if(this->monsters.at(j)->get_healthPower() > 0){

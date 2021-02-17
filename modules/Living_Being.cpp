@@ -236,6 +236,8 @@ void Hero::level_up()
     
 
     Living_Being::level_up();
+
+    cout<<GREEN<<"You made it to the next level!"<<RESET<<endl;
 }
 
 

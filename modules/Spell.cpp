@@ -72,11 +72,11 @@ IceSpell::IceSpell(string n, double p, int l, double dl, double dh, double e, do
 }
 
 double IceSpell::get_damage() const{
-    this->damage_low_new;
+    return this->damage_low_new;
 }
 
 int IceSpell::get_rounds() const{
-    this->rounds;
+    return this->rounds;
 }
 
 //Συναρτήσεις για FireSpell.
