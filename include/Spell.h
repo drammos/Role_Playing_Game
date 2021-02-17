@@ -39,7 +39,7 @@ class IceSpell:public Spell{
     int rounds; 
 public:
     IceSpell(string, double, int, double, double, double, double, int);
-    ~IceSpell();
+    ~IceSpell(){};
     double get_damage() const;
     int get_rounds() const;
 };
@@ -49,7 +49,7 @@ class FireSpell:public Spell{
     int rounds;
 public:
     FireSpell(string, double, int, double, double, double, double, int);
-    ~FireSpell();
+    ~FireSpell(){};
     double get_damage() const;
     int get_rounds() const;
 };
@@ -60,7 +60,7 @@ class LightingSpell:public Spell{
     int rounds;
 public:
     LightingSpell(string, double, int, double, double, double, double, int);
-    ~LightingSpell();
+    ~LightingSpell(){};
 
     double get_damage() const;
     int get_rounds() const;

@@ -69,11 +69,6 @@ int Spell::get_rounds()const
 IceSpell::IceSpell(string n, double p, int l, double dl, double dh, double e, double nl, int r):Spell(n, p, l, dl, dh, e, "IceSpell"){
     this->damage_low_new = nl;
     this->rounds = r;
-    cout<<"New icespell has been created"<<endl;
-}
-
-IceSpell::~IceSpell(){
-    cout<<"Icespell to be destroyed"<<endl;
 }
 
 double IceSpell::get_damage() const{
@@ -88,11 +83,6 @@ int IceSpell::get_rounds() const{
 FireSpell::FireSpell(string n, double p, int l, double dl, double dh, double e, double dr, int r):Spell(n, p, l, dl, dh, e, "FireSpell"){
     this->defense_reduce = dr;
     this->rounds = r;
-    cout<<"A new firespell has been created"<<endl;
-}
-
-FireSpell::~FireSpell(){
-    cout<<"Firespell to be destroyed"<<endl;
 }
 
 double FireSpell::get_damage() const{
@@ -107,11 +97,6 @@ int FireSpell::get_rounds() const{
 LightingSpell::LightingSpell(string n, double p, int l, double dl, double dh, double e, double dpr, int r):Spell(n, p, l, dl, dh, e, "LightingSpell"){
     this->defense_prob_reduce = dpr;
     this->rounds = r;
-    cout<<"A new lightingspellhas been created"<<endl;
-}
-
-LightingSpell::~LightingSpell(){
-    cout<<"Lightingspell to be destroyed"<<endl;
 }
 
 double LightingSpell::get_damage() const{

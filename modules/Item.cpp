@@ -54,11 +54,6 @@ part Item::get_prices()const
 Weapon::Weapon(string n, double p, int l, int h, double d):Item(n, p, l, "Weapon"){
     this->hands = h;
     this->damage = d;
-    // cout<<"New weapon has been created"<<endl;
-}
-
-Weapon::~Weapon(){
-    cout<<"Weapon to be destroyed"<<endl;
 }
 
 int Weapon::get_hands() const{
@@ -82,11 +77,6 @@ part Weapon::get_prices()const
 //Συναρτήσεις για Armor.
 Armor::Armor(string n, double p, int l, double d):Item(n, p, l, "Armor"){
     this->reduce_of_damage = d;
-    // cout<<"New armor has been created"<<endl;
-}
-
-Armor::~Armor(){
-    cout<<"Armor to be destroyed"<<endl;
 }
 
 double Armor::get_reduce_of_damage() const{
@@ -112,7 +102,6 @@ Potion::Potion(string n, double p, int l, string c, double i):Item(n, p, l, "Pot
 
 Potion::~Potion(){
     this->characteristic.clear();
-    cout<<"Potion to be destroyed"<<endl;
 }
 
 string Potion::get_characteristic() const{

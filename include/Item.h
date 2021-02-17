@@ -34,7 +34,7 @@ class Weapon:public Item{
     double damage;
 public:
     Weapon(string, double, int, int, double);
-    ~Weapon();
+    ~Weapon(){};
     int get_hands() const;
     double get_damage() const;
 
@@ -45,7 +45,7 @@ class Armor:public Item{
     double reduce_of_damage;
 public:
     Armor(string, double, int, double);
-    ~Armor();
+    ~Armor(){};
     double get_reduce_of_damage() const;
 
     part get_prices()const;
