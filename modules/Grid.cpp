@@ -11,12 +11,12 @@
 //constructor
 Grid::Grid(int x, int y){
 
-    //x and y is the deminsions for grid
-    //where the player choice
+    //x and y are the dimensions for grid
+    //that the player chooses
     this->x = x;
     this->y = y;
 
-    //consrtuctor deminsions for heroes
+    //consrtuctor coordinates for heroes
     x_heroes = -1;
     y_heroes = -1;
 
@@ -30,7 +30,7 @@ Grid::Grid(int x, int y){
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
             int r = rand() % 10;
-            //depending on a probability the square have one capacity
+            //depending on a probability the square has one capacity
             if(r == 1)
                 this->squares[i][j] = new nonAccessible();
             else if(r == 3 || r == 7)
@@ -51,7 +51,7 @@ Grid::~Grid(){
     }
 }
 
-//i put the heroes with random in grid
+//i put the heroes randomly in the grid
 void Grid::set_heroes( Hero* hero)
 {   
     
@@ -63,8 +63,8 @@ void Grid::set_heroes( Hero* hero)
         {   
             x_heroes = rand()%(x);
             y_heroes = rand()%(y);
-            //i start the heroes from Market
-            //for buy weapons and armors
+            //In the beginning heroes are placed in a market square. 
+            //to buy weapons and armors
             if( (squares[x_heroes][y_heroes]->get_kind_of_square()).compare( "Market") == 0)
             {
                 in = true;
@@ -78,7 +78,7 @@ void Grid::set_heroes( Hero* hero)
 }
 
 
-//i put the monsters with random in grid
+//i put the monsters randomly in the grid
 void Grid::set_monsters( Monster* monster)
 {
     bool in = false;
@@ -88,11 +88,11 @@ void Grid::set_monsters( Monster* monster)
     {   
         x1 = rand()%x;
         y1 = rand()%y;
-        //the monster must be in common square
+        //the monster must be in common squares
         if( (squares[x1][y1]->get_kind_of_square()).compare( "Common") == 0)
         {   
 
-            //with a probability the monster is on the grid otherwise not
+            //with a probability the monster is on the grid, otherwise it is not
             int num_rand = rand()%7;
             if( num_rand <= 3)
             {
@@ -120,7 +120,7 @@ void Grid::StartGame()
         bool buy_weapon = false;
         Hero* hero =  vector_heroes.at(i);
 
-        //every heroe must buy weapon for war
+        //every heroe must buy a weapon for the war
         while(buy_weapon == false){
 
             cout << RED << "You must buy a Weapon for " << hero->get_name() << RESET << endl;
@@ -141,7 +141,7 @@ void Grid::StartGame()
     {   
         string kind_of_square = squares[x_heroes][y_heroes]->get_kind_of_square();
 
-        //if heroes is Market square
+        //if the heroes are in a Market square
         if( kind_of_square.compare( "Market") == 0)
         {   
             for(unsigned int i = 0; i < vector_heroes.size(); i++)
@@ -151,7 +151,7 @@ void Grid::StartGame()
                 buy_sell_and_equip( hero);
             }
         }
-        //if heroes is Common square
+        //if the heroes are in a Common square
         else if( kind_of_square.compare( "Common") == 0)
         {   
             squares[x_heroes][y_heroes]->War();
@@ -163,7 +163,7 @@ void Grid::StartGame()
         //print map
         displayMap();
 
-        //if all heroes is max level the game is over
+        //if all heroes are in the max level the game is over
         unsigned int size_max_level = 0;
         for(unsigned int i = 0; i < vector_heroes.size(); i++)
         {
@@ -190,10 +190,10 @@ void Grid::checkInventory( Hero* hero)
     hero->print_item();
 }
 
-//change Weapon or Armor
+//change the Weapon or the Armor a hero currently uses.
 void Grid::equip( Hero* hero)
 {   
-    cout << "What you want to change?" << endl;
+    cout << "What do you want to change?" << endl;
     cout << "Press 1 Weapon" << endl;
     cout << "Press 2 Armor" << endl;
 
@@ -209,12 +209,12 @@ void Grid::equip( Hero* hero)
     //Change Weapon
     if( in == 1)
     {
-        //print all weapon where buy the player for hero
+        //print all the weapons the player can buy for a hero
         int number_Weapon = hero->print_Weapon();
         int w;
         if(number_Weapon != 0)
         {
-            cout << endl << BOLDBLUE << "What you want to change?" << RESET << endl;   
+            cout << endl << BOLDBLUE << "What do you want to change?" << RESET << endl;   
             cin >> w;
             while( w <= 0 || w > number_Weapon)
             {
@@ -229,7 +229,7 @@ void Grid::equip( Hero* hero)
     //Change Armor
     else
     {
-        //print all armor where buy the player for hero
+        //print all the armors the player can for a hero
         int number_Armor = hero->print_Armor();
         int a;
         if(number_Armor != 0)
@@ -263,7 +263,7 @@ void Grid::use( Hero* hero)
             cin >> p;
         }
 
-        //i called take potion for hero
+        //take potion for the hero is called
         hero->Take_Potion( p - 1);
     }
 }
@@ -274,8 +274,8 @@ void Grid::print_Hero( Hero* hero)const
     hero->print_hero();
 }
 
-//I Print the Grid
-//with aschi characters
+//Prints the Grid
+//with ascii characters
 void Grid::displayMap()const
 {   
 
@@ -494,9 +494,9 @@ void Grid::buy_sell_and_equip( Hero* hero)
 {
     string answer;
 
-    //if player want to buy
+    //if the player wants to buy something
     do{
-        cout << "Do you want to buy?" << endl;
+        cout << "Do you want to buy anything?" << endl;
         cin >> answer;
 
         while( answer != "Yes" && answer != "No"){
@@ -517,10 +517,10 @@ void Grid::buy_sell_and_equip( Hero* hero)
 
     }while(  answer.compare( "Yes") == 0 && hero->get_money() > 0);
 
-    //if player want to sell
+    //if player wants to sell
     int count_item_and_spell;
     do{
-        cout << "You want sell?" << endl;
+        cout << "Do you want to sell anything?" << endl;
         cin >> answer;
 
         while( answer != "Yes" && answer != "No"){
@@ -543,7 +543,7 @@ void Grid::buy_sell_and_equip( Hero* hero)
 
     }while(  answer.compare( "Yes") == 0 && count_item_and_spell > 0);
 
-    //If he want to change Item where buy
+    //If the hero wants to change the item they currently use
     string in;
     do{
         cout << "You want change Item?" << endl;
@@ -560,7 +560,7 @@ void Grid::buy_sell_and_equip( Hero* hero)
             cin >> in;
         }
 
-        //i call equip for this hero
+        //equip for this hero is called
         if( in.compare("Yes") == 0)
         {
             equip( hero);

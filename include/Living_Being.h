@@ -148,7 +148,9 @@ class Hero : public Living_Being{
 
 
 class Warrior : public Hero{
+    //Percentage of the increase of the strength.
     static const double point_strength;
+    //Percentage of the increase of the agility.
     static const double point_agility;
 
     public:
@@ -161,7 +163,9 @@ class Warrior : public Hero{
 };
 
 class Sorcerer : public Hero{
+    //Percentage of the increase of the dexterity.
     static const double point_dexterity;
+    //Percentage of the increase of the agility.
     static const double point_agility;
 
     public:
@@ -174,7 +178,9 @@ class Sorcerer : public Hero{
 };
 
 class Paladin : public Hero{
+    //Percentage of the increase of the strength.
     static const double point_strength;
+    //Percentage of the increase of the dexterity.
     static const double point_dexterity;
 
     public:
