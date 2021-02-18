@@ -13,86 +13,81 @@ using namespace std;
 
 class Square;
 
-//Πλέγμα
 class Grid{
 
-    //Διαστασεις πλεγματος
+    //Dimensions.
     int x;
     int y;
-    //Δισδυάστατος πίνακας των τετραγώνων του πλέγματος.
+
+    //Two-dimensional matrix of the squares of the grid.
     Square*** squares;
 
-    //Συντεταγμένες του τετραγώνου που βρίσκονται οι ήρωες.
+    //Coordinates of the square the heroes are at.
     int x_heroes;
     int y_heroes;
 
-    //Εμφάνιση των αντικειμένων που έχει ένας ήρωας υπό την κατοχή του.
+    //Prints the items and spells a hero has.
     void checkInventory( Hero*);
-    //Αλλαγή της πανοπλίας ή του όπλου που χρησιμοποιεί ένας ήρωας τη δεδομένη χρονική στιγμή.
+    //Change of the weapon or armor a hero uses at a certain time.
     void equip( Hero*);
-    //Χρήση φίλτρου.
+    //Use of a potion.
     void use( Hero*);
-    //Εμφάνιση των στοιχείων του ήρωα.
+    //Prints info about the hero.
     void print_Hero( Hero*)const;
-    //Μετακίνηση σε ένα από τα πάνω, κάτω, δεξιά, αριστερά τετράγωνα του πλέγματος αν αυτά είναι διαθέσιμα.
+    //Movement to one of the up, down, left, right squares if they are accessible.
     void move(vector <Hero*>);
-    //Έξοδος από το παιχνίδι.
     void quitGame();
-    //Εμφάνιση πλέγματος.
+    //Prints the grid.
     void displayMap()const;
-    //Βοηθητική συνάρτηση για αγορά, πώληση και εξοπλισμό.
+    //Assisting function.
     void buy_sell_and_equip( Hero*);
     
 public:    
     Grid( int, int);
     ~Grid();
-    //Βάζει τους ήρωες μέσα στο πλέγμα.
+    //Puts the heroes in the grid.
     void set_heroes( Hero*);
-    //Βάζει τα τέρατα μέσα στο πλέγμα.
+    //Puts the monsters in the grid.
     void set_monsters( Monster*);
-    //Υλοποίηση παιχνιδιού.
+    //Making of the game.
     void StartGame();
-    //Εφοδιασμός της αγοράς με τα αντικείμενα προς πώληση.
+    //Supply of the market with items.
     void provide(Item*);
-    //Εφοδιασμός της αγοράς με τα ξόρκια προς πώληση.
+    //Supply of the market with spells.
     void provide(Spell*);
 };
 
-//Τετράγωνο.
 class Square{
-    //Είδος τετραγώνου (Market, nonAccesible or Common).
+    //Market, nonAccesible or Common.
     string kind_of_square;
-    //Ήρωες που υπάρχουν στο τετράγωνο.
+    //Heroes in the square.
     vector < Hero* > heroes;
-    //Τέρατα που υπάρχουν στο τετράγωνο.
+    //Monsters in the square.
     vector < Monster* > monsters;
 public:
     Square(string);
     virtual ~Square();
-    //Προσθέτει ήρωες στο τετράγωνο.
+    //Adds heroes to the square.
     void add_hero(Hero*);
-    //Προσθέτει τέρατα στο τετράγωνο.
+    //Adds monsters to the square.
     void add_monster(Monster*);
-    //Αφαιρεί τους ήρωες από το τετράγωνο.
+    //Removes heroes from the square..
     vector<Hero*> remove_heroes();
-    //Επιστρέφει το είδος του τετραγώνου.
+    //Returns the kind of the square.
     string get_kind_of_square() const;
-    //Επιστρέφει έναν ακέραιο ανάλογα με τον αριθμό των ηρώων και των τεράτων στο τετράγωνο.
+    //Returns an integer depending on the number of heroes and monsters in the square.
     virtual int contains();
-    //Επιστρέφει έναν ακέραιο ανάλογα με τον αριθμό των ζωντανών ηρώων και των ζωντανών τεράτων στο τετράγωνο.
+    //Returns an integer depending on the number of heroes and monsters alive in the square.
     int alive();
-    //Μάχη.
     void War();
-    
-    //Αγορά.
+
     virtual bool buy( Hero*);
-    //Πώληση.
     virtual void sell( Hero*);
-    //Βοηθητικές.
+    //Assisting
     virtual void insert_item(Item*){};
     virtual void insert_spell(Spell*){};
 
-    //Επιστρέφει τους ήρωες των τετραγώνων.
+    //Returns the heroes of the square.
     vector<Hero*> get_heroes();
 };
 
@@ -100,6 +95,7 @@ class nonAccessible:public Square{
 
 public:
     nonAccessible():Square("nonAccessible"){};
+    //Same as the superclass.
     int contains();
 };
 
@@ -109,10 +105,13 @@ class Market:public Square{
 public:
     Market():Square("Market"){};
     ~Market();
+    //Inserts items in the market.
     void insert_item(Item*);
+    //Inserts spells in the market.
     void insert_spell(Spell*);
     bool buy(Hero*);
     void sell(Hero*);
+    //Same as the superclass.
     int contains();
 };
 
@@ -121,6 +120,7 @@ class Common:public Square{
 
 public:
     Common():Square("Common"){};
+    //Same as the superclass.
     int contains();
 };
 
