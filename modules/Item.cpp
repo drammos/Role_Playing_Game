@@ -41,7 +41,7 @@ double Item::get_damage() const{
     return 0.0;
 }
 
-//Βοηθητική virtual συνάρτηση.
+// // Βοηθητική virtual συνάρτηση.
 
 // part Item::get_prices()const
 // {

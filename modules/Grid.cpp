@@ -4,11 +4,19 @@
 #include <vector>
 #include "Grid.h"
 
-//Συναρτήσεις για Grid.
+//Fuctions for Grid
+
+
+
+//constructor
 Grid::Grid(int x, int y){
+
+    //x and y is the deminsions for grid
+    //where the player choice
     this->x = x;
     this->y = y;
 
+    //consrtuctor deminsions for heroes
     x_heroes = -1;
     y_heroes = -1;
 
@@ -22,6 +30,7 @@ Grid::Grid(int x, int y){
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
             int r = rand() % 10;
+            //depending on a probability the square have one capacity
             if(r == 1)
                 this->squares[i][j] = new nonAccessible();
             else if(r == 3 || r == 7)
@@ -32,6 +41,8 @@ Grid::Grid(int x, int y){
     }
 }
 
+
+//destructor
 Grid::~Grid(){
     for(int i = 0; i < x; i++){
         for(int j = 0; j < y; j++){
@@ -40,7 +51,7 @@ Grid::~Grid(){
     }
 }
 
-//βαζω τους ηρωες σε ενα τυχαιο market τετραγωνο
+//i put the heroes with random in grid
 void Grid::set_heroes( Hero* hero)
 {   
     
@@ -52,6 +63,8 @@ void Grid::set_heroes( Hero* hero)
         {   
             x_heroes = rand()%(x);
             y_heroes = rand()%(y);
+            //i start the heroes from Market
+            //for buy weapons and armors
             if( (squares[x_heroes][y_heroes]->get_kind_of_square()).compare( "Market") == 0)
             {
                 in = true;
@@ -64,9 +77,10 @@ void Grid::set_heroes( Hero* hero)
     squares[x_heroes][y_heroes]->add_hero( hero);
 }
 
+
+//i put the monsters with random in grid
 void Grid::set_monsters( Monster* monster)
 {
-    // srand(time(NULL));
     bool in = false;
     int x1;
     int y1;
@@ -74,13 +88,11 @@ void Grid::set_monsters( Monster* monster)
     {   
         x1 = rand()%x;
         y1 = rand()%y;
+        //the monster must be in common square
         if( (squares[x1][y1]->get_kind_of_square()).compare( "Common") == 0)
         {   
 
-            //αν ειναι common τοτε 1/10 ειναι nonaccesible 2/10 store
-            //kai 7/10 common
-            //αρα αποφασιζουμε τυχαια με πιθανοτητα 3/7 να ναι monster sto grid
-            //αλλιως οχι
+            //with a probability the monster is on the grid otherwise not
             int num_rand = rand()%7;
             if( num_rand <= 3)
             {
@@ -94,22 +106,11 @@ void Grid::set_monsters( Monster* monster)
 
 
 
-
-//SOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
-
-//MIN ΞΕΧΑΣΟΥΜΕ ΟΤΑΝ ΕΝΑΣ ΗΡΩΑΣ ΑΝΕΒΑΙΝΕΙ LEVEL prepei analoga
-//to level na αυξανονται κατα καποιο ποσο τα λεφτα του
-
-///////////////////////
-
+//Startgame from here
 void Grid::StartGame()
 {
-    //οι ηρωες ειναι τοποθετιμενοι εξαρχης σε ενα τετραγωνο
-    //Market πρεπει να αγορασουν τουλαχιστον ενα Weapon για την μαχη
-    //εχουν καποια αρχικα λεφτα ωστε να αγορασουν
 
-
-    
+    //vector with heroes    
     vector<Hero*> vector_heroes;
     vector_heroes = squares[x_heroes][y_heroes]->get_heroes();
     
@@ -118,9 +119,13 @@ void Grid::StartGame()
     {   
         bool buy_weapon = false;
         Hero* hero =  vector_heroes.at(i);
+
+        //every heroe must buy weapon for war
         while(buy_weapon == false){
+
             cout << RED << "You must buy a Weapon for " << hero->get_name() << RESET << endl;
             buy_weapon = squares[x_heroes][y_heroes]->buy( hero);
+            
             if( hero->get_money() == 0 && buy_weapon == false)
             {
                 cout << RED << "YOU LOSE!!!, BECAUSE YOU HAVN'T MONEY A1ND YOU HAVN'T WEAPON FOR WAR!!!" << RESET << endl;
@@ -129,30 +134,36 @@ void Grid::StartGame()
         }
     }
     
+
     bool level_heroes = false;
+    //if level heroes is MAX_LEVEL then the game is over
     while( level_heroes == false)
     {   
         string kind_of_square = squares[x_heroes][y_heroes]->get_kind_of_square();
+
+        //if heroes is Market square
         if( kind_of_square.compare( "Market") == 0)
         {   
             for(unsigned int i = 0; i < vector_heroes.size(); i++)
             {   
                 Hero* hero =  vector_heroes.at(i);
-                cout << "Hero: " << hero->get_hero() << " " << endl;    
+                cout << "Hero: " << BLUE <<hero->get_hero() << RESET << " " << endl;    
                 buy_sell_and_equip( hero);
             }
         }
+        //if heroes is Common square
         else if( kind_of_square.compare( "Common") == 0)
-        {
+        {   
             squares[x_heroes][y_heroes]->War();
         }
 
+        //the heroes have to move
         move( vector_heroes);
 
+        //print map
         displayMap();
 
-        //αν ολοι οι ηρωες εχον φτασει
-        //στο max level τοτε το παιχνιδι τελειωσε
+        //if all heroes is max level the game is over
         unsigned int size_max_level = 0;
         for(unsigned int i = 0; i < vector_heroes.size(); i++)
         {
@@ -168,43 +179,46 @@ void Grid::StartGame()
         }
     }
 
+    //print map 
     displayMap();
     
 }
 
-
+//
 void Grid::checkInventory( Hero* hero)
 {
     hero->print_item();
 }
 
+//change Weapon or Armor
 void Grid::equip( Hero* hero)
-{
-    cout << "Τι θελετε να αλλαξετε;" << endl;
-    cout << "1) Weapon" << endl;
-    cout << "2) Armor" << endl;
+{   
+    cout << "What you want to change?" << endl;
+    cout << "Press 1 Weapon" << endl;
+    cout << "Press 2 Armor" << endl;
 
-    //δεχομαστε 1 ή 2 απο χρηστη
+    //take input from User
     int in;
     cin >> in; 
     while( in != 1 && in != 2)
-    {
-        cout << RED << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << RESET << endl;
+    {   
+        cout << RED << "Invalid number, try again!" << RESET << endl;
         cin >> in;
     }
     
+    //Change Weapon
     if( in == 1)
     {
-        cout << "What you want to take?" << endl;
+        //print all weapon where buy the player for hero
         int number_Weapon = hero->print_Weapon();
         int w;
         if(number_Weapon != 0)
         {
-            
+            cout << endl << BOLDBLUE << "What you want to change?" << RESET << endl;   
             cin >> w;
             while( w <= 0 || w > number_Weapon)
             {
-                cout << RED << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << RESET << endl;
+                cout << RED << "Invalid number, try again!" << RESET << endl;
                 cin >> w;
             }
 
@@ -212,17 +226,19 @@ void Grid::equip( Hero* hero)
             hero->set_Weapon( w - 1);
         }
     }
+    //Change Armor
     else
     {
-        cout << "What you want to take?" << endl;
+        //print all armor where buy the player for hero
         int number_Armor = hero->print_Armor();
         int a;
         if(number_Armor != 0)
-        {
+        {   
+            cout << endl << BOLDBLUE << "What you want to change?" << RESET << endl; 
             cin >> a;
             while( a <= 0 || a > number_Armor)
             {
-                cout << RED << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << RESET << endl;
+                cout << RED << "Invalid number, try again!" << RESET << endl;
                 cin >> a;
             }
 
@@ -232,29 +248,34 @@ void Grid::equip( Hero* hero)
 
 }
 
+//Use Potion for Hero
 void Grid::use( Hero* hero)
 {
-    cout << "What potion you want to use?" << endl;
     int number_Potion = hero->print_Potion();
     int p;
     if(number_Potion != 0)
     {
+        cout << endl << BOLDBLUE <<"What potion you want to use?" << RESET << endl;
         cin >> p;
         while( p <= 0 || p > number_Potion)
         {
-            cout << RED << "Δεν ηταν εγκυρη η επιλογη σας! Προσπαθηστε ξανα." << RESET << endl;
+            cout << RED << "Invalid number, try again!" << RESET << endl;
             cin >> p;
         }
 
+        //i called take potion for hero
         hero->Take_Potion( p - 1);
     }
 }
 
+//print hero
 void Grid::print_Hero( Hero* hero)const
 {
     hero->print_hero();
 }
 
+//I Print the Grid
+//with aschi characters
 void Grid::displayMap()const
 {   
 
@@ -276,6 +297,8 @@ void Grid::displayMap()const
             if(squares[i][j]->get_kind_of_square() == "Market" )
             {   
                 int k = squares[i][j]->contains();
+                //H is Heroes
+                //S is store(MARKET)
                 if( k == 0)
                 {
                     cout << BLUE << "H " << RESET;
@@ -287,12 +310,16 @@ void Grid::displayMap()const
                 }
             }
             else if( squares[i][j]->get_kind_of_square() == "nonAccessible")
-            {
+            {   
+                //X is NonAccesible
                 cout << RED << " X " << RESET;
             }
             else
             {   
                 int k = squares[i][j]->contains();
+                //H is Heroes
+                //M is Monsters
+                //B is Both( Monsters and heroes)
                 if( k == 0)
                 {
                     cout << BLUE << " H " << RESET;
@@ -327,23 +354,17 @@ void Grid::displayMap()const
 }
 
 
+//STOP THE GAME
 void Grid::quitGame()
 {
-    cout << BOLDRED << "YOU LOSE!" << endl;
+    cout << BOLDRED << "YOU LOSE!" << RESET << endl;
     exit(EXIT_FAILURE);
 }
 
 
 
 
-
-///LOIPON GIOXANSO SOSSSSSSSSSSSSSSS
-
-//EMFANIZE TOY POY NA PAEI MONOOOOOOOOOOOOOOO EKEI POY BOREI DILADI AN EINAI APAGOREYSIMO TETRAGONO
-//(PX EINAI X) NA ELEGXEIII KAI AN EINAI APAGOREYSIMO NA MI  TOY EMFANIZEI AYTI TI KATEYTHINSIIIIIIIIII
-//EPISIS OPOS EINAI TORA AN EINAI NONACCESIBLE DN PAEI PANO KAI DN KSANAKALEITAI I MOVE MENEI EKEI POY 
-//EINAI
-
+//
 void Grid::move(vector <Hero*> heroes){
     displayMap();
     int a;
@@ -467,15 +488,24 @@ void Grid::move(vector <Hero*> heroes){
     }
 }
 
-
+//fuction for heroes
+//buy, sell and change item/spell
 void Grid::buy_sell_and_equip( Hero* hero)
 {
     string answer;
+
+    //if player want to buy
     do{
-        cout << "Do you want to buy anything else?" << endl;
+        cout << "Do you want to buy?" << endl;
         cin >> answer;
 
         while( answer != "Yes" && answer != "No"){
+            
+            if( answer.compare("quitGame") == 0)
+            {
+                quitGame();
+            }
+            
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> answer;
         }
@@ -487,13 +517,19 @@ void Grid::buy_sell_and_equip( Hero* hero)
 
     }while(  answer.compare( "Yes") == 0 && hero->get_money() > 0);
 
-    //sell
+    //if player want to sell
     int count_item_and_spell;
     do{
         cout << "You want sell?" << endl;
         cin >> answer;
 
         while( answer != "Yes" && answer != "No"){
+
+            if( answer.compare("quitGame") == 0)
+            {
+                quitGame();
+            }
+
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> answer;
         }
@@ -507,16 +543,24 @@ void Grid::buy_sell_and_equip( Hero* hero)
 
     }while(  answer.compare( "Yes") == 0 && count_item_and_spell > 0);
 
-    //αν θελει κατι απο αυτα που αγορασε να αλλαξει καλω την equip
+    //If he want to change Item where buy
     string in;
     do{
         cout << "You want change Item?" << endl;
         cin >> in;
+
         while( in.compare("Yes") != 0 && in.compare("No") != 0){
+
+            if( answer.compare("quitGame") == 0)
+            {
+                quitGame();
+            }
+
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
         }
 
+        //i call equip for this hero
         if( in.compare("Yes") == 0)
         {
             equip( hero);
@@ -627,7 +671,7 @@ void Square::War(){
     }
     while(this->alive() == 0){
         for(unsigned int i = 0; i < this->heroes.size(); i++){
-            cout << endl << endl <<this->heroes.at(i)->get_name()<<":"<<endl;
+            cout << endl << endl << "The Hero " << BOLDGREEN << this->heroes.at(i)->get_hero() << RESET <<", with name: "<<this->heroes.at(i)->get_name() << endl;
             if(this->heroes.at(i)->get_healthPower() == 0.0)
                 continue;
             cout << BLUE <<"How do you want to attack your oponents?" << RESET << endl; 
@@ -703,23 +747,31 @@ void Square::War(){
                         cout<<endl;
                     }
                 }
+
                 if(this->alive() == 2)
                     break;
+                
                 cout << endl << MAGENTA <<"Press the number of the monster you want to fight against" << RESET <<endl;
+                
                 unsigned int a1;
                 cin>>a1;
-                while(a1 <= 0 || a1 > this->monsters.size()){
+                
+                while(a1 <= 0 || a1 > this->monsters.size())
+                {
                     cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
                     cin>>a1;
                 }
+                
                 while(this->monsters.at(a1-1)->get_healthPower() <= 0){
                     cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
                     cin>>a1;
                 }
+                
                 if(w == 1){
                     this->heroes.at(i)->attack(this->monsters.at(a1-1));
                 }
-                else{
+                else
+                {
                     bool f = this->heroes.at(i)->castSpell(this->monsters.at(a1-1));
                     if(f == false){
                         cout<< BLUE <<"Select another way of attack"<< RESET <<endl;
@@ -752,23 +804,29 @@ void Square::War(){
                 }
             }
         }
-        for(unsigned int i = 0;  i < this->monsters.size(); i++){
+        for(unsigned int i = 0;  i < this->monsters.size(); i++)
+        {
             if(this->monsters.at(i)->get_healthPower() == 0.0)
                 continue;
+
             int j = 0;
-            while(this->heroes.at(j)->get_healthPower() == 0.0){
+            while(this->heroes.at(j)->get_healthPower() == 0.0)
+            {
                 j++;
             }
+        
             this->monsters.at(i)->attack(this->heroes.at(j));
             this->monsters.at(i)->reset_fields();
         }
-        for(unsigned int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++)
+        {
             if(this->heroes.at(i)->get_healthPower() != 0.0){
                 this->heroes.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
                 this->heroes.at(i)->add_magicPower(0.1 * this->heroes.at(i)->get_magicPower());
             }
         }
-        for(unsigned int i = 0; i < this->monsters.size(); i++){
+        for(unsigned int i = 0; i < this->monsters.size(); i++)
+        {
             if(this->monsters.at(i)->get_healthPower() != 0.0)
                 this->monsters.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
         }
@@ -777,8 +835,9 @@ void Square::War(){
         
         string answer;
         cin >> answer;
-        while( answer.compare("Yes") != 0 && answer.compare("No") != 0){
-            cout<<"Invalid answer, try again!"<<endl;
+        while( answer.compare("Yes") != 0 && answer.compare("No") != 0)
+        {           
+            cout<< RED << "Invalid number, try again!" << RESET << endl;
             cin >> answer;
         }
         
@@ -791,38 +850,49 @@ void Square::War(){
             }
         }
     }
-    if(this->alive() == 1){
+    if(this->alive() == 1)
+    {
         cout << endl << endl <<BOLDRED <<"You lost the war"<< RESET << endl;
-        for(unsigned int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++)
+        {
             this->heroes.at(i)->set_money(this->heroes.at(i)->get_money() / 2.0);
         }
     }
-    else{
+    else
+    {
         cout<< endl << endl << BOLDGREEN<<"You won the war. Congratulations!"<< RESET<<endl;
-        for(unsigned int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++)
+        {
             this->heroes.at(i)->add_experience((this->heroes.at(i)->get_level() + EXPERIENCE) * this->monsters.size());
             this->heroes.at(i)->add_money((this->heroes.at(i)->get_level() + MONEY) * this->monsters.size());
         }
     }
-    for(unsigned int i = 0; i < this->monsters.size(); i++){
+    for(unsigned int i = 0; i < this->monsters.size(); i++)
+    {
+    
         this->monsters.at(i)->set_rounds(1);
         this->monsters.at(i)->reset_fields();
         if(this->monsters.at(i)->get_healthPower() == 0.0)
             this->monsters.at(i)->set_healthPower(HEALTH_POWER/2.0);
+    
     }
-    for(unsigned int i = 0; i < this->heroes.size(); i++){
+    for(unsigned int i = 0; i < this->heroes.size(); i++)
+    {
         if(this->heroes.at(i)->get_healthPower() == 0.0)
             this->heroes.at(i)->set_healthPower(HEALTH_POWER/2.0);
     }
     double exp = NEEDED_EXPERIENCE;
-    for(int i = 0; i < this->heroes.at(0)->get_level(); i++){
+    for(int i = 0; i < this->heroes.at(0)->get_level(); i++)
+    {
         exp *= 2.0;
     }
     if(this->heroes.at(0)->get_experience() >= exp){
-        for(unsigned int i = 0; i < this->heroes.size(); i++){
+        for(unsigned int i = 0; i < this->heroes.size(); i++)
+        {
             this->heroes.at(i)->level_up();
         }
-        for(unsigned int i = 0; i < this->monsters.size(); i++){
+        for(unsigned int i = 0; i < this->monsters.size(); i++)
+        {
             this->monsters.at(i)->level_up();
         }
     }
@@ -867,29 +937,34 @@ bool Market::buy(Hero* hero){
     cin>>a;
 
     while(a != 1 && a != 2){
-        cout<<"Invalid number, try again!"<<endl;
+        cout<< RED << "Invalid number, try again!" << RESET <<endl;
         cin>>a;
     }
     //ελεγχουμε αν αγορασε οπλο
     bool back = false;
 
     if(a == 1){
-        cout<<"The items available in the market are:"<<endl;
-        for(unsigned int i = 0; i < this->items.size(); i++){
+
+        cout<< BOLDBLACK <<"The items available in the market are:" << RESET << endl;
+        for(unsigned int i = 0; i < this->items.size(); i++)
+        {
             cout<<i+1<<") ";
             this->items.at(i)->print();
         }
-        cout<<"Press the number of the item you would like to purchase"<<endl;
+
+        cout<< endl << BOLDBLUE << "Press the number of the item you would like to purchase" << RESET <<endl;
         unsigned int a1;
         cin>>a1;
 
-        while(a1 > this->items.size() || a1 <= 0 || this->items.at(a1-1)->get_level() > hero->get_level()){
+        while(a1 > this->items.size() || a1 <= 0 || this->items.at(a1-1)->get_level() > hero->get_level())
+        {
             if(this->items.at(a1-1)->get_level() > hero->get_level())
                 cout << RED << "You must choose an item you have the needed level to buy, try again!"<< RESET << endl;
             else
                 cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
         }
+
         Item* item = this->items.at(a1-1);
         if( item->get_price() <= hero->get_money())
         {
@@ -907,16 +982,19 @@ bool Market::buy(Hero* hero){
         }
         
     }
-    else{
-        cout<<"The spells available in the market are:"<<endl;
+    else
+    {
+        cout << BOLDBLACK << "The spells available in the market are:" << RESET <<endl;
         for(unsigned int i = 0; i < this->spells.size(); i++){
             cout<<i+1<<") ";
             this->spells.at(i)->print();
         }
-        cout<<"Press the number of the spell you would like to purchase"<<endl;
+        cout<< endl << BOLDBLUE<<"Press the number of the spell you would like to purchase" << RESET << endl;
         unsigned int a1;
         cin>>a1;
-        while(a1 > this->spells.size() || a1 <= 0 || this->spells.at(a1-1)->get_level() > hero->get_level()){
+
+        while(a1 > this->spells.size() || a1 <= 0 || this->spells.at(a1-1)->get_level() > hero->get_level())
+        {
             if(this->spells.at(a1-1)->get_level() > hero->get_level())
                 cout << RED << "You must choose an item you have the needed level to buy, try again!"<<endl;
             else
@@ -940,6 +1018,7 @@ bool Market::buy(Hero* hero){
 }
 
 void Market::sell(Hero* hero){
+
     cout<<"What would you like to sell?"<<endl;
     cout<<"Press 1 for Items"<<endl;
     cout<<"Press 2 for Spells"<<endl;
@@ -947,7 +1026,11 @@ void Market::sell(Hero* hero){
     cin>>a;
     if(a == 1){
         unsigned int number = hero->print_item();
-        cout<<"Press the number of the item you would like to sell"<<endl;
+        if( number == 0)
+            return;
+
+        cout << endl << BOLDBLACK << "Press the number of the item you would like to sell" << RESET <<endl;
+        
         unsigned int a1;
         cin>>a1;
         while(a1 <= 0 || a1> number){
@@ -956,9 +1039,13 @@ void Market::sell(Hero* hero){
         }
         hero->sell_Item(a1-1);
     }
-    else{
-        int number = hero->print_spell();
-        cout<<"Press the number of the spell you would like to sell"<<endl;
+    else
+    {
+        unsigned int number = hero->print_spell();
+        if( number == 0)
+            return;
+
+        cout<< endl << BOLDBLACK << "Press the number of the spell you would like to sell" << RESET <<endl;
         int a1;
         cin>>a1;
         while(a1 <= 0 || a1> number){
