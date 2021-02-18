@@ -37,17 +37,21 @@ string Item::get_kind_of_item() const{
     return this->kind_of_item;
 }
 
+double Item::get_damage() const{
+    return 0.0;
+}
+
 //Βοηθητική virtual συνάρτηση.
 
-part Item::get_prices()const
-{
-    part p;
-    p.hands = 0;
-    p.characteristic = "NOTHING";
-    p.power = 0.0;
+// part Item::get_prices()const
+// {
+//     part p;
+//     p.hands = 0;
+//     p.characteristic = "NOTHING";
+//     p.power = 0.0;
 
-    return p;
-}
+//     return p;
+// }
 
 
 //Συναρτήσεις για Weapon.
@@ -64,14 +68,14 @@ double Weapon::get_damage() const{
     return this->damage;
 }
 
-part Weapon::get_prices()const
-{
-    part p;
-    p.hands = hands;
-    p.characteristic = "NOTHING";
-    p.power = damage;
-    return p;
-}
+// part Weapon::get_prices()const
+// {
+//     part p;
+//     p.hands = hands;
+//     p.characteristic = "NOTHING";
+//     p.power = damage;
+//     return p;
+// }
 
 
 //Συναρτήσεις για Armor.
@@ -83,21 +87,20 @@ double Armor::get_reduce_of_damage() const{
     return this->reduce_of_damage;
 }
 
-part Armor::get_prices()const
-{
-    part p;
-    p.hands = -1;
-    p.characteristic = "NOTHING";
-    p.power = reduce_of_damage;
-    return p;
-}
+// part Armor::get_prices()const
+// {
+//     part p;
+//     p.hands = -1;
+//     p.characteristic = "NOTHING";
+//     p.power = reduce_of_damage;
+//     return p;
+// }
 
 
 //Συναρτήσεις για Potion.
 Potion::Potion(string n, double p, int l, string c, double i):Item(n, p, l, "Potion"){
     this->characteristic.assign(c);
     this->increase = i;
-    // cout<<"New potion has been created"<<endl;
 }
 
 Potion::~Potion(){
@@ -112,11 +115,11 @@ double Potion::get_increase() const{
     return this->increase;
 }
 
-part Potion::get_prices()const
-{
-    part p;
-    p.hands = -1;
-    p.characteristic = characteristic;
-    p.power = increase;
-    return p;
-}
+// part Potion::get_prices()const
+// {
+//     part p;
+//     p.hands = -1;
+//     p.characteristic = characteristic;
+//     p.power = increase;
+//     return p;
+// }

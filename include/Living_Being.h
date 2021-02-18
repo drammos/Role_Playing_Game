@@ -15,6 +15,7 @@ class Living_Being{
     int level;
     double healthPower;
 
+    //Kind of living being (hero or monster).
     string life_being;
     bool in_life;
     
@@ -29,24 +30,28 @@ class Living_Being{
     double get_healthPower()const;
     int get_level()const;
 
+    //Changes the healthpower.
     void set_healthPower( double);
+    //Adds to the healthpower.
     void add_healthPower(double);
 
+    //Prints the info of the living being.
     virtual void displayStats();
 };
+
 class Monster;
 
 class Hero : public Living_Being{
-    double magicPower; //ποσο μαγικης ενεργειας
-    //Τα χαρακτηριστικά δύναμης, επιφεξιότητας και ευκινησίας έχουν άνω όριο το 100.
-    double strength;  //τιμη δυναμης
-    double dexterity; //τιμη επιδεξιοτητας
-    double agility;   //τιμης ευκυνισιας
+    double magicPower;
+    //The three following characteristic have an upper bound of 100.
+    double strength;
+    double dexterity;
+    double agility;
 
-    double money;     //ποσο χρηματων που διαθετει ο ηρωας
-    double experience; //ποσο εμπειριας ηρωα
+    double money;
+    double experience;
 
-    //who hero
+    //kind of hero (warrior, sorcerer or paladin).
     string hero;
 
     static const double point;
@@ -58,14 +63,16 @@ class Hero : public Living_Being{
     vector <Item*>Armor_vector;
     vector <Item*>Potion_vector;
 
-    //Τα αντικειμενα που χρησιμοποιει ο Hero
+    //The items that the hero currently uses.
     Item* weapon;
     Item* armor;
     Item* potion;
 
-    //Οι συντεταγμένες του τετραγώνου που βρίσκεται ο ήρωας.
+    //Coordinates of the square the hero is at.
     int x;
     int y;
+
+    //Number of items and spells.
     int count_item_and_spell;
     
     public:
@@ -81,13 +88,16 @@ class Hero : public Living_Being{
     Item* get_Weapon()const;
     Item* get_Armor()const;
     Item* get_Potion()const;
+    //Returns the kind of the hero in a string.
     string get_hero()const;
     int get_count_item_and_spell()const;
 
     void set_strength( double);
     void set_dexterity( double);
     void set_agility( double);
+    //Adds money.
     void add_money( double);
+    //Subtructs money.
     void sub_money( double);
     void set_money(double);
     void add_experience( double);
@@ -118,14 +128,18 @@ class Hero : public Living_Being{
 
     void Take_Potion( int);
 
+    //Prints the info of the hero.
     void print_hero()const;
 
+    //The two following functions return thw coordinates of the hero.
     int get_x() const;
     int get_y() const;
 
+    //Change the coordinates of the hero.
     void set_x(int);
     void set_y(int);
 
+    //Prints info of the hero.
     virtual void displayStats();
 
     void attack( Monster*);

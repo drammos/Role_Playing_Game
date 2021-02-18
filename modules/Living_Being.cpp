@@ -511,8 +511,7 @@ void Hero::displayStats(){
 
 void Hero::attack( Monster* monster)
 {
-    part p_w = weapon->get_prices();
-    double damage = p_w.power;
+    double damage = weapon->get_damage();
 
     double power = damage + strength;
     if(power <= 0)return;
