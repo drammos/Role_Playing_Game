@@ -4,7 +4,7 @@ INCLUDE = ../include
 FILES = ../files
 
 # Compile options. Το -I<dir> λέει στον compiler να αναζητήσει εκεί include files
-CXXFLAGS = -Wall -no-pie -fPIE -g -I$(INCLUDE)
+CXXFLAGS = -Wall -NO-PIE -fPIE -g -I$(INCLUDE)
 
 # Αρχεία .o
 INCL = $(INCLUDE)/Living_Being.h $(INCLUDE)/Grid.h $(INCLUDE)/Spell.h $(INCLUDE)/Item.h
