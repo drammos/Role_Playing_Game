@@ -4,14 +4,14 @@
 #include <vector>
 #include "Grid.h"
 
-//Fuctions for Grid
+//Functions for Grid
 
 
 
 //constructor
 Grid::Grid(int x, int y){
 
-    //x and y are the dimensions for grid
+    //x and y are the dimensions of the grid
     //that the player chooses
     this->x = x;
     this->y = y;
@@ -64,7 +64,7 @@ void Grid::set_heroes( Hero* hero)
             x_heroes = rand()%(x);
             y_heroes = rand()%(y);
             //In the beginning heroes are placed in a market square. 
-            //to buy weapons and armors
+            //to buy weapons
             if( (squares[x_heroes][y_heroes]->get_kind_of_square()).compare( "Market") == 0)
             {
                 in = true;
@@ -297,8 +297,8 @@ void Grid::displayMap()const
             if(squares[i][j]->get_kind_of_square() == "Market" )
             {   
                 int k = squares[i][j]->contains();
-                //H is Heroes
-                //S is store(MARKET)
+                //H is for Heroes
+                //S is for store(MARKET)
                 if( k == 0)
                 {
                     cout << BLUE << "H " << RESET;
@@ -311,15 +311,15 @@ void Grid::displayMap()const
             }
             else if( squares[i][j]->get_kind_of_square() == "nonAccessible")
             {   
-                //X is NonAccesible
+                //X is for NonAccesible
                 cout << RED << " X " << RESET;
             }
             else
             {   
                 int k = squares[i][j]->contains();
-                //H is Heroes
-                //M is Monsters
-                //B is Both( Monsters and heroes)
+                //H is for Heroes
+                //M is for Monsters
+                //B is for Both( Monsters and heroes)
                 if( k == 0)
                 {
                     cout << BLUE << " H " << RESET;
@@ -366,9 +366,12 @@ void Grid::quitGame()
 
 //
 void Grid::move(vector <Hero*> heroes){
+    //Prints the grid.
     displayMap();
+    //For the north direction.
     int a;
     int f1 = 1;
+    //If the heroes are at the first row then, following the "up" direction, they move to the last row.
     if(heroes.at(0)->get_x() == 0){
         a = this->x-1;
     }
@@ -378,8 +381,9 @@ void Grid::move(vector <Hero*> heroes){
     if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
         f1 = 0;
     }
-
+    //For the south direction.
     int f2 = 2;
+    //If the heroes are at the last row then, following the "down" direction, they move to the first row.
     if(heroes.at(0)->get_x() == this->x-1){
         a = 0;
     }
@@ -389,8 +393,9 @@ void Grid::move(vector <Hero*> heroes){
     if(squares[a][heroes.at(0)->get_y()]->get_kind_of_square().compare("nonAccessible") == 0){
         f2 = 0;
     }
-
+    //For the west direction.
     int f3 = 3;
+    //If the heroes are at the first column then, following the "left" direction, they move to the last column.
     if(heroes.at(0)->get_y() == 0){
         a = this->y-1;
     }
@@ -400,8 +405,9 @@ void Grid::move(vector <Hero*> heroes){
     if(squares[heroes.at(0)->get_x()][a]->get_kind_of_square().compare("nonAccessible") == 0){
         f3 = 0; 
     }
-
+    //For the east direction.
     int f4 = 4;
+    //If the heroes are at the last column then, following the "right" direction, they move to the first column.
     if(heroes.at(0)->get_y() == this->y-1){
         a = 0;
     }
@@ -412,6 +418,7 @@ void Grid::move(vector <Hero*> heroes){
         f4 = 0;
     }
     cout<<"Where do you want to go?"<<endl;
+    //Only the accessible directions are printed.
     if(f1 == 1)
         cout<<"Press 1 for up."<<endl;
     if(f2 == 2)
@@ -434,7 +441,9 @@ void Grid::move(vector <Hero*> heroes){
         else{
             a = heroes.at(0)->get_x() - 1;
         }
+        //Heroes are removed from the current square.
         squares[heroes.at(0)->get_x()][heroes.at(0)->get_y()]->remove_heroes();
+        //and added to the other one.
         for(unsigned int i = 0; i < heroes.size(); i++){
             squares[a][heroes.at(0)->get_y()]->add_hero(heroes.at(i));
             heroes.at(i)->set_x(a);

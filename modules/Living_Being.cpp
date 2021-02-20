@@ -612,7 +612,6 @@ bool Hero::castSpell( Monster* monster)
     double high_damage = spell->get_high_damage();
 
     double damage_for_monster;
-    //int level = get_level();
     double dif = high_damage - low_damage;
     if( dif == 0)
     {
@@ -629,6 +628,7 @@ bool Hero::castSpell( Monster* monster)
     double r = rand()%100;
     if( r <= monster_probablity_of_escape)
     {
+        cout<<MAGENTA<<"The monster escaped your attack"<<RESET<<endl;
         return  true;
     }
     else
@@ -643,18 +643,16 @@ bool Hero::castSpell( Monster* monster)
 
     if(kind_of_spell == "IceSpell")
     {
-        double damage_low_monster = monster->get_damage_low() - damage;
-        if( damage_low_monster < 0)damage_low_monster = 0;
+        double damage_low_monster = monster->get_damage_low() + damage*monster->get_damage_low();
 
-        double damage_high_monster = monster->get_damage_high() - damage;
-        if( damage_high_monster < 0)damage_high_monster = 0;
+        double damage_high_monster = monster->get_damage_high() + damage*monster->get_damage_high();
         
         monster->set_damage( damage_low_monster, damage_high_monster);
         monster->set_rounds( rounds);
     }
     else if( kind_of_spell == "FireSpell")
     {
-        damage = monster->get_defence() - damage;
+        damage = monster->get_defence() - damage*monster->get_defence();
         if( damage < 0)damage = 0;
 
         monster->set_defence( damage);
@@ -662,7 +660,7 @@ bool Hero::castSpell( Monster* monster)
     }
     else
     {
-        damage = monster->get_probability_of_escape() - damage;
+        damage = monster->get_probability_of_escape() - damage*monster->get_probability_of_escape();
         if( damage < 0)damage = 0;
 
         monster->set_probability_of_escape( damage);

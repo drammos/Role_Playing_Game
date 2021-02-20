@@ -199,19 +199,20 @@ class Paladin : public Hero{
 
 class Monster : public Living_Being{
     
-    //Εύρος ζημιάς.
+    //Damage range.
     double damage_low;
     double damage_high;
     double defence;
     double probability_of_escape; //[0,100]
 
-    //Original Εύρος ζημιάς.
+    //Original damage range.
     double original_damage_low;
     double original_damage_high;
     double original_defence;
     double original_probability_of_escape; //[0,100]
     double rounds;
-
+    
+    //percentage.
     static const double point;
 
     string monster;
@@ -231,11 +232,10 @@ class Monster : public Living_Being{
     void set_probability_of_escape( double);
     void set_rounds( int);
 
-    //SOSSS
-    ///AN TELIOSEIIIIIIIIIIII I MAXI PREPEI NA AFERAISEIS 0DENISEIS TA ROUNDS KAI
-    //NA TA EPANAFEREIS OLAAAAAAAAAAAAAA
-    //SOSSS
+    //Assisting function for when the fields must be reset.
     void reset_fields();
+
+    //Prints the info about the monster.
     void print_monster();
 
     virtual void level_up();
@@ -248,6 +248,7 @@ class Monster : public Living_Being{
 
 
 class Dragon : public Monster{
+    //percentage of the increase of the attack.
     static const double point_attack;
 
     public:
@@ -260,6 +261,7 @@ class Dragon : public Monster{
 };
 
 class Exoskeleton : public Monster{
+    //percentage of the increase of the defence.
     static const double point_defence;
 
     public:
@@ -272,6 +274,7 @@ class Exoskeleton : public Monster{
 };
 
 class Spirit : public Monster{
+    //percentage of the increase of the probability of escape.
     static const double point_probability_of_escape;
 
     public:
