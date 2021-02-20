@@ -63,6 +63,7 @@ void Grid::set_heroes( Hero* hero)
         {   
             x_heroes = rand()%(x);
             y_heroes = rand()%(y);
+
             //In the beginning heroes are placed in a market square. 
             //to buy weapons and armors
             if( (squares[x_heroes][y_heroes]->get_kind_of_square()).compare( "Market") == 0)
@@ -826,9 +827,9 @@ void Square::War(){
             }
         }
         for(unsigned int i = 0; i < this->monsters.size(); i++)
-        {
+        {   
             if(this->monsters.at(i)->get_healthPower() != 0.0)
-                this->monsters.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
+                this->monsters.at(i)->add_healthPower(0.1 * this->monsters.at(i)->get_healthPower());
         }
         cout<< endl << endl << YELLOW << "Do you want to view Statistics?"<< RESET << endl;
         cout<<"Yes or No"<<endl;
