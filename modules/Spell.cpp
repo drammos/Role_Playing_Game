@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//Συναρτήσεις για Spell.
+//Spell functions.
 Spell::Spell(string n, double p, int l, double low, double high, double e, string s){
     this->name.assign(n);
     this->price = p;
@@ -47,14 +47,15 @@ void Spell::set_low_damage(double d){
 }
 
 void Spell::print(){
-    cout<<"Name is: "<<this->name<<", price is: "<<this->price<<", the required leve is: "<<this->level<<", range of damage is from "<<this->damage_low<<" to "<<this->damage_high<<", the required magic energy is: "<<this->energy<<endl;
+    cout<<"This is a "<<this->kind_of_spell<<endl;
+    cout<<"Name: "<<this->name<<", Price: "<<this->price<<", Required Level: "<<this->level<<", Range of damage: "<<this->damage_low<<" - "<<this->damage_high<<", Required magic energy: "<<this->energy<<endl;
 }
 
 string Spell::get_kind_of_spell() const{
     return this->kind_of_spell;
 }
 
-//βοηθητικες συναρτησεις
+//Assisting functions.
 double Spell::get_damage()const
 {
     return 0.0;
@@ -65,7 +66,7 @@ int Spell::get_rounds()const
 }
 
 
-//Συναρτήσεις για IceSpell.
+//IceSpell functions.
 IceSpell::IceSpell(string n, double p, int l, double dl, double dh, double e, double nl, int r):Spell(n, p, l, dl, dh, e, "IceSpell"){
     this->damage_low_new = nl;
     this->rounds = r;
@@ -79,7 +80,7 @@ int IceSpell::get_rounds() const{
     return this->rounds;
 }
 
-//Συναρτήσεις για FireSpell.
+//FireSpell functions.
 FireSpell::FireSpell(string n, double p, int l, double dl, double dh, double e, double dr, int r):Spell(n, p, l, dl, dh, e, "FireSpell"){
     this->defense_reduce = dr;
     this->rounds = r;
@@ -93,7 +94,7 @@ int FireSpell::get_rounds() const{
     return this->rounds;
 }
 
-//Συναρτήσεις για LightingSpell.
+//LightingSpell functions.
 LightingSpell::LightingSpell(string n, double p, int l, double dl, double dh, double e, double dpr, int r):Spell(n, p, l, dl, dh, e, "LightingSpell"){
     this->defense_prob_reduce = dpr;
     this->rounds = r;
