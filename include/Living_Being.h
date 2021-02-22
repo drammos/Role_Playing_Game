@@ -66,7 +66,6 @@ class Hero : public Living_Being{
     //The items that the hero currently uses.
     Item* weapon;
     Item* armor;
-    Item* potion;
 
     //Coordinates of the square the hero is at.
     int x;
@@ -87,7 +86,7 @@ class Hero : public Living_Being{
     double get_experience()const;
     Item* get_Weapon()const;
     Item* get_Armor()const;
-    Item* get_Potion()const;
+
     //Returns the kind of the hero in a string.
     string get_hero()const;
     int get_count_item_and_spell()const;
@@ -103,7 +102,6 @@ class Hero : public Living_Being{
     void add_experience( double);
     void set_Weapon( int);
     void set_Armor( int);
-    void set_Potion( Item*);
     void add_magicPower(double);
     
 

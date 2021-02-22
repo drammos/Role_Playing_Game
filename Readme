@@ -11,14 +11,11 @@
 Ας χρησιμοποιησουμε το Readme ωσ σημειο αναφορας για σχολια
 AΠο grid
 
--vale sxolia se Move.
--vale sxolia se provide( einai 2)
--vale sxolia se square/MARKET/COMMON
-
 
 //min ksexasoyme
 -quit se square kai alla
 -des count_and_item_spell sto hero an xreiazetai i einai axristo
--des to potion sto hero an xreiazeta h einai axristo
-    -auto einai axristo nomizo apla den ithela na blekso me ton kodika sou kai den to allaxa
 
+-srand se set monsetr se attack monster
+
+-aspro xroma se map
