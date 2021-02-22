@@ -51,7 +51,7 @@ void Living_Being::level_up()
     level++;
 }
 
-//print the stats the living being
+//prints the stats of the living being
 void Living_Being::displayStats(){
     cout<<"The name is: "<<this->name<<endl;
     cout<<"The healthpower is: "<< this->healthPower << endl;
@@ -78,7 +78,7 @@ Hero::Hero( string name, double strenght, double dexterity, double agility, stri
 
     this->money = MONEY;
 
-    //the experience constructor zero and grow up from war
+    //the default experience is zero and increases when the heroes win a war.
     this->experience = 0.0;
 
     //item is null
@@ -86,7 +86,7 @@ Hero::Hero( string name, double strenght, double dexterity, double agility, stri
     armor = NULL;
     potion = NULL;
 
-    //x and y the deminisions for grid
+    //x and y are the coordinates of the square the hero is at.
     this->x = x;
     this->y = y;
 
@@ -260,7 +260,7 @@ void Hero::add_magicPower(double magic)
 //the hero level up
 void Hero::level_up()
 {
-    //strength, dexterity and agility grow up
+    //strength, dexterity and agility increase
     strength = strength + strength*point;
     dexterity = dexterity + dexterity*point;
     agility = agility + agility*point;
@@ -312,7 +312,7 @@ void Hero::buy_Spell( Spell* spell)
 
 //for sell spell and item
 
-//i return true if the hero sell item
+//i return true if the hero sells an item
 bool Hero::sell_Item(unsigned int position)
 {   
     unsigned int size = Weapon_vector.size() + Armor_vector.size() + Potion_vector.size();
@@ -361,7 +361,7 @@ bool Hero::sell_Item(unsigned int position)
     return false;
 }
 
-//i return true if the hero sell spell
+//i return true if the hero sells a spell
 bool Hero::sell_Spell( int position)
 {
     int size = spell_vector.size(); 
@@ -383,13 +383,13 @@ bool Hero::sell_Spell( int position)
 }
 
 
-//print list for spell
+//prints the available spells
 int Hero::print_spell()const
 {   
     int size = spell_vector.size();
     if( size == 0)
     {
-        cout << "You havn't spell!" << endl;
+        cout << "You don´t have any spells!" << endl;
         return 0;
     }
     if(size > 0)
@@ -405,13 +405,13 @@ int Hero::print_spell()const
     return size;
 }
 
-//print list for item
+//prints the available items
 int Hero::print_item()const
 {
     int size_all = Weapon_vector.size() + Armor_vector.size() + Potion_vector.size();
     if(size_all == 0)
     {
-        cout << "You havn't items!" << endl;
+        cout << "You don´t have any items!" << endl;
     }
     else
     {
@@ -448,13 +448,13 @@ int Hero::print_item()const
 }
 
 
-//print list for weapon
+//prints the available weapons
 int Hero::print_Weapon()const
 {   
     int size = Weapon_vector.size();
     if( size == 0)
     {   
-        cout << "You havn't weapons!" << endl;
+        cout << "You don´t have any weapons!" << endl;
         return 0;
     }
     else
@@ -472,13 +472,13 @@ int Hero::print_Weapon()const
     return size;
 }
 
-//print list for armor
+//prints the available armors
 int Hero::print_Armor()const
 {
     int size = Armor_vector.size();
     if( size == 0)
     {   
-        cout << "You havn't armors!" << endl;
+        cout << "You don´t have any armors!" << endl;
         return 0;
     }
     else
@@ -496,13 +496,13 @@ int Hero::print_Armor()const
     return size;
 }
 
-//print list for potion
+//prints the available potions
 int Hero::print_Potion()const
 {
     int size = Potion_vector.size();
     if( size == 0)
     {   
-        cout << "You havn't potions." << endl;
+        cout << "You don´t have any potions." << endl;
         return 0;
     }
     else
@@ -520,7 +520,7 @@ int Hero::print_Potion()const
     return size;
 }
 
-//the hero take one potion where have buy
+//the hero takes one potion that the have already bought.
 void Hero::Take_Potion( int position)
 {
     vector <Item*> :: iterator it;
@@ -535,13 +535,13 @@ void Hero::Take_Potion( int position)
 //Print hero
 void Hero::print_hero()const
 {
-    cout << "The Hero " << BOLDBLUE << hero  << RESET << ",with name: " << get_name() << endl;
+    cout << "The Hero is a  " << BOLDBLUE << hero  << RESET << ", with name: " << get_name() << endl;
 
-    cout << " HealthPower is: " << GREEN << get_healthPower() << RESET << " and level is: " << GREEN << get_level() << RESET << endl; 
+    cout << " HealthPower: " << GREEN << get_healthPower() << RESET << ", Level: " << GREEN << get_level() << RESET << endl; 
     
-    cout << "The magic Power is: " << BOLDBLACK << magicPower << RESET << " the Strength is: " << BOLDBLACK << strength << RESET << " the dexterity is: " << BOLDBLACK << dexterity << RESET;
-    cout << " the agility is: " << BOLDBLACK << agility << RESET << endl;
-    cout << "The money is: " << BOLDBLUE << money << RESET << " and the experience is: " << BOLDBLUE << experience << RESET << endl << endl;
+    cout << "Magic Power: " << BOLDBLACK << magicPower << RESET << ", Strength: " << BOLDBLACK << strength << RESET << ", Dexterity: " << BOLDBLACK << dexterity << RESET;
+    cout << "Agility: " << BOLDBLACK << agility << RESET << endl;
+    cout << "Money: " << BOLDBLUE << money << RESET << ", Experience: " << BOLDBLUE << experience << RESET << endl << endl;
 }
 
 void Hero::displayStats(){
@@ -911,9 +911,10 @@ void Monster::level_up()
 
 void Monster::print_monster()
 {
-    cout << "The Monster is: " << this->monster << " name is: " << get_name() << " HealthPower is: " << get_healthPower();
-    cout << " and level is: " << get_level() << endl; 
-    cout << "The damage range is from " << this->damage_low << " to " << this->damage_high << " and the probability of ascaping an attack is:" << this->probability_of_escape<<endl;
+    cout << "The Monster is a: " << this->monster << ", with name: " << get_name() <<endl;
+    cout << "HealthPower: " << get_healthPower();
+    cout << "Level: " << get_level() << endl; 
+    cout << "Damage range: " << this->damage_low << " - " << this->damage_high << ", Probability of ascaping an attack:" << this->probability_of_escape<<endl;
 }
 
 void Monster::displayStats(){
