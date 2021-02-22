@@ -582,19 +582,26 @@ void Grid::buy_sell_and_equip( Hero* hero)
 
 
 void Grid::provide(Item* item){
+    //For every square.
     for(int i = 0; i < this->x; i++){
         for(int j = 0; j < this->y; j++){
+            //If the square is a market.
             if(this->squares[i][j]->get_kind_of_square().compare("Market") == 0){
+                //Insertion of the item to this square to be available for sale.
                 this->squares[i][j]->insert_item(item);
             }
         }
     }
 }
 
+
 void Grid::provide(Spell* spell){
+    //For every square.
     for(int i = 0; i < this->x; i++){
         for(int j = 0; j < this->y; j++){
+            //If the square is a market.
             if(this->squares[i][j]->get_kind_of_square().compare("Market") == 0){
+                //Insertion of the spell to this square to be available for sale.
                 this->squares[i][j]->insert_spell(spell);
             }
         }
@@ -625,6 +632,7 @@ void Square::add_monster(Monster* m){
 }
 
 vector <Hero*> Square::remove_heroes(){
+    //The heroes are kept in a vector which is returned.
     vector <Hero*> vec;
     for(unsigned int i = 0; i < this->heroes.size(); i++){
         vec.push_back(this->heroes.at(i));
@@ -649,11 +657,13 @@ int Square::contains(){
 }
 
 int Square::alive(){
+    //Counting the alive heroes.
     int h = 0;
     for(unsigned int i = 0; i < this->heroes.size(); i++){
         if(this->heroes.at(i)->get_healthPower() != 0.0)
             h++;
     }
+    //Counting the alive monsters.
     int m = 0;
     for(unsigned int i = 0; i < this->monsters.size(); i++){
         if(this->monsters.at(i)->get_healthPower() != 0.0)
@@ -668,17 +678,20 @@ int Square::alive(){
 }
 
 void Square::War(){   
-
+    //If the are no monters in the square there is no point in having a war.
     if(this->monsters.size() == 0)return;
+    //there is 0.33 possibility for the heroes to fight againts the monsters.
     int r = rand()%3;
     if(r)return;
 
     cout<< MAGENTA << "You are on a war with "<<this->monsters.size()<<" monsters"<< RESET << endl;
+    //The heroes an the monsters must have the same level to fight against each other.
     if(this->heroes.at(0)->get_level() > this->monsters.at(0)->get_level()){
         for(unsigned int i = 0; i < this->monsters.size(); i++){
             this->monsters.at(i)->level_up();
         }
     }
+    //If there are both monsters and heroes alive.
     while(this->alive() == 0){
         for(unsigned int i = 0; i < this->heroes.size(); i++){
             cout << endl << endl << "The Hero " << BOLDGREEN << this->heroes.at(i)->get_hero() << RESET <<", with name: "<<this->heroes.at(i)->get_name() << endl;
@@ -695,8 +708,9 @@ void Square::War(){
                 cout << RED << "Invalid number, try again!" << RESET << endl;
                 cin >> w;
             }
-
+            //Potion.
             if( w == 3){
+                //If the hero hasn't bought any potions they have to select another way of attack.
                 int p = this->heroes.at(i)->print_Potion();
                 if(p == 0){
                     cout<< MAGENTA << "Select another way of attack" << RESET << endl;
@@ -713,6 +727,7 @@ void Square::War(){
                             cout<<endl;
                         }
                     }
+                    //If all the monsters are dead the war is over.
                     if(this->alive() == 2)
                         break;
                     cout<<"Press the number of the monster you want to fight against"<<endl;
@@ -726,17 +741,22 @@ void Square::War(){
                         cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
                         cin>>a1;
                     }
+                    //Simple attack.
                     if(w == 1){
                         this->heroes.at(i)->attack(this->monsters.at(a1-1));
                     }
+                    //Attack by spell.
                     else{
+                        //If the hero can't cast a spell.
                         bool f = this->heroes.at(i)->castSpell(this->monsters.at(a1-1));
                         if(f == false){
+                            //The only choice is a simple attack.
                             cout<<"The only way to attack is by a simple attack"<<endl;
                             this->heroes.at(i)->attack(this->monsters.at(a1-1));
                         }
                     }
                 }
+                //If there are available potions.
                 else{
                     cout<< MAGENTA << "Please press the number of the Potion you want to take" << RESET <<endl;
                     int a;
@@ -748,6 +768,7 @@ void Square::War(){
                     this->heroes.at(i)->Take_Potion(a-1);
                 }
             }
+            //If the player chooses another way of attack, other than a potion.
             else{   
                 cout << MAGENTA <<"Which monster do you want to fight against?" << RESET << endl;
                 for(unsigned int j = 0; j < this->monsters.size(); j++){
@@ -757,7 +778,7 @@ void Square::War(){
                         cout<<endl;
                     }
                 }
-
+                //If all the monsters are dead, the war is over.
                 if(this->alive() == 2)
                     break;
                 
@@ -777,11 +798,14 @@ void Square::War(){
                     cin>>a1;
                 }
                 
+                //If the choice of the player is a simple attack.
                 if(w == 1){
                     this->heroes.at(i)->attack(this->monsters.at(a1-1));
                 }
+                //If the player chooses to cast a spell.
                 else
-                {
+                {   
+                    //If the player can't cast a spell.
                     bool f = this->heroes.at(i)->castSpell(this->monsters.at(a1-1));
                     if(f == false){
                         cout<< BLUE <<"Select another way of attack"<< RESET <<endl;
@@ -790,11 +814,14 @@ void Square::War(){
                             cout<<RED<<"Invalid number, try again!"<<RESET<<endl;
                             cin>>w;
                         }
+                        //Somple attack.
                         if(w == 1){
                             this->heroes.at(i)->attack(this->monsters.at(a1-1));
                         }
+                        //Potion.
                         else{
                             int p = this->heroes.at(i)->print_Potion();
+                            //If the player doesn't have any potions the have to do a simple attack.
                             if(p == 0){
                                 cout<<"The only way to attack is by a simple attack"<<endl;
                                 this->heroes.at(i)->attack(this->monsters.at(a1-1));
@@ -814,6 +841,7 @@ void Square::War(){
                 }
             }
         }
+        //Every alive monster attacks the first hero that is still alive.
         for(unsigned int i = 0;  i < this->monsters.size(); i++)
         {
             if(this->monsters.at(i)->get_healthPower() == 0.0)
@@ -829,14 +857,17 @@ void Square::War(){
             this->monsters.at(i)->reset_fields();
         }
         for(unsigned int i = 0; i < this->heroes.size(); i++)
-        {
+        {   
+            //After every round if a hero has some health power then it is increased by 10%.
             if(this->heroes.at(i)->get_healthPower() != 0.0){
                 this->heroes.at(i)->add_healthPower(0.1 * this->heroes.at(i)->get_healthPower());
+                //Same for the magic power.
                 this->heroes.at(i)->add_magicPower(0.1 * this->heroes.at(i)->get_magicPower());
             }
         }
         for(unsigned int i = 0; i < this->monsters.size(); i++)
         {   
+            //After every round if a monster has some health power then it is increased by 10%.
             if(this->monsters.at(i)->get_healthPower() != 0.0)
                 this->monsters.at(i)->add_healthPower(0.1 * this->monsters.at(i)->get_healthPower());
         }
@@ -860,6 +891,7 @@ void Square::War(){
             }
         }
     }
+    //If there are only monsters left alive.
     if(this->alive() == 1)
     {
         cout << endl << endl <<BOLDRED <<"You lost the war"<< RESET << endl;
@@ -879,18 +911,21 @@ void Square::War(){
     }
     for(unsigned int i = 0; i < this->monsters.size(); i++)
     {
-    
+        //The monsters' characteristics that have been changed from the spells or the potions are changed back to the original form after each war.
         this->monsters.at(i)->set_rounds(1);
         this->monsters.at(i)->reset_fields();
+        //If a monster has 0 health power after a war it's health power is set to half of the original to be ready for the next war.
         if(this->monsters.at(i)->get_healthPower() == 0.0)
             this->monsters.at(i)->set_healthPower(HEALTH_POWER/2.0);
     
     }
     for(unsigned int i = 0; i < this->heroes.size(); i++)
     {
+        //If a hero has 0 health power after a war it's health power is set to half of the original to be ready for the next war.
         if(this->heroes.at(i)->get_healthPower() == 0.0)
             this->heroes.at(i)->set_healthPower(HEALTH_POWER/2.0);
     }
+    //If the heroes have gathered the neede experience for the next level then they level up.
     double exp = NEEDED_EXPERIENCE;
     for(int i = 0; i < this->heroes.at(0)->get_level(); i++)
     {
@@ -950,9 +985,10 @@ bool Market::buy(Hero* hero){
         cout<< RED << "Invalid number, try again!" << RESET <<endl;
         cin>>a;
     }
-    //ελεγχουμε αν αγορασε οπλο
+    //Checking if the buy a weapon.
     bool back = false;
 
+    //If the player wants to buy an item.
     if(a == 1){
 
         cout<< BOLDBLACK <<"The items available in the market are:" << RESET << endl;
@@ -966,6 +1002,7 @@ bool Market::buy(Hero* hero){
         unsigned int a1;
         cin>>a1;
 
+        //The player can't buy an item he has not the needed level to use.
         while(a1 > this->items.size() || a1 <= 0 || this->items.at(a1-1)->get_level() > hero->get_level())
         {
             if(this->items.at(a1-1)->get_level() > hero->get_level())
@@ -975,6 +1012,7 @@ bool Market::buy(Hero* hero){
             cin>>a1;
         }
 
+        //Checking if the hero has enough money to buy the item they want.
         Item* item = this->items.at(a1-1);
         if( item->get_price() <= hero->get_money())
         {
@@ -988,10 +1026,11 @@ bool Market::buy(Hero* hero){
         }
         else
         {
-            cout << RED << "You havn't money for this Item!" << RESET << endl;
+            cout << RED << "You don't have enough money for this Item!" << RESET << endl;
         }
         
     }
+    //I the player wants to but a spell.
     else
     {
         cout << BOLDBLACK << "The spells available in the market are:" << RESET <<endl;
@@ -1020,10 +1059,10 @@ bool Market::buy(Hero* hero){
         }
         else
         {
-            cout << RED << "You havn't money for this Spell!" << RESET << endl;
+            cout << RED << "You don't have enough money for this Spell!" << RESET << endl;
         }
     }
-
+    //Returns whether the hero bought a weapon or not.
     return back;
 }
 
@@ -1034,6 +1073,7 @@ void Market::sell(Hero* hero){
     cout<<"Press 2 for Spells"<<endl;
     int a;
     cin>>a;
+    //If the player wants to sell an item.
     if(a == 1){
         unsigned int number = hero->print_item();
         if( number == 0)
@@ -1049,6 +1089,7 @@ void Market::sell(Hero* hero){
         }
         hero->sell_Item(a1-1);
     }
+    //If the player wants to sell a spell.
     else
     {
         unsigned int number = hero->print_spell();
