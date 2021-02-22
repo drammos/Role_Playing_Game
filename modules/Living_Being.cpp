@@ -943,16 +943,10 @@ void Monster::level_up()
 //print monster
 void Monster::print_monster()
 {
-<<<<<<< HEAD
-    cout << "The Monster " <<  MAGENTA << this->monster << RESET << " ,with name: " << get_name() << endl;
-    cout << "HealthPower is: " << BOLDBLUE <<get_healthPower() << RESET << " and level is: " << BOLDBLUE << get_level() << RESET << endl; 
-    cout << "The damage range is from " << BOLDBLACK <<  this->damage_low << RESET << " to " << BOLDBLACK << this->damage_high << RESET << " and the probability of ascaping an attack is:" << BOLDBLACK << this->probability_of_escape << RESET  << endl;
-=======
-    cout << "The Monster is a: " << this->monster << ", with name: " << get_name() <<endl;
-    cout << "HealthPower: " << get_healthPower();
-    cout << "Level: " << get_level() << endl; 
-    cout << "Damage range: " << this->damage_low << " - " << this->damage_high << ", Probability of ascaping an attack:" << this->probability_of_escape<<endl;
->>>>>>> acecde1da8b33e82bab82ea379efa9d039920caf
+    cout << "The Monster " <<  MAGENTA << this->monster << RESET << ", with name: " << get_name() << endl;
+    cout << "HealthPower: " << BOLDBLUE <<get_healthPower() << RESET << endl;
+    cout << "Level: " << BOLDBLUE << get_level() << RESET << endl; 
+    cout << "The damage range is from " << BOLDBLACK <<  this->damage_low << RESET << " - " << BOLDBLACK << this->damage_high << RESET << " and the probability of ascaping an attack is:" << BOLDBLACK << this->probability_of_escape << RESET  << endl;
 }
 
 void Monster::displayStats(){
