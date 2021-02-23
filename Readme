@@ -1,20 +1,19 @@
-Αντικειμενοσταφης προγραμματισμος
-Ομαδικη εργασια σε c++
-Ετος: 2020 - 2021
+Object-oriented Programming
+Academic year: 2020 - 2021
 
-Η εργασια ειναι υλοποιηση και απο τους δυο μας.
+Team members:
 Ιωάννα Οικονόμου sdi1900137
 Δημήτρης Ράμμος sdi1900161
 
-
+According to our implementation of the game, the heroes move thoughout the grid as a team and not independently.
+The monsters that have died in a war, revive after the end of the war to be ready for the next war.
+The heroes always fight against monsters of the same level.
+In the header file "information.h" you can find a number of constant variables that remain unchanged throughout the game.
+Also, the input is taken from 8 txt files, examples of which you can find in the folder "files".
+These files are opened from the main function of the program.
 
 Ας χρησιμοποιησουμε το Readme ωσ σημειο αναφορας για σχολια
 AΠο grid
-
--vale sxolia se Move. -done
--vale sxolia se provide( einai 2) -done
--vale sxolia se square/MARKET/COMMON -done
-
 
 //min ksexasoyme
 -quit se square kai alla
