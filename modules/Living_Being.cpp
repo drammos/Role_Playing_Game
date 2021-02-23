@@ -191,7 +191,7 @@ void Hero::set_agility( double agility)
         this->agility = 100.0;
 }
 
-//set money
+//add money
 void Hero::add_money( double money)
 {
     this->money = this->money + money;
@@ -350,7 +350,7 @@ bool Hero::sell_Item(unsigned int position)
     return false;
 }
 
-//i return true if the hero sells a spell
+//returns true if the hero sells a spell
 bool Hero::sell_Spell( int position)
 {
     int size = spell_vector.size(); 
@@ -540,13 +540,13 @@ void Hero::displayStats(){
 //attack for hero
 void Hero::attack( Monster* monster)
 {   
-    //the damage where have his weapon
+    //the damage his weapon can cause
     double damage = weapon->get_damage();
 
     double power = damage + strength;
     if(power <= 0)return;
 
-    //defence monster and probability for war
+    //defence of monster and probability of a escaping an attack during a war
     double monster_defence = monster->get_defence();
     double monster_probablity_of_escape = monster->get_probability_of_escape();
 
@@ -568,7 +568,7 @@ void Hero::attack( Monster* monster)
 //attack with spell for hero
 bool Hero::castSpell( Monster* monster)
 {
-    //print spell where he buy
+    //prints the available spells.
     int size = print_spell();
     if( size == 0)
     {
@@ -586,13 +586,13 @@ bool Hero::castSpell( Monster* monster)
         cin >> answer;
     }
 
-    //the spell where the hero change
+    //the spell that the hero chooses.
     Spell* spell = spell_vector.at( answer - 1);
 
     //get energy for spell
     double power_magic = spell->get_energy();
     
-    //count spell where havn't bigger magicPower
+    //count the spells that the hero does not have enough magic power to cast.
     bool spell_change[size];
     for( int i = 0; i < size; i++)
     {
@@ -600,7 +600,7 @@ bool Hero::castSpell( Monster* monster)
     }
     int spell_change_count = 1;
 
-    //this spell must have smaller from magicPower hero
+    //the spell must need less magic power than the hero has.
     while( power_magic > magicPower)
     {   
         
@@ -615,7 +615,7 @@ bool Hero::castSpell( Monster* monster)
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> an;
         }
-        //i return false if hero don't use spell
+        //returns false if the hero does not want to use another spell
         if( an == "No")return false;
 
         print_spell();
@@ -631,10 +631,10 @@ bool Hero::castSpell( Monster* monster)
             cin >> answer;
         }
 
-        //if this spell havn't smaller from magicPower hero
+        //if the hero does not have enough magic power for this spell.
         while( spell_change[answer - 1] == true)
         {
-            cout << RED << "You don't have this spell, try again!" << RESET << endl;
+            cout << RED << "You don't have enough magic power for this spell, try again!" << RESET << endl;
             cin >> answer; 
         }
 
@@ -642,8 +642,10 @@ bool Hero::castSpell( Monster* monster)
         power_magic = spell->get_energy();
 
         //check this spell
-        spell_change[answer - 1] = true;
-        spell_change_count++;
+        if(power_magic > magicPower){
+            spell_change[answer - 1] = true;
+            spell_change_count++;
+        }
 
 
     }
@@ -668,7 +670,7 @@ bool Hero::castSpell( Monster* monster)
         damage_for_monster = low_damage + (int)dexterity%((int)dif); 
     }
 
-    //monster defence and probability for war
+    //monster defence and probability of escape
     double monster_defence = monster->get_defence();
     double monster_probablity_of_escape = monster->get_probability_of_escape();
 
@@ -688,8 +690,8 @@ bool Hero::castSpell( Monster* monster)
     double damage = spell->get_damage();
     int rounds = spell->get_rounds();
 
-    //every spell have one property where is wickedness for monster
-    //this property have rounds for monster where monster can not be change
+    //every spell has one property that affects the monster
+    //the change that is caused from that property remains for a number of rounds.
     if(kind_of_spell == "IceSpell")
     {
         double damage_low_monster = monster->get_damage_low() + damage*monster->get_damage_low();
@@ -716,7 +718,7 @@ bool Hero::castSpell( Monster* monster)
         monster->set_rounds( rounds);
     }
 
-    //i return true if hero use spell
+    //i return true if the hero uses a spell
     return true;
     
 
@@ -744,7 +746,7 @@ Warrior::Warrior( string name, double strenght, double dexterity, double agility
 void Warrior::level_up()
 {   
 
-    //the level up grow up some possibillity for the hero
+    //the upgrade of the level increases some characteristics for the hero
     double strength = get_strength();
     strength = strength + strength*point_strength;
     set_strength( strength);
@@ -773,7 +775,7 @@ Sorcerer::Sorcerer( string name, double strenght, double dexterity, double agili
 //level up for SORCERER
 void Sorcerer::level_up()
 {
-    //the level up grow up some possibillity for the hero
+    //the upgrade of the level increases some characteristics for the hero
     double dexterity = get_dexterity();
     dexterity = dexterity + dexterity*point_dexterity;
     set_dexterity( dexterity);
@@ -804,7 +806,7 @@ Paladin::Paladin( string name, double strenght, double dexterity, double agility
 //level up for paladin
 void Paladin::level_up()
 {
-    //the level up grow up some possibillity for the hero
+    //the upgrade of the level increases some characteristics for the hero
     double strength = get_strength();
     strength = strength + strength*point_strength;
     set_strength( strength);
@@ -839,13 +841,13 @@ Monster::Monster( string name, double damage_low, double damage_high, double def
 
     this->monster = monster;
 
-    //Original possibility
+    //Original fields.
     original_damage_low = damage_low;
     original_damage_high = damage_high;
     original_defence = defence;
     original_probability_of_escape = probability_of_escape; //[0,100]
 
-    //rounds for war/catspell
+    //rounds for war/castspell
     rounds = 0;
 
 }
@@ -900,8 +902,8 @@ void Monster::set_rounds( int rounds)
     this->rounds = rounds;
 }
 
-//reset fields in the originals if rounds == 0
-//else i minus rounds
+//reset fields to the originals if rounds == 0
+//else rounds is decreased by one
 void Monster::reset_fields()
 {
     if( rounds <= 0)return;
@@ -924,13 +926,14 @@ void Monster::attack(Hero* hero){
     int r = rand() % 100; 
     if(r < hero->get_agility())return;
     hero->set_healthPower(damage);
+    cout<<"The monster with name "<<this->get_name()<<" attacked the hero with name "<<hero->get_name()<<endl;
 }
 
 
-//level up monster
+//level up for monster
 void Monster::level_up()
 {
-    //the level up grow up some possibillity for the monster
+    //the upgrade of the level increases some characteristics for the monster
     damage_high = damage_high + damage_high*point;
     damage_low = damage_low + damage_low*point;
     defence = defence + defence*point;
@@ -942,11 +945,11 @@ void Monster::level_up()
 
 //print monster
 void Monster::print_monster()
-{
-    cout << "The Monster " <<  MAGENTA << this->monster << RESET << ", with name: " << get_name() << endl;
+{   
+    cout << "The Monster is a " <<  MAGENTA << this->monster << RESET << ", with name: " << get_name() << endl;
     cout << "HealthPower: " << BOLDBLUE <<get_healthPower() << RESET << endl;
     cout << "Level: " << BOLDBLUE << get_level() << RESET << endl; 
-    cout << "The damage range is from " << BOLDBLACK <<  this->damage_low << RESET << " - " << BOLDBLACK << this->damage_high << RESET << " and the probability of ascaping an attack is:" << BOLDBLACK << this->probability_of_escape << RESET  << endl;
+    cout << "Damage range: " << BOLDBLACK <<  this->damage_low << RESET << " - " << BOLDBLACK << this->damage_high << RESET << ", Probability of ascaping an attack:" << BOLDBLACK << this->probability_of_escape << RESET  << endl;
 }
 
 void Monster::displayStats(){
@@ -966,7 +969,7 @@ Dragon::Dragon( string name, double damage_low, double damage_high, double defen
 //level up
 void Dragon::level_up()
 {   
-    //the level up grow up some possibillity for the Dragon
+    //the upgrade of the level increases some characteristics for the dragon
     double damage_low = get_damage_low();
     damage_low =  damage_low + damage_low*point_attack;
     double damage_high = get_damage_high();
@@ -992,7 +995,7 @@ Exoskeleton::Exoskeleton( string name, double damage_low, double damage_high, do
 //level up
 void Exoskeleton::level_up()
 {   
-    //the level up grow up some possibillity for the Exoskeleton
+    //the upgrade of the level increases some characteristics for the exoskeleton
     double defence = get_defence();
     defence = defence + defence*point_defence;
     set_defence( defence);
@@ -1015,7 +1018,7 @@ Spirit::Spirit( string name, double damage_low, double damage_high, double defen
 //level up
 void Spirit::level_up()
 {   
-    //the level up grow up some possibillity for the Spirit
+    //the upgrade of the level increases some characteristics for the spirit
     double probability_of_escape = get_probability_of_escape();
     probability_of_escape = probability_of_escape + probability_of_escape*point_probability_of_escape;
     set_probability_of_escape( probability_of_escape);
