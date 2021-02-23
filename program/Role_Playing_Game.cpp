@@ -7,7 +7,7 @@
 #include "Grid.h"
 
 #include <fstream>
-#include <iostream> // Χρειάζεται για την έξοδο κειμένου στη γραμμή εντολών
+#include <iostream> 
 #include <cstdlib>
 
 using namespace std;
@@ -20,37 +20,7 @@ struct input_1{
     double x2;
     double x3;   
     double x4; //null for heroes
-};
-
-//struct for armors and potion
-struct input_2{
-    string name;
-    string characteristic; //null for armors
-    double x1;
-    int level;
-    double x2;
-};
-
-//struct for lightspells, firespells and icespells
-struct input_3{
-    string name;
-    double x1;
-    double x2;
-    double x3;
-    double x4;
-    double x5;
-    int I1;
-    int I2;
-};
-
-//struct for weapons
-struct input_4{
-    string name;
-    double x1;
-    double x2;
-    int I1;
-    int I2;
-};
+}; 
 
 int main( void)
 {
