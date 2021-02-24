@@ -1,9 +1,19 @@
-Object-oriented Programming
-Academic year: 2020 - 2021
+//////////////////////////////////////////////////////////////////////////////
+//                                                                         //
+//                      Object-oriented Programming                        //  
+//                      Academic year: 2020 - 2021                         //
+//                                                                         //
+/////////////////////////////////////////////////////////////////////////////
+
+
 
 Team members:
 Ιωάννα Οικονόμου sdi1900137
 Δημήτρης Ράμμος sdi1900161
+
+
+
+
 
 According to our implementation of the game, the heroes move thoughout the grid as a team and not independently.
 The monsters that have died in a war, revive after the end of the war to be ready for the next war.
@@ -12,7 +22,16 @@ The heroes always fight against monsters of the same level.
 In the header file "information.h" you can find a number of constant variables that remain unchanged throughout the game.
 Also, the input is taken from 8 txt files, examples of which you can find in the folder "files".
 These files are opened from the main function of the program.
+///////////////////////////////////////////////////////////////////
 
+
+
+
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                         FILES                                  //
+//                                                                //
+////////////////////////////////////////////////////////////////////
 
 The file formats are explained thoroughly below:
 -armors.txt:
@@ -31,24 +50,115 @@ The file formats are explained thoroughly below:
     name_of_potion price level characteristic increase
 -weapons.txt:
     name_of_weapon price level required_number_of_hands damage
+///////////////////////////////////////////////////////////////////
 
 
 
+
+
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                      LIVING BEING                              //
+//                                                                //
+////////////////////////////////////////////////////////////////////
 
 For Living_Being.cpp and Living_Being.h:
 
 
+The Living_Being.cpp include the monsters and heroes where play in the game.
+It have one  SuperClass the Living_Being where have Living Being(name , level).
+Tha  Subclass Hero and Monster is Class where inherit from Basic Class Living_Being. The SubClass Warrior, Sorcerer and Paladin(is property for Hero) 
+is class where inherit from Class Hero. The SubClass Dragon, Exoskeleton and Spirit( is property for monster) is class where inherit from class Monster.
+
+
+For level_up and constructor:
+
+Every monster or hero when create or level up, it favored for some skills it has. It(monster or hero) for each species( Warrior, Sorcerer, Paladin, Dragon, Exoskeleton and Spirit)
+it has a skill building factor. The Hero to level up, it must have specific experience, where experience grow up from war(Monster vs Heroes). The monster level up when all heroes 
+is a higher level, and the heroes go in the common square.
+
+For Hero:
+Every hero have vector with weapons, armors and potions where he has bought. Every hero have one Weapon and Armor where he use this time. For the start constructor
+with the first armor and Weapon, which he bought.
+////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                          GRID                                  //
+//                                                                //
+////////////////////////////////////////////////////////////////////
+
+For Grid.cpp and Grid.h:
+
+The Class Grid is the grid for game where it have deminsions x and y, that the player chooses. The grid have squares where every square is one Square(class Square).
+With a probability, the Square is Common, Market or nonAccessible where they is SubClass that inherit from SuperClass Square. 
+
+For StartGame:
+The game start. The heroes all with start from Market square for buy Item and Spell. For every the player must buy one weapons for the war otherwise he lose the game.
+After, the hero move from this square and call Move function where print the grid and it asks the player that he wants to move.
+If the square is Market, if he want can to buy or sell item and spell. If the square is Common with a probability start the war otherwise no.
+The game end that all heroes have LEVEL_MAX(from information.h) or the player decide to leave for the game and he Lose.
+
+
+For buy_sell_and_equip:
+When the player buy or sell item, he can change the item he is holding.
+
+
+For displayMap:
+Print the grid with UTF-8 characters.
+
+H - is Hero
+M - is Monster
+B - is Hero and monster bought
+
+S - is Market
+X - is nonAccessible
+H S - is heroes where find in the Market
+////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                          ITEM                                  //
+//                                                                //
+////////////////////////////////////////////////////////////////////
+
+For Item.cpp and Item.h
+
+
+
+////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                         SPELL                                  //
+//                                                                //
+////////////////////////////////////////////////////////////////////
+
+For Spell.cpp and Spell.h
 
 
 
 
 
 
+/////////////////////////////////////////////////////////////////////
 
 
 
 
-/////////////////////////////////////////////////////////////////
+
 
 
 ////////////////////////////////////////////////////////////////
