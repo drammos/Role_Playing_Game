@@ -11,6 +11,23 @@ The heroes always fight against monsters of the same level.
 In the header file "information.h" you can find a number of constant variables that remain unchanged throughout the game.
 Also, the input is taken from 8 txt files, examples of which you can find in the folder "files".
 These files are opened from the main function of the program.
+The file formats are explained thoroughly below:
+-armors.txt:
+    name_of_armor price requires_level reduse_of_damage
+-firespells.txt:
+    name_of_firespell price level low_damage high_damage energy reduce_of_defense rounds
+-heroes.txt:
+    name_of_hero strength dexterity agility
+-icespells.txt:
+    name_of_icespell price level low_damage high_damage energy new_low_damage rounds
+-lightingspells.txt:
+    name_of_lightingspell price level low_damage high_damage energy defense_probability_reduce rounds
+-monsters.txt:
+    name_of_monster low_damage high_damage defense probability_of_escaping
+-potions.txt:
+    name_of_potion price level characteristic increase
+-weapons.txt:
+    name_of_weapon price level required_number_of_hands damage
 
 Ας χρησιμοποιησουμε το Readme ωσ σημειο αναφορας για σχολια
 AΠο grid
