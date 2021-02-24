@@ -1,4 +1,12 @@
-// #include "Grid.h"//
+////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                        //  
+//                                                                                        //
+//                                ROLE PLAYING GAME                                       //
+//                                                                                        //
+//                                                                                        // 
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
 #include "Living_Being.h"
 #include "Item.h"
 #include "Spell.h"
@@ -14,6 +22,7 @@ using namespace std;
 
 
 //struct for heroes and monster
+//this struct help us in read file
 struct input_1{
     string name;
     double x1;
@@ -22,8 +31,11 @@ struct input_1{
     double x4; //null for heroes
 }; 
 
+
+
 int main( void)
 {
+    //Start the game
     cout << BOLDBLACK << "ROLE PLAYING GAME" << RESET << endl;
 
     cout << "Press 1 to Start Game" << endl;
@@ -41,6 +53,7 @@ int main( void)
         return -1;
     }
 
+    //the playerr choose grid for game 
     cout << GREEN <<"Choose Grid for Game." << RESET <<endl;
     cout << "Press 1 for 8x8" << endl;
     cout << "Press 2 for 10x10" << endl;
@@ -56,6 +69,8 @@ int main( void)
         cin >> answer;
     }
 
+
+    ////x and y are the dimensions of the grid
     int x;
     int y;
     if( answer == 1){ x = 8; y = 8;}
@@ -65,10 +80,12 @@ int main( void)
     else if( answer == 5){ x = 20; y = 15;}
     else{ x = 20; y = 20;}
 
+    //create grid with x and y
     Grid* grid = new Grid( x, y);
 
     string in;
 
+    //for read file with heroes and monsters
     string name;
     double x1;
     double x2;
@@ -76,8 +93,7 @@ int main( void)
     double x4;
 
     vector< input_1> vector_heroes;
-//
-
+    //file with heroes
     ifstream file_heroes;
     file_heroes.open("../files/heroes.txt");
 
@@ -90,11 +106,13 @@ int main( void)
         in.x3 = x3;
         in.x4 = NULL;
 
+        //create vector with heroes
         vector_heroes.push_back( in);
     }
     file_heroes.close();
-    //ο παικτης επιλεγει 1 - 3 ηρωες αρα κραταω 3 ηρωες τυχαια
-    //και διαγραφω τους υπολοιπους
+
+    //the player choose 1-3 heroes in random
+    //from all heroes where have the vector, i choose 3 players in random
 
     input_1 in_1;
     input_1 in_2;
@@ -117,7 +135,7 @@ int main( void)
     vector_heroes.clear();
 
 
-    //διαβαζω τα τερατα
+    //i read the monsters
     ifstream file_monsters;
     file_monsters.open("../files/monsters.txt");
 
@@ -132,14 +150,16 @@ int main( void)
         in.x3 = x3;
         in.x4 = x4;
 
+        //create vector with monsters
         vector_monsters.push_back( in);
     }
     file_monsters.close();
 
+
     int level;
     string characteristic;
     
-    //διαβαζω τισ πανοπλιες
+    //i read armors
     ifstream file_armors;
     file_armors.open("../files/armors.txt");
 
@@ -149,11 +169,12 @@ int main( void)
     {
         Item* armor = new Armor(name, x2, level, x2);
 
+        //i create vector with armors
         vector_armors.push_back(armor);
     }
     file_armors.close();
 
-    //διαβαζω τα φιλτρα
+    //i read potions
     ifstream file_potions;
     file_potions.open("../files/potions.txt");
 
@@ -164,6 +185,7 @@ int main( void)
     {
         Item* potion = new Potion(name, x1, level, characteristic, x2);
 
+        //i create vector with potions
         vector_potions.push_back( potion);    
     }
     file_potions.close();
@@ -172,7 +194,7 @@ int main( void)
     int I2;
 
 
-    //διαβαζω τα Weapons
+    //i read Weapons
     ifstream file_weapons;
     file_weapons.open("../files/weapons.txt");
 
@@ -182,6 +204,7 @@ int main( void)
     {   
         Item* weapon = new Weapon(name, x1, I1, I2, x2);
 
+        //i create vector with weapons
         vector_weapons.push_back(weapon);
     }
     
@@ -189,10 +212,10 @@ int main( void)
     
     double x5;
 
-    //διαβαζω τα ξορκια
+    //i read the spels
     
 
-    //διαβαζω τα Lightspells
+    //i read the Lightspells
     ifstream file_lightingspells;
     file_lightingspells.open("../files/lightingspells.txt");
 
@@ -201,13 +224,14 @@ int main( void)
     while( file_lightingspells >> name >> x1 >> I1 >> x2 >> x3 >> x4 >> x5 >> I2)
     {   
         Spell* spell = new LightingSpell(name, x1, I1, x2, x3, x4, x4, I2);
-
+        
+        //i create vector with lightspells
         vector_lightingspells.push_back(spell);
     }
     file_lightingspells.close();
 
 
-    //διαβαζω τα Icespells
+    //i read the Icespells
     ifstream file_icespells;
     file_icespells.open("../files/icespells.txt");
 
@@ -217,11 +241,12 @@ int main( void)
     {   
         Spell* spell = new IceSpell(name, x1, I1, x2, x3, x4, x5, I2);
 
+        //i create vector with icespells
         vector_icespells.push_back(spell);
     }
     file_icespells.close();
 
-    //διαβαζω τα Firespells
+    //i read the Firespells
     ifstream file_firespells;
     file_firespells.open("../files/firespells.txt");
 
@@ -231,6 +256,7 @@ int main( void)
     {   
         Spell* spell = new FireSpell(name, x1, I1, x2, x3, x4, x5, I2);
 
+        //i create vector with firespells
         vector_firespells.push_back(spell);
     }
     file_firespells.close();
@@ -239,6 +265,7 @@ int main( void)
 
     
     //FOR HEROES
+    //the player must choose 1-3 heroes for the game
     cout << BOLDBLUE << "Which Heroes do you want to choose?" << RESET << endl;
     
     bool heroes_change = false;
@@ -252,7 +279,7 @@ int main( void)
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
         }
-//
+
         if( in == "Yes")
         {   
             Warrior* warrior = new Warrior( in_1.name, in_1.x1, in_1.x2, in_1.x3, x, y);
@@ -301,11 +328,12 @@ int main( void)
         {
             cout << RED << "YOU MUST CHANGE FROM 1 UNTIL 3 HEROES!" << RESET << endl;
         }
-
+    
+    //if the player havn't choose neither player repeat the questions
     }while( heroes_change == false);
 
 
-
+    //i give in monsters with random capacity
     int size = vector_monsters.size();
     for( int i = 0; i < size; i++)
     {
@@ -328,10 +356,12 @@ int main( void)
             Spirit* spirit = new Spirit( in_1.name, in_1.x1, in_1.x2, in_1.x3, in_1.x4);
             monster = spirit;
         }
-// srand(time(NULL));
+
+        //set the monsters in grid
         grid->set_monsters( monster);
     }
 
+    //provide the grid with armors, potions, weapons and spells
     for(int i = 0; i < vector_armors.size(); i++){
         grid->provide(vector_armors.at(i));
     }
@@ -345,7 +375,7 @@ int main( void)
 
 
 
-    
+    //spells
     for(int i = 0; i < vector_icespells.size(); i++){
         grid->provide(vector_icespells.at(i));
     }
@@ -356,5 +386,16 @@ int main( void)
         grid->provide(vector_lightingspells.at(i));
     }
 
+    //START TH GAME
     grid->StartGame();
 }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                        //  
+//                                                                                        //
+//                                      END                                               //
+//                                                                                        //
+//                                                                                        // 
+////////////////////////////////////////////////////////////////////////////////////////////

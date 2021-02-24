@@ -8,9 +8,12 @@ Team members:
 According to our implementation of the game, the heroes move thoughout the grid as a team and not independently.
 The monsters that have died in a war, revive after the end of the war to be ready for the next war.
 The heroes always fight against monsters of the same level.
+
 In the header file "information.h" you can find a number of constant variables that remain unchanged throughout the game.
 Also, the input is taken from 8 txt files, examples of which you can find in the folder "files".
 These files are opened from the main function of the program.
+
+
 The file formats are explained thoroughly below:
 -armors.txt:
     name_of_armor price requires_level reduse_of_damage
@@ -29,6 +32,26 @@ The file formats are explained thoroughly below:
 -weapons.txt:
     name_of_weapon price level required_number_of_hands damage
 
+
+
+
+For Living_Being.cpp and Living_Being.h:
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////
 Ας χρησιμοποιησουμε το Readme ωσ σημειο αναφορας για σχολια
 AΠο grid
 
