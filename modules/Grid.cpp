@@ -75,7 +75,7 @@ void Grid::set_heroes( Hero* hero)
             //In the beginning heroes are placed in a market square. 
             //to buy weapons
             if( (squares[x_heroes][y_heroes]->get_kind_of_square()).compare( "Market") == 0)
-            {
+            {   
                 in = true;
             }
         }
@@ -631,6 +631,13 @@ Square::~Square(){
     this->monsters.clear();
 }
 
+//STOP THE GAME
+void Square::quitGame()
+{
+    cout << BOLDRED << "YOU LOSE!" << RESET << endl;
+    exit(EXIT_FAILURE);
+}
+
 void Square::add_hero(Hero* h){
     this->heroes.push_back(h);
 }
@@ -885,7 +892,12 @@ void Square::War(){
         string answer;
         cin >> answer;
         while( answer.compare("Yes") != 0 && answer.compare("No") != 0)
-        {           
+        {   
+            if( answer.compare("quitGame") == 0)
+            {
+                quitGame();
+            }
+            
             cout<< RED << "Invalid number, try again!" << RESET << endl;
             cin >> answer;
         }
@@ -1105,9 +1117,11 @@ void Market::sell(Hero* hero){
             return;
 
         cout<< endl << BOLDBLACK << "Press the number of the spell you would like to sell" << RESET <<endl;
-        int a1;
+        
+        unsigned int a1;
         cin>>a1;
-        while(a1 <= 0 || a1> number){
+
+        while(a1 <= 0 || a1 > number){
             cout << RED << "Invalid number, try again!" << RESET << endl;
             cin>>a1;
         }

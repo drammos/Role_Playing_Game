@@ -535,7 +535,7 @@ void Hero::print_hero()const
 {
     cout << "The Hero is a  " << BOLDBLUE << hero  << RESET << ", with name: " << get_name() << endl;
 
-    cout << " HealthPower: " << GREEN << get_healthPower() << RESET << ", Level: " << GREEN << get_level() << RESET << endl; 
+    cout << "HealthPower: " << GREEN << get_healthPower() << RESET << ", Level: " << GREEN << get_level() << RESET << endl; 
     
     cout << "Magic Power: " << BOLDBLACK << magicPower << RESET << ", Strength: " << BOLDBLACK << strength << RESET << ", Dexterity: " << BOLDBLACK << dexterity << RESET;
     cout << "Agility: " << BOLDBLACK << agility << RESET << endl;

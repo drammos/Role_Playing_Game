@@ -17,6 +17,7 @@
 #include <fstream>
 #include <iostream> 
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -34,7 +35,11 @@ struct input_1{
 
 
 int main( void)
-{
+{      
+    //with rand all
+    srand(time(NULL));
+
+    
     //Start the game
     cout << BOLDBLACK << "ROLE PLAYING GAME" << RESET << endl;
 
@@ -276,9 +281,16 @@ int main( void)
     
         cin >> in;
         while( in != "Yes" && in != "No"){
+            
+            if( in.compare("quitGame") == 0)
+            {
+                grid->quitGame();
+            }
+
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
         }
+
 
         if( in == "Yes")
         {   
@@ -295,6 +307,12 @@ int main( void)
 
         cin >> in;
         while( in != "Yes" && in != "No"){
+
+            if( in.compare("quitGame") == 0)
+            {
+                grid->quitGame();
+            }
+
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
         }
@@ -312,6 +330,12 @@ int main( void)
 
         cin >> in;
         while( in != "Yes" && in != "No"){
+
+            if( in.compare("quitGame") == 0)
+            {
+                grid->quitGame();
+            }
+            
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
         }

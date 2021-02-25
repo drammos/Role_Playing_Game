@@ -36,15 +36,18 @@ class Grid{
     void print_Hero( Hero*)const;
     //Movement to one of the up, down, left, right squares if they are accessible.
     void move(vector <Hero*>);
-    void quitGame();
     //Prints the grid.
     void displayMap()const;
     //Assisting function.
     void buy_sell_and_equip( Hero*);
     
 public:    
+
     Grid( int, int);
     ~Grid();
+    
+    //the game over
+    void quitGame();
     //Puts the heroes in the grid.
     void set_heroes( Hero*);
     //Puts the monsters in the grid.
@@ -67,6 +70,9 @@ class Square{
 public:
     Square(string);
     virtual ~Square();
+
+    //the game over
+    void quitGame();
     //Adds heroes to the square.
     void add_hero(Hero*);
     //Adds monsters to the square.
