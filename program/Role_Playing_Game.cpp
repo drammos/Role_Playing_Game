@@ -17,6 +17,7 @@
 #include <fstream>
 #include <iostream> 
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -34,7 +35,11 @@ struct input_1{
 
 
 int main( void)
-{
+{      
+    //with rand all
+    srand(time(NULL));
+
+    
     //Start the game
     cout << BOLDBLACK << "ROLE PLAYING GAME" << RESET << endl;
 
@@ -104,7 +109,7 @@ int main( void)
         in.x1 = x1;
         in.x2 = x2;
         in.x3 = x3;
-        in.x4 = NULL;
+        in.x4 = 0;
 
         //create vector with heroes
         vector_heroes.push_back( in);
@@ -276,9 +281,16 @@ int main( void)
     
         cin >> in;
         while( in != "Yes" && in != "No"){
+            
+            if( in.compare("quitGame") == 0)
+            {
+                grid->quitGame();
+            }
+
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
         }
+
 
         if( in == "Yes")
         {   
@@ -295,6 +307,12 @@ int main( void)
 
         cin >> in;
         while( in != "Yes" && in != "No"){
+
+            if( in.compare("quitGame") == 0)
+            {
+                grid->quitGame();
+            }
+
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
         }
@@ -312,6 +330,12 @@ int main( void)
 
         cin >> in;
         while( in != "Yes" && in != "No"){
+
+            if( in.compare("quitGame") == 0)
+            {
+                grid->quitGame();
+            }
+            
             cout << RED << "Invalid answer, try again!" << RESET << endl;
             cin >> in;
         }
@@ -362,27 +386,37 @@ int main( void)
     }
 
     //provide the grid with armors, potions, weapons and spells
-    for(int i = 0; i < vector_armors.size(); i++){
+    int size_vector = vector_armors.size();
+    for(int i = 0; i < size_vector; i++){
         grid->provide(vector_armors.at(i));
     }
 
-    for(int i = 0; i < vector_weapons.size(); i++){
+    size_vector = vector_weapons.size();
+    for(int i = 0; i < size_vector; i++){
         grid->provide(vector_weapons.at(i));
     }
-    for(int i = 0; i < vector_potions.size(); i++){
+
+    size_vector = vector_potions.size();
+    for(int i = 0; i < size_vector; i++){
         grid->provide(vector_potions.at(i));
     }
 
 
 
     //spells
-    for(int i = 0; i < vector_icespells.size(); i++){
+
+    size_vector = vector_icespells.size();
+    for(int i = 0; i < size_vector; i++){
         grid->provide(vector_icespells.at(i));
     }
-    for(int i = 0; i < vector_firespells.size(); i++){
+    
+    size_vector = vector_firespells.size();
+    for(int i = 0; i < size_vector; i++){
         grid->provide(vector_firespells.at(i));
     }
-    for(int i = 0; i < vector_lightingspells.size(); i++){
+
+    size_vector = vector_lightingspells.size();
+    for(int i = 0; i < size_vector; i++){
         grid->provide(vector_lightingspells.at(i));
     }
 
