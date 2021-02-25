@@ -18,6 +18,27 @@ Team members:
 According to our implementation of the game, the heroes move thoughout the grid as a team and not independently.
 The monsters that have died in a war, revive after the end of the war to be ready for the next war.
 The heroes always fight against monsters of the same level.
+///////////////////////////////////////////////////////////////////
+
+
+
+
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                      Role_Playing_Game                         //
+//                                                                //
+////////////////////////////////////////////////////////////////////
+
+For Role_Playing_Game.cpp:
+
+This file include the main for program. From this file start to run the program. It read all files, create vectors and after it give in grid this
+vectors( vector include monsters, heroes,item and spell). The player must choose 1-3 heroes( that is Warrior, Paladin and Sorcerer). The player change
+heroes and after they with a probability start the game from a  Market square. After with a probability the monsters are introduced to grid(from files monsters.txt).
+After the game start and program continue run from function StartGame( from Grid.cpp).
+///////////////////////////////////////////////////////////////////
+
+
+
 
 In the header file "information.h" you can find a number of constant variables that remain unchanged throughout the game.
 Also, the input is taken from 8 txt files, examples of which you can find in the folder "files".
@@ -162,12 +183,10 @@ For Spell.cpp and Spell.h
 
 
 ////////////////////////////////////////////////////////////////
-Ας χρησιμοποιησουμε το Readme ωσ σημειο αναφορας για σχολια
-AΠο grid
+
 
 //min ksexasoyme
 -quit se square kai alla
--des count_and_item_spell sto hero an xreiazetai i einai axristo
 
 -srand se set monsetr se attack monster
 
