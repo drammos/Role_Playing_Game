@@ -65,10 +65,10 @@ The file formats are explained thoroughly below:
 For Living_Being.cpp and Living_Being.h:
 
 
-The Living_Being.cpp include the monsters and heroes where play in the game.
-It have one  SuperClass the Living_Being where have Living Being(name , level).
-Tha  Subclass Hero and Monster is Class where inherit from Basic Class Living_Being. The SubClass Warrior, Sorcerer and Paladin(is property for Hero) 
-is class where inherit from Class Hero. The SubClass Dragon, Exoskeleton and Spirit( is property for monster) is class where inherit from class Monster.
+The Living_Being.cpp include the monsters and heroes that play in the game.
+It has one  SuperClass, the Living_Being, with constructor Living Being(name , level).
+Tha  Subclasses Hero and Monster are Classes that inherit from Basic Class Living_Being. The Subclasses Warrior, Sorcerer and Paladin(properties of Hero) 
+are Classes that inherit from Class Hero. The Subclasses Dragon, Exoskeleton and Spirit(properties of monster) are Classes that inherit from class Monster.
 
 
 For level_up and constructor:
