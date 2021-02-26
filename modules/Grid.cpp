@@ -59,7 +59,7 @@ Grid::~Grid(){
     }
 }
 
-//i put the heroes randomly in the grid
+//puttting the heroes randomly in the grid
 void Grid::set_heroes( Hero* hero)
 {   
     
@@ -130,7 +130,7 @@ void Grid::set_monsters( Monster* monster)
         if( (squares[x1][y1]->get_kind_of_square()).compare( "Common") == 0)
         {   
 
-            //with a probability the monster is on the grid, otherwise it is not
+            //with a probability the monster is placed on the grid, otherwise it is not
             int num_rand = rand()%7;
             if( num_rand <= 3)
             {
@@ -174,7 +174,7 @@ void Grid::StartGame()
     
 
     bool level_heroes = false;
-    //if level heroes is MAX_LEVEL then the game is over
+    //if the level of the heroes is MAX_LEVEL then the game is over
     while( level_heroes == false)
     {   
         string kind_of_square = squares[x_heroes][y_heroes]->get_kind_of_square();
@@ -247,7 +247,7 @@ void Grid::equip( Hero* hero)
     //Change Weapon
     if( in == 1)
     {
-        //print all the weapons the player can buy for a hero
+        //print all the weapons the player has bought for a hero
         int number_Weapon = hero->print_Weapon();
         int w;
         if(number_Weapon != 0)
@@ -267,7 +267,7 @@ void Grid::equip( Hero* hero)
     //Change Armor
     else
     {
-        //print all the armors the player can for a hero
+        //print all the armors the player has bought for a hero
         int number_Armor = hero->print_Armor();
         int a;
         if(number_Armor != 0)
@@ -564,7 +564,7 @@ void Grid::buy_sell_and_equip( Hero* hero)
 
     }while(  answer.compare( "Yes") == 0 && hero->get_money() > 0);
 
-    //if player wants to sell
+    //if the player wants to sell
     int count_item_and_spell;
     do{
         cout << "Do you want to sell anything?" << endl;

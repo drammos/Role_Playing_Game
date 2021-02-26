@@ -36,7 +36,6 @@ struct input_1{
 
 int main( void)
 {      
-    //with rand all
     srand(time(NULL));
 
     
@@ -58,7 +57,7 @@ int main( void)
         return -1;
     }
 
-    //the playerr choose grid for game 
+    //the player chooses the dimensions of the grid for the game 
     cout << GREEN <<"Choose Grid for Game." << RESET <<endl;
     cout << "Press 1 for 8x8" << endl;
     cout << "Press 2 for 10x10" << endl;
@@ -217,7 +216,7 @@ int main( void)
     
     double x5;
 
-    //i read the spels
+    //i read the spells
     
 
     //i read the Lightspells
@@ -353,7 +352,7 @@ int main( void)
             cout << RED << "YOU MUST CHANGE FROM 1 TO 3 HEROES!" << RESET << endl;
         }
     
-    //if the player havn't choose neither player repeat the questions
+    //if the player hasn't chosen a player repeat the questions
     }while( heroes_change == false);
 
 
@@ -420,7 +419,7 @@ int main( void)
         grid->provide(vector_lightingspells.at(i));
     }
 
-    //START TH GAME
+    //START THE GAME
     grid->StartGame();
 }
 
