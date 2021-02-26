@@ -14,7 +14,7 @@ Team members:
 
 Compilation and running command:
 -make run
-
+In the files of the project there is a Makefile included.
 
 According to our implementation of the game, the heroes (3 at most) move thoughout the grid as a team and not independently.
 The monsters that have died in a war, revive after the end of the war to be ready for the next war.
