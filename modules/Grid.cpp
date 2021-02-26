@@ -993,15 +993,10 @@ void Square::War(){
 }
 
 
-//βοηθητικη συναρτηση-μελος
+//Assisting functions.
 bool Square::buy( Hero* hero)
 {
     return true;
-}
-
-void Square::sell( Hero* hero)
-{
-
 }
 
 vector<Hero*> Square::get_heroes()
@@ -1009,7 +1004,7 @@ vector<Hero*> Square::get_heroes()
     return heroes;
 }
 
-//Συναρτήσεις για Market.
+//Market functions..
 Market::~Market(){
     this->items.clear();
     this->spells.clear();

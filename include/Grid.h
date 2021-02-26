@@ -88,7 +88,7 @@ public:
     void War();
 
     virtual bool buy( Hero*);
-    virtual void sell( Hero*);
+    virtual void sell( Hero*){};
     //Assisting
     virtual void insert_item(Item*){};
     virtual void insert_spell(Spell*){};
