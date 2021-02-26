@@ -350,7 +350,7 @@ int main( void)
 
         if( heroes_change == false)
         {
-            cout << RED << "YOU MUST CHANGE FROM 1 UNTIL 3 HEROES!" << RESET << endl;
+            cout << RED << "YOU MUST CHANGE FROM 1 TO 3 HEROES!" << RESET << endl;
         }
     
     //if the player havn't choose neither player repeat the questions

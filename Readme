@@ -96,13 +96,14 @@ are Classes that inherit from Class Hero. The Subclasses Dragon, Exoskeleton and
 
 For level_up and constructor:
 
-Every monster or hero when create or level up, it favored for some skills it has. It(monster or hero) for each species( Warrior, Sorcerer, Paladin, Dragon, Exoskeleton and Spirit)
-it has a skill building factor. The Hero to level up, it must have specific experience, where experience grow up from war(Monster vs Heroes). The monster level up when all heroes 
-is a higher level, and the heroes go in the common square.
+Every monster or hero that is created or that moves to the next level, has some favored characteristics (better that the rest of the characteristics).
+It(monster or hero) for each subcategory( Warrior, Sorcerer, Paladin, Dragon, Exoskeleton and Spirit)
+has a skill building factor. For the Hero to level up, it must have specific experience, which increases from war(Monster vs Heroes). The monster move to the next level when all of the heroes 
+are on the higher level, and the heroes enter common square.
 
 For Hero:
-Every hero have vector with weapons, armors and potions where he has bought. Every hero have one Weapon and Armor where he use this time. For the start constructor
-with the first armor and Weapon, which he bought.
+Every hero has a vector with weapons, armors and potions that he has bought. Every hero has one Weapon and Armor that he uses at a certain time. For the beggining,
+these are the first armor and Weapon, which he bought.
 ////////////////////////////////////////////////////////////////////
 
 
@@ -117,31 +118,31 @@ with the first armor and Weapon, which he bought.
 
 For Grid.cpp and Grid.h:
 
-The Class Grid is the grid for game where it have deminsions x and y, that the player chooses. The grid have squares where every square is one Square(class Square).
-With a probability, the Square is Common, Market or nonAccessible where they is SubClass that inherit from SuperClass Square. 
+The Class Grid is the grid for the game with deminsions x and y, that the player chooses. The grid has squares every one of which is one Square(class Square).
+With a probability, the Square is Common, Market or nonAccessible which are Subclasses that inherit from SuperClass Square. 
 
 For StartGame:
-The game start. The heroes all with start from Market square for buy Item and Spell. For every the player must buy one weapons for the war otherwise he lose the game.
-After, the hero move from this square and call Move function where print the grid and it asks the player that he wants to move.
-If the square is Market, if he want can to buy or sell item and spell. If the square is Common with a probability start the war otherwise no.
-The game end that all heroes have LEVEL_MAX(from information.h) or the player decide to leave for the game and he Lose.
-If player give for input quitGame, than the Game Over and the player is losser.
+The game starts. The heroes start from a Market square to buy Items and Spells. For every hero the player must buy at least one weapon for the war otherwise he loses the game.
+After, the hero moves from this square and Move function is called which prints the grid and it asks the player where he wants to move.
+If the square is a Market, if he wants, he can buy or sell items and Spells. If the square is Common a war probably starts(may or may not happen).
+The game ends when all the heroes have LEVEL_MAX(from information.h) or the player decides to quit the game.
+If player give for input "quitGame", then the Game is Over.
 
 
 For buy_sell_and_equip:
-When the player buy or sell item, he can change the item he is holding.
+When the player buys or sells an item, he can change the item he is holding.
 
 
 For displayMap:
-Print the grid with UTF-8 characters.
+Prints the grid with UTF-8 characters.
 
 H - is Hero
 M - is Monster
-B - is Hero and monster bought
+B - is both Hero and monster
 
 S - is Market
 X - is nonAccessible
-H S - is heroes where find in the Market
+H S - is heroes in a Market
 ////////////////////////////////////////////////////////////////////
 
 

@@ -72,11 +72,40 @@ void Grid::set_heroes( Hero* hero)
             x_heroes = rand()%(x);
             y_heroes = rand()%(y);
 
+            //Checking if the squares around the square the heroes are at, are all non accessible.
+            int x1_heroes, x2_heroes, y1_heroes, y2_heroes;
+            if(x_heroes == 0){
+                x1_heroes = this->x - 1;
+                x2_heroes = 1;
+            }
+            else if(x_heroes == this->x - 1){
+                x2_heroes = 0;
+                x1_heroes = this->x - 2;
+            }
+            else{
+                x1_heroes = x_heroes - 1;
+                x2_heroes = x_heroes + 1;
+            }
+
+            if(y_heroes == 0){
+                y1_heroes = this->y - 1;
+                y2_heroes = 1;
+            }
+            else if(y_heroes == this->y - 1){
+                y1_heroes = this->y - 2;
+                y2_heroes = 0;
+            }
+            else{
+                y1_heroes = y_heroes - 1;
+                y2_heroes = y_heroes + 1;
+            }
             //In the beginning heroes are placed in a market square. 
             //to buy weapons
             if( (squares[x_heroes][y_heroes]->get_kind_of_square()).compare( "Market") == 0)
             {   
-                in = true;
+                if(squares[x1_heroes][y_heroes]->get_kind_of_square().compare("NonAccessible") != 0 || squares[x2_heroes][y_heroes]->get_kind_of_square().compare("NonAccessible") != 0 || squares[x_heroes][y1_heroes]->get_kind_of_square().compare("NonAccessible") != 0 || squares[x_heroes][y2_heroes]->get_kind_of_square().compare("NonAccessible") != 0){
+                    in = true;
+                }
             }
         }
     }
@@ -137,7 +166,7 @@ void Grid::StartGame()
             
             if( hero->get_money() == 0 && buy_weapon == false)
             {
-                cout << RED << "YOU LOSE!!!, BECAUSE YOU HAVN'T MONEY A1ND YOU HAVN'T WEAPON FOR WAR!!!" << RESET << endl;
+                cout << RED << "YOU LOSE!!!, BECAUSE YOU DON'T HAVE ENOUGH MONEY TO BUY A WEAPON FOR WAR!!!" << RESET << endl;
                 quitGame();
             }
         }
@@ -1005,7 +1034,7 @@ bool Market::buy(Hero* hero){
         cout<< RED << "Invalid number, try again!" << RESET <<endl;
         cin>>a;
     }
-    //Checking if the buy a weapon.
+    //Checking if they buy a weapon.
     bool back = false;
 
     //If the player wants to buy an item.
