@@ -706,11 +706,14 @@ bool Hero::castSpell( Monster* monster)
     //the change that is caused from that property remains for a number of rounds.
     if(kind_of_spell == "IceSpell")
     {
-        double damage_low_monster = monster->get_damage_low() - damage*monster->get_damage_low();
+        double damage_low_monster = monster->get_damage_low() + damage*monster->get_damage_low();
         if(damage_low_monster<0)damage_low_monster=0;
 
-        double damage_high_monster = monster->get_damage_high() - damage*monster->get_damage_high();
-        if(damage_high_monster<0)damage_high_monster=0;
+        double damage_high_monster;
+        if(monster->get_damage_high() <= damage_low_monster)
+            damage_high_monster = monster->get_damage_high() + damage*monster->get_damage_high();
+        else    
+            damage_high_monster = monster->get_damage_high();
 
         monster->set_damage( damage_low_monster, damage_high_monster);
         monster->set_rounds( rounds);
