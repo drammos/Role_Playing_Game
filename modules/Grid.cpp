@@ -593,7 +593,7 @@ void Grid::buy_sell_and_equip( Hero* hero)
     //If the hero wants to change the item they currently use
     string in;
     do{
-        cout << "You want change Item?" << endl;
+        cout << "Do you want change an Item you are currently using?" << endl;
         cin >> in;
 
         while( in.compare("Yes") != 0 && in.compare("No") != 0){
