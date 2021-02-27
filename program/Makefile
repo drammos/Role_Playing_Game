@@ -10,9 +10,9 @@ CXXFLAGS = -Wall -no-pie -fPIE -g -I$(INCLUDE)
 INCL = $(INCLUDE)/Living_Being.h $(INCLUDE)/Grid.h $(INCLUDE)/Spell.h $(INCLUDE)/Item.h
 OBJS = Role_Playing_Game.o $(MODULES)/Living_Being.o $(MODULES)/Grid.o $(MODULES)/Spell.o  $(MODULES)/Item.o
 
-# Το εκτελέσιμο πρόγραμμα
+# the executable program
 EXEC = Role_Playing_Game
-# Παράμετροι για δοκιμαστική εκτέλεση
+# parameters
 ARGS =
 
 $(EXEC): $(OBJS) $(INCL)
