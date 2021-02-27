@@ -14,6 +14,12 @@ Team members:
 
 Compilation and running command:
 -make run
+or
+g++ -Wall -no-pie -fPIE -g -I../include   -c -o ../modules/Living_Being.o ../modules/Living_Being.cpp
+g++ Role_Playing_Game.o ../modules/Living_Being.o ../modules/Grid.o ../modules/Spell.o  ../modules/Item.o -o Role_Playing_Game
+./Role_Playing_Game
+
+
 In the files of the project there is a Makefile included.
 
 According to our implementation of the game, the heroes (3 at most) move thoughout the grid as a team and not independently.

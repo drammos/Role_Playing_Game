@@ -608,7 +608,8 @@ bool Hero::castSpell( Monster* monster)
         spell_change[i] = false;
     }
     int spell_change_count = 1;
-
+    
+    int spell_in_vector = -1;
     //the spell must need less magic power than the hero has.
     while( power_magic > magicPower)
     {   
@@ -648,6 +649,8 @@ bool Hero::castSpell( Monster* monster)
         }
 
         spell = spell_vector.at( answer - 1);
+        spell_in_vector = answer -1;
+
         power_magic = spell->get_energy();
 
         //check this spell
@@ -703,10 +706,12 @@ bool Hero::castSpell( Monster* monster)
     //the change that is caused from that property remains for a number of rounds.
     if(kind_of_spell == "IceSpell")
     {
-        double damage_low_monster = monster->get_damage_low() + damage*monster->get_damage_low();
+        double damage_low_monster = monster->get_damage_low() - damage*monster->get_damage_low();
+        if(damage_low_monster<0)damage_low_monster=0;
 
-        double damage_high_monster = monster->get_damage_high() + damage*monster->get_damage_high();
-        
+        double damage_high_monster = monster->get_damage_high() - damage*monster->get_damage_high();
+        if(damage_high_monster<0)damage_high_monster=0;
+
         monster->set_damage( damage_low_monster, damage_high_monster);
         monster->set_rounds( rounds);
     }
@@ -726,6 +731,12 @@ bool Hero::castSpell( Monster* monster)
         monster->set_probability_of_escape( damage);
         monster->set_rounds( rounds);
     }
+
+    //the hero can't use the spell again
+    vector <Spell*> :: iterator it;
+    it = spell_vector.begin();
+    advance( it, spell_in_vector);
+    spell_vector.erase( it); 
 
     //i return true if the hero uses a spell
     return true;
