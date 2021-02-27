@@ -13,6 +13,7 @@ Team members:
 
 
 Compilation and running command:
+In the directory "program" where the make file is located run the following command
 -make run
 or
 g++ -Wall -no-pie -fPIE -g -I../include   -c -o ../modules/Living_Being.o ../modules/Living_Being.cpp
