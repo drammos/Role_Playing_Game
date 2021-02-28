@@ -14,7 +14,7 @@ git clone https://github.com/DimitrisRammos/Role_Playing_Game
 ## Code
 
 ## Vocalization Project
-The vocalization of the Project find [here.]()
+The vocalization of the Project find [here.](https://github.com/DimitrisRammos/Role_Playing_Game/blob/main/OOPproj_2021.pdf)
 
 
 ## Compilation
