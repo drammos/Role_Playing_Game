@@ -1,4 +1,4 @@
-# Role Playing Game
+# :crossed_swords: Role Playing Game
 
 This game is [Role Playing Game](https://en.wikipedia.org/wiki/Role-playing_game), with monsters, heroes, spell and war.
 
