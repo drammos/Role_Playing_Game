@@ -13,8 +13,11 @@ git clone https://github.com/DimitrisRammos/Role_Playing_Game
 
 ## Code
 The project consists of 3 main folders: 
+
 -program, which includes the main function of the program and the MakeFile.
+
 -include, which includes the definitions of the classes and their functions.
+
 -modules, wich includes the implementation of the classes and their functions. 
 
 ## Project Objective
