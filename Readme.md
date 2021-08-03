@@ -1,8 +1,8 @@
 # :crossed_swords: Role Playing Game
 
-This game is [Role Playing Game](https://en.wikipedia.org/wiki/Role-playing_game), with monsters, heroes, spell and war.
+This game is a command line [Role Playing Game](https://en.wikipedia.org/wiki/Role-playing_game) with monsters and heroes fighting each other, implemented based on Object Oriented Programming principles.
 
-## Our Teams
+## Our Team Members
 [Dimitris Rammos](https://github.com/DimitrisRammos)
 
 [Ioanna Oikonomou](https://github.com/ioannaoiko)
@@ -12,17 +12,19 @@ This game is [Role Playing Game](https://en.wikipedia.org/wiki/Role-playing_game
 git clone https://github.com/DimitrisRammos/Role_Playing_Game
 
 ## Code
+The project consists of 3 main folders: 
+-program, which includes the main function of the program and the MakeFile.
+-include, which includes the definitions of the classes and their functions.
+-modules, wich includes the implementation of the classes and their functions. 
 
-## Vocalization Project
-The vocalization of the Project find [here.](https://github.com/DimitrisRammos/Role_Playing_Game/blob/main/OOPproj_2021.pdf)
+## Project Objective
+You can find the project objective [here.](https://github.com/DimitrisRammos/Role_Playing_Game/blob/main/OOPproj_2021.pdf)
 
-If you want read more explanations for the code read [here.](https://github.com/DimitrisRammos/Role_Playing_Game/blob/main/Readme)
+If you need further explanations on the code click [here.](https://github.com/DimitrisRammos/Role_Playing_Game/blob/main/Readme)
 
 ## Compilation
-If you want to run the code, than follow these steps:
+If you want to run the code, run the following commands:
 
 cd program
 
 make run
-
-After, the game witll start.

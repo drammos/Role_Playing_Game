@@ -13,7 +13,7 @@ Team members:
 
 
 Compilation and running command:
-In the directory "program" where the make file is located run the following command
+In the directory "program" where the MakeFile is located run the following command
 -make run
 or
 g++ -Wall -no-pie -fPIE -g -I../include   -c -o ../modules/Living_Being.o ../modules/Living_Being.cpp
@@ -28,35 +28,10 @@ The monsters that have died in a war, revive after the end of the war to be read
 The heroes always fight against monsters of the same level.
 ///////////////////////////////////////////////////////////////////
 
-
-
-
-////////////////////////////////////////////////////////////////////
-//                                                                //
-//                      Role_Playing_Game                         //
-//                                                                //
-////////////////////////////////////////////////////////////////////
-
-For Role_Playing_Game.cpp:
-
-This file includes the main for the program. From this file starts the program. It reads all files, creates vectors and after it passes to the grid these
-vectors( vector include monsters, heroes,item and spell). The player must choose 1-3 heroes( that is Warrior, Paladin and Sorcerer). The player change
-heroes and after they start the game from a  Market square. After with a probability the monsters are introduced to grid(from files monsters.txt).
-After the game starts and program continues to run from function StartGame( from Grid.cpp).
-
-If the player gives for input quitGame, then the Game Over.
-///////////////////////////////////////////////////////////////////
-
-
-
-
 In the header file "information.h" you can find a number of constant variables that remain unchanged throughout the game.
 Also, the input is taken from 8 txt files, examples of which you can find in the folder "files".
 These files are opened from the main function of the program.
 ///////////////////////////////////////////////////////////////////
-
-
-
 
 ////////////////////////////////////////////////////////////////////
 //                                                                //
@@ -84,7 +59,21 @@ The file formats are explained thoroughly below:
 ///////////////////////////////////////////////////////////////////
 
 
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//                      Role_Playing_Game                         //
+//                                                                //
+////////////////////////////////////////////////////////////////////
 
+About Role_Playing_Game.cpp:
+
+This file includes the main of the program. It takes the input from the files includes in the folder named "files", creates vectors and then it passes these
+vectors to the grid. The player must choose 1-3 heroes(Warrior, Paladin and/or Sorcerer). The player can change their heroes after they start the game from a Market square. 
+Then, the monsters are randomly placed on the grid(from files monsters.txt).
+Then, the game starts and the program continues to run from the function "StartGame"(in Grid.cpp).
+
+If the player gives "quitGame" as input ,then the Game is over.
+///////////////////////////////////////////////////////////////////
 
 
 ////////////////////////////////////////////////////////////////////
@@ -93,25 +82,23 @@ The file formats are explained thoroughly below:
 //                                                                //
 ////////////////////////////////////////////////////////////////////
 
-For Living_Being.cpp and Living_Being.h:
+About Living_Being.cpp and Living_Being.h:
 
 
-The Living_Being.cpp includes the monsters and heroes that play in the game.
-It has one  SuperClass, the Living_Being, with constructor Living Being(name , level).
+The file Living_Being.h includes the definitions of monster and hero.
+There is one  SuperClass, the Living_Being, with constructor Living Being(name , level).
 Tha  Subclasses Hero and Monster are Classes that inherit from Basic Class Living_Being. The Subclasses Warrior, Sorcerer and Paladin(properties of Hero) 
 are Classes that inherit from Class Hero. The Subclasses Dragon, Exoskeleton and Spirit(properties of monster) are Classes that inherit from class Monster.
 
 
-For level_up and constructor:
+About level_up and constructor:
 
 Every monster or hero that is created or that moves to the next level, has some favored characteristics (better that the rest of the characteristics).
-It(monster or hero) for each subcategory( Warrior, Sorcerer, Paladin, Dragon, Exoskeleton and Spirit)
-has a skill building factor. For the Hero to level up, it must have specific experience, which increases from war(Monster vs Heroes). The monster move to the next level when all of the heroes 
-are on the higher level, and the heroes enter common square.
+For the Hero to level up, it must have specific experience, which increases by participating in wars(Monster vs Heroes). The monsters move to the next level when all of the heroes 
+are on the higher level, and the heroes enter a common square.
 
-For Hero:
-Every hero has a vector with weapons, armors and potions that he has bought. Every hero has one Weapon and Armor that he uses at a certain time. For the beggining,
-these are the first armor and Weapon, which he bought.
+About Hero:
+Every hero has a vector with weapons, armors and potions that he has bought. Every hero has one Weapon and Armor that he uses at a certain time.
 ////////////////////////////////////////////////////////////////////
 
 
@@ -124,33 +111,33 @@ these are the first armor and Weapon, which he bought.
 //                                                                //
 ////////////////////////////////////////////////////////////////////
 
-For Grid.cpp and Grid.h:
+About Grid.cpp and Grid.h:
 
-The Class Grid is the grid for the game with deminsions x and y, that the player chooses. The grid has squares every one of which is one Square(class Square).
-With a probability, the Square is Common, Market or nonAccessible which are Subclasses that inherit from SuperClass Square. 
+The Class Grid represents the grid of the game with deminsions x and y, that the player chooses. The grid has squares every one of which is one Square(class Square).
+the Square can be Common, Market or nonAccessible which are Subclasses that inherit from SuperClass Square. 
 
-For StartGame:
-The game starts. The heroes start from a Market square to buy Items and Spells. For every hero the player must buy at least one weapon for the war otherwise he loses the game.
-After, the hero moves from this square and Move function is called which prints the grid and it asks the player where he wants to move.
+About StartGame:
+The game starts. The heroes are placed in a Market square to buy Items and Spells. For every hero the player must buy at least one weapon for the war otherwise he loses the game.
+Then, the hero moves from this square and Move function is called which prints the grid and asks the player where he wants to move.
 If the square is a Market, if he wants, he can buy or sell items and Spells. If the square is Common a war probably starts(may or may not happen).
 The game ends when all the heroes have LEVEL_MAX(from information.h) or the player decides to quit the game.
-If player give for input "quitGame", then the Game is Over.
+If player gives "quitGame" for input , then the Game is Over.
 
 
-For buy_sell_and_equip:
+About buy_sell_and_equip:
 When the player buys or sells an item, he can change the item he is holding.
 
 
-For displayMap:
+About displayMap:
 Prints the grid with UTF-8 characters.
 
-H - is Hero
-M - is Monster
-B - is both Hero and monster
+H - is for Hero
+M - is for Monster
+B - is for both Hero and monster
 
-S - is Market
-X - is nonAccessible
-H S - is heroes in a Market
+S - is for Market
+X - is for nonAccessible
+H S - is for heroes in a Market
 ////////////////////////////////////////////////////////////////////
 
 
@@ -163,7 +150,7 @@ H S - is heroes in a Market
 //                                                                //
 ////////////////////////////////////////////////////////////////////
 
-For Item.cpp and Item.h:
+About Item.cpp and Item.h:
 
 Every item is defined by it's name, price and required level to be used. There are three subcategories of an item
 (Weapon, Armor and Potion). Each of the categories has different properties. In our implementation there is a main class (Item)
@@ -181,7 +168,7 @@ and three subclasses (the subcategories).
 //                                                                //
 ////////////////////////////////////////////////////////////////////
 
-For Spell.cpp and Spell.h:
+About Spell.cpp and Spell.h:
 
 Every spell is defined by it's name, price, required level, energy that it needs to spend and a range of damage,
 which is defined by an lower and an upper bound of damage. There are three subcategories of a spell
