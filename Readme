@@ -152,7 +152,7 @@ H S - is for heroes in a Market
 
 About Item.cpp and Item.h:
 
-Every item is defined by it's name, price and required level to be used. There are three subcategories of an item
+Every item is defined by its name, price and required level to be used. There are three subcategories of an item
 (Weapon, Armor and Potion). Each of the categories has different properties. In our implementation there is a main class (Item)
 and three subclasses (the subcategories).
 
@@ -170,7 +170,7 @@ and three subclasses (the subcategories).
 
 About Spell.cpp and Spell.h:
 
-Every spell is defined by it's name, price, required level, energy that it needs to spend and a range of damage,
+Every spell is defined by its name, price, required level, energy that it needs to spend and a range of damage,
 which is defined by an lower and an upper bound of damage. There are three subcategories of a spell
 (IceSpell, FireSpell and LightingSpell). Each of the categories has different properties. In our implementation there is a main class (Spell)
 and three subclasses (the subcategories).
